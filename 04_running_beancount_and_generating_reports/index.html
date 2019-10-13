@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Running Beancount and Generating Reports - beancount docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">beancount docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Index</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Outline <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Documentation for Users</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01_command_line_accounting_in_context/">Command Line Accounting in Context</a>
+</li>
+            
+<li >
+    <a href="../02_the_double_entry_counting_method/">The Double Entry Counting Method</a>
+</li>
+            
+<li >
+    <a href="../03_installing_beancount/">Installing Beancount</a>
+</li>
+            
+<li class="active">
+    <a href="./">Running Beancount and Generating Reports</a>
+</li>
+            
+<li >
+    <a href="../05_getting_started_with_beancount/">Getting Started with Beancount</a>
+</li>
+            
+<li >
+    <a href="../06_beancount_language_syntax/">Beancount Language Syntax</a>
+</li>
+            
+<li >
+    <a href="../07_beancount_options_reference/">Beancount Options Reference</a>
+</li>
+            
+<li >
+    <a href="../08_precision_tolerances/">Precision Tolerances</a>
+</li>
+            
+<li >
+    <a href="../09_beancount_query_language/">Beancount Query Language</a>
+</li>
+            
+<li >
+    <a href="../10_beancount_cheat_sheet/">Beancount Cheat Sheet</a>
+</li>
+            
+<li >
+    <a href="../11_how_inventories_work/">How Inventories Work</a>
+</li>
+            
+<li >
+    <a href="../12_exporting_your_portfolio/">Exporting Your Portfolio</a>
+</li>
+            
+<li >
+    <a href="../13_tutorial_example/">Tutorial & Example</a>
+</li>
+            
+<li >
+    <a href="../14_beancount_history_and_credits/">Beancount History and Credits</a>
+</li>
+            
+<li >
+    <a href="../15_a_comparison_of_beancount_and_ledger_hledger/">A Comparison of Beancount and Ledger Hledger</a>
+</li>
+            
+<li >
+    <a href="../16_fetching_prices_in_beancount/">Fetching Prices in Beancount</a>
+</li>
+            
+<li >
+    <a href="../17_importing_external_data/">Importing External Data</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Cookbooks & Examples</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../18_command_line_accounting_cookbook/">Command Line Accounting Cookbook</a>
+</li>
+            
+<li >
+    <a href="../19_trading_with_beancount/">Trading with Beancount</a>
+</li>
+            
+<li >
+    <a href="../20_stock_vesting_in_beancount/">Stock Vesting in Beancount</a>
+</li>
+            
+<li >
+    <a href="../21_sharing_expenses_with_beancount/">Sharing Expenses with Beancount</a>
+</li>
+            
+<li >
+    <a href="../22_how_we_share_expenses/">How We Share Expenses</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Documentation for Developers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../23_beancount_scripting_plugins/">Beancount Scripting Plugins</a>
+</li>
+            
+<li >
+    <a href="../24_beancount_design_doc/">Beancount Design Doc</a>
+</li>
+            
+<li >
+    <a href="../25_ledgerhub_design_doc/">Ledgerhub Design Doc</a>
+</li>
+            
+<li >
+    <a href="../26_external_contributions/">External Contributions</a>
+</li>
+            
+<li >
+    <a href="../27_a_proposal_for_an_improvement_on_inventory_booking/">A Proposal for an Improvement on Inventory Booking</a>
+</li>
+            
+<li >
+    <a href="../28_settlement_dates_in_beancount/">Settlement Dates in Beancount</a>
+</li>
+            
+<li >
+    <a href="../29_balance_assertions_in_beancount/">Balance Assertions in Beancount</a>
+</li>
+            
+<li >
+    <a href="../30_fund_accounting_with_beancount/">Fund Accounting with Beancount</a>
+</li>
+            
+<li >
+    <a href="../31_rounding_precision_in_beancount/">Rounding Precision in Beancount</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../03_installing_beancount/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../05_getting_started_with_beancount/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="running-beancount-generating-reports"><a id="title"></a>Running Beancount &amp; Generating Reports</h1>
+<p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>, July-Sep 2014</p>
+<p><a href="http://furius.ca/beancount/doc/tools"><span class="underline">http://furius.ca/beancount/doc/tools</span></a></p>
+<p><a href="#introduction"><span class="underline">Introduction</span></a></p>
+<p><a href="#tools"><span class="underline">Tools</span></a></p>
+<blockquote>
+<p><a href="#bean-check"><span class="underline">bean-check</span></a></p>
+<p><a href="#bean-report"><span class="underline">bean-report</span></a></p>
+<p><a href="#bean-query"><span class="underline">bean-query</span></a></p>
+<p><a href="#bean-web"><span class="underline">bean-web</span></a></p>
+<p><a href="#global-pages"><span class="underline">Global Pages</span></a></p>
+<p><a href="#view-reports-pages"><span class="underline">View Reports Pages</span></a></p>
+<p><a href="#bean-bake"><span class="underline">bean-bake</span></a></p>
+<p><a href="#bean-doctor"><span class="underline">bean-doctor</span></a></p>
+<p><a href="#context"><span class="underline">Context</span></a></p>
+<p><a href="#bean-format"><span class="underline">bean-format</span></a></p>
+<p><a href="#bean-example"><span class="underline">bean-example</span></a></p>
+</blockquote>
+<p><a href="#filtering-transactions"><span class="underline">Filtering Transactions</span></a></p>
+<p><a href="#reports"><span class="underline">Reports</span></a></p>
+<blockquote>
+<p><a href="#balance-reports"><span class="underline">Balance Reports</span></a></p>
+<p><a href="#trial-balance-balances"><span class="underline">Trial Balance (balances)</span></a></p>
+<p><a href="#balance-sheet-balsheet"><span class="underline">Balance Sheet (balsheet)</span></a></p>
+<p><a href="#opening-balances-openbal"><span class="underline">Opening Balances (openbal)</span></a></p>
+<p><a href="#income-statement-income"><span class="underline">Income Statement (income)</span></a></p>
+<p><a href="#journal-reports"><span class="underline">Journal Reports</span></a></p>
+<p><a href="#journal-journal"><span class="underline">Journal (journal)</span></a></p>
+<p><a href="#rendering-at-cost"><span class="underline">Rendering at Cost</span></a></p>
+<p><a href="#adding-a-balance-column"><span class="underline">Adding a Balance Column</span></a></p>
+<p><a href="#character-width"><span class="underline">Character Width</span></a></p>
+<p><a href="#precision"><span class="underline">Precision</span></a></p>
+<p><a href="#compact-normal-or-verbose"><span class="underline">Compact, Normal or Verbose</span></a></p>
+<p><a href="#summary"><span class="underline">Summary</span></a></p>
+<p><a href="#equivalent-sql-query"><span class="underline">Equivalent SQL Query</span></a></p>
+<p><a href="#conversions-conversions"><span class="underline">Conversions (conversions)</span></a></p>
+<p><a href="#documents-documents"><span class="underline">Documents (documents)</span></a></p>
+<p><a href="#holdings-reports"><span class="underline">Holdings Reports</span></a></p>
+<p><a href="#holdings-aggregations-holdings"><span class="underline">Holdings &amp; Aggregations (holdings*)</span></a></p>
+<p><a href="#net-worth-networth"><span class="underline">Net Worth (networth)</span></a></p>
+<p><a href="#other-report-types"><span class="underline">Other Report Types</span></a></p>
+<p><a href="#cash"><span class="underline">Cash</span></a></p>
+<p><a href="#prices-prices"><span class="underline">Prices (prices)</span></a></p>
+<p><a href="#statistics-stats"><span class="underline">Statistics (stats)</span></a></p>
+<p><a href="#update-activity-activity"><span class="underline">Update Activity (activity)</span></a></p>
+</blockquote>
+<h2 id="introduction"><a id="introduction"></a>Introduction</h2>
+<p>This document describes the tools you use to process Beancount input files, and many of the reports available from it. The syntax of the language is described in the <a href="../06_beancount_language_syntax/"><span class="underline">Beancount Language Syntax</span></a> document. This manual only covers the technical details for using Beancount from the command-line.</p>
+<h2 id="tools"><a id="tools"></a>Tools</h2>
+<h3 id="bean-check"><a id="bean-check"></a>bean-check</h3>
+<p><strong>bean-check</strong> is the program you use to verify that your input syntax and transactions work correctly. All it does is load your input file and run the various plugins you configured in it, plus some extra validation checks. It report errors (if any), and then exits. You run it on your input file, like this:</p>
+<pre><code>bean-check /path/to/my/file.beancount
+</code></pre>
+<p>If there are no errors, there should be no output, it should exit quietly. If there were errors, they will be printed to stderr with the filename, line number and error description (in a format that is understood by Emacs, so you can just use next-error and previous-error to navigate to the file if you want):</p>
+<pre><code>/home/user/myledger.beancount:44381:   Transaction does not balance: 34.46 USD
+
+   2014-07-12 * "Black Iron Burger" ""
+     Expenses:Food:Restaurant               17.23 USD
+     Assets:Cash                            17.23 USD
+</code></pre>
+<p>You should always fix all the errors before producing reports.</p>
+<h3 id="bean-report"><a id="bean-report"></a>bean-report</h3>
+<p>This is the main tool used to extract specialized reports to the console in text or one of the various other formats. You invoke it like this:</p>
+<pre><code>bean-report /path/to/my/file.beancount &lt;report-name&gt;
+</code></pre>
+<p>For example:</p>
+<pre><code>bean-report /path/to/my/file.beancount balances
+</code></pre>
+<p>There are many reports available. See the section on reports for a description of the main ones. If you want to produce the full list of reports, ask it for help:</p>
+<pre><code>bean-report --help-reports
+</code></pre>
+<p>Report names can sometimes accept arguments. At the moment the arguments are specified as part of the report name itself, often separated by a colon (:), like this:</p>
+<pre><code>bean-report /path/to/my/file.beancount balances:Vanguard
+</code></pre>
+<p>There are a few special reports you should know about:</p>
+<ul>
+<li>
+<p>check, or validate: This is the same as running the bean-check command.</p>
+</li>
+<li>
+<p>print: This simply prints out the entries that Beancount has parsed, in Beancount syntax. This can be used to confirm that Beancount has read and interpreted your input data correctly (if you’re debugging something difficult).</p>
+</li>
+</ul>
+<p>The other reports are what you’d expect: they print out various tables of aggregations of amounts. The reports you can generate are described in a dedicated section below.</p>
+<table><tbody><tr class="odd"><td><em><strong>PLEASE NOTE!</strong></em> At the moment of release, the list of reports available from the web page will differ from the list available from the console. In a future release, I will consolidate those two lists and all the reports that are available from the web pages will also be available from the console, and in many different formats. Stay tuned.</td></tr></tbody></table>
+
+<h3 id="bean-query"><a id="bean-query"></a>bean-query</h3>
+<p>Beancount’s parsed list of transactions and postings is like an in-memory database. <strong>bean-query</strong> is a command-line tool that acts like a client to that in-memory database in which you can type queries in a variant of SQL. You invoke it like this:</p>
+<pre><code>bean-query /path/to/my/file.beancount
+Input file: "/path/to/my/file.beancount"
+Ready with 14212 directives (21284 postings in 8879 transactions).
+beancount&gt; _
+</code></pre>
+<p>More details are available <a href="../09_beancount_query_language/"><span class="underline">in its own document</span></a>.</p>
+<h3 id="bean-web"><a id="bean-web"></a>bean-web</h3>
+<p><strong>bean-web</strong> serves all the reports on a web server that runs on your computer. You run it like this:</p>
+<pre><code>bean-web /path/to/my/file.beancount
+</code></pre>
+<p>It will serve all pages on port 8080 on your machine. Navigate to <a href="http://localhost:8080"><span class="underline">http://localhost:8080</span></a> with a web browser. You should be able to click your way through all the reports easily.</p>
+<p>The web interface provides a set of global pages and a set of report pages for each “view.”</p>
+<h4 id="global-pages"><a id="global-pages"></a>Global Pages</h4>
+<p>The top-level table of contents page provides links to all the global pages at the top:</p>
+<ul>
+<li>
+<p>The table of contents (the page you’re looking at)</p>
+</li>
+<li>
+<p>A list of the errors that occurred in your ledger file</p>
+</li>
+<li>
+<p>A view of the source code of your Ledger file (this is used by various other links when referring to a location in your input file.)</p>
+</li>
+</ul>
+<p>The table of contents provides a convenient list of links to all the common views, such as</p>
+<ul>
+<li>
+<p>“view by year”,</p>
+</li>
+<li>
+<p>“view by tag”, and of course,</p>
+</li>
+<li>
+<p>“view all transactions.”</p>
+</li>
+</ul>
+<p>There are a few more.</p>
+<h4 id="view-reports-pages"><a id="view-reports-pages"></a>View Reports Pages</h4>
+<p>When you click on a view report page, you enter a set of pages for the subset of transactions for that view. Various reports about those transactions are available from here:</p>
+<ul>
+<li>
+<p>Opening balances (a balance sheet at the beginning of the view)</p>
+</li>
+<li>
+<p>Balance sheet (a balance sheet at the end of the view)</p>
+</li>
+<li>
+<p>Income statement (for the period of the view)</p>
+</li>
+<li>
+<p>Various journals for each account (just click on an account name)</p>
+</li>
+<li>
+<p>Various reports of holdings at the end of the view</p>
+</li>
+<li>
+<p>Lists of documents and prices included in the view’s entries</p>
+</li>
+<li>
+<p>Some statistics about the view data</p>
+</li>
+</ul>
+<p>… and much more. There should be an index of all the available view reports.</p>
+<h3 id="bean-bake"><a id="bean-bake"></a>bean-bake</h3>
+<p><strong>bean-bake</strong> runs a <strong>bean-web</strong> instance and bakes all the pages to a directory:</p>
+<pre><code>bean-bake /path/to/my/file.beancount myfinances
+</code></pre>
+<p>It also support baking directly to an archive file:</p>
+<pre><code>bean-bake /path/to/my/file.beancount myfinances.zip
+</code></pre>
+<p>Various compression methods are supported, e.g. .tar.gz.</p>
+<p>This is useful to share the web interface with your accountant or other people, who usually don’t have the ability to run Beancount. The page links have all been converted to relative links, and they should be able to extract the archive to a directory and browse all the reports the same way you do with <strong>bean-web</strong>.</p>
+<h3 id="bean-doctor"><a id="bean-doctor"></a>bean-doctor</h3>
+<p>This is a debugging tool used to perform various diagnostics and run debugging commands, and to help provide information for reporting bugs. For example, it can do the following:</p>
+<ul>
+<li>
+<p>List the Beancount dependencies that are installed on your machine, and the ones that are missing. It can tell you what you’re missing that you should be installing.</p>
+</li>
+<li>
+<p>Print a dump of the parser’s lexer tokens for your input file. If you report a parsing bug, it can be useful to look at the lexer output (if you know what you’re doing).</p>
+</li>
+<li>
+<p>It can run your input file through a parsing round-trip, that is, print out the file and re-read it again and compare it. This is a useful parser and printer test.</p>
+</li>
+<li>
+<p>It can check that a directory hierarchy corresponds to a Beancount input file’s chart-of-accounts, and reporting directories that do not comply. This is useful in case you decide to change some account names and are maintaining a corresponding archive of documents which needs to be adjusted accordingly.</p>
+</li>
+</ul>
+<h4 id="context"><a id="context"></a>Context</h4>
+<p>It can list the context upon which a transaction is applied, i.e., the inventory balances of each account the transaction postings modify, before and after it is applied. Use it like this:</p>
+<pre><code>$ bean-doctor context /home/blais/accounting/blais.beancount 28514
+/home/blais/accounting/blais.beancount:28513:
+
+;   Assets:US:ETrade:BND             100.00 BND {81.968730000000 USD}
+;   Assets:US:ETrade:Cash           8143.97 USD
+
+2014-07-25 * "(TRD) BOT +50 BND @82.10" ^273755872
+ Assets:US:ETrade:BND                 50.00 BND {82.10 USD}  
+ Assets:US:ETrade:Cash             -4105.00 USD
+
+;   Assets:US:ETrade:BND                    100.00 BND {81.968730000000 USD}
+
+; ! Assets:US:ETrade:BND              50.00 BND {82.10 USD}
+; ! Assets:US:ETrade:Cash           4038.97 USD
+</code></pre>
+<p>There is a corresponding Emacs binding (C-c x) to invoke this around the cursor.</p>
+<h3 id="bean-format"><a id="bean-format"></a>bean-format</h3>
+<p>This pure text processing tool will reformat Beancount input to right-align all the numbers at the same, minimal column. It left-aligns all the currencies. It only modifies whitespace. This tool accepts a filename as arguments and outputs the aligned file on stdout (similar to UNIX cat).</p>
+<h3 id="bean-example"><a id="bean-example"></a>bean-example</h3>
+<p>This program generates an example Beancount input file. See the <a href="../13_tutorial_example/"><span class="underline">Tutorial</span></a> for more details about the contents of this example file.</p>
+<h2 id="filtering-transactions"><a id="filtering-transactions"></a>Filtering Transactions</h2>
+<p>In order to produce different views of your financial transactions, we select a subset of full list of parsed transactions, for example, “all the transactions that occurred in year 2013”, and then use that to produce the various available reports that Beancount provides.</p>
+<p>At the moment, only a preset list of filters are available as “views” from the web interface. These views include:</p>
+<ul>
+<li>
+<p>All transactions</p>
+</li>
+<li>
+<p>Transactions that occur in a particular year</p>
+</li>
+<li>
+<p>Transactions with a particular tag</p>
+</li>
+<li>
+<p>Transactions with a particular payee</p>
+</li>
+<li>
+<p>Transactions that involve at least one account with a particular name component</p>
+</li>
+</ul>
+<p>At the moment, in order to access reports from these subsets of transactions, you need to use the <strong>bean-web</strong> web interface, and click on the related keyword in the root global page, which enters you into a set of reports for that view.</p>
+<h2 id="reports"><a id="reports"></a>Reports</h2>
+<p>The whole point of entering your transactions in a single input file in the first place is that it allows you to sum, filter, aggregate and arrange various subsets of your data into well-known reports. There are three distinct ways to produce reports from Beancount: by using <strong>bean-web</strong> and browsing to a view and then to a specific report (this is the easy way), by using <strong>bean-query</strong> and providing the name of a desired report (and possibly some report-specific arguments), and by using <strong>bean-query</strong> and requesting data by specifying a SQL statement.</p>
+<p>Reports can sometimes be rendered in different file formats. Each report type will support being rendered in a list of common ones, such as console text, HTML and CSV. Some reports render in Beancount syntax itself, and we simply call this format name “beancount.”</p>
+<p>There are many types of reports available, and there will be many more in the future, as many of the features on the roadmap involve new types of output. This section provides an overview of the most common ones. Use bean-report to inquire about the full list supported by your installed version:</p>
+<pre><code>bean-report --help-reports
+</code></pre>
+<table><tbody><tr class="odd"><td><em><strong>PLEASE NOTE!</strong></em> At the moment, the sets of reports that are available from the web interface and from the console are different, though there is some overlap. In a subsequent version, the list of reports will be reconciled and all reports will be made available via both the web interface and the console, in a variety of data formats (text, CSV, HTML and maybe others.) For now, we will document these in the sections below.</td></tr></tbody></table>
+
+<h3 id="balance-reports"><a id="balance-reports"></a>Balance Reports</h3>
+<p>All the balance reports are similar in that they produce tables of some set of accounts and their associated balances: <a href="http://furius.ca/beancount/examples/tutorial/balances.output"><span class="underline">[output]</span></a></p>
+<pre><code>|-- Assets                               
+|   `-- US                               
+|       |-- BofA                         
+|       |   `-- Checking                       596.05 USD
+|       |-- ETrade                       
+|       |   |-- Cash                         5,120.50 USD
+|       |   |-- GLD                             70.00 GLD
+|       |   |-- ITOT                            17.00 ITOT
+|       |   |-- VEA                             36.00 VEA
+|       |   `-- VHT                            294.00 VHT
+|       |-- Federal                      
+|       |   `-- PreTax401k               
+|       |-- Hoogle                       
+|       |   `-- Vacation                       337.26 VACHR
+|       `-- Vanguard                     
+...
+</code></pre>
+<p>Balances for commodities held “at cost” are rendered at their book value. (Unrealized gains, if any, are inserted as separate transactions by an optional plugin and the result amounts get mixed in with the cost basis if rendered in the same account.)</p>
+<p>If an account’s balance contains many different types of currencies (commodities not held “at cost”, such as dollars, euros, yen), each gets printed on its own line. This can render the balance column a bit too busy and messes with the vertical regularity of account names. This is to some extent an unavoidable compromise, but in practice, there are only a small number of commodities that form the large majority of a user’s ledger: the home country’s currency units. To this extent, amounts in common currencies can be broken out into their own column using the “operating_currency” option:</p>
+<pre><code>option "operating_currency" "USD"
+option "operating_currency" "CAD"
+</code></pre>
+<p>You may use this option multiple times if you have many of them (this is my case, for instance, because I am an expat and hold assets in both my host and home countries). Declaring operating currencies also hold the advantage that the name of the currency need not be rendered, and it can thus more easily be imported into a spreadsheet.</p>
+<p>Finally, some accounts are deemed “active” if they have not been closed. A closed account with no transactions in the filtered set of transactions will not be rendered.</p>
+<h4 id="trial-balance-balances"><a id="trial-balance-balances"></a>Trial Balance (balances)</h4>
+<p>A <a href="http://en.wikipedia.org/wiki/Trial_balance"><span class="underline">trial balance</span></a> report simply produces a table of final balances of all the active accounts, with all the accounts rendered vertically.</p>
+<p>The sum total of all balances is reported at the bottom. Unlike a balance sheet, it may not always balance to zero because of currency conversions. (This is the equivalent of Ledger’s bal report.)</p>
+<p>The equivalent bean-query command is:</p>
+<pre><code>SELECT account, sum(position) 
+GROUP BY account 
+ORDER BY account;
+</code></pre>
+<h4 id="balance-sheet-balsheet"><a id="balance-sheet-balsheet"></a>Balance Sheet (balsheet)</h4>
+<p>A <a href="http://en.wikipedia.org/wiki/Balance_sheet"><span class="underline">balance sheet</span></a> is a snapshot of the balances of the Assets, Liabilities and Equity accounts at a particular point in time. In order to build such a report, we have to move balances from the other accounts to it:</p>
+<ol>
+<li>
+<p>compute the balances of the Income and Expenses account at that point in time,</p>
+</li>
+<li>
+<p>insert transactions that will zero out balances from these accounts by transferring them to an equity account (Equity:Earnings:Current),</p>
+</li>
+<li>
+<p>render a tree of the balances of the Assets accounts on the left side,</p>
+</li>
+<li>
+<p>render a tree of the Liabilities accounts on the right side,</p>
+</li>
+<li>
+<p>render a tree of the Equity accounts below the Liabilities accounts.</p>
+</li>
+</ol>
+<p>See the <a href="../02_the_double_entry_counting_method/"><span class="underline">introduction document</span></a> for an example.</p>
+<p>Note that the Equity accounts include the amounts reported from the Income and Expenses accounts, also often called “Net Income.”</p>
+<p>Also, in practice, we make <em>two</em> transfers because we’re typically looking at a reporting period, and we want to differentiate between Net Income amounts transferred before the beginning of the period (Equity:Earnings:Previous) and during the period itself (Equity:Earnings:Current). And similar pair of transfers is carried out in order to handle currency conversions (this is a bit of a hairy topic, but one with a great solution; refer to the <a href="http://furius.ca/beancount/doc/conversions"><span class="underline">dedicated document</span></a> if you want all the details).</p>
+<p>The equivalent bean-query command is:</p>
+<pre><code>SELECT account, sum(position) 
+FROM CLOSE ON 2016-01-01 
+GROUP BY account ORDER BY account;
+</code></pre>
+<h4 id="opening-balances-openbal"><a id="opening-balances-openbal"></a>Opening Balances (openbal)</h4>
+<p>The opening balances report is simply a balance sheet drawn at the beginning of the reporting period. This report only makes sense for a list of filtered entries that represents a period of time, such as “year 2014.” The balance sheet is generated using only the summarization entries that were synthesized when the transactions were filtered (see the <a href="../02_the_double_entry_counting_method/"><span class="underline">double-entry method document</span></a>).</p>
+<h4 id="income-statement-income"><a id="income-statement-income"></a>Income Statement (income)</h4>
+<p>An <a href="http://en.wikipedia.org/wiki/Income_statement"><span class="underline">income statement</span></a> lists the final balances of the Income and Expenses accounts. It represents a summary of the transient activity within these accounts. If the balance sheet is the snapshot at a particular point in time, this is the difference between the beginning and the end of a period (in our case: of a filtered set of transactions). The balances of the active Income accounts are rendered on the left, and those of the active Expenses accounts on the right. See the <a href="../02_the_double_entry_counting_method/"><span class="underline">introduction document</span></a> for an example.</p>
+<p>The difference between the total of Income and Expenses balances is the Net Income.</p>
+<p>Note that the initial balances of the Income and Expenses accounts should have been zero’ed out by summarization transactions that occur at the beginning of the period, because we’re only interested in the changes in these accounts.</p>
+<h3 id="journal-reports"><a id="journal-reports"></a>Journal Reports</h3>
+<p>The reports in this section render lists of transactions and other directives in a linear fashion.</p>
+<h4 id="journal-journal"><a id="journal-journal"></a>Journal (journal)</h4>
+<p>This report is the equivalent of an “account statement” from an institution, a list of transactions with at least one posting in that account. This is the equivalent of Ledger’s register report (reg).</p>
+<p>You generate a journal report like this:</p>
+<pre><code>bean-report myfile.beancount journal …
+</code></pre>
+<p>By default, this renders a journal of <em>all</em> the transactions, which is unlikely to be what you want. Select a particular account to render like this:</p>
+<pre><code>bean-report myfile.beancount journal -a Expenses:Restaurant
+</code></pre>
+<p>At the moment, the “-a” option accepts only a complete account name, or the name of one of the parent accounts. Eventually we will extend it to handle expressions.</p>
+<h5 id="rendering-at-cost"><a id="rendering-at-cost"></a>Rendering at Cost</h5>
+<p>The numbers column on the right displays the changes from the postings of the selected account. Notice that only the balances for the postings affecting the given account are rendered.</p>
+<p>The change column renders the changes in the units affected. For example, if this posting is selected:</p>
+<pre><code>  Assets:Investments:Apple      2 AAPL {402.00 USD}
+</code></pre>
+<p>The value reported for the change will be “2 AAPL”. If you would like to render the values at cost, use the “--at-cost” or “-c” option, which will in this case render “804.00 USD” instead.</p>
+<p>There is no “market value” option. Unrealized gains are automatically inserted at the end of the history by the “beancount.plugins.unrealized” plugin. See options for that plugin to insert its unrealized gains.</p>
+<p>Note that if the sum of the selected postings is zero, no amount is rendered in the change column.</p>
+<h5 id="adding-a-balance-column"><a id="adding-a-balance-column"></a>Adding a Balance Column</h5>
+<p>If you want to add a column that sums up the running balance for the reported changes, use the “--render-balance” or “-b” option. This does not always make sense to report, so it is up to you to decide whether you want a running balance.</p>
+<h5 id="character-width"><a id="character-width"></a>Character Width</h5>
+<p>By default, the report will be as wide as your terminal allows. Restrict the width to a set number of characters with the “-w” option.</p>
+<h5 id="precision"><a id="precision"></a>Precision</h5>
+<p>The number of fractional digits for the number rendering can be specified via “--precision” or “-k”.</p>
+<h5 id="compact-normal-or-verbose"><a id="compact-normal-or-verbose"></a>Compact, Normal or Verbose</h5>
+<p>In its normal operation, Beancount renders an empty line between transactions. This helps delineate transactions where there are multiple currencies affected, as they render on separate lines. If you want a more compact rendering, use the “--compact” or “-x” option.</p>
+<p>On the other hand, if you want to render the affected postings under the transaction line, use the “--verbose” or “-X” option.</p>
+<h5 id="summary"><a id="summary"></a>Summary</h5>
+<p>Here is a summary of its arguments:</p>
+<pre><code>optional arguments:
+  -h, --help            show this help message and exit
+  -a ACCOUNT, --account ACCOUNT
+                        Account to render
+  -w WIDTH, --width WIDTH
+                        The number of characters wide to render the report to
+  -k PRECISION, --precision PRECISION
+                        The number of digits to render after the period
+  -b, --render-balance, --balance
+                        If true, render a running balance
+  -c, --at-cost, --cost
+                        If true, render values at cost
+  -x, --compact         Rendering compactly
+  -X, --verbose         Rendering verbosely
+</code></pre>
+<h5 id="equivalent-sql-query"><a id="equivalent-sql-query"></a>Equivalent SQL Query</h5>
+<p>The equivalent bean-query command is:</p>
+<pre><code>SELECT date, flag, description, account, cost(position), cost(balance);
+</code></pre>
+<h4 id="conversions-conversions"><a id="conversions-conversions"></a>Conversions (conversions)</h4>
+<p>This report lists the total of currency conversions that result from the selected transactions. (Most people won’t need this.)</p>
+<h4 id="documents-documents"><a id="documents-documents"></a>Documents (documents)</h4>
+<p>This report produces an HTML list of all the external documents found in the ledger, either from explicit directives or from plugins that automatically find the documents and add them to the stream of transactions.</p>
+<h3 id="holdings-reports"><a id="holdings-reports"></a>Holdings Reports</h3>
+<p>These reports produces aggregations for assets held at cost.</p>
+<h4 id="holdings-aggregations-holdings42"><a id="holdings-aggregations-holdings"></a>Holdings &amp; Aggregations (holdings*)</h4>
+<p>This report produces a detailed list of all holdings found in the ledger. You can produce aggregates by commodity and accounts using the “-g” option.</p>
+<h4 id="net-worth-networth"><a id="net-worth-networth"></a>Net Worth (networth)</h4>
+<p>This report produces a short summary of the net worth (equity) of the ledger, in each of the operating currencies.</p>
+<h3 id="other-report-types"><a id="other-report-types"></a>Other Report Types</h3>
+<h4 id="cash"><a id="cash"></a>Cash</h4>
+<p>This report renders balances in commodities not held at cost, in other words, cash:</p>
+<pre><code>bean-report example.beancount cash -c USD
+
+Account                         Units  Currency  Cost Currency  Average Cost  Price  Book Value  Market Value
+
+--------------------------  ---------  --------  -------------  ------------  -----  ----------  ------------
+
+Assets:US:BofA:Checking        596.05       USD            USD                           596.05        596.05
+
+Assets:US:ETrade:Cash        5,120.50       USD            USD                         5,120.50      5,120.50
+
+Assets:US:Hoogle:Vacation      337.26     VACHR
+
+Assets:US:Vanguard:Cash         -0.02       USD            USD                            -0.02         -0.02
+
+Liabilities:US:Chase:Slate  -2,891.85       USD            USD                        -2,891.85     -2,891.85
+
+--------------------------  ---------  --------  -------------  ------------  -----  ----------  ------------
+</code></pre>
+<p>The report allows you to convert all currencies to a common currency (in the example above, "convert everything to USD"). There's also an option to report only on the operating currencies. I use this to get an overview of all uninvested cash.</p>
+<h4 id="prices-prices"><a id="prices-prices"></a>Prices (prices)</h4>
+<p>This report renders a list of price points for a base currency in terms of a quote currency. The list is sorted by date. You can output this table in beancount format as well. This is convenient to save a price database to a file, that can then be combined and loaded into another input file.</p>
+<h4 id="statistics-stats"><a id="statistics-stats"></a>Statistics (stats)</h4>
+<p>This report simply provides various statistics on the parsed entries.</p>
+<h4 id="update-activity-activity"><a id="update-activity-activity"></a>Update Activity (activity)</h4>
+<p>This table renders for each account the date of the last entry.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Stock Vesting in Beancount - beancount docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">beancount docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Index</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Outline <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Documentation for Users</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01_command_line_accounting_in_context/">Command Line Accounting in Context</a>
+</li>
+            
+<li >
+    <a href="../02_the_double_entry_counting_method/">The Double Entry Counting Method</a>
+</li>
+            
+<li >
+    <a href="../03_installing_beancount/">Installing Beancount</a>
+</li>
+            
+<li >
+    <a href="../04_running_beancount_and_generating_reports/">Running Beancount and Generating Reports</a>
+</li>
+            
+<li >
+    <a href="../05_getting_started_with_beancount/">Getting Started with Beancount</a>
+</li>
+            
+<li >
+    <a href="../06_beancount_language_syntax/">Beancount Language Syntax</a>
+</li>
+            
+<li >
+    <a href="../07_beancount_options_reference/">Beancount Options Reference</a>
+</li>
+            
+<li >
+    <a href="../08_precision_tolerances/">Precision Tolerances</a>
+</li>
+            
+<li >
+    <a href="../09_beancount_query_language/">Beancount Query Language</a>
+</li>
+            
+<li >
+    <a href="../10_beancount_cheat_sheet/">Beancount Cheat Sheet</a>
+</li>
+            
+<li >
+    <a href="../11_how_inventories_work/">How Inventories Work</a>
+</li>
+            
+<li >
+    <a href="../12_exporting_your_portfolio/">Exporting Your Portfolio</a>
+</li>
+            
+<li >
+    <a href="../13_tutorial_example/">Tutorial & Example</a>
+</li>
+            
+<li >
+    <a href="../14_beancount_history_and_credits/">Beancount History and Credits</a>
+</li>
+            
+<li >
+    <a href="../15_a_comparison_of_beancount_and_ledger_hledger/">A Comparison of Beancount and Ledger Hledger</a>
+</li>
+            
+<li >
+    <a href="../16_fetching_prices_in_beancount/">Fetching Prices in Beancount</a>
+</li>
+            
+<li >
+    <a href="../17_importing_external_data/">Importing External Data</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Cookbooks & Examples</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../18_command_line_accounting_cookbook/">Command Line Accounting Cookbook</a>
+</li>
+            
+<li >
+    <a href="../19_trading_with_beancount/">Trading with Beancount</a>
+</li>
+            
+<li class="active">
+    <a href="./">Stock Vesting in Beancount</a>
+</li>
+            
+<li >
+    <a href="../21_sharing_expenses_with_beancount/">Sharing Expenses with Beancount</a>
+</li>
+            
+<li >
+    <a href="../22_how_we_share_expenses/">How We Share Expenses</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Documentation for Developers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../23_beancount_scripting_plugins/">Beancount Scripting Plugins</a>
+</li>
+            
+<li >
+    <a href="../24_beancount_design_doc/">Beancount Design Doc</a>
+</li>
+            
+<li >
+    <a href="../25_ledgerhub_design_doc/">Ledgerhub Design Doc</a>
+</li>
+            
+<li >
+    <a href="../26_external_contributions/">External Contributions</a>
+</li>
+            
+<li >
+    <a href="../27_a_proposal_for_an_improvement_on_inventory_booking/">A Proposal for an Improvement on Inventory Booking</a>
+</li>
+            
+<li >
+    <a href="../28_settlement_dates_in_beancount/">Settlement Dates in Beancount</a>
+</li>
+            
+<li >
+    <a href="../29_balance_assertions_in_beancount/">Balance Assertions in Beancount</a>
+</li>
+            
+<li >
+    <a href="../30_fund_accounting_with_beancount/">Fund Accounting with Beancount</a>
+</li>
+            
+<li >
+    <a href="../31_rounding_precision_in_beancount/">Rounding Precision in Beancount</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../19_trading_with_beancount/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../21_sharing_expenses_with_beancount/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="stock-vesting-in-beancount"><a id="title"></a>Stock Vesting in Beancount</h1>
+<p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>, June 2015</p>
+<p><a href="http://furius.ca/beancount/doc/vesting"><span class="underline">http://furius.ca/beancount/doc/vesting</span></a></p>
+<h2 id="introduction"><a id="introduction"></a>Introduction</h2>
+<p>This document explains the vesting of restricted stock units in Beancount, by way of an example. This example may not exactly match your situation, but enough detail is provided that you should be able to adapt it for your own particular differences.</p>
+<p>A working example file can be found <a href="https://bitbucket.org/blais/beancount/src/tip/examples/vesting/vesting.beancount"><span class="underline">here</span></a> to follow along with this text.</p>
+<h2 id="restricted-stock-compensation"><a id="restricted-stock-compensation"></a>Restricted Stock Compensation</h2>
+<p>Many technology companies offer their employees incentive compensation in the form of “grants” (or “awards”) of “restricted stock units” (RSU), which is essentially a promise for the “release” to you of actual shares in the future. The stock is “restricted” in the sense that you cannot access it—you only receive it when it “vests”, and this happens based on a schedule. Typically, you are promised a fixed number of shares that vest every quarter or every month over a period of 3 or 4 years. If you leave the company, your remaining unvested shares are lost. <img src="20_stock_vesting_in_beancount/media/6a910c80cfb0385f9cff8de1b5976716a1eb7324.jpg" style="width:2.18229in;height:1.26744in" /></p>
+<p>One way you can view these RSUs is as an asset, a receivable that arrives regularly over time. These RSUs are essentially compensation denominated in the currency of the company’s shares itself. We want to track the unraveling of these unvested units, and correctly account for their conversion to real stock with a cost basis and including whatever taxes were paid upon vesting.</p>
+<h2 id="tracking-awards"><a id="tracking-awards"></a>Tracking Awards</h2>
+<h3 id="commodities"><a id="commodities"></a>Commodities</h3>
+<p>First we want to define some commodities. In this example, I work for “Hooli Inc.” and will eventually receive shares of that company (valued in US dollars):</p>
+<pre><code>1990-12-02 commodity HOOL
+  name: "Common shares of Hooli Inc."
+  quote: USD
+</code></pre>
+<p>We will also want to track the amount of unvested shares:</p>
+<pre><code>2013-01-28 commodity HOOL.UNVEST
+  name: "Unvested shares of Hooli from awards."
+</code></pre>
+<h3 id="accounts-for-awards"><a id="accounts-for-awards"></a>Accounts for Awards</h3>
+<p>Grants received is income. I use “Income:US:Hooli” as the root for all income accounts from Hooli, but in particular, I define an account for the awards, which contains units of unvested stock:</p>
+<pre><code>2013-01-28 open Income:US:Hooli:Awards        HOOL.UNVEST
+</code></pre>
+<p>When the stock vests, we will need to book the other side of this income somewhere, so we define an expenses account to count how much stock has been vested over a period of time:</p>
+<pre><code>2014-01-28 open Expenses:Hooli:Vested         HOOL.UNVEST
+</code></pre>
+<h3 id="receiving-awards"><a id="receiving-awards"></a>Receiving Awards</h3>
+<p>When you receive a new award (this may occur every year, for example, some people call this a “stock refresh”), you receive it as income and deposit it into a fresh new account, used to track this particular award:</p>
+<pre><code>2014-04-02 * "Award S0012345"
+  Income:US:Hooli:Awards                -1680 HOOL.UNVEST
+  Assets:US:Hooli:Unvested:S0012345      1680 HOOL.UNVEST
+
+2014-04-02 open Assets:US:Hooli:Unvested:S0012345
+</code></pre>
+<p>You may have multiple active awards at the same time. It’s nice to have a separate account per award, as it offers a natural way to list their contents and when the award expires, you can close the account—the list of open award accounts gives you the list of outstanding &amp; actively vesting awards. In this example I used the number of the award (#S0012345) as the sub-account name. It’s useful to use the number as the statements typically include it.</p>
+<p>I like to keep all the awards in a small dedicated section.</p>
+<h2 id="vesting-events"><a id="vesting-events"></a>Vesting Events</h2>
+<p>Then I have a different section that contains all the transactions that follow a vesting event.</p>
+<h3 id="accounts"><a id="accounts"></a>Accounts</h3>
+<p>First, when we vest stock, it’s a taxable income event. The cash value for the stock needs an Income account:</p>
+<pre><code>2013-04-04 open Income:US:Hooli:RSU
+</code></pre>
+<p>Taxes paid should be on the annual expenses accounts you should have defined somewhere else to account for that year’s taxes (this is covered elsewhere in the cookbook):</p>
+<pre><code>2015-01-01 open Expenses:Taxes:TY2015:US:StateNY
+2015-01-01 open Expenses:Taxes:TY2015:US:Federal
+2015-01-01 open Expenses:Taxes:TY2015:US:SocSec
+2015-01-01 open Expenses:Taxes:TY2015:US:SDI
+2015-01-01 open Expenses:Taxes:TY2015:US:Medicare
+2015-01-01 open Expenses:Taxes:TY2015:US:CityNYC
+</code></pre>
+<p>After paying taxes on the received income, the remaining cash is deposited in a limbo account before getting converted:</p>
+<pre><code>2013-01-28 open Assets:US:Hooli:RSURefund
+</code></pre>
+<p>Also, in another section we should have an account for the brokerage which holds and manages the shares for you:</p>
+<pre><code>2013-04-04 open Assets:US:Schwab:HOOL
+</code></pre>
+<p>Generally you don’t have a choice for this broker because the company you work normally makes an arrangement with an external firm in order to administer the restricted stock program. Typical firms doing this type of administration are Morgan Stanley, Salomon Smith Barney, Schwab, even E*Trade. In the example we’ll use a Schwab account.</p>
+<p>And we also need some sort of checking account to receive cash in lieu of fractional shares. I’ll assume a Bank of America account in the example:</p>
+<pre><code>2001-01-01 open Assets:US:BofA:Checking
+</code></pre>
+<h3 id="vesting"><a id="vesting"></a>Vesting</h3>
+<p>First, the vesting events themselves:</p>
+<pre><code>2015-05-27 * "Vesting Event - S0012345 - HOOL" #award-S0012345 ^392f97dd62d0
+  doc: "2015-02-13.hooli.38745783.pdf"
+  Income:US:Hooli:RSU                    -4597.95 USD
+  Expenses:Taxes:TY2015:US:Medicare         66.68 USD
+  Expenses:Taxes:TY2015:US:Federal        1149.48 USD
+  Expenses:Taxes:TY2015:US:CityNYC         195.42 USD
+  Expenses:Taxes:TY2015:US:SDI               0.00 USD
+  Expenses:Taxes:TY2015:US:StateNY         442.32 USD
+  Expenses:Taxes:TY2015:US:SocSec          285.08 USD
+  Assets:US:Hooli:RSURefund               2458.97 USD
+</code></pre>
+<p>This corresponds line-by-line to a payroll stub that I receive each vesting event for each award. Since all the RSU awards at Hooli vest on the same day of the month, this means that I have clusters of these, one for each award (in the example file I show two awards).</p>
+<p>Some observations are in order:</p>
+<ul>
+<li>
+<p>The value of the Income posting consists of the number of shares vested times the FMV of the stock. In this case, that is 35 shares ⨉ $131.37/share = $4597.95. I just write the dollar amount because it is provided to me on the pay stub.</p>
+</li>
+<li>
+<p>Receiving vested stock is a taxable income event, and Hooli automatically withholds taxes and pays them to the government on its employees’ behalf. These are the Expenses:Taxes accounts corresponding to your W-2.</p>
+</li>
+<li>
+<p>Finally, I don’t directly deposit the converted shares to the brokerage account; this is because the remainder of cash after paying tax expenses is not necessarily a round number of shares. Therefore, I used a limbo account (Assets:US:Hooli:RSURefund) and decouple the receipt from the conversion.</p>
+</li>
+</ul>
+<p>This way, each transaction corresponds exactly to one pay stub. It makes it easier to enter the data.</p>
+<p>Also note that I used a unique link (^392f97dd62d0) to group all the transactions for a particular vesting event. You could also use tags if you prefer.</p>
+<h3 id="conversion-to-actual-stock"><a id="conversion-to-actual-stock"></a>Conversion to Actual Stock</h3>
+<p>Now we’re ready to convert the remaining cash to stock units. This happens in the brokerage firm and you should see the new shares in your brokerage account. The brokerage will typically issue a “stock release report” statement for each vesting event for each award, with the details necessary to make the conversion, namely, the actual number of shares converted from cash and the cost basis (the FMV on the vesting day):</p>
+<pre><code>2015-05-25 * "Conversion into shares" ^392f97dd62d0
+  Assets:US:Schwab:HOOL                   18 HOOL {131.3700 USD}
+  Assets:US:Hooli:RSURefund
+  Assets:US:Hooli:Unvested:S0012345      -35 HOOL.UNVEST
+  Expenses:Hooli:Vested                   35 HOOL.UNVEST
+</code></pre>
+<p>The first two postings deposit the shares and subtract the dollar value from the limbo account where the vesting transaction left the remaining cash. You should make sure to use the specific FMV price provided by the statement and not an approximate price, because this has tax consequences later on. Note that you cannot buy fractional shares, so the cost of the rounded amount of shares (18) will leave some remaining cash in the limbo account.</p>
+<p>The last two postings deduct from the balance of unvested shares and I “receive” an expenses; that expenses account basically counts how many shares were vested over a particular time period.</p>
+<p>Here again you will probably have one of these conversions for each stock grant you have. I enter them separately, so that one statement matches one transaction. This is a good rule to follow.</p>
+<h3 id="refund-for-fractions"><a id="refund-for-fractions"></a>Refund for Fractions</h3>
+<p>After all the conversion events have moved cash out of the limbo account, it is left the fractional remainders from all the conversions. In my case, this remainder is refunded by Hooli 3-4 weeks after vesting as a single separate pay stub that includes all the remainders (it even lists each of them separately). I enter this as a transaction as well:</p>
+<pre><code>2015-06-13 * "HOOLI INC       PAYROLL" ^392f97dd62d0
+  doc: "2015-02-13.hooli.38745783.pdf"
+  Assets:US:Hooli:RSURefund            -94.31 USD
+  Assets:US:Hooli:RSURefund             -2.88 USD ; (For second award in example)
+  Assets:US:BofA:Checking               97.19 USD
+</code></pre>
+<p>After the fractions have been paid the limbo account should be empty. I verify this claim using a balance assertion:</p>
+<pre><code>2015-06-14 balance Assets:US:Hooli:RSURefund  0 USD
+</code></pre>
+<p>This provides me with some sense that the numbers are right.</p>
+<h3 id="organizing-your-input"><a id="organizing-your-input"></a>Organizing your Input</h3>
+<p>I like to put all the vesting events together in my input file; this makes them much easier to update and reconcile, especially with multiple awards. For example, with two awards I would have multiple chunks of transactions like this, separated with 4-5 empty lines to delineate them:</p>
+<pre><code>2015-05-27 * "Vesting Event - S0012345 - HOOL" #award-S0012345 ^392f97dd62d0
+  doc: "2015-02-13.hooli.38745783.pdf"
+  Income:US:Hooli:RSU                    -4597.95 USD
+  Assets:US:Hooli:RSURefund               2458.97 USD
+  Expenses:Taxes:TY2015:US:Medicare         66.68 USD
+  Expenses:Taxes:TY2015:US:Federal        1149.48 USD
+  Expenses:Taxes:TY2015:US:CityNYC         195.42 USD
+  Expenses:Taxes:TY2015:US:SDI               0.00 USD
+  Expenses:Taxes:TY2015:US:StateNY         442.32 USD
+  Expenses:Taxes:TY2015:US:SocSec          285.08 USD
+
+2015-05-27 * "Vesting Event - C123456 - HOOL" #award-C123456 ^392f97dd62d0
+  doc: "2015-02-13.hooli.38745783.pdf"
+  Income:US:Hooli:RSU                    -1970.55 USD
+  Assets:US:Hooli:RSURefund               1053.84 USD
+  Expenses:Taxes:TY2015:US:Medicare         28.58 USD
+  Expenses:Taxes:TY2015:US:Federal         492.63 USD
+  Expenses:Taxes:TY2015:US:CityNYC          83.75 USD
+  Expenses:Taxes:TY2015:US:SDI               0.00 USD
+  Expenses:Taxes:TY2015:US:StateNY         189.57 USD
+  Expenses:Taxes:TY2015:US:SocSec          122.18 USD
+
+2015-05-25 * "Conversion into shares" ^392f97dd62d0
+  Assets:US:Schwab:HOOL                        18 HOOL {131.3700 USD}
+  Assets:US:Hooli:RSURefund
+  Assets:US:Hooli:Unvested:S0012345           -35 HOOL.UNVEST
+  Expenses:Hooli:Vested                        35 HOOL.UNVEST
+
+2015-05-25 * "Conversion into shares" ^392f97dd62d0
+  Assets:US:Schwab:HOOL                         9 HOOL {131.3700 USD}
+  Assets:US:Hooli:RSURefund
+  Assets:US:Hooli:Unvested:C123456            -15 HOOL.UNVEST
+  Expenses:Hooli:Vested                        15 HOOL.UNVEST
+
+2015-06-13 * "HOOLI INC       PAYROLL" ^392f97dd62d0
+  doc: "2015-02-13.hooli.38745783.pdf"
+  Assets:US:Hooli:RSURefund                -94.30 USD
+  Assets:US:Hooli:RSURefund                 -2.88 USD
+  Assets:US:BofA:Checking                   97.18 USD
+
+2015-02-14 balance Assets:US:Hooli:RSURefund    0 USD
+</code></pre>
+<h2 id="unvested-shares"><a id="unvested-shares"></a>Unvested Shares</h2>
+<h3 id="asserting-unvested-balances"><a id="asserting-unvested-balances"></a>Asserting Unvested Balances</h3>
+<p>Finally, you may occasionally want to assert the number of unvested shares. I like to do this semi-annually, for example. The brokerage company that handles the RSUs for Hooli should be able to list how many unvested shares of each award remain, so it’s as simple as looking it up on a website:</p>
+<pre><code>2015-06-04 balance Assets:US:Hooli:Unvested:S0012345  1645 HOOL.UNVEST
+2015-06-04 balance Assets:US:Hooli:Unvested:C123456    705 HOOL.UNVEST
+</code></pre>
+<h3 id="pricing-unvested-shares"><a id="pricing-unvested-shares"></a>Pricing Unvested Shares</h3>
+<p>You can also put a price on the unvested shares in order to estimate the unvested dollar amount. You should use a fictional currency for this, because we want to avoid a situation where a balance sheet is produced that includes these unvested assets as regular dollars:</p>
+<pre><code>2015-06-02 price HOOL.UNVEST               132.4300 USD.UNVEST
+</code></pre>
+<p>At the time of this writing, the bean-web interface does not convert the units if they are not held at cost, but using the SQL query interface or writing a custom script you should be able to produce those numbers:</p>
+<pre><code>$ bean-query examples/vesting/vesting.beancount
+
+beancount&gt; select account, sum(convert(position, 'USD.UNVEST')) as unvested 
+           where account ~ 'Unvested' group by account;
+
+             account                     unvested       
+--------------------------------- ----------------------
+Assets:US:Hooli:Unvested:S0012345 217847.3500 USD.UNVEST
+Assets:US:Hooli:Unvested:C123456   93363.1500 USD.UNVEST
+</code></pre>
+<h2 id="selling-vested-stock"><a id="selling-vested-stock"></a>Selling Vested Stock</h2>
+<p>After each vesting event, the stock is left in your brokerage account. Selling this stock proceeds just as in any other trading transaction (see <a href="../19_trading_with_beancount/"><span class="underline">Trading with Beancount</span></a> for full details). For example, selling the shares from the example would look something like this:</p>
+<pre><code>2015-09-10 * "Selling shares"
+  Assets:US:Schwab:HOOL        -26 HOOL {131.3700 USD} @ 138.23 USD
+  Assets:US:Schwab:Cash    3593.98 USD
+  Income:US:Schwab:Gains
+</code></pre>
+<p>Here you can see why it matters that the cost basis you used on the conversion event is the correct one: You will have to pay taxes on the difference (in Income:US:Schwab:Gains). In this example the taxable difference is (138.23 - 131.37) dollars per share.</p>
+<p>I like to keep all the brokerage transactions in a separate section of my document, where other transactions related to the brokerage occur, such as fees, dividends and transfers.</p>
+<h2 id="conclusion"><a id="conclusion"></a>Conclusion<img src="20_stock_vesting_in_beancount/media/04de27aeb8e7b7cbc9201ce82ae780d21cec36fb.jpg" style="width:2.04688in;height:1.39525in" /></h2>
+<p>This is a simple example that is modeled after how technology companies deal with this type of compensation. It is by no means comprehensive, and some of the details will necessarily vary in your situation. In particular, it does not explain how to deal with options (ISOs). My hope is that there is enough meat in this document to allow you to extrapolate and adapt to your particular situation. If you get stuck, please reach out on the <a href="http://furius.ca/beancount/doc/mailing-list"><span class="underline">mailing-list</span></a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
