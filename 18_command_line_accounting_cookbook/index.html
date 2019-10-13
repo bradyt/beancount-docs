@@ -452,7 +452,7 @@ statement accounts: Income or Expenses. On the other hand, if the
 amount <em>always</em> needs to be included in the total balance of an
 account, then it should be a balance sheet account: Assets or
 Liabilities.</p>
-<p>Second, if the amounts are generally[^1] positive, or “good from your
+<p>Second, if the amounts are generally<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> positive, or “good from your
 perspective,” the account should be either an Assets or an Expenses
 account. If the amounts are generally negative, or “bad from your
 perspective,” the account should be either a Liabilities or an Income
@@ -558,10 +558,10 @@ would appear if I rendered a journal for Assets:Cash.</p>
 booked everything to food—pad entries don’t work solely at the beginning
 of an account’s history, but also between any two balance assertions on
 the same account—but I want to book 80% of it to food and 20% alcohol,
-to more accurately represent my real usage of cash[^2].</p>
+to more accurately represent my real usage of cash<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <p>Finally, if you end up with a long time period between the times that
 you do this, you may want to “spread out” your expenses by adding more
-than one cash distribution[^3] manually, so that if you generate a
+than one cash distribution<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> manually, so that if you generate a
 monthly report, a large cash expense does not appear as a single lump in
 or outside that month.</p>
 <h2 id="salary-income"><a id="salary-income"></a>Salary Income<a class="headerlink" href="#salary-income" title="Permanent link"></a></h2>
@@ -834,12 +834,12 @@ like this:</p>
   Assets:US:BofA:Checking      10000.00 USD
 </code></pre>
 <p>The balance amount of the first posting is calculated as -9000.00 CHF x
-1.11111 USD/CHF = 10000.00 USD[^4]. Typically I will choose the rate
+1.11111 USD/CHF = 10000.00 USD<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. Typically I will choose the rate
 that was reported to me and put it on the corresponding side. You may
 also want to use the direction that F/X markets use for trading the
 rate, for example, the Swiss franc trades as USD/CHF, so I would prefer
 the first transaction. The price database converts the rates in both
-directions, so it is not that important[^5].</p>
+directions, so it is not that important<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
 <p>If you use wire transfers, which is typical for this type of money
 transfer, you might incur a fee:</p>
 <pre><code>2014-03-03 * "Transfer from Swiss account"
@@ -1026,28 +1026,43 @@ topics will be discussed:</p>
 <p>Options</p>
 </li>
 </ul>
-<p>[^1]: This is not strictly always true: in accounting for companies,
-    some account types are held at their opposite value for reasons,
-    usually to offset the value of another account of the same type.
-    These are called “contra” accounts. But as an individual, you’re
-    quite unlikely to have one of those. If you’re setting up a chart of
-    accounts for a company, Beancount doesn’t actually care whether the
-    balance is of one sign or other. You declare contra-accounts just
-    like regular accounts.</p>
-<p>[^2]: I am considering supporting an extended version of the Pad
-    directive that can take a percentage value and make it possible to
-    pad only a percentage of the full amount, to automate this.</p>
-<p>[^3]: Yet another extension to Beancount involves support multiple Pad
-    directives between two balance assertions and automatically support
-    this spreading out of padding directives.</p>
-<p>[^4]: If you’re concerned about the issue of precision or rounding in
-    balancing, see <a href="../08_precision_tolerances/"><span class="underline">this
-    document</span></a>.</p>
-<p>[^5]: Note that if the price database needs to invert the date its
-    calculation may result in a price with a large number of digits.
-    Beancount uses IEEE decimal objects and the default context of the
-    Python implementation is 28 digits, so inverting 0.9 will result in
-    1.111111….111 with 28 digits.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>This is not strictly always true: in accounting for companies,
+some account types are held at their opposite value for reasons,
+usually to offset the value of another account of the same type.
+These are called “contra” accounts. But as an individual, you’re
+quite unlikely to have one of those. If you’re setting up a chart of
+accounts for a company, Beancount doesn’t actually care whether the
+balance is of one sign or other. You declare contra-accounts just
+like regular accounts.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>I am considering supporting an extended version of the Pad
+directive that can take a percentage value and make it possible to
+pad only a percentage of the full amount, to automate this.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Yet another extension to Beancount involves support multiple Pad
+directives between two balance assertions and automatically support
+this spreading out of padding directives.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>If you’re concerned about the issue of precision or rounding in
+balancing, see <a href="../08_precision_tolerances/"><span class="underline">this
+document</span></a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Note that if the price database needs to invert the date its
+calculation may result in a price with a large number of digits.
+Beancount uses IEEE decimal objects and the default context of the
+Python implementation is 28 digits, so inverting 0.9 will result in
+1.111111….111 with 28 digits.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

@@ -390,7 +390,7 @@ Syntax</span></a> document.</p>
 file. This assumes you’ve read the <a href="../06_beancount_language_syntax/"><span class="underline">Language
 Syntax</span></a> document.</p>
 <h3 id="preamble-to-your-input-file"><a id="preamble-to-your-input-file"></a>Preamble to your Input File<a class="headerlink" href="#preamble-to-your-input-file" title="Permanent link"></a></h3>
-<p>I recommend that you begin with just a single file[^1]. My file has a
+<p>I recommend that you begin with just a single file<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. My file has a
 header that tells my editor (Emacs) what “mode” to open the file with,
 followed by some common options:</p>
 <pre><code>;; -*- mode: org; mode: beancount; coding: utf-8; fill-column: 400; -*-
@@ -539,7 +539,7 @@ you want to keep your input more tidy and organized, you could come up
 with a rule for yourself, e.g. “credit card payments are always left in
 the paying account’s section, not in the credit card account’s section”,
 or perhaps you could leave the transaction in both sections and comment
-one out[^2].</p>
+one out<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <h2 id="padding"><a id="padding"></a>Padding<a class="headerlink" href="#padding" title="Permanent link"></a></h2>
 <p>If you’re just starting out—and you probably are if you’re reading
 this—you will have no historical data. This means that the balances of
@@ -636,18 +636,27 @@ class="underline">Cookbook</span></a>,
 or read the <a href="../06_beancount_language_syntax/"><span class="underline">User’s
 Manual</span></a> if you haven’t already
 done that.</p>
-<p>[^1]: It is tempting to want to break down a large file into many
-    smaller ones, but especially at first, the convenience of having
-    everything in a single place is great.</p>
-<p>[^2]: Some people have suggested that Beancount automatically detect
-    duplicated transactions based on a heuristic and automatically
-    ignore (remove) one of the two, but this has not been tried out yet.
-    In particular, this would lend itself well to organizing
-    transactions not just per section, but in separate files, i.e., all
-    files would contain all the transactions for the accounts they
-    represent. If you’re interested in adding this feature, you could
-    easily implement this as a plugin, without disrupting the rest of
-    the system.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>It is tempting to want to break down a large file into many
+smaller ones, but especially at first, the convenience of having
+everything in a single place is great.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Some people have suggested that Beancount automatically detect
+duplicated transactions based on a heuristic and automatically
+ignore (remove) one of the two, but this has not been tried out yet.
+In particular, this would lend itself well to organizing
+transactions not just per section, but in separate files, i.e., all
+files would contain all the transactions for the accounts they
+represent. If you’re interested in adding this feature, you could
+easily implement this as a plugin, without disrupting the rest of
+the system.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

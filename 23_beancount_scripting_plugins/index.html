@@ -313,7 +313,7 @@ and so can you too. These entries are dumb read-only objects (Python
 class="underline">namedtuples</span></a>)
 and have no methods that modify their contents explicitly. All
 processing within Beancount is performed functional-style by processing
-lists of entries that are assumed immutable[^1].</p>
+lists of entries that are assumed immutable<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>The list of user plugins to run is part of the load stage because that
 allows programs that monitor the file for changes to reload it and
 reapply the same list of plugins. It also allows the author of the input
@@ -518,12 +518,19 @@ code, and probably learn more about the following modules:</p>
 </ul>
 <p>Refer to the <a href="../24_beancount_design_doc/"><span class="underline">Design
 Doc</span></a> for more details. Enjoy!</p>
-<p>[^1]: <a href="http://validator.w3.org/check?uri=referer"><span class="underline"> </span> Technically, Python does not
-    prevent the modifications of namedtuple attributes that are
-    themselves mutable such as lists and sets, but in practice, by
-    convention, once an entry is created we never modify it in any way.
-    Avoiding side-effects and using a functional style provides benefits
-    in any language.</a></p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="http://validator.w3.org/check?uri=referer"><span class="underline"> </span> Technically, Python does not
+prevent the modifications of namedtuple attributes that are
+themselves mutable such as lists and sets, but in practice, by
+convention, once an entry is created we never modify it in any way.
+Avoiding side-effects and using a functional style provides benefits
+in any language.</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

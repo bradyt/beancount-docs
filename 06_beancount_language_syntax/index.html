@@ -385,7 +385,7 @@ transactions that occur on the same date. This is for consistency.</p>
 <h3 id="accounts"><a id="accounts"></a>Accounts<a class="headerlink" href="#accounts" title="Permanent link"></a></h3>
 <p>Beancount accumulates commodities in accounts. The names of these
 accounts do not have to be declared before being used in the file, they
-are recognized as “accounts” by virtue of their syntax alone[^1]. An
+are recognized as “accounts” by virtue of their syntax alone<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. An
 account name is a colon-separated list of capitalized words which begin
 with a letter, and whose first word must be one of five account types:</p>
 <pre><code>Assets Liabilities Equity Income Expenses
@@ -844,7 +844,7 @@ the four possible types of cost/price combinations:</p>
     number of units and the price currency is used. In the second
     example from the preceding section, that is -400.00 USD x 1.09
     CAD(/USD) = -436.00 CAD, and that is balanced against the other
-    posting of 436.00 CAD[^2].</p>
+    posting of 436.00 CAD<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 </li>
 <li>
 <p>If the posting <strong>has a cost</strong>, the cost is multiplied by the number
@@ -1427,7 +1427,7 @@ scope of a bookkeeping system.)</p>
 to appear in the file will be selected for inclusion in the Price
 database.</p>
 <h3 id="events"><a id="events"></a>Events<a class="headerlink" href="#events" title="Permanent link"></a></h3>
-<p>Event directives[^3] are used to track the value of <em>some variable of
+<p>Event directives<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> are used to track the value of <em>some variable of
 your choice</em> over time. For example, your location:</p>
 <pre><code>2014-07-09 event "location" "Paris, France"
 </code></pre>
@@ -1708,25 +1708,36 @@ Started</span></a> guide, or browse
 through a list of practical use cases in the <a href="../18_command_line_accounting_cookbook/"><span
 class="underline">Command-line Accounting
 Cookbook</span></a>.</p>
-<p>[^1]: Note that there exists an “Open” directive that is used to provide
-    the start date of each account. That can be located anywhere in the
-    file, it does not have to appear in the file somewhere before you
-    use an account name. You can just start using account names in
-    transactions right away, though all account names that receive
-    postings to them will eventually have to have a corresponding Open
-    directive with a date that precedes all transactions posted to the
-    account in the input file.</p>
-<p>[^2]: Note that this is valid whether the price is specified as a
-    per-unit price with the @ syntax or as a total price using the @@
-    syntax.</p>
-<p>[^3]: I really dislike the name “event” for this directive. I’ve been
-    trying to find a better alternative, so far without success. The
-    name “register” might be more appropriate, as it resembles that of a
-    processor’s register, but that could be confused with an <em>account
-    register</em> report. “variable” might work, but somehow that just
-    sounds too computer-sciency and out of context. If you can think of
-    something better, please make a suggestion and I’ll seriously
-    entertain a complete rename (with legacy support for “event”).</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Note that there exists an “Open” directive that is used to provide
+the start date of each account. That can be located anywhere in the
+file, it does not have to appear in the file somewhere before you
+use an account name. You can just start using account names in
+transactions right away, though all account names that receive
+postings to them will eventually have to have a corresponding Open
+directive with a date that precedes all transactions posted to the
+account in the input file.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Note that this is valid whether the price is specified as a
+per-unit price with the @ syntax or as a total price using the @@
+syntax.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>I really dislike the name “event” for this directive. I’ve been
+trying to find a better alternative, so far without success. The
+name “register” might be more appropriate, as it resembles that of a
+processor’s register, but that could be confused with an <em>account
+register</em> report. “variable” might work, but somehow that just
+sounds too computer-sciency and out of context. If you can think of
+something better, please make a suggestion and I’ll seriously
+entertain a complete rename (with legacy support for “event”).&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

@@ -403,7 +403,7 @@ of new things in the process. I have since become convinced that virtual
 postings are wholly unnecessary, and that make them available only
 provides a <em>crutch</em> upon which a lot of users will latch instead of
 learning to model transfers using balanced transactions. I have yet to
-come across a sufficiently convincing case for them[^1].</p>
+come across a sufficiently convincing case for them<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>This provides the property that any subsets of transactions will sum up
 to zero. This is a nice property to have, it means we can generate
 balance sheets at any point in time. Even when we eventually <a href="../28_settlement_dates_in_beancount/"><span
@@ -646,7 +646,7 @@ provide that option.</p>
 <p>Moreover, Beancount does not make a distinction between commodities
 which represent "money" and others that do not (such as shares, hours,
 etc.). These are treated the same throughout the system. It also does
-not have the concept of a "home" currency[^2]; it's a genuinely
+not have the concept of a "home" currency<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>; it's a genuinely
 multi-currency system.</p>
 <p>Currencies need <em>not</em> be defined explicitly in the input file format;
 you can just start using them in the file and they will be recognized as
@@ -777,7 +777,7 @@ informally refer to these in the code and on the mailing-list as the
 account, a position and an optional price and flag:</p>
 <pre><code>Posting = (Account, Units, Cost-or-CostSpec, Price, Flag, Metadata)
 </code></pre>
-<p>As you can see, a <em>Posting</em> embeds its <em>Position</em> instance[^3]. The
+<p>As you can see, a <em>Posting</em> embeds its <em>Position</em> instance<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. The
 <em>Units</em> is an <em>Amount</em>, and the ‘cost’ attribute refers to either a
 <em>Cost</em> or a <em>CostSpec</em> instance (the parser outputs <em>Posting</em> instances
 with an <em>CostSpec</em> attribute which is resolved to a <em>Cost</em> instance by
@@ -1740,21 +1740,32 @@ find them interesting as well:</p>
 <li><a href="http://martin.kleppmann.com/2011/03/07/accounting-for-computer-scientists.html"><span class="underline">Accounting for Computer
     Scientists</span></a></li>
 </ul>
-<p>[^1]: I have been considering the addition of a very constrained form of
-    non-balancing postings that would preserve the property of
-    transactions otherwise being balanced, whereby the extra postings
-    would not be able to interact (or sum with) regular balancing
-    postings.</p>
-<p>[^2]: There is an option called “operating_currency” but it is only
-    used to provide good defaults for building reports, never in the
-    processing of transactions. It is used to tell the reporting code
-    which commodities should be broken out to have their own columns of
-    balances, for example.</p>
-<p>[^3]: In previous version of Beancount this was not true, the Posting
-    used to have a ‘position’ attribute and composed it. I prefer the
-    flattened design, as many of the functions apply to either a
-    Position or a Posting. Think of a Posting as <em>deriving</em> from a
-    Position, though, technically it does not.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>I have been considering the addition of a very constrained form of
+non-balancing postings that would preserve the property of
+transactions otherwise being balanced, whereby the extra postings
+would not be able to interact (or sum with) regular balancing
+postings.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>There is an option called “operating_currency” but it is only
+used to provide good defaults for building reports, never in the
+processing of transactions. It is used to tell the reporting code
+which commodities should be broken out to have their own columns of
+balances, for example.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>In previous version of Beancount this was not true, the Posting
+used to have a ‘position’ attribute and composed it. I prefer the
+flattened design, as many of the functions apply to either a
+Position or a Posting. Think of a Posting as <em>deriving</em> from a
+Position, though, technically it does not.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

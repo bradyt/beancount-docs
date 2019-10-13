@@ -264,10 +264,10 @@ Assertions</span></a></p>
 <h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>Both Beancount and Ledger implement <em>balance assertions.</em> These provide
 the system with checkpoints it can use to verify the integrity of the
-data entry[^1].</p>
+data entry<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>Traditional accounting principles state that a user may never change the
 past—correcting the past involves inserting new entries to undo past
-mistakes[^2]—but we in the command-line accounting community take issue
+mistakes<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>—but we in the command-line accounting community take issue
 with that: we want to remain able to reconstruct the past and more
 importantly, to correct past mistakes at the site of their original data
 entry. Yes, we are dilettantes but we are bent on simplifying the
@@ -473,21 +473,30 @@ potentially useful.</p>
   Assets:CA:Bank:Checking       162 USD
 </code></pre>
 <p>I’m still undecided which is best. So far it seems a matter of taste.</p>
-<p>[^1]: As far as we know, the notion of inputting an explicit expected
-    amount is unique to command-line accounting systems. Other systems
-    “reconcile” by freezing changes in the past.</p>
-<p>[^2]: There are multiple reasons for this. First, in pre-computer times,
-    accounting was done using books, and recomputing running balances
-    manually would have involved making multiple annoying corrections to
-    a book. This must have been incredibly inconvenient, and inserting
-    correcting entries at the current time is a lot easier. Secondly, if
-    your accounting balances are used to file taxes, changing some of
-    the balances retroactively makes it difficult to go back and check
-    the detail of reported amounts in case of an audit. This problem
-    also applies to our context, but whether a past correction should be
-    allowed is a choice that depends on the context and the particular
-    account, and we leave it up to the user to decide whether it should
-    be allowed.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>As far as we know, the notion of inputting an explicit expected
+amount is unique to command-line accounting systems. Other systems
+“reconcile” by freezing changes in the past.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>There are multiple reasons for this. First, in pre-computer times,
+accounting was done using books, and recomputing running balances
+manually would have involved making multiple annoying corrections to
+a book. This must have been incredibly inconvenient, and inserting
+correcting entries at the current time is a lot easier. Secondly, if
+your accounting balances are used to file taxes, changing some of
+the balances retroactively makes it difficult to go back and check
+the detail of reported amounts in case of an audit. This problem
+also applies to our context, but whether a past correction should be
+allowed is a choice that depends on the context and the particular
+account, and we leave it up to the user to decide whether it should
+be allowed.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

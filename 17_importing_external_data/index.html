@@ -310,7 +310,7 @@ for them.</p>
     from another account. For example, a payment from a bank account to
     pay off one’s credit card will typically be imported from both the
     bank AND the credit card account. You must manually merge the
-    corresponding transactions together[^1].</p>
+    corresponding transactions together<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 </li>
 <li>
 <p>Assigning the right <strong>category</strong> to an expense transaction</p>
@@ -337,7 +337,7 @@ typically re-export to a Google Finance portfolio).</p>
 <p>The downloading of files is not something I automate, and Beancount
 provides no tools to connect to the network and fetch your files. There
 is simply too great a variety of protocols out there to make a
-meaningful contribution to this problem[^2]. Given the nature of today's
+meaningful contribution to this problem<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. Given the nature of today's
 secure websites and the castles of JavaScript used to implement them, it
 would be a nightmare to implement. Web scraping is probably too much to
 be a worthwhile, viable solution.</p>
@@ -413,7 +413,7 @@ class="underline">LibreOffice</span></a>, the
 class="underline">xpdf</span></a>
 library, the <a href="https://poppler.freedesktop.org/"><span
 class="underline">poppler</span></a>
-library[^3] and more... but none of them works consistently on all input
+library<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> and more... but none of them works consistently on all input
 documents; you will likely end up installing many and relying on
 different ones for different input files. For this reason, I’m not
 requiring a dependency on PDF conversion tools from within Beancount.
@@ -554,7 +554,7 @@ directory for regression testing.</p>
 your importer code working. Importers are often written against file
 formats with no official spec and unexpected surprises routinely occur.
 For example, I have XML files with some unescaped "&amp;" characters, which
-require a custom fix just for that bank[^4]. I’ve also witnessed a
+require a custom fix just for that bank<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. I’ve also witnessed a
 discount brokerage switching its dates format between MM/DD/YY and
 DD/MM/YY; that importer now needs to be able to handle both types. So
 you make the necessary adjustment, and eventually you find out that
@@ -638,7 +638,7 @@ unexpected data in one of those files.)</p>
 sure it still works on those older files. When a newly downloaded file
 fails, you repeat the process above: You make a copy of it in that
 directory, fix the importer, run it, check the expected files. That’s
-it[^5].</p>
+it<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
 <h4 id="making-incremental-improvements"><a id="making-incremental-improvements"></a>Making Incremental Improvements<a class="headerlink" href="#making-incremental-improvements" title="Permanent link"></a></h4>
 <p>Sometimes I make improvements to the importers that result in more or
 better output being generated even in the older files, so that all the
@@ -648,7 +648,7 @@ run the tests to regenerate new ones, and then diff against the most
 recent commit to check that the changes are as expected.</p>
 <h3 id="caching-data"><a id="caching-data"></a>Caching Data<a class="headerlink" href="#caching-data" title="Permanent link"></a></h3>
 <p>Some of the data conversions for binary files can be costly and slow.
-This is usually the case for converting PDF files to text[^6]. This is
+This is usually the case for converting PDF files to text<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>. This is
 particularly painful, since in the process of ingesting our downloaded
 data we’re typically going to run the tools multiple times—at least
 twice if everything works without flaw: once to extract, twice to
@@ -712,7 +712,7 @@ letting you specify</p>
 people are often asking how to organize their files, so I provide a
 template example under beancount/examples/ingest/office, and I describe
 this here.</p>
-<p>I recommend that you create a Git or Mercurial[^7] source-controlled
+<p>I recommend that you create a Git or Mercurial<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> source-controlled
 repository following this structure:</p>
 <pre><code>office
 ├── documents
@@ -913,43 +913,62 @@ found here:</p>
     (post-mortem)</p>
 </li>
 </ul>
-<p>[^1]: There are essentially three conceptual modes of entering such
-    transactions: (1) a user crafts a single transaction manually, (2)
-    another where a user inputs the two sides as a single transaction to
-    transfer accounts, and (3) the two separate transactions get merged
-    into a single one automatically. These are dual modes of each other.
-    The twist in this story is that the same transaction often posts at
-    different dates in each of its accounts. Beancount currently [March
-    2016] does not support multiple dates for a single transaction’s
-    postings, but a discussion is ongoing to implement support for these
-    input modes. See <a href="../28_settlement_dates_in_beancount/"><span class="underline">this
-    document</span></a> for more
-    details.</p>
-<p>[^2]: The closest to universal downloader you will find in the free
-    software world is <a href="https://github.com/captin411/ofxclient"><span
-    class="underline">ofxclient</span></a>
-    for OFX files, and in the commercial world, <a href="http://www.yodlee.com/"><span
-    class="underline">Yodlee</span></a> provides a
-    service that connects to many financial institutions.</p>
-<p>[^3]: The ‘pdftotext’ utility in poppler provides the useful ‘-layout’
-    flag which outputs a text file without mangling tables, which can be
-    helpful in the normal case of ‘transaction-per-row’</p>
-<p>[^4]: After sending them a few detailed emails about this and getting no
-    response nor seeing any change in the downloaded files, I have given
-    up on them fixing the issue.</p>
-<p>[^5]: As you can see, this process is partly why I don’t share my
-    importers code. It requires the storage of way too much personal
-    data in order to keep them working.</p>
-<p>[^6]: I don’t really understand why, since opening them up for viewing
-    is almost instant, but nearly all the tools to convert them to other
-    formats are vastly slower.</p>
-<p>[^7]: I personally much prefer Mercurial for the clarity of its commands
-    and output and its extensibility, but an advantage of Git’s storage
-    model is that moving files within it comes for free (no extra copy
-    is stored). Moving files in a Mercurial repository costs you a bit
-    in storage space. And if you rename accounts or change how you
-    organize your files you will end up potentially copying many large
-    files.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>There are essentially three conceptual modes of entering such
+transactions: (1) a user crafts a single transaction manually, (2)
+another where a user inputs the two sides as a single transaction to
+transfer accounts, and (3) the two separate transactions get merged
+into a single one automatically. These are dual modes of each other.
+The twist in this story is that the same transaction often posts at
+different dates in each of its accounts. Beancount currently [March
+2016] does not support multiple dates for a single transaction’s
+postings, but a discussion is ongoing to implement support for these
+input modes. See <a href="../28_settlement_dates_in_beancount/"><span class="underline">this
+document</span></a> for more
+details.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>The closest to universal downloader you will find in the free
+software world is <a href="https://github.com/captin411/ofxclient"><span
+class="underline">ofxclient</span></a>
+for OFX files, and in the commercial world, <a href="http://www.yodlee.com/"><span
+class="underline">Yodlee</span></a> provides a
+service that connects to many financial institutions.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>The ‘pdftotext’ utility in poppler provides the useful ‘-layout’
+flag which outputs a text file without mangling tables, which can be
+helpful in the normal case of ‘transaction-per-row’&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>After sending them a few detailed emails about this and getting no
+response nor seeing any change in the downloaded files, I have given
+up on them fixing the issue.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>As you can see, this process is partly why I don’t share my
+importers code. It requires the storage of way too much personal
+data in order to keep them working.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>I don’t really understand why, since opening them up for viewing
+is almost instant, but nearly all the tools to convert them to other
+formats are vastly slower.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>I personally much prefer Mercurial for the clarity of its commands
+and output and its extensibility, but an advantage of Git’s storage
+model is that moving files within it comes for free (no extra copy
+is stored). Moving files in a Mercurial repository costs you a bit
+in storage space. And if you rename accounts or change how you
+organize your files you will end up potentially copying many large
+files.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

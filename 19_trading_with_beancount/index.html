@@ -314,7 +314,7 @@ aggregate all of your shares of each of your positions on their own
 line. Having a “cash” subaccount also emphasizes that uninvested funds
 you have there are not providing any return.</p>
 <p>The next day, the market opens and IBM shares are going for 170$/share.
-In this context, we will call this “the price.”[^1] The “market value”
+In this context, we will call this “the price.”<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> The “market value”
 of your position, your shares, is the number of them x the market price,
 that is, 10 shares x 170$/share = 1700$.</p>
 <p>The difference between these two amounts is what we will call the P/L:</p>
@@ -391,7 +391,7 @@ hold the things in the account at a particular point in time, the
 contains have a little label attached to each of them, with their cost,
 that is, the price that was paid to acquire them. Whenever you put a
 thing in the bag, you attach a new label to the thing. For things to
-work right, all things need to be labeled[^2]. In our example, the bag
+work right, all things need to be labeled<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. In our example, the bag
 contained 10 items of “shares of IBM bought at 160$/share”. The syntax
 we used to put the IBM in the account can seem a little misleading; we
 wrote:</p>
@@ -858,35 +858,44 @@ average cost, and then reduce that position at this new average cost.</p>
 </ul>
 <p>Some of these involve new features in Beancount, but some not. Ideas
 welcome.</p>
-<p>[^1]: This is a misleading notion, however. In reality, <em>there is no
-    price</em>, there exist only markets where you get a “hint” of how much
-    someone else might be willing to exchange your shares for (for
-    different amounts to buy or to sell them, and for some limited
-    number of them, we call this “a market”), but until you’ve actually
-    completed selling your shares, you don’t really know precisely how
-    much you will be able to execute that trade at, only an estimate. If
-    you’re not intimately familiar with trading, this should give you
-    pause, and hopefully a big “ah-ha! “moment about how the world works
-    - there really does not exist a price for anything in the world -
-    but in the context of this discussion, let’s make abstraction of
-    this and assume that you can buy or sell as many shares as you have
-    instantly on the markets at the middle price, such as <a href="https://www.google.com/finance?&amp;q=ibm"><span
-    class="underline">Google
-    Finance</span></a> or <a href="http://finance.yahoo.com/q?s=ibm"><span
-    class="underline">Yahoo
-    Finance</span></a> or your broker
-    would report it. The process of deciding that we would be able to
-    sell the shares at 170$ each is called “marking”, that is, under
-    reasonable assumptions, we believe that we would be able to actually
-    sell those shares at that price (the term of art “marking to market”
-    refers to the fact that we use the market price as the best
-    indicator to our knowledge of our capability to realize the trade).
-    For an individual buying and selling small amounts of shares that
-    don’t move the market and with an honest broker, this is mostly true
-    in practice.</p>
-<p>[^2]: As an aside, putting regular currencies in an account is just the
-    degenerate case of a thing with an empty label. This is an
-    implementation detail that works great in practice.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>This is a misleading notion, however. In reality, <em>there is no
+price</em>, there exist only markets where you get a “hint” of how much
+someone else might be willing to exchange your shares for (for
+different amounts to buy or to sell them, and for some limited
+number of them, we call this “a market”), but until you’ve actually
+completed selling your shares, you don’t really know precisely how
+much you will be able to execute that trade at, only an estimate. If
+you’re not intimately familiar with trading, this should give you
+pause, and hopefully a big “ah-ha! “moment about how the world works
+- there really does not exist a price for anything in the world -
+but in the context of this discussion, let’s make abstraction of
+this and assume that you can buy or sell as many shares as you have
+instantly on the markets at the middle price, such as <a href="https://www.google.com/finance?&amp;q=ibm"><span
+class="underline">Google
+Finance</span></a> or <a href="http://finance.yahoo.com/q?s=ibm"><span
+class="underline">Yahoo
+Finance</span></a> or your broker
+would report it. The process of deciding that we would be able to
+sell the shares at 170$ each is called “marking”, that is, under
+reasonable assumptions, we believe that we would be able to actually
+sell those shares at that price (the term of art “marking to market”
+refers to the fact that we use the market price as the best
+indicator to our knowledge of our capability to realize the trade).
+For an individual buying and selling small amounts of shares that
+don’t move the market and with an honest broker, this is mostly true
+in practice.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>As an aside, putting regular currencies in an account is just the
+degenerate case of a thing with an empty label. This is an
+implementation detail that works great in practice.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

@@ -283,7 +283,7 @@ project, but it’s often a bit out-of-date:</p>
 date. Don’t use them.</p>
 <h2 id="how-to-install"><a id="how-to-install"></a>How to Install<a class="headerlink" href="#how-to-install" title="Permanent link"></a></h2>
 <h3 id="installing-python"><a id="installing-python"></a>Installing Python<a class="headerlink" href="#installing-python" title="Permanent link"></a></h3>
-<p>Beancount uses Python 3.5[^1] or above, which is a pretty recent version
+<p>Beancount uses Python 3.5<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> or above, which is a pretty recent version
 of Python (as of this writing), and a few common library dependencies. I
 try to minimize dependencies, but you do have to install a few. This is
 very easy.</p>
@@ -734,7 +734,7 @@ tools. The dependencies you need for these depends on which tool you’ve
 configured your importer to use.</p>
 <h4 id="virtualenv-installation"><a id="virtualenv-installation"></a>Virtualenv Installation<a class="headerlink" href="#virtualenv-installation" title="Permanent link"></a></h4>
 <p>If you’d like to use virtualenv, you can try this (suggestion by Remy
-X). First install Python 3.5 or beyond[^2]:</p>
+X). First install Python 3.5 or beyond<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>:</p>
 <pre><code>sudo add-apt-repository ppa:fkrull/deadsnakes
 sudo apt-get update
 sudo apt-get install python3.5
@@ -845,14 +845,23 @@ install packages, skip the detail, and just list what you might need:</p>
 <p>I think that’s about it. You certainly don’t need <em>everything</em> above,
 but that’s the list of tools I use. If you find anything missing, please
 leave a comment, I may have missed something.</p>
-<p>[^1]: Some people have <a href="https://www.google.com/url?q=https://groups.google.com/d/msgid/beancount/51fec791-1c38-46e8-b152-08c49e7686c3%2540googlegroups.com?utm_medium%3Demail%26utm_source%3Dfooter&amp;sa=D&amp;ust=1461188801128000&amp;usg=AFQjCNH8StkxqPYKLKMhir6YAz6rXCOKsQ"><span
-    class="underline">reported</span></a>
-    bugs with the cdecimal library in 3.4. I would recommend actually
-    installing 3.5, which appears to have fixed the problem.
-    Technically, 3.3 will still run, but I’ll deprecate it for 3.5 at
-    some point, probably when the Ubuntu and Mac OS X distributions have
-    it installed by default.</p>
-<p>[^2]: Installing py3.5: <a href="http://www.jianshu.com/p/4f4b2ed568f4">http://www.jianshu.com/p/4f4b2ed568f4</a></p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Some people have <a href="https://www.google.com/url?q=https://groups.google.com/d/msgid/beancount/51fec791-1c38-46e8-b152-08c49e7686c3%2540googlegroups.com?utm_medium%3Demail%26utm_source%3Dfooter&amp;sa=D&amp;ust=1461188801128000&amp;usg=AFQjCNH8StkxqPYKLKMhir6YAz6rXCOKsQ"><span
+class="underline">reported</span></a>
+bugs with the cdecimal library in 3.4. I would recommend actually
+installing 3.5, which appears to have fixed the problem.
+Technically, 3.3 will still run, but I’ll deprecate it for 3.5 at
+some point, probably when the Ubuntu and Mac OS X distributions have
+it installed by default.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Installing py3.5: <a href="http://www.jianshu.com/p/4f4b2ed568f4">http://www.jianshu.com/p/4f4b2ed568f4</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

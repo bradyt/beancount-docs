@@ -285,7 +285,7 @@ some tolerance in the balance verification algorithm.</p>
 <h2 id="how-precision-is-determined"><a id="how-precision-is-determined"></a>How Precision is Determined<a class="headerlink" href="#how-precision-is-determined" title="Permanent link"></a></h2>
 <p>Beancount attempts to derive the precision from each transaction
 <strong>automatically</strong>, from the input, for each Transaction <strong>in
-isolation</strong>[^1]. Let us inspect our last example again:</p>
+isolation</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Let us inspect our last example again:</p>
 <pre><code>2013-04-03 * "Buy Mutual Fund - Price as of date based on closing price"
   Assets:US:Vanguard:RGAGX       10.22626 RGAGX {37.61 USD}
   Assets:US:Vanguard:Cash         -384.61 USD
@@ -357,7 +357,7 @@ this).</p>
 <p>This treatment of integer amounts implies that the <strong>maximum amount of
 precision</strong> that one can specify just by inputting numbers is 0.05 units
 of the currency, for example, by providing a number such as 10.7 as
-input[^2]. On the other hand, the settings for the default tolerance to
+input<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. On the other hand, the settings for the default tolerance to
 use allows specifying arbitrary numbers.</p>
 <h3 id="resolving-ambiguities"><a id="resolving-ambiguities"></a>Resolving Ambiguities<a class="headerlink" href="#resolving-ambiguities" title="Permanent link"></a></h3>
 <p>A case that presents itself rarely is one where multiple different
@@ -710,16 +710,25 @@ when I add them they should all have a common name as well.</p>
 <p><a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#689"><span class="underline">What Every Computer Scientist Should Know About
 Floating-Point
 Arithmetic</span></a></p>
-<p>[^1]: This stands in contrast to Ledger which attempts to infer the
-    precision based on other transactions recently parsed in the file,
-    in file order. This has the unfortunate effect of creating
-    “cross-talk” between the transactions in terms of what precision can
-    be used.</p>
-<p>[^2]: Note that due to the way Beancount represents numbers internally,
-    it is also not able to distinguish between “230” and “230.”; these
-    parse into the same representation for Beancount. Therefore, we are
-    not able to use that distinction in the input to support a precision
-    of 0.5.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>This stands in contrast to Ledger which attempts to infer the
+precision based on other transactions recently parsed in the file,
+in file order. This has the unfortunate effect of creating
+“cross-talk” between the transactions in terms of what precision can
+be used.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Note that due to the way Beancount represents numbers internally,
+it is also not able to distinguish between “230” and “230.”; these
+parse into the same representation for Beancount. Therefore, we are
+not able to use that distinction in the input to support a precision
+of 0.5.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">
