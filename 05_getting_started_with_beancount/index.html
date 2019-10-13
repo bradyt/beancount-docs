@@ -232,16 +232,27 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#getting-started-with-beancount">Getting Started with Beancount</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#editor-support">Editor Support</a></li>
+            <li><a href="#creating-your-first-input-file">Creating your First Input File</a></li>
+            <li><a href="#brief-syntax-overview">Brief Syntax Overview</a></li>
+            <li><a href="#validating-your-file">Validating your File</a></li>
+            <li><a href="#viewing-the-web-interface">Viewing the Web Interface</a></li>
+            <li><a href="#how-to-organize-your-file">How to Organize your File</a></li>
+            <li><a href="#de-duping">De-duping</a></li>
+            <li><a href="#padding">Padding</a></li>
+            <li><a href="#whats-next">What’s Next?</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="getting-started-with-beancount"><a id="title"></a>Getting Started with Beancount<a class="headerlink" href="#getting-started-with-beancount" title="Permanent link"></a></h1>
+<h1 id="getting-started-with-beancount">Getting Started with Beancount<a class="headerlink" href="#getting-started-with-beancount" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 July 2014</p>
 <p><a href="http://furius.ca/beancount/doc/getting-started"><span
 class="underline">http://furius.ca/beancount/doc/getting-started</span></a></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This document is a gentle guide to creating your first Beancount file,
 initializing it with some options, some guidelines for how to organize
 your file, and instructions for declaring accounts and making sure their
@@ -257,8 +268,8 @@ familiar with Ledger, you may want to read up on the <a href="../15_a_comparison
 class="underline">differences between Ledger and
 Beancount</span></a>
 first.</p>
-<h2 id="editor-support"><a id="editor-support"></a>Editor Support<a class="headerlink" href="#editor-support" title="Permanent link"></a></h2>
-<h3 id="emacs"><a id="emacs"></a>Emacs<a class="headerlink" href="#emacs" title="Permanent link"></a></h3>
+<h2 id="editor-support">Editor Support<a class="headerlink" href="#editor-support" title="Permanent link"></a></h2>
+<h3 id="emacs">Emacs<a class="headerlink" href="#emacs" title="Permanent link"></a></h3>
 <p>First, you will want a bit of support for your text editor. I’m using
 Emacs, so I’ll explain my setup for this, but certainly you can use any
 text editor to compose your input file.</p>
@@ -298,7 +309,7 @@ provides some nice editing features:</p>
     the transaction you want to align.</p>
 </li>
 </ul>
-<h3 id="vim"><a id="vim"></a>Vim<a class="headerlink" href="#vim" title="Permanent link"></a></h3>
+<h3 id="vim">Vim<a class="headerlink" href="#vim" title="Permanent link"></a></h3>
 <p>Nathan Grigg implement support for vim in <a href="https://www.google.com/url?q=https%3A%2F%2Fgithub.com%2Fnathangrigg%2Fvim-beancount&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFgEjRsUHfpvOFxn8gD4-c_eK_wsA"><span class="underline">this
 github
 repo</span></a>.
@@ -314,14 +325,14 @@ It supports:</p>
 <p>Aligning the decimal points across transactions (:AlignCommodity)</p>
 </li>
 </ul>
-<h3 id="sublime"><a id="sublime"></a>Sublime<a class="headerlink" href="#sublime" title="Permanent link"></a></h3>
+<h3 id="sublime">Sublime<a class="headerlink" href="#sublime" title="Permanent link"></a></h3>
 <p>Support for <a href="https://sublime.wbond.net/packages/Beancount"><span class="underline">editing with
 Sublime</span></a> has been
 contributed by <a href="https://groups.google.com/d/msg/beancount/WvlhcCjNl-Q/s4wOBQnRVxYJ"><span class="underline">Martin Andreas
 Andersen</span></a>.
 See <a href="https://www.google.com/url?q=https%3A%2F%2Fgithub.com%2Fdraug3n%2Fsublime-beancount&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNExx6wdX5QF1hnixgHcKJV-5XJwMA"><span class="underline">his github
 repo</span></a>.</p>
-<h2 id="creating-your-first-input-file"><a id="creating-your-first-input-file"></a>Creating your First Input File<a class="headerlink" href="#creating-your-first-input-file" title="Permanent link"></a></h2>
+<h2 id="creating-your-first-input-file">Creating your First Input File<a class="headerlink" href="#creating-your-first-input-file" title="Permanent link"></a></h2>
 <p>To get started, let’s create a minimal input file with two accounts and
 a single transaction. Enter or copy the following input to a text file:</p>
 <pre><code>2014-01-01 open Assets:Checking
@@ -331,7 +342,7 @@ a single transaction. Enter or copy the following input to a text file:</p>
   Assets:Checking           100.00 USD
   Equity:Opening-Balances
 </code></pre>
-<h2 id="brief-syntax-overview"><a id="brief-syntax-overview"></a>Brief Syntax Overview<a class="headerlink" href="#brief-syntax-overview" title="Permanent link"></a></h2>
+<h2 id="brief-syntax-overview">Brief Syntax Overview<a class="headerlink" href="#brief-syntax-overview" title="Permanent link"></a></h2>
 <p>A few notes and an ultra brief overview of the Beancount syntax:</p>
 <ul>
 <li>
@@ -356,7 +367,7 @@ a single transaction. Enter or copy the following input to a text file:</p>
 <p>For a complete description of the syntax, visit the <a href="../06_beancount_language_syntax/"><span
 class="underline">User’s
 Manual</span></a>.</p>
-<h2 id="validating-your-file"><a id="validating-your-file"></a>Validating your File<a class="headerlink" href="#validating-your-file" title="Permanent link"></a></h2>
+<h2 id="validating-your-file">Validating your File<a class="headerlink" href="#validating-your-file" title="Permanent link"></a></h2>
 <p>The purpose of Beancount is to produce reports from your input file
 (either on the console or serve via its web interface). However, there
 is a tool that you can use to simply load its contents and make some
@@ -372,7 +383,7 @@ the console. The errors are printed out in a format that Emacs
 recognizes by default, so you can use Emacs’ next-error and
 previous-error built-in functions to move the cursor to the location of
 the problem.</p>
-<h2 id="viewing-the-web-interface"><a id="viewing-the-web-interface"></a>Viewing the Web Interface<a class="headerlink" href="#viewing-the-web-interface" title="Permanent link"></a></h2>
+<h2 id="viewing-the-web-interface">Viewing the Web Interface<a class="headerlink" href="#viewing-the-web-interface" title="Permanent link"></a></h2>
 <p>A convenient way to view reports is to bring up the “bean-web” tool on
 your input file. Try it:</p>
 <pre><code>bean-web /path/to/your/file.beancount
@@ -385,11 +396,11 @@ is pointing to—bean-web will automatically reload the file contents.</p>
 <p>At this point, you should probably read some of the <a href="../06_beancount_language_syntax/"><span
 class="underline">Language
 Syntax</span></a> document.</p>
-<h2 id="how-to-organize-your-file"><a id="how-to-organize-your-file"></a>How to Organize your File<a class="headerlink" href="#how-to-organize-your-file" title="Permanent link"></a></h2>
+<h2 id="how-to-organize-your-file">How to Organize your File<a class="headerlink" href="#how-to-organize-your-file" title="Permanent link"></a></h2>
 <p>In this section we provide general guidelines for how to organize your
 file. This assumes you’ve read the <a href="../06_beancount_language_syntax/"><span class="underline">Language
 Syntax</span></a> document.</p>
-<h3 id="preamble-to-your-input-file"><a id="preamble-to-your-input-file"></a>Preamble to your Input File<a class="headerlink" href="#preamble-to-your-input-file" title="Permanent link"></a></h3>
+<h3 id="preamble-to-your-input-file">Preamble to your Input File<a class="headerlink" href="#preamble-to-your-input-file" title="Permanent link"></a></h3>
 <p>I recommend that you begin with just a single file<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. My file has a
 header that tells my editor (Emacs) what “mode” to open the file with,
 followed by some common options:</p>
@@ -403,7 +414,7 @@ identify those commodities which you use most commonly as “currencies”
 and which warrant rendering in their own dedicated columns in reports
 (this declaration has no other effect on the behavior of any of the
 calculations).</p>
-<h3 id="sections-declaring-accounts"><a id="sections-declaring-accounts"></a>Sections &amp; Declaring Accounts<a class="headerlink" href="#sections-declaring-accounts" title="Permanent link"></a></h3>
+<h3 id="sections-declaring-accounts">Sections &amp; Declaring Accounts<a class="headerlink" href="#sections-declaring-accounts" title="Permanent link"></a></h3>
 <p>I like to organize my input file in sections that correspond to each
 real-world account. Each section defines all the accounts related to
 this real-world account by using an Open directive. For example, this is
@@ -458,7 +469,7 @@ sections:</p>
 </ul>
 <p>You can organize it any way you like, because Beancount doesn’t care
 about the ordering of declarations.</p>
-<h3 id="closing-accounts"><a id="closing-accounts"></a>Closing Accounts<a class="headerlink" href="#closing-accounts" title="Permanent link"></a></h3>
+<h3 id="closing-accounts">Closing Accounts<a class="headerlink" href="#closing-accounts" title="Permanent link"></a></h3>
 <p>If a real-world account has closed, or is never going to have any more
 transactions posted to it, you can declare it “closed” at a particular
 date by using a Close directive:</p>
@@ -468,7 +479,7 @@ date by using a Close directive:</p>
 <p>This tells Beancount not to show the account in reports that don’t
 include any date where it was active. It also avoids errors by
 triggering an error if you do try to post to it at a later date.</p>
-<h2 id="de-duping"><a id="de-duping"></a>De-duping<a class="headerlink" href="#de-duping" title="Permanent link"></a></h2>
+<h2 id="de-duping">De-duping<a class="headerlink" href="#de-duping" title="Permanent link"></a></h2>
 <p>One problem that will occur frequently is that once you have <a href="../17_importing_external_data/"><span
 class="underline">some sort of code or
 process</span></a> set up to automatically
@@ -520,7 +531,7 @@ proposal</span></a>. Also, you might
 be interested in the <a href="https://www.google.com/url?q=https://github.com/redstreet/beancount_plugins_redstreet&amp;sa=D&amp;ust=1458615376548000&amp;usg=AFQjCNGY-CWtCRP75-3p8Yr02BC_itG76g"><span class="underline">“effective_date”
 plugin</span></a>
 external contribution, which splits transactions in two.)</p>
-<h3 id="which-side"><a id="which-side"></a>Which Side?<a class="headerlink" href="#which-side" title="Permanent link"></a></h3>
+<h3 id="which-side">Which Side?<a class="headerlink" href="#which-side" title="Permanent link"></a></h3>
 <p>So if you organize your account in sections the way I suggest above,
 which section of the file should you leave such “merged” transactions
 in, that is, transactions that involve two separate accounts? Well, it’s
@@ -540,7 +551,7 @@ with a rule for yourself, e.g. “credit card payments are always left in
 the paying account’s section, not in the credit card account’s section”,
 or perhaps you could leave the transaction in both sections and comment
 one out<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
-<h2 id="padding"><a id="padding"></a>Padding<a class="headerlink" href="#padding" title="Permanent link"></a></h2>
+<h2 id="padding">Padding<a class="headerlink" href="#padding" title="Permanent link"></a></h2>
 <p>If you’re just starting out—and you probably are if you’re reading
 this—you will have no historical data. This means that the balances of
 your Assets and Liabilities accounts in Beancount will all be zero. But
@@ -630,7 +641,7 @@ sense to bring up the Expenses:Restaurant account to the sum total value
 of all the costs of the meals you consumed since you were born.</p>
 <p>So you will probably want to get started with Open &amp; Pad directives for
 each Assets and Liabilities accounts.</p>
-<h2 id="whats-next"><a id="whats-next"></a>What’s Next?<a class="headerlink" href="#whats-next" title="Permanent link"></a></h2>
+<h2 id="whats-next">What’s Next?<a class="headerlink" href="#whats-next" title="Permanent link"></a></h2>
 <p>At this point you will probably move onwards to the <a href="../18_command_line_accounting_cookbook/"><span
 class="underline">Cookbook</span></a>,
 or read the <a href="../06_beancount_language_syntax/"><span class="underline">User’s

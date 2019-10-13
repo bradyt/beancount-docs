@@ -232,11 +232,25 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#trading-with-beancount">Trading with Beancount</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#what-is-profit-and-loss">What is Profit and Loss?</a></li>
+            <li><a href="#realized-and-unrealized-pl">Realized and Unrealized P/L</a></li>
+            <li><a href="#trade-lots">Trade Lots</a></li>
+            <li><a href="#booking-methods">Booking Methods</a></li>
+            <li><a href="#dated-lots">Dated lots</a></li>
+            <li><a href="#reporting-unrealized-pl">Reporting Unrealized P/L</a></li>
+            <li><a href="#commissions">Commissions</a></li>
+            <li><a href="#stock-splits">Stock Splits</a></li>
+            <li><a href="#cost-basis-adjustment-and-return-of-capital">Cost Basis Adjustment and Return of Capital</a></li>
+            <li><a href="#dividends">Dividends</a></li>
+            <li><a href="#average-cost-booking">Average Cost Booking</a></li>
+            <li><a href="#future-topics">Future Topics</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="trading-with-beancount"><a id="title"></a>Trading with Beancount<a class="headerlink" href="#trading-with-beancount" title="Permanent link"></a></h1>
+<h1 id="trading-with-beancount">Trading with Beancount<a class="headerlink" href="#trading-with-beancount" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 July 2014</p>
 <p><a href="http://furius.ca/beancount/doc/trading"><span
@@ -261,7 +275,7 @@ Adjustments</span></a></p>
 Booking</span></a></p>
 <p><a href="#future-topics"><span class="underline">Future Topics</span></a></p>
 </blockquote>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This is a companion document for the <a href="../18_command_line_accounting_cookbook/"><span
 class="underline">Command-Line Accounting
 Cookbook</span></a> that deals
@@ -285,7 +299,7 @@ methods</span></a>
 in Beancount that you might also be interested in. Discussions of basis
 for tax-deferred accounts will not be treated here, but in the more
 general cookbook.</p>
-<h2 id="what-is-profit-and-loss"><a id="what-is-profit-and-loss"></a>What is Profit and Loss?<a class="headerlink" href="#what-is-profit-and-loss" title="Permanent link"></a></h2>
+<h2 id="what-is-profit-and-loss">What is Profit and Loss?<a class="headerlink" href="#what-is-profit-and-loss" title="Permanent link"></a></h2>
 <p>Let’s imagine you have an account at the E*Trade discount broker and
 you buy some shares of a company, say IBM. If you buy 10 shares of IBM
 when its price is 160$/share, it will cost you 1600$. That value is what
@@ -324,7 +338,7 @@ that is, 10 shares x 170$/share = 1700$.</p>
 </blockquote>
 <p>We will call a positive amount “a profit” and if the amount is negative,
 “a loss.”</p>
-<h2 id="realized-and-unrealized-pl"><a id="realized-and-unrealized-pl"></a>Realized and Unrealized P/L<a class="headerlink" href="#realized-and-unrealized-pl" title="Permanent link"></a></h2>
+<h2 id="realized-and-unrealized-pl">Realized and Unrealized P/L<a class="headerlink" href="#realized-and-unrealized-pl" title="Permanent link"></a></h2>
 <p>The profit from the previous section is called an “unrealized profit.”
 That is because the shares have not actually been sold yet - this is a
 hypothetical profit: <em>if</em> I can sell those shares at the market value,
@@ -430,7 +444,7 @@ be:</p>
   Expenses:Financial:Commissions   9.95 USD
   Income:US:ETrade:PnL
 </code></pre>
-<h2 id="trade-lots"><a id="trade-lots"></a>Trade Lots<a class="headerlink" href="#trade-lots" title="Permanent link"></a></h2>
+<h2 id="trade-lots">Trade Lots<a class="headerlink" href="#trade-lots" title="Permanent link"></a></h2>
 <p>In practice, the reality of trading gets a tiny bit more complicated
 than this. You might decide to buy some IBM multiple times, and each
 time, it is likely that you would buy them at a different price. Let’s
@@ -479,7 +493,7 @@ unspecified cost. This is equivalent:</p>
 <p>Note that this won’t work if the total amount of shares doesn’t match
 all the lots (this would be ambiguous… which subset of the lots should
 be chosen isn’t obvious).</p>
-<h2 id="booking-methods"><a id="booking-methods"></a>Booking Methods<a class="headerlink" href="#booking-methods" title="Permanent link"></a></h2>
+<h2 id="booking-methods">Booking Methods<a class="headerlink" href="#booking-methods" title="Permanent link"></a></h2>
 <p>But what if you decided to sell only some of those shares? Say you need
 some cash to buy a gift to your loved one and you want to sell 4 shares
 this time. Say the price is now 175$/share.</p>
@@ -524,7 +538,7 @@ loss:</p>
 </ul>
 <p>There are more… but I’m not going to elaborate on them here. My goal is
 to show you how to book these things with the double-entry method.</p>
-<h2 id="dated-lots"><a id="dated-lots"></a>Dated lots<a class="headerlink" href="#dated-lots" title="Permanent link"></a></h2>
+<h2 id="dated-lots">Dated lots<a class="headerlink" href="#dated-lots" title="Permanent link"></a></h2>
 <p>We’ve almost completed the whole picture of how this works. There is one
 more rather technical detail to add and it begins with a question: What
 if I bought multiple lots of share at the same price?</p>
@@ -569,7 +583,7 @@ it just won’t happen very much.</p>
 lot selection so that you never have to insert the lot-date yourself,
 and so that you could disambiguate lot selection by supplying a name
 instead. See upcoming changes.)</p>
-<h2 id="reporting-unrealized-pl"><a id="reporting-unrealized-pl"></a>Reporting Unrealized P/L<a class="headerlink" href="#reporting-unrealized-pl" title="Permanent link"></a></h2>
+<h2 id="reporting-unrealized-pl">Reporting Unrealized P/L<a class="headerlink" href="#reporting-unrealized-pl" title="Permanent link"></a></h2>
 <p>Okay, so our account balances are holding the cost of each unit, and
 that provides us with the book value of these positions. Nice. But what
 about viewing the market value?</p>
@@ -606,7 +620,7 @@ Income and the other side as a change in Asset:</p>
 book the unrealized gains to. The unrealized P/L shows up on a separate
 line in the balance sheet and the parent account should show the market
 value on its balance (which includes that of its sub-accounts).</p>
-<h2 id="commissions"><a id="commissions"></a>Commissions<a class="headerlink" href="#commissions" title="Permanent link"></a></h2>
+<h2 id="commissions">Commissions<a class="headerlink" href="#commissions" title="Permanent link"></a></h2>
 <p>So far we have not discussed trading commissions. Depending on the tax
 law that applies to you, the costs associated with trading may be
 deductible from the raw capital gain as we’ve calculated it in the
@@ -682,7 +696,7 @@ develop a method to do this more precisely.</p>
 </tbody>
 </table>
 
-<h2 id="stock-splits"><a id="stock-splits"></a>Stock Splits<a class="headerlink" href="#stock-splits" title="Permanent link"></a></h2>
+<h2 id="stock-splits">Stock Splits<a class="headerlink" href="#stock-splits" title="Permanent link"></a></h2>
 <p>Stock splits are currently dealt with by emptying an account’s positions
 and recreating the positions at a different price:</p>
 <pre><code>2004-12-21 * “Autodesk stock splits”
@@ -727,7 +741,7 @@ addressed in both Beancount and Ledger. The <a href="https://docs.google.com/doc
 class="underline">Commodity Definition
 Changes</span></a>
 document has a discussion to address this topic.</p>
-<h2 id="cost-basis-adjustment-and-return-of-capital"><a id="cost-basis-adjustment-and-return-of-capital"></a>Cost Basis Adjustment and Return of Capital<a class="headerlink" href="#cost-basis-adjustment-and-return-of-capital" title="Permanent link"></a></h2>
+<h2 id="cost-basis-adjustment-and-return-of-capital">Cost Basis Adjustment and Return of Capital<a class="headerlink" href="#cost-basis-adjustment-and-return-of-capital" title="Permanent link"></a></h2>
 <p>Readjustment in cost basis may occur in managed funds, due to the fund’s
 internal trading activities. This will typically occur in tax-sheltered
 accounts where the gain that occurs from such an adjustment has no
@@ -752,7 +766,7 @@ taxation point of view, these are non-taxable events and affect the cost
 basis of the equity in the fund. The number of shares might stay the
 same, but their cost basis needs to be adjusted for potential Gain/Loss
 calculation at the point of sale in the future.</p>
-<h2 id="dividends"><a id="dividends"></a>Dividends<a class="headerlink" href="#dividends" title="Permanent link"></a></h2>
+<h2 id="dividends">Dividends<a class="headerlink" href="#dividends" title="Permanent link"></a></h2>
 <p>Dividends don’t pose a particular problem. They are just income. They
 can be received as cash:</p>
 <pre><code>2014-02-01 * “Cash dividends received from mutual fund RBF1005”
@@ -769,7 +783,7 @@ provide the cost basis at which the dividend was received (this should
 be available in your statements). If the account is held at average
 cost, this posting will simply merge with the other legs at the time an
 average cost booking is needed to be performed.</p>
-<h2 id="average-cost-booking"><a id="average-cost-booking"></a>Average Cost Booking<a class="headerlink" href="#average-cost-booking" title="Permanent link"></a></h2>
+<h2 id="average-cost-booking">Average Cost Booking<a class="headerlink" href="#average-cost-booking" title="Permanent link"></a></h2>
 <p>At the moment, the only way to perform booking at average cost is
 painful: you would have to use the method outlined in the Stock Split
 section in order to revalue your inventory. This is impractical,
@@ -786,7 +800,7 @@ with an associated syntax to fully solve this problem.</p>
 <p>Any posting with a cost of “*” acting on an inventory will select all
 the shares of that currency (GOOG), merge them into a single one at the
 average cost, and then reduce that position at this new average cost.</p>
-<h2 id="future-topics"><a id="future-topics"></a>Future Topics<a class="headerlink" href="#future-topics" title="Permanent link"></a></h2>
+<h2 id="future-topics">Future Topics<a class="headerlink" href="#future-topics" title="Permanent link"></a></h2>
 <p>I’ll be handling the following topics later on:</p>
 <ul>
 <li>

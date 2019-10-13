@@ -232,17 +232,23 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#how-we-share-expenses">How We Share Expenses</a></li>
+            <li><a href="#context">Context</a></li>
+            <li><a href="#shared-expenses">Shared Expenses</a></li>
+            <li><a href="#child-expenses">Child Expenses</a></li>
+            <li><a href="#summary-of-the-system">Summary of the System</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-we-share-expenses"><a id="title"></a>How We Share Expenses<a class="headerlink" href="#how-we-share-expenses" title="Permanent link"></a></h1>
+<h1 id="how-we-share-expenses">How We Share Expenses<a class="headerlink" href="#how-we-share-expenses" title="Permanent link"></a></h1>
 <p><em>This document explains how I share expenses with my wife. This is a bit
 involved and I’ve developed a good working system, but it’s not so
 simple for most people to do that, so I figured I would take the time to
 describe it to help others with designing similar processes for
 themselves.</em></p>
-<h2 id="context"><a id="context"></a>Context<a class="headerlink" href="#context" title="Permanent link"></a></h2>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link"></a></h2>
 <p>We’re both working professionals and have decided to share all expenses
 2:1, where I pay 2 parts. Roughly this is what we shoot for, this is not
 a hard rule, but we track it as if it were rigid, and accept it as a
@@ -261,7 +267,7 @@ good base approximation. We have two types of shared expenses:</p>
 as if it were a separate project on its own. (If you prefer pictures,
 there’s a diagram at the end of this document that provides an overview
 of the system.)</p>
-<h2 id="shared-expenses"><a id="shared-expenses"></a>Shared Expenses<a class="headerlink" href="#shared-expenses" title="Permanent link"></a></h2>
+<h2 id="shared-expenses">Shared Expenses<a class="headerlink" href="#shared-expenses" title="Permanent link"></a></h2>
 <p>For our shared expenses, I maintain an account for her on my personal
 ledger file. This is simple and I’m not too interested in maintaining a
 separate ledger for the totality of our common shared expenses. It’s
@@ -271,7 +277,7 @@ provider) that she pays off with transfers and also by making her own
 shared expenses.</p>
 <p>I just declare a Assets:US:Share:Carolyn account on my personal ledger
 (blais.beancount).</p>
-<h3 id="my-shared-expenses"><a id="my-shared-expenses"></a>My Shared Expenses<a class="headerlink" href="#my-shared-expenses" title="Permanent link"></a></h3>
+<h3 id="my-shared-expenses">My Shared Expenses<a class="headerlink" href="#my-shared-expenses" title="Permanent link"></a></h3>
 <p>Whenever I incur an expense that is for both of us, I book it normally
 but I will tag it with #carolyn:</p>
 <pre><code>2018-12-23 * "WHISK" "Water refill" #carolyn
@@ -288,7 +294,7 @@ but I will tag it with #carolyn:</p>
 <p>This is done by the beancount.plugins.divert_expenses plugin. In this
 example, 40% of 32.66 (13.06) gets rerouted to her account. Note that
 this is an asset account for me, because she owes this.</p>
-<h3 id="her-shared-expenses"><a id="her-shared-expenses"></a>Her Shared Expenses<a class="headerlink" href="#her-shared-expenses" title="Permanent link"></a></h3>
+<h3 id="her-shared-expenses">Her Shared Expenses<a class="headerlink" href="#her-shared-expenses" title="Permanent link"></a></h3>
 <p>We also have to keep track of the money she spends on her own for shared
 expenses. Since she’s not a Beancount user, I’ve set up a Google Sheets
 doc in which she can add rows to a particular sheet. This sheet has
@@ -330,7 +336,7 @@ for her account. In blais.beancount:</p>
  where account ~ 'Assets:US:Share:Carolyn'                                                                                                                                                                                                                                                                                                                                                                                             
 "
 </code></pre>
-<h3 id="reviewing-statement"><a id="reviewing-statement"></a>Reviewing &amp; Statement<a class="headerlink" href="#reviewing-statement" title="Permanent link"></a></h3>
+<h3 id="reviewing-statement">Reviewing &amp; Statement<a class="headerlink" href="#reviewing-statement" title="Permanent link"></a></h3>
 <p>In order to produce a statement for her to review (and spot the
 occasional mistake in data entry), I simply produce a journal of that
 account to a CSV file and upload that to another sheet in the same
@@ -346,7 +352,7 @@ communicate, e.g. comments, highlighting text, etc.</p>
 <p>Note that this system has the benefit of correctly accruing my expenses,
 by reducing my portion on categories for the stuff I pay and by
 including her portion on categories for the stuff she pays for.</p>
-<h3 id="reconciling-our-shared-expenses"><a id="reconciling-our-shared-expenses"></a>Reconciling our Shared Expenses<a class="headerlink" href="#reconciling-our-shared-expenses" title="Permanent link"></a></h3>
+<h3 id="reconciling-our-shared-expenses">Reconciling our Shared Expenses<a class="headerlink" href="#reconciling-our-shared-expenses" title="Permanent link"></a></h3>
 <p>Finally, in order to reconcile this account, my wife (or I, but usually
 she’s behind) just makes a bank transfer to my account, which I book to
 reduce her running account balance:</p>
@@ -359,7 +365,7 @@ laptop and ask casually "Hey, what's my balance I can do a transfer
 now?" It’s all fine to relax about the particulars since the system is
 keeping track of everything precisely, so she can send some approximate
 amount, it doesn't matter, it'll post to her account.</p>
-<h2 id="child-expenses"><a id="child-expenses"></a>Child Expenses<a class="headerlink" href="#child-expenses" title="Permanent link"></a></h2>
+<h2 id="child-expenses">Child Expenses<a class="headerlink" href="#child-expenses" title="Permanent link"></a></h2>
 <p>I designed a very different system to track our child’s expenses. For
 Kyle, I’m definitely interested in tracking the total cash flows and
 expenses related to him, regardless of who paid for them. It’s
@@ -378,7 +384,7 @@ but I also have my own personal pharmacy expenses. So in theory, to do
 that I’d like to have separate accounts for him and me, e.g.,
 Expenses:Kyle:Pharmacy and Expenses:Pharmacy. This would have to be done
 for all the accounts we use for him. I don't do that.</p>
-<h3 id="my-child-expenses-on-my-personal-ledger"><a id="my-child-expenses-on-my-personal-ledger"></a>My Child Expenses on my Personal Ledger<a class="headerlink" href="#my-child-expenses-on-my-personal-ledger" title="Permanent link"></a></h3>
+<h3 id="my-child-expenses-on-my-personal-ledger">My Child Expenses on my Personal Ledger<a class="headerlink" href="#my-child-expenses-on-my-personal-ledger" title="Permanent link"></a></h3>
 <p>Instead of doing that, what I want is for my personal ledger to book all
 the expenses I make for him to a single category: Expenses:Kyle, and to
 track all the detail in a shared ledger. But I still have to book all
@@ -410,7 +416,7 @@ plugin, with this configuration:</p>
 <p>The “diverted_account” metadata is used to keep track of the original
 account, and this is used later by another script that generates a
 ledger file decided to my expenses for him (more below).</p>
-<h3 id="my-child-expenses-in-kyles-own-ledger"><a id="my-child-expenses-in-kyles-own-ledger"></a>My Child Expenses in Kyle’s own Ledger<a class="headerlink" href="#my-child-expenses-in-kyles-own-ledger" title="Permanent link"></a></h3>
+<h3 id="my-child-expenses-in-kyles-own-ledger">My Child Expenses in Kyle’s own Ledger<a class="headerlink" href="#my-child-expenses-in-kyles-own-ledger" title="Permanent link"></a></h3>
 <p>Now, because we’re considering Kyle’s expenses a project of his own, I
 have to maintain a set of ledgers for him. I automatically pull the
 transactions I described in the previous section from my personal ledger
@@ -437,7 +443,7 @@ important to him.</p>
 date. The file gets entirely overwritten each time I run this (this is a
 purely generated output, no hand editing is ever done here, if I change
 anything I change it in my personal ledger file).</p>
-<h3 id="her-child-expenses"><a id="her-child-expenses"></a>Her Child Expenses<a class="headerlink" href="#her-child-expenses" title="Permanent link"></a></h3>
+<h3 id="her-child-expenses">Her Child Expenses<a class="headerlink" href="#her-child-expenses" title="Permanent link"></a></h3>
 <p>In order to keep track of her expenses for Kyle, we use the same method
 (and programs) as we use for our shared accounts in order to pull a set
 of “Carolyn’s expenses for Kyle” from another sheet in the same Google
@@ -453,7 +459,7 @@ Sheets doc:</p>
 fix that by hand a bit, as they may not track precisely those from our
 ledger—and the income shows that the contribution was made by his
 mother.</p>
-<h3 id="putting-it-all-together"><a id="putting-it-all-together"></a>Putting it All Together<a class="headerlink" href="#putting-it-all-together" title="Permanent link"></a></h3>
+<h3 id="putting-it-all-together">Putting it All Together<a class="headerlink" href="#putting-it-all-together" title="Permanent link"></a></h3>
 <p>Finally, we need to put together all these files. I created a top-level
 kyle.beancount file that simple declares all of his account categories
 and includes his mom and dad files. We have three files:</p>
@@ -492,7 +498,7 @@ Mom actual contribution:                28102.72
 Mom OWES Dad:       301.00
 </code></pre>
 <p>After reconciling, the final number should be zero.</p>
-<h3 id="reconciling-the-child-ledger"><a id="reconciling-the-child-ledger"></a>Reconciling the Child Ledger<a class="headerlink" href="#reconciling-the-child-ledger" title="Permanent link"></a></h3>
+<h3 id="reconciling-the-child-ledger">Reconciling the Child Ledger<a class="headerlink" href="#reconciling-the-child-ledger" title="Permanent link"></a></h3>
 <p>In order to account for the difference and make the contributions to
 Kyle’s upbringing in line with our mutual arrangement of 60%/40%, in the
 previous section, my wife would need to transfer $301 to me. Of course,
@@ -525,7 +531,7 @@ Mom actual contribution:                28403.72
 
 Mom OWES Dad:       301.00
 </code></pre>
-<h2 id="summary-of-the-system"><a id="summary-of-the-system"></a>Summary of the System<a class="headerlink" href="#summary-of-the-system" title="Permanent link"></a></h2>
+<h2 id="summary-of-the-system">Summary of the System<a class="headerlink" href="#summary-of-the-system" title="Permanent link"></a></h2>
 <p>Here’s a diagram that puts in perspective the entire system together:</p>
 <p><img src="22_how_we_share_expenses/media/4c38b552619d4f280449758db07c5c01dade8f77.png" style="width:8.79167in;height:6.94444in" /></p>
 <p>I (“Dad”) use Beancount via Emacs, exclusively. Carolyn (“Mom”) only
@@ -550,7 +556,7 @@ expenses and I tend to pay more Kyle’s expenses, so I often end up doing
 a transfer from one to the other to even things out and it’s relatively
 close—the shortfall in Kyle expenses makes up for my shortfall on the
 shared expenses.</p>
-<h2 id="conclusion"><a id="conclusion"></a>Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>I hope this was useful to some of you trying to solve problems using the
 double-entry bookkeeping method. Please write questions and comments on
 the Beancount mailing-list, or as comments on this doc.</p></div>

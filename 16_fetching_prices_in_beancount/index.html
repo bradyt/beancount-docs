@@ -232,16 +232,22 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#prices-in-beancount">Prices in Beancount</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#the-problem">The Problem</a></li>
+            <li><a href="#the-bean-price-tool">The “bean-price” Tool</a></li>
+            <li><a href="#prices-from-a-beancount-input-file">Prices from a Beancount Input File</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="prices-in-beancount"><a id="title"></a>Prices in Beancount<a class="headerlink" href="#prices-in-beancount" title="Permanent link"></a></h1>
+<h1 id="prices-in-beancount">Prices in Beancount<a class="headerlink" href="#prices-in-beancount" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca">Martin</a> <a href="mailto:blais@furius.ca">Blais</a>,
 December 2015</p>
 <p><a href="http://furius.ca/beancount/doc/prices"><span
 class="underline">http://furius.ca/beancount/doc/prices</span></a></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>Processing a Beancount file is, by definition, constrained to the
 contents of the file itself. In particular, the latest prices of
 commodities are <em>never</em> fetched automatically from the internet. This is
@@ -262,7 +268,7 @@ publicly you can automate it, by invoking some code that will download
 prices and write out the directives for you.</p>
 <p>Beancount comes with some tools to help you do this. This document
 describes these tools.</p>
-<h2 id="the-problem"><a id="the-problem"></a>The Problem<a class="headerlink" href="#the-problem" title="Permanent link"></a></h2>
+<h2 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Permanent link"></a></h2>
 <p>In the context of maintaining a Beancount file, we have a few particular
 needs to address.</p>
 <p>First, we cannot expect the user to always update the input file in a
@@ -286,7 +292,7 @@ data from various institutions. In order to address that, we provide a
 mechanism for <strong>extensibility</strong>, a way that you can implement your own
 price source fetcher in a Python module and point to it from your input
 file by specifying the module's name as the source for that commodity.</p>
-<h2 id="the-bean-price-tool"><a id="the-bean-price-tool"></a>The “bean-price” Tool<a class="headerlink" href="#the-bean-price-tool" title="Permanent link"></a></h2>
+<h2 id="the-bean-price-tool">The “bean-price” Tool<a class="headerlink" href="#the-bean-price-tool" title="Permanent link"></a></h2>
 <p>Beancount comes with a “bean-price” command-line tool that integrates
 the ideas above. By default, this script accepts a list of Beancount
 input filenames, and fetches prices required to compute latest market
@@ -298,7 +304,7 @@ run, e.g.,</p>
 <pre><code>bean-price -e USD:google/TSE:XUS CAD:mysources.morningstar/RBF1005
 </code></pre>
 <p>These jobs are run concurrently so it should be fairly fast.</p>
-<h3 id="source-strings"><a id="source-strings"></a>Source Strings<a class="headerlink" href="#source-strings" title="Permanent link"></a></h3>
+<h3 id="source-strings">Source Strings<a class="headerlink" href="#source-strings" title="Permanent link"></a></h3>
 <p>The general format of each of these "job source strings" is</p>
 <p>&lt;quote-currency&gt;:&lt;module&gt;/[^]&lt;symbol&gt;</p>
 <p>For example:</p>
@@ -328,7 +334,7 @@ live. This is how, for example, in order to use the provided Yahoo!
 Finance data fetcher you don't have to write all of
 "beancount.prices.sources.yahoo/AAPL" but you can simply use
 "yahoo/AAPL".</p>
-<h3 id="fallback-sources"><a id="fallback-sources"></a>Fallback Sources<a class="headerlink" href="#fallback-sources" title="Permanent link"></a></h3>
+<h3 id="fallback-sources">Fallback Sources<a class="headerlink" href="#fallback-sources" title="Permanent link"></a></h3>
 <p>In practice, fetching prices online often fails. Data sources typically
 only support some limited number of assets and even then, the support
 may vary between assets. As an example, Google Finance supports
@@ -343,7 +349,7 @@ data, separated with commas. For example:</p>
 <p>Each source is tried in turn, and if one fails to return a valid price,
 the next source is tried as a fallback. The hope is that at least one of
 the specified sources will work out.</p>
-<h3 id="inverted-prices"><a id="inverted-prices"></a>Inverted Prices<a class="headerlink" href="#inverted-prices" title="Permanent link"></a></h3>
+<h3 id="inverted-prices">Inverted Prices<a class="headerlink" href="#inverted-prices" title="Permanent link"></a></h3>
 <p>Sometimes, prices are only available for the inverse of an instrument.
 This is often the case for currencies. For example, the price of
 Canadian dollars quoted in US dollars is provided by the USD/CAD market,
@@ -366,7 +372,7 @@ instead of inverting the rate number itself, you can use the
 --swap-inverted option. In the previous example for the price of CAD, it
 would output this:</p>
 <p>2015-10-28 price USD 1.32759 CAD</p>
-<h3 id="date"><a id="date"></a>Date<a class="headerlink" href="#date" title="Permanent link"></a></h3>
+<h3 id="date">Date<a class="headerlink" href="#date" title="Permanent link"></a></h3>
 <p>By default, the latest prices for the assets are pulled in. You can use
 an option to fetch prices for a desired date in the past instead:</p>
 <pre><code>bean-price –date=2015-02-03 …
@@ -374,7 +380,7 @@ an option to fetch prices for a desired date in the past instead:</p>
 <p>If you are using an input file to specify the list of prices to be
 fetched, the tool will figure out the list of assets held on the books
 <em>at that time</em> and fetch historical prices for those assets only.</p>
-<h3 id="caching"><a id="caching"></a>Caching<a class="headerlink" href="#caching" title="Permanent link"></a></h3>
+<h3 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link"></a></h3>
 <p>Prices are automatically cached (if current and latest, prices are
 cached for only a short period of time, about half an hour). This is
 convenient when you're having to run the script multiple times in a row
@@ -386,7 +392,7 @@ for troubleshooting.</p>
 prices:</p>
 <pre><code>bean-price --clear-cache
 </code></pre>
-<h2 id="prices-from-a-beancount-input-file"><a id="prices-from-a-beancount-input-file"></a>Prices from a Beancount Input File<a class="headerlink" href="#prices-from-a-beancount-input-file" title="Permanent link"></a></h2>
+<h2 id="prices-from-a-beancount-input-file">Prices from a Beancount Input File<a class="headerlink" href="#prices-from-a-beancount-input-file" title="Permanent link"></a></h2>
 <p>Generally, one uses a Beancount input file to specify the list of
 currencies to fetch. In order to do that, you should have Commodity
 directives in your input file for each of the currencies you mean to
@@ -406,7 +412,7 @@ converted to:</p>
 
   price: "USD:yahoo/GBPUSD CAD:yahoo/GBPCAD CHF:yahoo/GBPCHF"
 </code></pre>
-<h3 id="which-assets-are-fetched"><a id="which-assets-are-fetched"></a>Which Assets are Fetched<a class="headerlink" href="#which-assets-are-fetched" title="Permanent link"></a></h3>
+<h3 id="which-assets-are-fetched">Which Assets are Fetched<a class="headerlink" href="#which-assets-are-fetched" title="Permanent link"></a></h3>
 <p>There are many ways to compute a list of commodities with needed prices
 from a Beancount input file:</p>
 <ol>
@@ -450,8 +456,8 @@ to use that other than for testing.</p>
 commodities, use the “--verbose” option twice, i.e., “-vv”. You can also
 just print the list of prices to be fetched with the “--dry-run” option,
 which stops short of actually fetching the missing prices.</p>
-<h2 id="conclusion"><a id="conclusion"></a>Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
-<h3 id="writing-your-own-script"><a id="writing-your-own-script"></a>Writing Your Own Script<a class="headerlink" href="#writing-your-own-script" title="Permanent link"></a></h3>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<h3 id="writing-your-own-script">Writing Your Own Script<a class="headerlink" href="#writing-your-own-script" title="Permanent link"></a></h3>
 <p>If the workflow defined by this tool does not fit your needs and you
 would like to cook up your own script, you should not have to start from
 scratch; you should be able to reuse the existing price fetching code to
@@ -461,7 +467,7 @@ convenient to fetch all prices of assets every Friday in order to fill
 up a history of missing prices. Another example would be to fetch all
 price directives required in order to correctly compute investment
 returns in the presence of contributions and distributions.</p>
-<h3 id="contributions"><a id="contributions"></a>Contributions<a class="headerlink" href="#contributions" title="Permanent link"></a></h3>
+<h3 id="contributions">Contributions<a class="headerlink" href="#contributions" title="Permanent link"></a></h3>
 <p>If this workflow suits your needs well and you'd like to contribute some
 price source fetcher to Beancount, please contact the mailing-list. I'm
 open to including very general fetchers that have been very carefully

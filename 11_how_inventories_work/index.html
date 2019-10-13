@@ -232,18 +232,26 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#how-inventories-work">How Inventories Work</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#matches-booking-methods">Matches &amp; Booking Methods</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#how-prices-are-used">How Prices are Used</a></li>
+            <li><a href="#trades">Trades</a></li>
+            <li><a href="#debugging-booking-issues">Debugging Booking Issues</a></li>
+            <li><a href="#appendix">Appendix</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-inventories-work"><a id="title"></a>How Inventories Work<a class="headerlink" href="#how-inventories-work" title="Permanent link"></a></h1>
+<h1 id="how-inventories-work">How Inventories Work<a class="headerlink" href="#how-inventories-work" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 December 2016</p>
 <p><a href="http://furius.ca/beancount/doc/booking"><span
 class="underline">http://furius.ca/beancount/doc/booking</span></a></p>
 <p><em>This document explains how we accumulate commodities and<br />
 match sales (reductions) against accumulated inventory contents.</em></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>Beyond the ability to track and list the postings made to each of the
 accounts (an operation that produces a <em>journal</em> of entries), one of the
 most common and useful operations of Beancount is to sum up the
@@ -252,11 +260,11 @@ heart of how Beancount works, and are implemented in an object called
 “inventory.” This document explains how this aggregation process works.
 If you’re going to track investments, it’s necessary to understand what
 follows.</p>
-<h2 id="matches-booking-methods"><a id="matches-booking-methods"></a>Matches &amp; Booking Methods<a class="headerlink" href="#matches-booking-methods" title="Permanent link"></a></h2>
+<h2 id="matches-booking-methods">Matches &amp; Booking Methods<a class="headerlink" href="#matches-booking-methods" title="Permanent link"></a></h2>
 <p>In order to get the big picture, let’s walk through the various booking
 features by way of a simple examples. This should expose you to all the
 main ideas in one go.</p>
-<h3 id="simple-postings-no-cost"><a id="simple-postings-no-cost"></a>Simple Postings — No Cost<a class="headerlink" href="#simple-postings-no-cost" title="Permanent link"></a></h3>
+<h3 id="simple-postings-no-cost">Simple Postings — No Cost<a class="headerlink" href="#simple-postings-no-cost" title="Permanent link"></a></h3>
 <p>Consider a set of simple postings to an account, e.g.,</p>
 <pre><code>2016-04-24 * "Deposit check"
   Assets:Bank:Checking      221.23 USD
@@ -276,7 +284,7 @@ Finally, the third transaction brings this balance to 75.56 USD. This
 seems very natural; the numbers simply add to.</p>
 <p>It might be obvious, but note also that the numbers are allowed to
 change the sign (go negative).</p>
-<h3 id="multiple-commodities"><a id="multiple-commodities"></a>Multiple Commodities<a class="headerlink" href="#multiple-commodities" title="Permanent link"></a></h3>
+<h3 id="multiple-commodities">Multiple Commodities<a class="headerlink" href="#multiple-commodities" title="Permanent link"></a></h3>
 <p>An inventory may contain more than one type of commodity. It is
 equivalent to a mapping from commodity to some number of units. For
 example,</p>
@@ -304,7 +312,7 @@ this is made possible, I recommend that you define enough accounts to
 keep a single commodity in each; this can be enforced with the “<a href="https://bitbucket.org/blais/beancount/src/default/beancount/plugins/onecommodity.py"><span
 class="underline">onecommodity</span></a>”
 plugin.</p>
-<h3 id="cost-basis"><a id="cost-basis"></a>Cost Basis<a class="headerlink" href="#cost-basis" title="Permanent link"></a></h3>
+<h3 id="cost-basis">Cost Basis<a class="headerlink" href="#cost-basis" title="Permanent link"></a></h3>
 <p>Things get a little more hairy when we consider the tracking of
 investments with a cost basis. Beancount allows you to associate a cost
 basis and an optional label with a particular lot acquired. Consider
@@ -332,7 +340,7 @@ lot; you can override it if desired, by adding the date similar to the
 optional label. this is useful for making cost basis adjustments).</p>
 <p>Postings that <em>add</em> to the content of an inventory are called
 <strong>augmentations</strong>.</p>
-<h3 id="reductions"><a id="reductions"></a>Reductions<a class="headerlink" href="#reductions" title="Permanent link"></a></h3>
+<h3 id="reductions">Reductions<a class="headerlink" href="#reductions" title="Permanent link"></a></h3>
 <p>But how do we remove commodities from an inventory?</p>
 <p>You could eat away at an existing lot by selling some of it. You do this
 by posting a <strong>reduction</strong> to the account, like this:</p>
@@ -369,7 +377,7 @@ it like this:</p>
   Assets:Invest           -12 HOOL {}
   …
 </code></pre>
-<h3 id="ambiguous-matches"><a id="ambiguous-matches"></a>Ambiguous Matches<a class="headerlink" href="#ambiguous-matches" title="Permanent link"></a></h3>
+<h3 id="ambiguous-matches">Ambiguous Matches<a class="headerlink" href="#ambiguous-matches" title="Permanent link"></a></h3>
 <p>But what happens if multiple lots match the reduction? For example, with
 the previous inventory containing two lots, if you wrote your sale like
 this:</p>
@@ -392,7 +400,7 @@ the following inventory to reduce from:</p>
   …
 </code></pre>
 <p>The first two lots are selected as matches.</p>
-<h3 id="strict-booking"><a id="strict-booking"></a>Strict Booking<a class="headerlink" href="#strict-booking" title="Permanent link"></a></h3>
+<h3 id="strict-booking">Strict Booking<a class="headerlink" href="#strict-booking" title="Permanent link"></a></h3>
 <p>What does Beancount do with ambiguous matches? By default, it issues an
 error.</p>
 <p>More precisely, what happens is that Beancount invokes the <strong>booking
@@ -400,7 +408,7 @@ method</strong> and it handles the ambiguous match depending on what it is set.
 The default booking method is “<strong>STRICT</strong>” and it just gives up and
 spits out an error, telling you you need to refine your input in order
 to disambiguate your inventory reduction.</p>
-<h3 id="fifo-and-lifo-booking"><a id="fifo-and-lifo-booking"></a>FIFO and LIFO Booking<a class="headerlink" href="#fifo-and-lifo-booking" title="Permanent link"></a></h3>
+<h3 id="fifo-and-lifo-booking">FIFO and LIFO Booking<a class="headerlink" href="#fifo-and-lifo-booking" title="Permanent link"></a></h3>
 <p>Other booking methods are available. They can be configured using
 options, like this:</p>
 <pre><code>option "booking_method" "FIFO"
@@ -425,7 +433,7 @@ following inventory:</p>
 </code></pre>
 <p>The “LIFO” method works similarly, but consumes the youngest (latest)
 lots first, working its way backward in time to remove the volume.</p>
-<h3 id="per-account-booking-method"><a id="per-account-booking-method"></a>Per-account Booking Method<a class="headerlink" href="#per-account-booking-method" title="Permanent link"></a></h3>
+<h3 id="per-account-booking-method">Per-account Booking Method<a class="headerlink" href="#per-account-booking-method" title="Permanent link"></a></h3>
 <p>You don’t have to make all accounts follow the same booking method; the
 option in the previous section sets the default method for all accounts.
 In order to override the booking method for a particular account, you
@@ -435,7 +443,7 @@ this:</p>
 </code></pre>
 <p>This allows you to treat different accounts with a different booking
 resolution.</p>
-<h3 id="total-matches"><a id="total-matches"></a>Total Matches<a class="headerlink" href="#total-matches" title="Permanent link"></a></h3>
+<h3 id="total-matches">Total Matches<a class="headerlink" href="#total-matches" title="Permanent link"></a></h3>
 <p>There is an exception to strict booking: if the entire inventory is
 being reduced by exactly the total number of units, it’s clear that all
 the matching lots are to be selected and this is considered unambiguous,
@@ -446,7 +454,7 @@ error, because there are 25 + 35 shares matching:</p>
   Assets:Invest           -60 HOOL {}
   …
 </code></pre>
-<h3 id="average-booking"><a id="average-booking"></a>Average Booking<a class="headerlink" href="#average-booking" title="Permanent link"></a></h3>
+<h3 id="average-booking">Average Booking<a class="headerlink" href="#average-booking" title="Permanent link"></a></h3>
 <p>Retirement accounts created by government incentive programs (such as
 the 401k plan in the US or the RRSP in Canada) typically consist in
 pre-tax money. For these types of accounts, brokers usually disregard
@@ -489,7 +497,7 @@ averaged cost:</p>
 </tbody>
 </table>
 
-<h3 id="no-booking"><a id="no-booking"></a>No Booking<a class="headerlink" href="#no-booking" title="Permanent link"></a></h3>
+<h3 id="no-booking">No Booking<a class="headerlink" href="#no-booking" title="Permanent link"></a></h3>
 <p>However, there is another way to deal with non-taxable accounts in the
 meantime: you can simply disable the booking. There is a booking method
 called “<strong>NONE</strong>” which implements a very liberal strategy which accepts
@@ -509,7 +517,7 @@ individual lots aren’t really lots, they only represent the list of all
 postings made to that account.</p>
 <p>Note: If you are familiar with Ledger, this is the default and only
 booking method that it supports.</p>
-<h2 id="summary"><a id="summary"></a>Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h2>
 <p>In summary, here’s what we presented in the walkthrough. <em>Augmentations</em>
 are never problematic; they always add a new position to an existing
 inventory. On the other hand, <em>reductions</em> may result in a few outcomes:</p>
@@ -570,7 +578,7 @@ accounts.</p>
 Open directive:</p>
 <pre><code>2016-05-01 open Assets:Vanguard:RGAGX  "AVERAGE"
 </code></pre>
-<h2 id="how-prices-are-used"><a id="how-prices-are-used"></a>How Prices are Used<a class="headerlink" href="#how-prices-are-used" title="Permanent link"></a></h2>
+<h2 id="how-prices-are-used">How Prices are Used<a class="headerlink" href="#how-prices-are-used" title="Permanent link"></a></h2>
 <p>The short answer is that prices aren’t used nor affect the booking
 algorithm at all. However, it is relevant to discuss what they do in
 this context because users invariably get confused about their
@@ -578,7 +586,7 @@ interpretation.</p>
 <p>There are two use cases for prices: making conversions between
 commodities and tagging a reducing lot with its sale price in order to
 record it and optionally balance the proceeds.</p>
-<h3 id="commodity-conversions"><a id="commodity-conversions"></a>Commodity Conversions<a class="headerlink" href="#commodity-conversions" title="Permanent link"></a></h3>
+<h3 id="commodity-conversions">Commodity Conversions<a class="headerlink" href="#commodity-conversions" title="Permanent link"></a></h3>
 <p>Conversions are used to exchange one currency for another. They look
 like this:</p>
 <pre><code>2016-04-24 * "Deposit check"
@@ -596,7 +604,7 @@ modifying the inventory contents. In a sense, after the postings have
 been applied to the account inventories, the price is forgotten and the
 inventory balance retains no memory of the deposit having occurred from
 a conversion.</p>
-<h3 id="price-vs-cost-basis"><a id="price-vs.-cost-basis"></a>Price vs. Cost Basis<a class="headerlink" href="#price-vs-cost-basis" title="Permanent link"></a></h3>
+<h3 id="price-vs-cost-basis">Price vs. Cost Basis<a class="headerlink" href="#price-vs-cost-basis" title="Permanent link"></a></h3>
 <p>One might wonder how the price is used if there is a cost basis
 specification, like this:</p>
 <pre><code>2015-05-15 * "Sell some shares"
@@ -642,7 +650,7 @@ plugins which make use of this annotation:</p>
 <p>See the <a href="../19_trading_with_beancount/"><span class="underline">Trading with
 Beancount</span></a> document for more
 details on this topic.</p>
-<h2 id="trades"><a id="trades"></a>Trades<a class="headerlink" href="#trades" title="Permanent link"></a></h2>
+<h2 id="trades">Trades<a class="headerlink" href="#trades" title="Permanent link"></a></h2>
 <p>The combination of acquiring some asset and selling it back is what we
 call a “trade.” In Beancount we consider only assets with a cost basis
 to be the subject of trades. Since booking reductions against
@@ -664,7 +672,7 @@ will be provided that are able to easily extract the pairs of postings
 for each reducing postings and filter those out in different ways.
 Ultimately, one should be able to extract a list of all trades to a
 table, with the acquisition and sale price, as well as other fees.</p>
-<h2 id="debugging-booking-issues"><a id="debugging-booking-issues"></a>Debugging Booking Issues<a class="headerlink" href="#debugging-booking-issues" title="Permanent link"></a></h2>
+<h2 id="debugging-booking-issues">Debugging Booking Issues<a class="headerlink" href="#debugging-booking-issues" title="Permanent link"></a></h2>
 <p>If you’re experiencing difficulties in recording your sales due to the
 matching process, there are tools you can use to view an account’s
 detailed inventory contents before and after applying a Transaction to
@@ -681,12 +689,12 @@ Transaction’s effects (but never quietly).</p>
 <p>From Emacs or VI, placing the cursor near a transaction and invoking the
 corresponding command is the easiest way to invoke the command, as it
 inserts the line number automatically.</p>
-<h2 id="appendix"><a id="appendix"></a>Appendix<a class="headerlink" href="#appendix" title="Permanent link"></a></h2>
+<h2 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link"></a></h2>
 <p>The rest of this document delves into more technical details. You should
 feel free to ignore this entirely, it’s not necessary reading to
 understand how Beancount works. Only bother if you’re interested in the
 details.</p>
-<h3 id="data-representation"><a id="data-representation"></a>Data Representation<a class="headerlink" href="#data-representation" title="Permanent link"></a></h3>
+<h3 id="data-representation">Data Representation<a class="headerlink" href="#data-representation" title="Permanent link"></a></h3>
 <p>It is useful to know how positions are represented in an inventory
 object. A <em>Position</em> is essentially some number of units of a commodity
 with some optional information about its acquisition:</p>
@@ -733,7 +741,7 @@ a position is <em>posted</em> to an account.</p>
 please refer to the <a href="../24_beancount_design_doc/"><span class="underline">Design
 Doc</span></a> which expands on this topic
 further.</p>
-<h3 id="why-booking-is-not-simple"><a id="why-booking-is-not-simple"></a>Why Booking is Not Simple<a class="headerlink" href="#why-booking-is-not-simple" title="Permanent link"></a></h3>
+<h3 id="why-booking-is-not-simple">Why Booking is Not Simple<a class="headerlink" href="#why-booking-is-not-simple" title="Permanent link"></a></h3>
 <p>The complexity of the reduction process shows itself when we consider
 how to keep track of the cost basis of various lots. To demonstrate how
 this works, let us consider a simple example that we shall reuse in the
@@ -771,7 +779,7 @@ we want to use.</p>
 <p>Whichever lot(s) we elect to be the ones sold will determine the amount
 of gains, because that is a function of the cost basis of those shares.
 This is why this matters.</p>
-<h3 id="augmentations-vs-reductions"><a id="augmentations-vs.-reductions"></a>Augmentations vs. Reductions<a class="headerlink" href="#augmentations-vs-reductions" title="Permanent link"></a></h3>
+<h3 id="augmentations-vs-reductions">Augmentations vs. Reductions<a class="headerlink" href="#augmentations-vs-reductions" title="Permanent link"></a></h3>
 <p>The most important observation is that there are two distinct kinds of
 lot specifications which look very similar in the input but which are
 processed very differently.</p>
@@ -882,7 +890,7 @@ when the matches are ambiguous.</p>
     selected lots is filled in.</p>
 </li>
 </ul>
-<h3 id="homogeneous-and-mixed-inventories"><a id="homogeneous-and-mixed-inventories"></a>Homogeneous and Mixed Inventories<a class="headerlink" href="#homogeneous-and-mixed-inventories" title="Permanent link"></a></h3>
+<h3 id="homogeneous-and-mixed-inventories">Homogeneous and Mixed Inventories<a class="headerlink" href="#homogeneous-and-mixed-inventories" title="Permanent link"></a></h3>
 <p>So far in the example and in the vast majority of the examples in the
 documentation, “augmenting” means adding a positive number of shares.
 But in Beancount many of the accounts normally have a negative balance,
@@ -914,7 +922,7 @@ example:</p>
 </code></pre>
 <p>As you may intuit, the notion of “augmenting” or “reducing” only makes
 sense for homogeneous inventories.</p>
-<h3 id="original-proposal"><a id="original-proposal"></a>Original Proposal<a class="headerlink" href="#original-proposal" title="Permanent link"></a></h3>
+<h3 id="original-proposal">Original Proposal<a class="headerlink" href="#original-proposal" title="Permanent link"></a></h3>
 <p>If you’re interested in the design doc that led to this implementation,
 you can find the document <a href="../27_a_proposal_for_an_improvement_on_inventory_booking/"><span
 class="underline">here</span></a>.

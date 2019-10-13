@@ -232,11 +232,18 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#fund-accounting-with-beancount">Fund Accounting with Beancount</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#what-is-fund-accounting">What is Fund Accounting?</a></li>
+            <li><a href="#ideas-for-implementation">Ideas for Implementation</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#transfer-accounts-proposal">Transfer Accounts Proposal</a></li>
+            <li><a href="#account-aliases">Account Aliases</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="fund-accounting-with-beancount"><a id="title"></a>Fund Accounting with Beancount<a class="headerlink" href="#fund-accounting-with-beancount" title="Permanent link"></a></h1>
+<h1 id="fund-accounting-with-beancount">Fund Accounting with Beancount<a class="headerlink" href="#fund-accounting-with-beancount" title="Permanent link"></a></h1>
 <p><a href="http://plus.google.com/+MartinBlais"><span class="underline">Martin
 Blais</span></a>, Carl Hauser, August
 2014</p>
@@ -244,14 +251,14 @@ Blais</span></a>, Carl Hauser, August
 class="underline">http://furius.ca/beancount/doc/proposal-funds</span></a></p>
 <p><em>A discussion about how to carry out fund accounting within Beancount,
 various approaches, solutions and possible extensions.</em></p>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>Multiple users are attempting to solve the problem of fund accounting
 using command-line accounting systems, partially because this type of
 accounting occurs in the context of non-profit organizations that have
 small budgets and would prefer to use free software, and partially
 because the flexibility and customization required appear to be a good
 fit for command-line bookkeeping systems.</p>
-<h2 id="what-is-fund-accounting"><a id="what-is-fund-accounting"></a>What is Fund Accounting?<a class="headerlink" href="#what-is-fund-accounting" title="Permanent link"></a></h2>
+<h2 id="what-is-fund-accounting">What is Fund Accounting?<a class="headerlink" href="#what-is-fund-accounting" title="Permanent link"></a></h2>
 <p>For example, see <a href="https://groups.google.com/d/msg/ledger-cli/N8Slh2t45K0/nu1ZACCueQYJ"><span class="underline">this
 thread</span></a>:</p>
 <blockquote>
@@ -319,7 +326,7 @@ assets separately from the daily operating accounts.”</em></p>
 </blockquote>
 <p>This is an interesting and apparently common problem. We will describe
 use cases in the rest of this section.</p>
-<h3 id="joint-account-management"><a id="joint-account-management"></a>Joint Account Management<a class="headerlink" href="#joint-account-management" title="Permanent link"></a></h3>
+<h3 id="joint-account-management">Joint Account Management<a class="headerlink" href="#joint-account-management" title="Permanent link"></a></h3>
 <p>I have personally used this “fund accounting” idea to manage a joint
 account that I had with my ex-wife, where we would both hold individual
 accounts—we were both working professionals— and chip in to the joint
@@ -353,7 +360,7 @@ we weren’t being generous to each other in that way):</p>
 </code></pre>
 <p>It was convenient to elide one of the two amounts, as we weren’t being
 very precise about this.</p>
-<h3 id="handling-multiple-funds"><a id="handling-multiple-funds"></a>Handling Multiple Funds<a class="headerlink" href="#handling-multiple-funds" title="Permanent link"></a></h3>
+<h3 id="handling-multiple-funds">Handling Multiple Funds<a class="headerlink" href="#handling-multiple-funds" title="Permanent link"></a></h3>
 <p><em>(Contributed from Carl Hauser)</em></p>
 <p>Here’s the model used in the PowerChurchPlus system that is mentioned
 above (replacing the account numbers it uses with Beancount-style
@@ -462,7 +469,7 @@ with renaming or tagging. I don’t see how this can be so easily or
 neatly achieved by pushing the idea of the “funds” down into the account
 hierarchy: funds belong <em>above</em> the five root accounts (Assets,
 Liabilities, Equity, Income and Expenses), not below them.</p>
-<h2 id="ideas-for-implementation"><a id="ideas-for-implementation"></a>Ideas for Implementation<a class="headerlink" href="#ideas-for-implementation" title="Permanent link"></a></h2>
+<h2 id="ideas-for-implementation">Ideas for Implementation<a class="headerlink" href="#ideas-for-implementation" title="Permanent link"></a></h2>
 <p><strong><em>Some random ideas for now. This needs a bit more work.</em></strong></p>
 <ul>
 <li>
@@ -531,13 +538,13 @@ Liabilities, Equity, Income and Expenses), not below them.</p>
 
 <pre><code>From an implementation perspective this seems more orthogonal to the current status quo, requiring even less change to existing code. It adds a new feature -- value tags and that can then be used by plugins and new reports to do what we want for fund accounting.
 </code></pre>
-<h2 id="examples"><a id="examples"></a>Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
 <p><em>(Carl)</em> Here is an example of how I might try to handle things
 associated with my paycheck, which involves deferred compensation
 (403(b) -- extremely similar to a 401(k)) and a Flexible Spending
 Account (somewhat similar to an HSA which has been discussed previously
 on the ledger-cli group).</p>
-<h3 id="without-funds"><a id="without-funds"></a>Without Funds<a class="headerlink" href="#without-funds" title="Permanent link"></a></h3>
+<h3 id="without-funds">Without Funds<a class="headerlink" href="#without-funds" title="Permanent link"></a></h3>
 <p>(Carl) First, without Funds (this passes a bean-check):</p>
 <p>This is how I might set up my pay stub with health insurance, an FSA and
 403b contributions in the absence of Funds. One problem is that it
@@ -606,7 +613,7 @@ just as many lines are required. The advantage is primarily a mental one
   Assets:Bank:Checking                                          25 USD
   Assets:FSA
 </code></pre>
-<h3 id="using-funds"><a id="using-funds"></a>Using Funds<a class="headerlink" href="#using-funds" title="Permanent link"></a></h3>
+<h3 id="using-funds">Using Funds<a class="headerlink" href="#using-funds" title="Permanent link"></a></h3>
 <p>(Carl) And now using Funds (uses proposed features and hence can’t be
 checked by bean-check):</p>
 <p>This is how I might set up my pay stub with health insurance, an FSA and
@@ -700,7 +707,7 @@ the empty string.</p>
   FSA:Assets                                                   -25 USD
   FSA:Expenses:ReimburseMedical
 </code></pre>
-<h2 id="transfer-accounts-proposal"><a id="transfer-accounts-proposal"></a>Transfer Accounts Proposal<a class="headerlink" href="#transfer-accounts-proposal" title="Permanent link"></a></h2>
+<h2 id="transfer-accounts-proposal">Transfer Accounts Proposal<a class="headerlink" href="#transfer-accounts-proposal" title="Permanent link"></a></h2>
 <p>One problem that I’ve experienced using the Fund approach is that it’s a
 bit too easy to make mistakes when transferring money between funds,
 such as in the very last transaction above. Formalizing the idea of
@@ -761,7 +768,7 @@ Transfer accounts idea or rule, you can simplify booking to just a
 single account per fund, Fund:Transfer, losing some ability for
 precision in reporting but without losing the ability to check
 correctness of transfer transactions.</p>
-<h2 id="account-aliases"><a id="account-aliases"></a>Account Aliases<a class="headerlink" href="#account-aliases" title="Permanent link"></a></h2>
+<h2 id="account-aliases">Account Aliases<a class="headerlink" href="#account-aliases" title="Permanent link"></a></h2>
 <p>Simon Michael mentions that this is related to HLedger <a href="http://hledger.org/how-to-use-account-aliases"><span
 class="underline">account
 aliases</span></a>:</p>

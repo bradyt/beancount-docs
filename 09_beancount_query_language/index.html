@@ -232,15 +232,58 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#beancount-query-language">Beancount Query Language</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#warning-caveat">Warning &amp; Caveat</a></li>
+            <li><a href="#making-queries">Making Queries</a></li>
+            <li><a href="#transactions-and-postings">Transactions and Postings</a></li>
+            <li><a href="#the-structure-of-transactions-and-entries-can-be-explained-by-the-following-simplified-diagram">The structure of transactions and entries can be explained by the following simplified diagram:</a></li>
+            <li><a href="#posting-data-columns">Posting Data Columns</a></li>
+            <li><a href="#entry-data-columns">Entry Data Columns</a></li>
+            <li><a href="#wildcard-targets">Wildcard Targets</a></li>
+        <li class="main "><a href="#data-types">Data Types</a></li>
+            <li><a href="#positions-and-inventories">Positions and Inventories</a></li>
+            <li><a href="#quantities-of-positions-and-inventories">Quantities of Positions and Inventories</a></li>
+        <li class="main "><a href="#operators">Operators</a></li>
+        <li class="main "><a href="#simple-functions">Simple Functions</a></li>
+        <li class="main "><a href="#aggregate-functions">Aggregate Functions</a></li>
+        <li class="main "><a href="#simple-vs-aggregated-queries">Simple vs. Aggregated Queries</a></li>
+            <li><a href="#distinct">Distinct</a></li>
+        <li class="main "><a href="#controlling-results">Controlling Results</a></li>
+            <li><a href="#order-by">Order By</a></li>
+            <li><a href="#limit">Limit</a></li>
+            <li><a href="#format">Format</a></li>
+        <li class="main "><a href="#statement-operators">Statement Operators</a></li>
+            <li><a href="#opening-a-period">Opening a Period</a></li>
+            <li><a href="#closing-a-period">Closing a Period</a></li>
+            <li><a href="#clearing-income-expenses">Clearing Income &amp; Expenses</a></li>
+            <li><a href="#example-statements">Example Statements</a></li>
+            <li><a href="#example-fetching-cost-basis">Example Fetching Cost Basis</a></li>
+        <li class="main "><a href="#high-level-shortcuts">High-Level Shortcuts</a></li>
+            <li><a href="#selecting-journals">Selecting Journals</a></li>
+            <li><a href="#selecting-balances">Selecting Balances</a></li>
+            <li><a href="#print">Print</a></li>
+        <li class="main "><a href="#debugging-explain">Debugging / Explain</a></li>
+        <li class="main "><a href="#future-features">Future Features</a></li>
+            <li><a href="#flattening-inventories">Flattening Inventories</a></li>
+            <li><a href="#if-you-provide-the-flatten-option-after-a-query-it-tells-the-query-engine-to-flatten-inventories-with-multiple-lots-into-separate-rows-for-each-lot-for-example-if-you-have-an-inventory-balance-with-the-following-contents">If you provide the FLATTEN option after a query, it tells the query engine to flatten inventories with multiple lots into separate rows for each lot. For example, if you have an inventory balance with the following contents:</a></li>
+            <li><a href="#3-aapl-10234-usd-4-aapl-10453-usd-5-aapl-10623-usd">3 AAPL {102.34 USD} 4 AAPL {104.53 USD} 5 AAPL {106.23 USD}</a></li>
+            <li><a href="#using-the-following-query">Using the following query:</a></li>
+            <li><a href="#it-should-return-a-single-row-of-results-rendered-over-three-lines-however-adding-the-option">It should return a single row of results, rendered over three lines. However, adding the option:</a></li>
+            <li><a href="#this-should-return-three-separate-rows-with-all-the-selected-attributes-as-if-there-were-that-many-postings">This should return three separate rows, with all the selected attributes, as if there were that many postings.</a></li>
+            <li><a href="#sub-selects">Sub-Selects</a></li>
+            <li><a href="#pivot-by">Pivot By</a></li>
+        <li class="main "><a href="#more-information">More Information</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="beancount-query-language"><a id="title"></a>Beancount Query Language<a class="headerlink" href="#beancount-query-language" title="Permanent link"></a></h1>
+<h1 id="beancount-query-language">Beancount Query Language<a class="headerlink" href="#beancount-query-language" title="Permanent link"></a></h1>
 <p>Martin Blais, January 2015</p>
 <p><a href="http://furius.ca/beancount/doc/query"><span
 class="underline">http://furius.ca/beancount/doc/query</span></a></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>The purpose of Beancount is to allow the user to create an accurate and
 error-free representation of financial transactions, typically those
 occurring in a user or in an institution’s associated set of accounts,
@@ -269,7 +312,7 @@ If not, you may want to first read <a href="http://www.amazon.com/Practical-SQL-
 class="underline">something</span></a>
 <a href="http://www.w3schools.com/sql/"><span class="underline">about</span></a>
 it.</p>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>So one might ask: Why create another SQL client? Why not output the data
 to a SQLite database and allow the user to use that SQL client?</p>
 <p>Well, we have done that (see the <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/scripts/sql.py"><span
@@ -312,7 +355,7 @@ Beancount:</p>
 <p>See <a href="https://groups.google.com/d/msg/beancount/ZYsPCXt_fQo/NdCdgjbhEgAJ"><span class="underline">this
 post</span></a>
 as well for a similar answer.</p>
-<h2 id="warning-caveat"><a id="warning-caveat"></a>Warning &amp; Caveat<a class="headerlink" href="#warning-caveat" title="Permanent link"></a></h2>
+<h2 id="warning-caveat">Warning &amp; Caveat<a class="headerlink" href="#warning-caveat" title="Permanent link"></a></h2>
 <p>Approximately 70% of the features desired in the <a href="http://furius.ca/beancount/doc/proposal-query"><span
 class="underline">original design
 doc</span></a> were
@@ -328,7 +371,7 @@ use.</p>
 <p>Therefore, a first release of the query language has been merged in the
 default stable branch. This document presents this first iteration on
 the Beancount query language.</p>
-<h2 id="making-queries"><a id="making-queries"></a>Making Queries<a class="headerlink" href="#making-queries" title="Permanent link"></a></h2>
+<h2 id="making-queries">Making Queries<a class="headerlink" href="#making-queries" title="Permanent link"></a></h2>
 <p>The custom query client that we provide is called bean-query. Run it on
 your ledger file, like this:</p>
 <pre><code>$ bean-query myfile.beancount
@@ -346,7 +389,7 @@ prompt. To suppress error printing, run the tool with the “no-errors”
 option:</p>
 <pre><code>$ bean-query -q myfile.beancount
 </code></pre>
-<h3 id="batch-mode-queries"><a id="batch-mode-queries"></a>Batch Mode Queries<a class="headerlink" href="#batch-mode-queries" title="Permanent link"></a></h3>
+<h3 id="batch-mode-queries">Batch Mode Queries<a class="headerlink" href="#batch-mode-queries" title="Permanent link"></a></h3>
 <p>If you’d like to run queries directly from the command-line, without an
 interactive prompt, you can provide the query directly following your
 filename:</p>
@@ -355,8 +398,8 @@ filename:</p>
 ----------------------------------------------------------------------
 … &lt;balances follow&gt; …
 </code></pre>
-<h3 id="all-the-interactive-commands-are-supported"><a id="all-the-interactive-commands-are-supported."></a>All the interactive commands are supported.<a class="headerlink" href="#all-the-interactive-commands-are-supported" title="Permanent link"></a></h3>
-<h3 id="shell-variables"><a id="shell-variables"></a>Shell Variables<a class="headerlink" href="#shell-variables" title="Permanent link"></a></h3>
+<h3 id="all-the-interactive-commands-are-supported">All the interactive commands are supported.<a class="headerlink" href="#all-the-interactive-commands-are-supported" title="Permanent link"></a></h3>
+<h3 id="shell-variables">Shell Variables<a class="headerlink" href="#shell-variables" title="Permanent link"></a></h3>
 <p>The interactive shell has a few “set” variables that you can customize
 to change some of the behavior of the shell. These are like environment
 variables. Type the “set” command to see the list of available variables
@@ -379,9 +422,9 @@ and their current value.</p>
 <p>expand (boolean): If true, expand columns that render to lists on multiple rows.</p>
 </li>
 </ul>
-<h2 id="transactions-and-postings"><a id="transactions-and-postings"></a>Transactions and Postings<a class="headerlink" href="#transactions-and-postings" title="Permanent link"></a></h2>
-<h2 id="the-structure-of-transactions-and-entries-can-be-explained-by-the-following-simplified-diagram"><a id="the-structure-of-transactions-and-entries-can-be-explained-by-the-following-simplified-diagram"></a>The structure of transactions and entries can be explained by the following simplified diagram:<a class="headerlink" href="#the-structure-of-transactions-and-entries-can-be-explained-by-the-following-simplified-diagram" title="Permanent link"></a></h2>
-<h2 id="_1"><a id="section"></a><img src="09_beancount_query_language/media/99e941362869147aff7bb5b64676940fdeebe7f1.png" style="width:5.19444in;height:1.81944in" /><a class="headerlink" href="#_1" title="Permanent link"></a></h2>
+<h2 id="transactions-and-postings">Transactions and Postings<a class="headerlink" href="#transactions-and-postings" title="Permanent link"></a></h2>
+<h2 id="the-structure-of-transactions-and-entries-can-be-explained-by-the-following-simplified-diagram">The structure of transactions and entries can be explained by the following simplified diagram:<a class="headerlink" href="#the-structure-of-transactions-and-entries-can-be-explained-by-the-following-simplified-diagram" title="Permanent link"></a></h2>
+<h2 id="_1"><img src="09_beancount_query_language/media/99e941362869147aff7bb5b64676940fdeebe7f1.png" style="width:5.19444in;height:1.81944in" /><a class="headerlink" href="#_1" title="Permanent link"></a></h2>
 <p>The contents of a ledger is parsed into a list of directives, most of
 which are “Transaction” objects which contain two or more “Posting”
 objects. Postings are always linked only to a single transaction (they
@@ -418,7 +461,7 @@ WHERE &lt;posting-filter-expression&gt;;
 provided, all postings will be enumerated over. Note that since the
 transactions are always filtered in date order, the results will be
 processed and returned in this order by default.</p>
-<h3 id="posting-data-columns"><a id="posting-data-columns"></a>Posting Data Columns<a class="headerlink" href="#posting-data-columns" title="Permanent link"></a></h3>
+<h3 id="posting-data-columns">Posting Data Columns<a class="headerlink" href="#posting-data-columns" title="Permanent link"></a></h3>
 <p>The list of targets refers to attributes of postings or of their parent
 transaction. The same list of “columns” is made available in the
 <em>&lt;posting-filter-expression&gt;</em>, to filter by posting attributes.
@@ -439,7 +482,7 @@ column. You may also refer to the following diagram of the structure of
 a Posting object for the correspondence between the columns and the data
 structure attributes.</p>
 <p><img src="09_beancount_query_language/media/9fb4295fd32eccb04043dcd76b4a2b2b6374fe1c.png" style="width:8.66667in;height:4.47222in" /></p>
-<h3 id="entry-data-columns"><a id="entry-data-columns"></a>Entry Data Columns<a class="headerlink" href="#entry-data-columns" title="Permanent link"></a></h3>
+<h3 id="entry-data-columns">Entry Data Columns<a class="headerlink" href="#entry-data-columns" title="Permanent link"></a></h3>
 <p>A different list of column names is available on the
 <em>&lt;entry-filter-expression&gt;</em> of the FROM clause. These columns
 refer to attributes of the Transaction objects. This clause is intended
@@ -496,7 +539,7 @@ those mailed to you by a bank. Output might look like this:</p>
 2012-01-21 Expenses:Food:Restaurant 28.11 USD 250.19 USD
 2012-01-22 Expenses:Food:Restaurant 21.12 USD 271.31 USD
 </code></pre>
-<h3 id="wildcard-targets"><a id="wildcard-targets"></a>Wildcard Targets<a class="headerlink" href="#wildcard-targets" title="Permanent link"></a></h3>
+<h3 id="wildcard-targets">Wildcard Targets<a class="headerlink" href="#wildcard-targets" title="Permanent link"></a></h3>
 <p>Using a wildcard as the target list (“*”) select a good default list of
 columns:</p>
 <pre><code>SELECT * FROM year = 2014;
@@ -505,7 +548,7 @@ columns:</p>
 prefix:</p>
 <pre><code>EXPLAIN SELECT * FROM year = 2014;
 </code></pre>
-<h2 id="data-types"><a id="data-types"></a>Data Types<a class="headerlink" href="#data-types" title="Permanent link"></a></h2>
+<h2 id="data-types">Data Types<a class="headerlink" href="#data-types" title="Permanent link"></a></h2>
 <p>The data attributes extracted from the postings or transactions have
 particular types. Most of the data types are regular types as provided
 by the underlying Python implementation language, types such as</p>
@@ -534,7 +577,7 @@ by the underlying Python implementation language, types such as</p>
 <p>Null objects (NULL)</p>
 </li>
 </ul>
-<h3 id="positions-and-inventories"><a id="positions-and-inventories"></a>Positions and Inventories<a class="headerlink" href="#positions-and-inventories" title="Permanent link"></a></h3>
+<h3 id="positions-and-inventories">Positions and Inventories<a class="headerlink" href="#positions-and-inventories" title="Permanent link"></a></h3>
 <p>However, one reason that our SQL-like client exists in the first place
 is for its ability to carry out aggregation operations on inventories of
 positions, the data structures at the core of Beancount, that implements
@@ -548,7 +591,7 @@ type Position, which when summed over produces an instance of Inventory.</p>
 <p>The shell is able to display those appropriately. More specifically,
 Inventory objects can contain multiple different lots of holdings, and
 each of these will get rendered on a separate line.</p>
-<h3 id="quantities-of-positions-and-inventories"><a id="quantities-of-positions-and-inventories"></a>Quantities of Positions and Inventories<a class="headerlink" href="#quantities-of-positions-and-inventories" title="Permanent link"></a></h3>
+<h3 id="quantities-of-positions-and-inventories">Quantities of Positions and Inventories<a class="headerlink" href="#quantities-of-positions-and-inventories" title="Permanent link"></a></h3>
 <p>Objects of type Position are rendered in their full detail by default,
 including not just their number and currency, but the details of their
 lot. Inventories consist of a list of lots, and as such are rendered
@@ -633,7 +676,7 @@ and how it would get converted and rendered.</p>
 </tbody>
 </table>
 
-<h2 id="operators"><a id="operators"></a>Operators<a class="headerlink" href="#operators" title="Permanent link"></a></h2>
+<h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link"></a></h2>
 <p>Common comparison and logical operators are provided to operate on the
 available data columns:</p>
 <ul>
@@ -681,7 +724,7 @@ logic</span></a>
 for NULL. This means that e.g. the expression NULL = NULL yields TRUE
 instead of NULL, which simplifies things, but may come as a surprise to
 veteran SQL users.</p>
-<h2 id="simple-functions"><a id="simple-functions"></a>Simple Functions<a class="headerlink" href="#simple-functions" title="Permanent link"></a></h2>
+<h2 id="simple-functions">Simple Functions<a class="headerlink" href="#simple-functions" title="Permanent link"></a></h2>
 <p>The shell provides a list of simple function that operate on a single
 data column and return a new value. These functions operate on
 particular types. The shell implements rudimentary type verification and
@@ -719,7 +762,7 @@ about adding new functions; as long as they have generic application, I
 don’t think it should be a problem. Otherwise, I may be able to provide
 a mechanism for user to register new functions as part of Python plugins
 that could live outside the Beancount codebase.</p>
-<h2 id="aggregate-functions"><a id="aggregate-functions"></a>Aggregate Functions<a class="headerlink" href="#aggregate-functions" title="Permanent link"></a></h2>
+<h2 id="aggregate-functions">Aggregate Functions<a class="headerlink" href="#aggregate-functions" title="Permanent link"></a></h2>
 <p>Some functions operate on more than a single row. These functions
 aggregate and summarize the multiple values for the data column that
 they operate on. A prototypical usage of such a function is to sum the
@@ -752,7 +795,7 @@ aggregation functions; this requires the implementation an HAVING
 clause, and at the moment, <a href="https://bitbucket.org/blais/beancount/src/de8cf9a6a8"><span class="underline">HAVING filtering is
 not yet
 implemented</span></a>.</p>
-<h2 id="simple-vs-aggregated-queries"><a id="simple-vs.-aggregated-queries"></a>Simple vs. Aggregated Queries<a class="headerlink" href="#simple-vs-aggregated-queries" title="Permanent link"></a></h2>
+<h2 id="simple-vs-aggregated-queries">Simple vs. Aggregated Queries<a class="headerlink" href="#simple-vs-aggregated-queries" title="Permanent link"></a></h2>
 <p>There are two types of queries:</p>
 <ul>
 <li>
@@ -786,14 +829,14 @@ GROUP BY 1, acc;
 simple columns must always be specified, omitting the GROUP BY clause
 should also eventually work and we should group by those columns
 implicitly, as a convenience.</p>
-<h3 id="distinct"><a id="distinct"></a>Distinct<a class="headerlink" href="#distinct" title="Permanent link"></a></h3>
+<h3 id="distinct">Distinct<a class="headerlink" href="#distinct" title="Permanent link"></a></h3>
 <p>There is a post-filtering phase that supports uniquifying result rows.
 You can trigger this unique filter with the DISTINCT flag after SELECT,
 as is common in SQL, e.g.</p>
 <pre><code>SELECT DISTINCT account;
 </code></pre>
-<h2 id="controlling-results"><a id="controlling-results"></a>Controlling Results<a class="headerlink" href="#controlling-results" title="Permanent link"></a></h2>
-<h3 id="order-by"><a id="order-by"></a>Order By<a class="headerlink" href="#order-by" title="Permanent link"></a></h3>
+<h2 id="controlling-results">Controlling Results<a class="headerlink" href="#controlling-results" title="Permanent link"></a></h2>
+<h3 id="order-by">Order By<a class="headerlink" href="#order-by" title="Permanent link"></a></h3>
 <p>Analogous to the GROUP BY clause is an ORDER BY clause that controls the
 final ordering of the result rows:</p>
 <pre><code>SELECT …
@@ -809,7 +852,7 @@ default is the same as specifying ASC):</p>
 GROUP BY account, payee
 ORDER BY payee, date DESC;
 </code></pre>
-<h3 id="limit"><a id="limit"></a>Limit<a class="headerlink" href="#limit" title="Permanent link"></a></h3>
+<h3 id="limit">Limit<a class="headerlink" href="#limit" title="Permanent link"></a></h3>
 <p>Our query language also supports a LIMIT clause to interrupt output row
 generation:</p>
 <pre><code>SELECT … LIMIT 100;
@@ -819,13 +862,13 @@ a common clause present in the SQL language, in the context of
 double-entry bookkeeping it is not very useful: we always have
 relatively small datasets to work from. Nevertheless, we provide it for
 completeness.</p>
-<h3 id="format"><a id="format"></a>Format<a class="headerlink" href="#format" title="Permanent link"></a></h3>
+<h3 id="format">Format<a class="headerlink" href="#format" title="Permanent link"></a></h3>
 <p>For SELECT, JOURNAL and BALANCES queries, the output format is a table
 of text by default. We support CSV output. (<em>We could easily add support
 for XLS or Google Sheets output.)</em></p>
 <p>However, for PRINT queries, the output format is Beancount input text
 format.</p>
-<h2 id="statement-operators"><a id="statement-operators"></a>Statement Operators<a class="headerlink" href="#statement-operators" title="Permanent link"></a></h2>
+<h2 id="statement-operators">Statement Operators<a class="headerlink" href="#statement-operators" title="Permanent link"></a></h2>
 <p>The shell provides a few operators designed to facilitate the generation
 of balance sheets and income statements. The particular methodology used
 to define these operations should be described in detail in the “<a href="../02_the_double_entry_counting_method/"><span
@@ -841,7 +884,7 @@ further transform the set of entries selected by the FROM expression at
 the transaction levels (not postings).</p>
 <p>Please note that these are not from standard SQL; these are extensions
 provided by this shell language only.</p>
-<h3 id="opening-a-period"><a id="opening-a-period"></a>Opening a Period<a class="headerlink" href="#opening-a-period" title="Permanent link"></a></h3>
+<h3 id="opening-a-period">Opening a Period<a class="headerlink" href="#opening-a-period" title="Permanent link"></a></h3>
 <p>Opening an exercise period at a particular date replaces all entries
 before that date by summarization entries that book the expected balance
 against an Equity “opening balances” account and implicitly clears the
@@ -858,7 +901,7 @@ implementation details).</p>
 this:</p>
 <pre><code>PRINT FROM flag = "S" AND account ~ "Invest" OPEN ON 2014-01-01;
 </code></pre>
-<h3 id="closing-a-period"><a id="closing-a-period"></a>Closing a Period<a class="headerlink" href="#closing-a-period" title="Permanent link"></a></h3>
+<h3 id="closing-a-period">Closing a Period<a class="headerlink" href="#closing-a-period" title="Permanent link"></a></h3>
 <p>Closing an exercise period involves mainly truncating all entries that
 come <em>after</em> the given date and ensuring that currency conversions are
 correctly corrected for (see beancount.ops.summarize.close() for
@@ -880,7 +923,7 @@ that is, their balances are not cleared to zero to Equity. This is
 because closing is also used to produce final balances for income
 statements. “Clearing”, as described in the next section, is only needed
 for balance sheets.</p>
-<h3 id="clearing-income-expenses"><a id="clearing-income-expenses"></a>Clearing Income &amp; Expenses<a class="headerlink" href="#clearing-income-expenses" title="Permanent link"></a></h3>
+<h3 id="clearing-income-expenses">Clearing Income &amp; Expenses<a class="headerlink" href="#clearing-income-expenses" title="Permanent link"></a></h3>
 <p>In order to produce a balance sheet, we need to transfer final balances
 of the Income and Expenses to an Equity “current earnings” account
 (sometimes called “retained earnings” or “net income”; you can select
@@ -897,7 +940,7 @@ beancount.ops.summarize.clear() for implementation details.)</p>
 balance sheet. The “Equity:Earnings:Current” (by default) will contain
 the net income accumulated during the preceding period. No balances for
 the Income nor Expenses accounts should appear in the output.</p>
-<h3 id="example-statements"><a id="example-statements"></a>Example Statements<a class="headerlink" href="#example-statements" title="Permanent link"></a></h3>
+<h3 id="example-statements">Example Statements<a class="headerlink" href="#example-statements" title="Permanent link"></a></h3>
 <p>The statement operators of course may be combined. For instance, if you
 wanted to output data for an income statement for year 2013, you could
 issue the following statement:</p>
@@ -935,7 +978,7 @@ accounts would show where the funds for those Expenses came from.</p>
 <p>Consult the “introduction to double-entry method” document for a
 pictorial representation of this. (Granted, this is probably worth of a
 dedicated document and I might produce one at some point.)</p>
-<h3 id="example-fetching-cost-basis"><a id="example-fetching-cost-basis"></a>Example Fetching Cost Basis<a class="headerlink" href="#example-fetching-cost-basis" title="Permanent link"></a></h3>
+<h3 id="example-fetching-cost-basis">Example Fetching Cost Basis<a class="headerlink" href="#example-fetching-cost-basis" title="Permanent link"></a></h3>
 <p><em>“... is there currently an easy way to determine what my cost basis is
 for an account on a given date (other than manually adding up UNITS *
 COST for every contribution, which is kind of a pain)? I'm trying to
@@ -953,7 +996,7 @@ WHERE year &lt;= 2015
   AND account ~ "Assets:US:Schwab" 
   AND currency != "USD"
 </code></pre>
-<h2 id="high-level-shortcuts"><a id="high-level-shortcuts"></a>High-Level Shortcuts<a class="headerlink" href="#high-level-shortcuts" title="Permanent link"></a></h2>
+<h2 id="high-level-shortcuts">High-Level Shortcuts<a class="headerlink" href="#high-level-shortcuts" title="Permanent link"></a></h2>
 <p>There are two types of queries that are very common for accounting
 applications: journals and balances reports. While we have explicit
 implementations of such reports that can be produced using the
@@ -962,7 +1005,7 @@ such reports using SELECT statements. This section describes a few
 additional selection commands that translate directly into SELECT
 statements and which are then run with the same query code. These are
 intended as convenient shortcuts.</p>
-<h3 id="selecting-journals"><a id="selecting-journals"></a>Selecting Journals<a class="headerlink" href="#selecting-journals" title="Permanent link"></a></h3>
+<h3 id="selecting-journals">Selecting Journals<a class="headerlink" href="#selecting-journals" title="Permanent link"></a></h3>
 <p>A common type of query is one that generates a linear journal of entries
 (Ledger calls this a “register”). This roughly corresponds to an account
 statement, but with our language, such a statement can be generated for
@@ -978,7 +1021,7 @@ follows the same rules as for the SELECT statement and is optional.</p>
 <p>Here is an example journal-generating query:</p>
 <pre><code>JOURNAL "Invest" AT COST FROM HAS_ACCOUNT("Assets:US");
 </code></pre>
-<h3 id="selecting-balances"><a id="selecting-balances"></a>Selecting Balances<a class="headerlink" href="#selecting-balances" title="Permanent link"></a></h3>
+<h3 id="selecting-balances">Selecting Balances<a class="headerlink" href="#selecting-balances" title="Permanent link"></a></h3>
 <p>The other most common type of report is a table of the balances of
 various accounts at a particular date. This can be viewed as a SELECT
 query aggregating positions grouping by account.</p>
@@ -1003,7 +1046,7 @@ above that discusses the “open”, “close” and “clear” operations.</p>
 <p>We will also be providing a separate text processing tool that can
 accept balance reports and reformat them in a two-column format similar
 to that you would see balance sheets and income statements.</p>
-<h3 id="print"><a id="print"></a>Print<a class="headerlink" href="#print" title="Permanent link"></a></h3>
+<h3 id="print">Print<a class="headerlink" href="#print" title="Permanent link"></a></h3>
 <p>It can be useful to generate output in Beancount format, so that subsets
 of transactions can be saved to files, for example. The shell provides
 that ability via the PRINT command:</p>
@@ -1016,7 +1059,7 @@ printed out on the output in Beancount syntax.</p>
 and loaded contents of a Beancount file. You can use this for
 troubleshooting if needed, or to expand transactions generated from a
 plugin you may be in the process of developing.</p>
-<h2 id="debugging-explain"><a id="debugging-explain"></a>Debugging / Explain<a class="headerlink" href="#debugging-explain" title="Permanent link"></a></h2>
+<h2 id="debugging-explain">Debugging / Explain<a class="headerlink" href="#debugging-explain" title="Permanent link"></a></h2>
 <p>If you’re having trouble getting a particular statement to compile and
 run,. you can prefix any query statement with the EXPLAIN modifier,
 e.g.:</p>
@@ -1027,24 +1070,24 @@ AST and compiled representation as well as the list of computed
 statements. This can be useful to report bugs on the mailing-list.</p>
 <p>Also, this shows you the translated form of the JOURNAL and BALANCES
 statements.</p>
-<h2 id="future-features"><a id="future-features"></a>Future Features<a class="headerlink" href="#future-features" title="Permanent link"></a></h2>
+<h2 id="future-features">Future Features<a class="headerlink" href="#future-features" title="Permanent link"></a></h2>
 <p>The following list of features were planned for the first release but
 I’ve decided to make a first cut without them. I’ll be adding those
 during a revision.</p>
-<h3 id="flattening-inventories"><a id="flattening-inventories"></a>Flattening Inventories<a class="headerlink" href="#flattening-inventories" title="Permanent link"></a></h3>
-<h3 id="if-you-provide-the-flatten-option-after-a-query-it-tells-the-query-engine-to-flatten-inventories-with-multiple-lots-into-separate-rows-for-each-lot-for-example-if-you-have-an-inventory-balance-with-the-following-contents"><a id="if-you-provide-the-flatten-option-after-a-query-it-tells-the-query-engine-to-flatten-inventories-with-multiple-lots-into-separate-rows-for-each-lot.-for-example-if-you-have-an-inventory-balance-with-the-following-contents"></a>If you provide the FLATTEN option after a query, it tells the query engine to flatten inventories with multiple lots into separate rows for each lot. For example, if you have an inventory balance with the following contents:<a class="headerlink" href="#if-you-provide-the-flatten-option-after-a-query-it-tells-the-query-engine-to-flatten-inventories-with-multiple-lots-into-separate-rows-for-each-lot-for-example-if-you-have-an-inventory-balance-with-the-following-contents" title="Permanent link"></a></h3>
-<h3 id="3-aapl-10234-usd-4-aapl-10453-usd-5-aapl-10623-usd"><a id="aapl-102.34-usd-4-aapl-104.53-usd-5-aapl-106.23-usd"></a>3 AAPL {102.34 USD} 4 AAPL {104.53 USD} 5 AAPL {106.23 USD}<a class="headerlink" href="#3-aapl-10234-usd-4-aapl-10453-usd-5-aapl-10623-usd" title="Permanent link"></a></h3>
-<h3 id="using-the-following-query"><a id="using-the-following-query"></a>Using the following query:<a class="headerlink" href="#using-the-following-query" title="Permanent link"></a></h3>
+<h3 id="flattening-inventories">Flattening Inventories<a class="headerlink" href="#flattening-inventories" title="Permanent link"></a></h3>
+<h3 id="if-you-provide-the-flatten-option-after-a-query-it-tells-the-query-engine-to-flatten-inventories-with-multiple-lots-into-separate-rows-for-each-lot-for-example-if-you-have-an-inventory-balance-with-the-following-contents">If you provide the FLATTEN option after a query, it tells the query engine to flatten inventories with multiple lots into separate rows for each lot. For example, if you have an inventory balance with the following contents:<a class="headerlink" href="#if-you-provide-the-flatten-option-after-a-query-it-tells-the-query-engine-to-flatten-inventories-with-multiple-lots-into-separate-rows-for-each-lot-for-example-if-you-have-an-inventory-balance-with-the-following-contents" title="Permanent link"></a></h3>
+<h3 id="3-aapl-10234-usd-4-aapl-10453-usd-5-aapl-10623-usd">3 AAPL {102.34 USD} 4 AAPL {104.53 USD} 5 AAPL {106.23 USD}<a class="headerlink" href="#3-aapl-10234-usd-4-aapl-10453-usd-5-aapl-10623-usd" title="Permanent link"></a></h3>
+<h3 id="using-the-following-query">Using the following query:<a class="headerlink" href="#using-the-following-query" title="Permanent link"></a></h3>
 <pre><code>SELECT account, sum(position) GROUP BY account;
 </code></pre>
-<h3 id="it-should-return-a-single-row-of-results-rendered-over-three-lines-however-adding-the-option"><a id="it-should-return-a-single-row-of-results-rendered-over-three-lines.-however-adding-the-option"></a>It should return a single row of results, rendered over three lines. However, adding the option:<a class="headerlink" href="#it-should-return-a-single-row-of-results-rendered-over-three-lines-however-adding-the-option" title="Permanent link"></a></h3>
+<h3 id="it-should-return-a-single-row-of-results-rendered-over-three-lines-however-adding-the-option">It should return a single row of results, rendered over three lines. However, adding the option:<a class="headerlink" href="#it-should-return-a-single-row-of-results-rendered-over-three-lines-however-adding-the-option" title="Permanent link"></a></h3>
 <pre><code>SELECT account, sum(position) GROUP BY account FLATTEN;
 </code></pre>
-<h3 id="this-should-return-three-separate-rows-with-all-the-selected-attributes-as-if-there-were-that-many-postings"><a id="this-should-return-three-separate-rows-with-all-the-selected-attributes-as-if-there-were-that-many-postings."></a>This should return three separate rows, with all the selected attributes, as if there were that many postings.<a class="headerlink" href="#this-should-return-three-separate-rows-with-all-the-selected-attributes-as-if-there-were-that-many-postings" title="Permanent link"></a></h3>
-<h3 id="sub-selects"><a id="sub-selects"></a>Sub-Selects<a class="headerlink" href="#sub-selects" title="Permanent link"></a></h3>
+<h3 id="this-should-return-three-separate-rows-with-all-the-selected-attributes-as-if-there-were-that-many-postings">This should return three separate rows, with all the selected attributes, as if there were that many postings.<a class="headerlink" href="#this-should-return-three-separate-rows-with-all-the-selected-attributes-as-if-there-were-that-many-postings" title="Permanent link"></a></h3>
+<h3 id="sub-selects">Sub-Selects<a class="headerlink" href="#sub-selects" title="Permanent link"></a></h3>
 <p>The ability to select from the result of another SELECT is not currently
 supported, but the internals of the query code are prepared to do so.</p>
-<h3 id="pivot-by"><a id="pivot-by"></a>Pivot By<a class="headerlink" href="#pivot-by" title="Permanent link"></a></h3>
+<h3 id="pivot-by">Pivot By<a class="headerlink" href="#pivot-by" title="Permanent link"></a></h3>
 <p>A special PIVOT BY clause can be used to convert the output from a
 one-dimensional list of results to a two-dimensional table. For example,
 the following query:</p>
@@ -1123,7 +1166,7 @@ Expenses:Food:Coffee       42.07 USD 2012-07-19  124.69 USD 2013-12-16   38.74 U
 Expenses:Food:Groceries  2172.97 USD 2012-12-30 2161.90 USD 2013-12-31 2072.36 USD 2014-11-20
 Expenses:Food:Restaurant 4310.60 USD 2012-12-30 5053.61 USD 2013-12-29 4209.06 USD 2014-11-28
 </code></pre>
-<h2 id="more-information"><a id="more-information"></a>More Information<a class="headerlink" href="#more-information" title="Permanent link"></a></h2>
+<h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link"></a></h2>
 <p>This document attempts to provide a good high-level summary of the
 features supported in our query language. However, should you find you
 need more information, you may take a look at the <a href="http://furius.ca/beancount/doc/proposal-query"><span

@@ -232,11 +232,52 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#motivation">Motivation</a></li>
+        <li class="main "><a href="#problem-description">Problem Description</a></li>
+            <li><a href="#lot-date">Lot Date</a></li>
+            <li><a href="#average-cost-basis">Average Cost Basis</a></li>
+            <li><a href="#capital-gains-sans-commissions">Capital Gains Sans Commissions</a></li>
+            <li><a href="#cost-basis-adjustments">Cost Basis Adjustments</a></li>
+            <li><a href="#dealing-with-stock-splits">Dealing with Stock Splits</a></li>
+            <li><a href="#forcing-a-single-method-per-account">Forcing a Single Method per Account</a></li>
+        <li class="main "><a href="#previous-solutions">Previous Solutions</a></li>
+            <li><a href="#shortcomings-in-ledger">Shortcomings in Ledger</a></li>
+            <li><a href="#shortcomings-in-beancount">Shortcomings in Beancount</a></li>
+        <li class="main "><a href="#context">Context</a></li>
+        <li class="main "><a href="#precision-for-interpolation">Precision for Interpolation</a></li>
+        <li class="main "><a href="#requirements">Requirements</a></li>
+            <li><a href="#debugging-tools">Debugging Tools</a></li>
+            <li><a href="#explicit-vs-implicit-booking-reduction">Explicit vs. Implicit Booking Reduction</a></li>
+        <li class="main "><a href="#design-proposal">Design Proposal</a></li>
+            <li><a href="#inventory">Inventory</a></li>
+            <li><a href="#input-syntax-filtering">Input Syntax &amp; Filtering</a></li>
+            <li><a href="#algorithm">Algorithm</a></li>
+            <li><a href="#implicit-booking-methods">Implicit Booking Methods</a></li>
+            <li><a href="#dates-inserted-by-default">Dates Inserted by Default</a></li>
+            <li><a href="#matching-with-no-information">Matching with No Information</a></li>
+            <li><a href="#reducing-multiple-lots">Reducing Multiple Lots</a></li>
+            <li><a href="#lot-basis-modification">Lot Basis Modification</a></li>
+            <li><a href="#tag-reuse">Tag Reuse</a></li>
+        <li class="main "><a href="#examples">Examples</a></li>
+            <li><a href="#no-conflict">No Conflict</a></li>
+            <li><a href="#explicit-selection-by-cost">Explicit Selection By Cost</a></li>
+            <li><a href="#explicit-selection-by-date">Explicit Selection By Date</a></li>
+            <li><a href="#explicit-selection-by-label">Explicit Selection By Label</a></li>
+            <li><a href="#explicit-selection-by-combination">Explicit Selection By Combination</a></li>
+            <li><a href="#not-enough-units">Not Enough Units</a></li>
+            <li><a href="#redundant-selection-of-same-lot">Redundant Selection of Same Lot</a></li>
+            <li><a href="#automatic-price-extrapolation">Automatic Price Extrapolation</a></li>
+            <li><a href="#average-cost-booking">Average Cost Booking</a></li>
+        <li class="main "><a href="#future-work">Future Work</a></li>
+            <li><a href="#inter-account-booking">Inter-Account Booking</a></li>
+        <li class="main "><a href="#implementation-notes">Implementation Notes</a></li>
+            <li><a href="#separate-parsing-interpolation">Separate Parsing &amp; Interpolation</a></li>
+        <li class="main "><a href="#conclusion">Conclusion</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p><a id="title"></a>Inventory Booking </p>
+<p>Inventory Booking </p>
 <p>A Proposal for an Improvement on Command-Line Bookkeeping</p>
 <p>=========================================================</p>
 <p>Martin Blais, June 2014</p>
@@ -300,7 +341,7 @@ Booking</span></a></p>
 Note</span></a></p>
 <p><a href="#conclusion"><span class="underline">Conclusion</span></a></p>
 </blockquote>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>The problem of “inventory booking,” that is, selecting which of an
 inventory’s trade lots to reduce when closing a position, is a tricky
 one. So far, in the command-line accounting community, relatively little
@@ -311,7 +352,7 @@ able to solve, identifies a set of requirements for a better booking
 method, and proposes a syntax and implementation design to support these
 requirements, along with clearly defined semantics for the booking
 method.</p>
-<h2 id="problem-description"><a id="problem-description"></a>Problem Description<a class="headerlink" href="#problem-description" title="Permanent link"></a></h2>
+<h2 id="problem-description">Problem Description<a class="headerlink" href="#problem-description" title="Permanent link"></a></h2>
 <p>The problem under consideration is the problem of deciding, for a
 double-entry transaction that intends to reduce the size of a position
 at a particular point in time in a particular account, which of the
@@ -361,7 +402,7 @@ booking:</p>
 </li>
 </ol>
 <p>Most of this document is dedicated to the second direction.</p>
-<h3 id="lot-date"><a id="lot-date"></a>Lot Date<a class="headerlink" href="#lot-date" title="Permanent link"></a></h3>
+<h3 id="lot-date">Lot Date<a class="headerlink" href="#lot-date" title="Permanent link"></a></h3>
 <p>Even if the cost of each lot is identical, the acquisition date of the
 position you’re intending to close matters, because different taxation
 rules may apply, for example, in the US, positions held for more than 12
@@ -395,7 +436,7 @@ meant to report your gains.</p>
 methods to the same account (e.g., if an account is subject to a
 taxation claim from multiple countries). We will ignore this exotic case
 in this document, as it is quite rare.</p>
-<h3 id="average-cost-basis"><a id="average-cost-basis"></a>Average Cost Basis<a class="headerlink" href="#average-cost-basis" title="Permanent link"></a></h3>
+<h3 id="average-cost-basis">Average Cost Basis<a class="headerlink" href="#average-cost-basis" title="Permanent link"></a></h3>
 <p>Things get more complicated for tax-sheltered accounts. Because there
 are no tax consequences to closing positions in these accounts, brokers
 will normally choose to account for the book value of your positions as
@@ -502,7 +543,7 @@ if not strictly necessary, and even if we want to be able to just
 specify a “default” booking method to use per account and just stick
 with it throughout. It’s always nice to have the flexibility to support
 exceptions, because in real life, they sometimes occur.</p>
-<h3 id="capital-gains-sans-commissions"><a id="capital-gains-sans-commissions"></a>Capital Gains Sans Commissions<a class="headerlink" href="#capital-gains-sans-commissions" title="Permanent link"></a></h3>
+<h3 id="capital-gains-sans-commissions">Capital Gains Sans Commissions<a class="headerlink" href="#capital-gains-sans-commissions" title="Permanent link"></a></h3>
 <p>We would like to be able to support the automatic calculation of capital
 gains without the commissions. This problem is described in much detail
 in the <a href="../19_trading_with_beancount/"><span class="underline">Commissions section of the trading
@@ -595,7 +636,7 @@ using the latter to balance the transaction. This idea is to allow the
 user to keep using the cost of a position to select the lot, but I’m not
 even sure if that is possible, in the presence of various changes to the
 inventory. More thought is required on this matter.)</p>
-<h3 id="cost-basis-adjustments"><a id="cost-basis-adjustments"></a>Cost Basis Adjustments<a class="headerlink" href="#cost-basis-adjustments" title="Permanent link"></a></h3>
+<h3 id="cost-basis-adjustments">Cost Basis Adjustments<a class="headerlink" href="#cost-basis-adjustments" title="Permanent link"></a></h3>
 <p>In order to adjust the cost basis, one can replace the contents of an
 account explicitly like this:</p>
 <pre><code>2014-03-15 * "Adjust cost basis from 500 USD to 510 USD"
@@ -616,7 +657,7 @@ Here’s one way we could support this well, however:</p>
 </code></pre>
 <p>If all the legs are fully specified - they have a calculatable balance -
 we allow a single price to be elided. This solves this problem well.</p>
-<h3 id="dealing-with-stock-splits"><a id="dealing-with-stock-splits"></a>Dealing with Stock Splits<a class="headerlink" href="#dealing-with-stock-splits" title="Permanent link"></a></h3>
+<h3 id="dealing-with-stock-splits">Dealing with Stock Splits<a class="headerlink" href="#dealing-with-stock-splits" title="Permanent link"></a></h3>
 <p>Accounting for stock splits creates some complications in terms of
 booking. In general, the problem is that we need to deal with changes in
 the meaning of a commodity over time. For example, you could do this in
@@ -648,7 +689,7 @@ some of the attributes of the original event that augmented this
 position, which includes the original trade date (not the split date)
 and the original user-specified label on the position, if one was
 provided.</p>
-<h3 id="forcing-a-single-method-per-account"><a id="forcing-a-single-method-per-account"></a>Forcing a Single Method per Account<a class="headerlink" href="#forcing-a-single-method-per-account" title="Permanent link"></a></h3>
+<h3 id="forcing-a-single-method-per-account">Forcing a Single Method per Account<a class="headerlink" href="#forcing-a-single-method-per-account" title="Permanent link"></a></h3>
 <p>For accounts that will use the average booking method, it may be useful
 to <a href="https://groups.google.com/d/msg/ledger-cli/aQvbjTZa7HE/55mx1LSM0sIJ"><span class="underline">allow specifying that an account should only
 use this booking
@@ -664,11 +705,11 @@ triggers aggregation upon the addition of a position.</p>
 provide a plugin that would check that for those accounts that are
 marked as using the average cost inventory booking method by default,
 that only such bookings actually take place.</p>
-<h2 id="previous-solutions"><a id="previous-solutions"></a>Previous Solutions<a class="headerlink" href="#previous-solutions" title="Permanent link"></a></h2>
+<h2 id="previous-solutions">Previous Solutions<a class="headerlink" href="#previous-solutions" title="Permanent link"></a></h2>
 <p>This section reviews existing implementations of booking methods in
 command-line bookkeeping systems and highlights specific shortcomings
 that motivate why we need to define a new method.</p>
-<h3 id="shortcomings-in-ledger"><a id="shortcomings-in-ledger"></a>Shortcomings in Ledger<a class="headerlink" href="#shortcomings-in-ledger" title="Permanent link"></a></h3>
+<h3 id="shortcomings-in-ledger">Shortcomings in Ledger<a class="headerlink" href="#shortcomings-in-ledger" title="Permanent link"></a></h3>
 <p><em>(Please note: I’m not deeply familiar with the finer details of the
 inner workings of Ledger; I inferred its behavior from building test
 examples and reading the docs. If I got any of this wrong, please do let
@@ -909,7 +950,7 @@ supported - and I don’t think this is a good idea - they should be
 supported before the reporting phase. In my view, altering inventory
 booking strategies from command-line options is a bad idea, the
 strategies in place should be fully defined by the language itself.)</p>
-<h3 id="shortcomings-in-beancount"><a id="shortcomings-in-beancount"></a>Shortcomings in Beancount<a class="headerlink" href="#shortcomings-in-beancount" title="Permanent link"></a></h3>
+<h3 id="shortcomings-in-beancount">Shortcomings in Beancount<a class="headerlink" href="#shortcomings-in-beancount" title="Permanent link"></a></h3>
 <p>Beancount also has various shortcomings, though different ones.</p>
 <p>In contrast to Ledger, Beancount <a href="https://groups.google.com/d/msg/ledger-cli/zRSMle5AV3Q/kBCYjVEB-gsJ"><span
 class="underline">disambiguates</span></a>
@@ -1023,7 +1064,7 @@ ensure that I come up with an unambiguous design that is easy to enter
 data for. Ledger always automatically attaches the transaction date to
 the inventory lot, and in my view this is the correct thing to do (below
 we propose attaching more information as well).</p>
-<h2 id="context"><a id="context"></a>Context<a class="headerlink" href="#context" title="Permanent link"></a></h2>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link"></a></h2>
 <p><em>[Updated on Nov’2014]</em></p>
 <p>It is important to distinguish between two types of booking:</p>
 <ol>
@@ -1122,7 +1163,7 @@ label, and possibly even a link to the entry that created the lot. In
 order to trigger summarization sensibly, functions to convert and
 summarize accumulated inventories could be provided in the shell, such
 as “UNITS(inventory)”.</p>
-<h2 id="precision-for-interpolation"><a id="precision-for-interpolation"></a>Precision for Interpolation<a class="headerlink" href="#precision-for-interpolation" title="Permanent link"></a></h2>
+<h2 id="precision-for-interpolation">Precision for Interpolation<a class="headerlink" href="#precision-for-interpolation" title="Permanent link"></a></h2>
 <p>The interpolation capabilities will be extended to cover eliding a
 single number, any number, in any subset of postings whose “weights”
 resolve to a particular currency (e.g., “all postings with weights in
@@ -1198,7 +1239,7 @@ file for each currency</strong> is already tracked in a DisplayContext object
 that is stored in the options_map from the parser. I'll have to take
 that into account in the inventory booking proposal. I'm adding this to
 the proposal.</p>
-<h2 id="requirements"><a id="requirements"></a>Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h2>
 <p>The previous sections introduce the general problem of booking, and
 point out important shortcomings in both the Beancount and Ledger
 implementations. This section will present a set of desires for a new
@@ -1292,7 +1333,7 @@ implementations.</p>
     need it.]</p>
 </li>
 </ul>
-<h3 id="debugging-tools"><a id="debugging-tools"></a>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Permanent link"></a></h3>
+<h3 id="debugging-tools">Debugging Tools<a class="headerlink" href="#debugging-tools" title="Permanent link"></a></h3>
 <p>Since this is a non-trivial but greatly important part of the process of
 entering trading data, we should provide tools that list in detail the
 running balance for an inventory, including all of the detail of its
@@ -1318,7 +1359,7 @@ is:</p>
 <p>A detailed reason why the booking failed</p>
 </li>
 </ul>
-<h3 id="explicit-vs-implicit-booking-reduction"><a id="explicit-vs.-implicit-booking-reduction"></a>Explicit vs. Implicit Booking Reduction<a class="headerlink" href="#explicit-vs-implicit-booking-reduction" title="Permanent link"></a></h3>
+<h3 id="explicit-vs-implicit-booking-reduction">Explicit vs. Implicit Booking Reduction<a class="headerlink" href="#explicit-vs-implicit-booking-reduction" title="Permanent link"></a></h3>
 <p>Another question that may come up in the design of a new booking method
 is whether we require the user to be <em>explicit</em> about whether he thinks
 this is an addition to a position, or a reduction. This could be done,
@@ -1328,11 +1369,11 @@ convinced that it is necessary to make that distinction, maybe the extra
 burden on the user is not worth it, but it might be a way to cross-check
 an expectation against the actual calculations that occur. I’ll drop the
 idea for now.</p>
-<h2 id="design-proposal"><a id="design-proposal"></a>Design Proposal<a class="headerlink" href="#design-proposal" title="Permanent link"></a></h2>
+<h2 id="design-proposal">Design Proposal<a class="headerlink" href="#design-proposal" title="Permanent link"></a></h2>
 <p>This section presents a concrete description of a design that fulfills
 the previously introduced requirements. We hope to keep this as simple
 as possible.</p>
-<h3 id="inventory"><a id="inventory"></a>Inventory<a class="headerlink" href="#inventory" title="Permanent link"></a></h3>
+<h3 id="inventory">Inventory<a class="headerlink" href="#inventory" title="Permanent link"></a></h3>
 <p>An inventory is simply a list of lot descriptors. Each inventory lot
 will be defined by:</p>
 <pre><code>UNITS, (CURRENCY, COST-UNITS, COST-CURRENCY, DATE, LABEL)
@@ -1362,7 +1403,7 @@ will be defined by:</p>
 LABEL field should be optionally with a NULL value. Anyone writing code
 against this inventory could expect that all other values are filled in
 with non-NULL values (or are otherwise all NULL).</p>
-<h3 id="input-syntax-filtering"><a id="input-syntax-filtering"></a>Input Syntax &amp; Filtering<a class="headerlink" href="#input-syntax-filtering" title="Permanent link"></a></h3>
+<h3 id="input-syntax-filtering">Input Syntax &amp; Filtering<a class="headerlink" href="#input-syntax-filtering" title="Permanent link"></a></h3>
 <p>The input syntax should allow the specification of cost as any
 combination of the following informations:</p>
 <ul>
@@ -1399,7 +1440,7 @@ combination of the following informations:</p>
   Assets:Investments:Stock        10 HOOL {500 USD, 2014-05-01}
   Assets:Investments:Stock        10 HOOL {2014-05-01, 339999615d7a}
 </code></pre>
-<h3 id="algorithm"><a id="algorithm"></a>Algorithm<a class="headerlink" href="#algorithm" title="Permanent link"></a></h3>
+<h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link"></a></h3>
 <p>All postings should be processed in a separate step after parsing, in
 the order of their date, against a running inventory balance for each
 account. The cost amount should become fully determined at this stage,
@@ -1422,7 +1463,7 @@ filtering the lots with the user restrictions:</p>
     method</strong> for the corresponding account should be invoked.</p>
 </li>
 </ul>
-<h3 id="implicit-booking-methods"><a id="implicit-booking-methods"></a>Implicit Booking Methods<a class="headerlink" href="#implicit-booking-methods" title="Permanent link"></a></h3>
+<h3 id="implicit-booking-methods">Implicit Booking Methods<a class="headerlink" href="#implicit-booking-methods" title="Permanent link"></a></h3>
 <p>If there are multiple matching lots to choose from during booking, the
 following implicit booking methods could be invoked:</p>
 <ul>
@@ -1462,7 +1503,7 @@ part of the open directive, something like this:</p>
 <pre><code>2003-02-17 open Assets:Ameritrade:HOOL  HOOL  booking:FIFO
 </code></pre>
 <p>(I’m not sure about the syntax.)</p>
-<h4 id="resolving-same-date-ambiguity"><a id="resolving-same-date-ambiguity"></a>Resolving Same Date Ambiguity<a class="headerlink" href="#resolving-same-date-ambiguity" title="Permanent link"></a></h4>
+<h4 id="resolving-same-date-ambiguity">Resolving Same Date Ambiguity<a class="headerlink" href="#resolving-same-date-ambiguity" title="Permanent link"></a></h4>
 <p>If the automatic booking method gets invoked to resolve an ambiguous lot
 reduction, e.g. FIFO, if there are multiple lots at the same date,
 something needs to be done to resolve which of the lots is to be chosen.
@@ -1480,7 +1521,7 @@ example, in the following case, a WIDGET Of 8 GBP would be selected:</p>
   Assets:Cash           11 GBP 
   Assets:Inventory      -1 WIDGET {} ;; Ambiguous lot
 </code></pre>
-<h3 id="dates-inserted-by-default"><a id="dates-inserted-by-default"></a>Dates Inserted by Default<a class="headerlink" href="#dates-inserted-by-default" title="Permanent link"></a></h3>
+<h3 id="dates-inserted-by-default">Dates Inserted by Default<a class="headerlink" href="#dates-inserted-by-default" title="Permanent link"></a></h3>
 <p>By default, if an explicit date is not specified in a cost, the date of
 the transaction that holds the posting should be attached to the trading
 lot automatically. This date is overridable so that stock splits may be
@@ -1494,7 +1535,7 @@ implemented by a transformation to a transaction like this:</p>
   Assets:Investments:Stock   10 HOOL  {500.00 USD, 2014-01-04} ; augment
   Assets:Investments:Stock   10 HOOLL {500.00 USD, 2014-01-04} ; augment
 </code></pre>
-<h3 id="matching-with-no-information"><a id="matching-with-no-information"></a>Matching with No Information<a class="headerlink" href="#matching-with-no-information" title="Permanent link"></a></h3>
+<h3 id="matching-with-no-information">Matching with No Information<a class="headerlink" href="#matching-with-no-information" title="Permanent link"></a></h3>
 <p>Supplying no information for the cost should be supported and is
 sometimes useful: in the case of <em>augmenting</em> a position, if all the
 other legs have values specified, we should be able to automatically
@@ -1516,7 +1557,7 @@ defined.</p>
 inform us that this posting has to be considered “held at cost.” This is
 important to disambiguate from a price conversion with no associated
 cost.</p>
-<h3 id="reducing-multiple-lots"><a id="reducing-multiple-lots"></a>Reducing Multiple Lots<a class="headerlink" href="#reducing-multiple-lots" title="Permanent link"></a></h3>
+<h3 id="reducing-multiple-lots">Reducing Multiple Lots<a class="headerlink" href="#reducing-multiple-lots" title="Permanent link"></a></h3>
 <p>If a single trade needs to close multiple existing lots of an inventory,
 this can dealt with trivially by inserting one posting for each lot. I
 think this is a totally reasonable requirement. This could represent a
@@ -1544,7 +1585,7 @@ invoked. By default, this strategy will be "STRICT" which will generate
 an error, but if this account's strategy is set to "FIFO" (or is not set
 and the default global strategy is "FIFO"), the FIFO lots would be
 automatically selected for you, as per your wish.</p>
-<h3 id="lot-basis-modification"><a id="lot-basis-modification"></a>Lot Basis Modification<a class="headerlink" href="#lot-basis-modification" title="Permanent link"></a></h3>
+<h3 id="lot-basis-modification">Lot Basis Modification<a class="headerlink" href="#lot-basis-modification" title="Permanent link"></a></h3>
 <p>Another idea is to support the modification of a specific lot’s cost
 basis in a single leg. The way this could work, is by specifying the
 number of units to modify, and the “+ number currency” syntax would be
@@ -1563,14 +1604,14 @@ significantly):</p>
 </code></pre>
 <p>In any case, all the fields other than the total cost adjustment would
 be used to select which lot to adjust.</p>
-<h3 id="tag-reuse"><a id="tag-reuse"></a>Tag Reuse<a class="headerlink" href="#tag-reuse" title="Permanent link"></a></h3>
+<h3 id="tag-reuse">Tag Reuse<a class="headerlink" href="#tag-reuse" title="Permanent link"></a></h3>
 <p>We will have to be careful in the inventory booking to warn on reuse of
 lot labels. Labels should be unique.</p>
-<h2 id="examples"><a id="examples"></a>Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
 <p>Nothing speaks more clearly than concrete examples. If otherwise
 unspecified, we are assuming that the booking method on the
 Assets:Investments:Stock account is STRICT.</p>
-<h3 id="no-conflict"><a id="no-conflict"></a>No Conflict<a class="headerlink" href="#no-conflict" title="Permanent link"></a></h3>
+<h3 id="no-conflict">No Conflict<a class="headerlink" href="#no-conflict" title="Permanent link"></a></h3>
 <p>Given the following inventory lots:</p>
 <blockquote>
 <p>21, (HOOL, 500, USD, 2012-05-01, null)</p>
@@ -1597,7 +1638,7 @@ lots):</p>
   Assets:Investments:Stock           -10 HOOL {500 USD, 2010-01-01}
   ...
 </code></pre>
-<h3 id="explicit-selection-by-cost"><a id="explicit-selection-by-cost"></a>Explicit Selection By Cost<a class="headerlink" href="#explicit-selection-by-cost" title="Permanent link"></a></h3>
+<h3 id="explicit-selection-by-cost">Explicit Selection By Cost<a class="headerlink" href="#explicit-selection-by-cost" title="Permanent link"></a></h3>
 <p>Given the following inventory:</p>
 <blockquote>
 <p>21, (HOOL, 500, USD, 2012-05-01, null)</p>
@@ -1621,7 +1662,7 @@ booking against the lot at 2012-05-01 (earliest):</p>
   Assets:Investments:Stock           -10 HOOL {500 USD}
   ...
 </code></pre>
-<h3 id="explicit-selection-by-date"><a id="explicit-selection-by-date"></a>Explicit Selection By Date<a class="headerlink" href="#explicit-selection-by-date" title="Permanent link"></a></h3>
+<h3 id="explicit-selection-by-date">Explicit Selection By Date<a class="headerlink" href="#explicit-selection-by-date" title="Permanent link"></a></h3>
 <p>Given the same inventory as previously, this booking should succeed:</p>
 <pre><code>2013-05-01 *
   Assets:Investments:Stock           -10 HOOL {2012-05-01}
@@ -1632,7 +1673,7 @@ booking against the lot at 2012-05-01 (earliest):</p>
   Assets:Investments:Stock           -10 HOOL {2012-06-01}
   ...
 </code></pre>
-<h3 id="explicit-selection-by-label"><a id="explicit-selection-by-label"></a>Explicit Selection By Label<a class="headerlink" href="#explicit-selection-by-label" title="Permanent link"></a></h3>
+<h3 id="explicit-selection-by-label">Explicit Selection By Label<a class="headerlink" href="#explicit-selection-by-label" title="Permanent link"></a></h3>
 <p>This booking should succeed, because there is a single lot with the
 “abc“ label:</p>
 <pre><code>2013-05-01 *
@@ -1646,7 +1687,7 @@ this inventory, for example:</p>
 <p>31, (HOOL, 510, USD, 2012-07-01, “abc”)</p>
 </blockquote>
 <p>The same booking should fail.</p>
-<h3 id="explicit-selection-by-combination"><a id="explicit-selection-by-combination"></a>Explicit Selection By Combination<a class="headerlink" href="#explicit-selection-by-combination" title="Permanent link"></a></h3>
+<h3 id="explicit-selection-by-combination">Explicit Selection By Combination<a class="headerlink" href="#explicit-selection-by-combination" title="Permanent link"></a></h3>
 <p>With the initial inventory, this booking should succeed (unambiguous):</p>
 <pre><code>2013-05-01 *
   Assets:Investments:Stock           -10 HOOL {500 USD, 2012-06-01}
@@ -1654,14 +1695,14 @@ this inventory, for example:</p>
 </code></pre>
 <p>There is only one lot at a cost of 500 USD and at an acquisition date of
 2012-06-01.</p>
-<h3 id="not-enough-units"><a id="not-enough-units"></a>Not Enough Units<a class="headerlink" href="#not-enough-units" title="Permanent link"></a></h3>
+<h3 id="not-enough-units">Not Enough Units<a class="headerlink" href="#not-enough-units" title="Permanent link"></a></h3>
 <p>The following booking would be unambiguous, but would fail, because
 there aren’t enough units of the lot in the inventory to subtract from:</p>
 <pre><code>2013-05-01 *
   Assets:Investments:Stock           -33 HOOL {500 USD, 2012-06-01}
   …
 </code></pre>
-<h3 id="redundant-selection-of-same-lot"><a id="redundant-selection-of-same-lot"></a>Redundant Selection of Same Lot<a class="headerlink" href="#redundant-selection-of-same-lot" title="Permanent link"></a></h3>
+<h3 id="redundant-selection-of-same-lot">Redundant Selection of Same Lot<a class="headerlink" href="#redundant-selection-of-same-lot" title="Permanent link"></a></h3>
 <p>If two separate postings select the same inventory lot in one
 transaction, it should be able to work:</p>
 <pre><code>2013-05-01 *
@@ -1675,7 +1716,7 @@ transaction, it should be able to work:</p>
   Assets:Investments:Stock           -20 HOOL {abc}
   ...
 </code></pre>
-<h3 id="automatic-price-extrapolation"><a id="automatic-price-extrapolation"></a>Automatic Price Extrapolation<a class="headerlink" href="#automatic-price-extrapolation" title="Permanent link"></a></h3>
+<h3 id="automatic-price-extrapolation">Automatic Price Extrapolation<a class="headerlink" href="#automatic-price-extrapolation" title="Permanent link"></a></h3>
 <p>If all the postings of a transaction can have their balance computed, we
 allow a single price to be automatically calculated - this should work:</p>
 <pre><code>2014-03-15 * "Adjust cost basis from 500 USD to 510 USD"
@@ -1696,7 +1737,7 @@ this should work as well:</p>
   Assets:US:Invest:HOOL       10.00 HOOL {2014-02-04}
   Income:US:Invest:Gains    -340.51 USD
 </code></pre>
-<h3 id="average-cost-booking"><a id="average-cost-booking"></a>Average Cost Booking<a class="headerlink" href="#average-cost-booking" title="Permanent link"></a></h3>
+<h3 id="average-cost-booking">Average Cost Booking<a class="headerlink" href="#average-cost-booking" title="Permanent link"></a></h3>
 <p>Augmenting lots with the average cost syntax should fail:</p>
 <pre><code>2014-03-15 * "Buying at average cost, what does this mean?"
   Assets:US:Invest:Stock      10.00 HOOL {*}
@@ -1759,7 +1800,7 @@ resolve this case, that is, replacing the sell leg with this:</p>
 </code></pre>
 <p>I’m quite sure it wouldn’t be useful, but we could go the extra mile and
 be as general as we can possibly be.</p>
-<h2 id="future-work"><a id="future-work"></a>Future Work<a class="headerlink" href="#future-work" title="Permanent link"></a></h2>
+<h2 id="future-work">Future Work<a class="headerlink" href="#future-work" title="Permanent link"></a></h2>
 <p>This proposal does not yet deal with cost basis re-adjustments! We need
 to way to be able to add or remove a fixed <em>dollar amount</em> to a
 position’s cost basis, that is, from (1) a lot identifier and (2) a
@@ -1818,7 +1859,7 @@ powerful interpolation, like this:</p>
   Income:US:Invest:Gains     -230.00 USD
 </code></pre>
 <p>See the Smarter Elision document for more details on a proposal.</p>
-<h3 id="inter-account-booking"><a id="inter-account-booking"></a>Inter-Account Booking<a class="headerlink" href="#inter-account-booking" title="Permanent link"></a></h3>
+<h3 id="inter-account-booking">Inter-Account Booking<a class="headerlink" href="#inter-account-booking" title="Permanent link"></a></h3>
 <p>Some tax laws require a user to book according to a specific method, and
 this might apply between all accounts. This means that some sort of
 transfer needs to be applied in order to handle this correctly. See the
@@ -1826,8 +1867,8 @@ transfer needs to be applied in order to handle this correctly. See the
 document</span></a> for
 detail.</p>
 <p><strong><em>TODO - complete this with more tests for average cost booking!</em></strong></p>
-<h2 id="implementation-notes"><a id="implementation-notes"></a>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Permanent link"></a></h2>
-<h3 id="separate-parsing-interpolation"><a id="separate-parsing-interpolation"></a>Separate Parsing &amp; Interpolation<a class="headerlink" href="#separate-parsing-interpolation" title="Permanent link"></a></h3>
+<h2 id="implementation-notes">Implementation Notes<a class="headerlink" href="#implementation-notes" title="Permanent link"></a></h2>
+<h3 id="separate-parsing-interpolation">Separate Parsing &amp; Interpolation<a class="headerlink" href="#separate-parsing-interpolation" title="Permanent link"></a></h3>
 <p>In order to implement a syntax for reduction that does not specify the
 cost, we need to make changes to the parser. Because there may be no
 costs on the posting, it becomes impossible to perform balance checks at
@@ -1835,7 +1876,7 @@ parsing time. Therefore, we will need to postpone balance checks to a
 stage <em>after</em> parsing. This is reasonable and in a way nice: it is best
 if the Beancount parser not output many complex errors at that stage. A
 new “post-parse” stage will be added, right before running the plugins.</p>
-<h2 id="conclusion"><a id="conclusion"></a>Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>This document is work-in-progress. I’d really love to get some feedback
 in order to improve the suggested method, which is why I put this down
 in words instead of just writing the code. I think a better semantic can

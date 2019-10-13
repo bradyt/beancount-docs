@@ -232,11 +232,18 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#design-doc-for-ledgerhub">Design Doc for Ledgerhub</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#goals-stages">Goals &amp; Stages</a></li>
+            <li><a href="#details-of-stages">Details of Stages</a></li>
+            <li><a href="#implementation-details">Implementation Details</a></li>
+            <li><a href="#importers-interface">Importers Interface</a></li>
+            <li><a href="#references">References</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="design-doc-for-ledgerhub"><a id="title"></a>Design Doc for Ledgerhub<a class="headerlink" href="#design-doc-for-ledgerhub" title="Permanent link"></a></h1>
+<h1 id="design-doc-for-ledgerhub">Design Doc for Ledgerhub<a class="headerlink" href="#design-doc-for-ledgerhub" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 February 2014</p>
 <p><a href="http://furius.ca/beancount/doc/ledgerhub-design-doc"><span
@@ -262,7 +269,7 @@ LedgerHub. LedgerHub is being transitioned back to Beancount. See <a href="https
 class="underline">this postmortem
 document</span></a>
 for details [blais, 2015-12].</em></strong></p>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>Several open source projects currently exist that provide the capability
 to create double-entry transactions for bookkeeping from a text file
 input. These various double-entry bookkeeping projects include <a href="http://furius.ca/beancount/"><span
@@ -326,7 +333,7 @@ and to decouple it from the Beancount source code, so that others can
 contribute to it, with the intent of providing project-agnostic
 functionality. This document describes the goals and design of this
 project.</p>
-<h2 id="goals-stages"><a id="goals-stages"></a>Goals &amp; Stages<a class="headerlink" href="#goals-stages" title="Permanent link"></a></h2>
+<h2 id="goals-stages">Goals &amp; Stages<a class="headerlink" href="#goals-stages" title="Permanent link"></a></h2>
 <p>This new project should address the following aspects in a
 project-agnostic manner:</p>
 <ul>
@@ -409,8 +416,8 @@ algorithm on some of the transaction data (i.e., the narration fields
 and perhaps some of the amounts, account names, and dates). Each project
 should provide a way to obtain the necessary data from its input data
 file, in the same format.</p>
-<h2 id="details-of-stages"><a id="details-of-stages"></a>Details of Stages<a class="headerlink" href="#details-of-stages" title="Permanent link"></a></h2>
-<h3 id="fetching"><a id="fetching"></a>Fetching<a class="headerlink" href="#fetching" title="Permanent link"></a></h3>
+<h2 id="details-of-stages">Details of Stages<a class="headerlink" href="#details-of-stages" title="Permanent link"></a></h2>
+<h3 id="fetching">Fetching<a class="headerlink" href="#fetching" title="Permanent link"></a></h3>
 <p>By default, a user should be able to click their way to their
 institution’s website and download documents to their ~/Downloads
 directory. A directory with some files in it should be the reasonable
@@ -429,10 +436,10 @@ filtered.</p>
 institutions are located. Some places have solid support, some less. Use
 the data from <a href="http://ofxhome.com"><span
 class="underline">ofxhome.com</span></a> to configure.</p>
-<h4 id="fetching-prices"><a id="fetching-prices"></a>Fetching Prices<a class="headerlink" href="#fetching-prices" title="Permanent link"></a></h4>
+<h4 id="fetching-prices">Fetching Prices<a class="headerlink" href="#fetching-prices" title="Permanent link"></a></h4>
 <p>For fetching prices, there are many libraries out there. Initially we
 will port Beancount’s bean-prices to ledgerhub.</p>
-<h3 id="identification"><a id="identification"></a>Identification<a class="headerlink" href="#identification" title="Permanent link"></a></h3>
+<h3 id="identification">Identification<a class="headerlink" href="#identification" title="Permanent link"></a></h3>
 <p>The identification stage consists in running a driver program that</p>
 <ul>
 <li>
@@ -519,7 +526,7 @@ of the regular expressions is the easy way to do that, and it works
 well. This also provides a clear place to attach the list of accounts to
 a particular importer, something that necessarily requires user input
 anyway.</p>
-<h3 id="extraction"><a id="extraction"></a>Extraction<a class="headerlink" href="#extraction" title="Permanent link"></a></h3>
+<h3 id="extraction">Extraction<a class="headerlink" href="#extraction" title="Permanent link"></a></h3>
 <p>Once the association is made, we run the importers on each of the files.
 Some data structure is produced. The importers each do what they do -
 this is where the ugly tricks go. Ideally, we should build a library of
@@ -534,7 +541,7 @@ otherwise).</p>
 format if you want to have the option of running the various steps as
 separate UNIX-style tools and/or process the intermediate files with
 regular text processing tools.</p>
-<h3 id="transform"><a id="transform"></a>Transform<a class="headerlink" href="#transform" title="Permanent link"></a></h3>
+<h3 id="transform">Transform<a class="headerlink" href="#transform" title="Permanent link"></a></h3>
 <p>Some transformations should be independent of importers. In particular,
 automatically categorizing incomplete transactions is not dependent on
 which importer created the transaction. I’d like to keep this step as
@@ -567,7 +574,7 @@ each ledger language implementation to provide relevant data for
 training.</p>
 <p>The output data here should be in the same format as its input, so that
 we can optionally skip this phase.</p>
-<h3 id="rendering"><a id="rendering"></a>Rendering<a class="headerlink" href="#rendering" title="Permanent link"></a></h3>
+<h3 id="rendering">Rendering<a class="headerlink" href="#rendering" title="Permanent link"></a></h3>
 <p>An output renderer should be selected by the driver. This is where we
 convert the extracted data structures to the particular flavor of ledger
 implementation you’re using. Each of the renderer implementations should
@@ -579,7 +586,7 @@ required in order for the code to run.</p>
 because each of the languages have particularies.</p>
 <p>[AMaffei] Also, it should be possible to provide a generic renderer
 that takes printf-style format strings to output in any desired format.</p>
-<h3 id="filing"><a id="filing"></a>Filing<a class="headerlink" href="#filing" title="Permanent link"></a></h3>
+<h3 id="filing">Filing<a class="headerlink" href="#filing" title="Permanent link"></a></h3>
 <p>Importers should be able to look at the textified contents of the files
 and find the file/statement date. This is useful, because we can rename
 the file by prepending the date of the statement, and the date at which
@@ -605,7 +612,7 @@ in the journal web pages, and serve their contents when the user clicks
 on the links. Even without this capability, it can be used to maintain a
 cache of your documents (I maintain mine in a repository which I sync to
 an external drive for backup).</p>
-<h2 id="implementation-details"><a id="implementation-details"></a>Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link"></a></h2>
+<h2 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link"></a></h2>
 <p>Notes about the initial implementation:</p>
 <ul>
 <li>
@@ -674,7 +681,7 @@ an external drive for backup).</p>
 <p>This is obviously based on my current importers code in Beancount. I’m
 very open to new ideas and suggestions for this project. Collaborations
 will be most welcome. The more importers we can support, the better.</p>
-<h2 id="importers-interface"><a id="importers-interface"></a>Importers Interface<a class="headerlink" href="#importers-interface" title="Permanent link"></a></h2>
+<h2 id="importers-interface">Importers Interface<a class="headerlink" href="#importers-interface" title="Permanent link"></a></h2>
 <p>Each importer should be implemented as a class that derives from this
 one:</p>
 <p>class ImporterBase:<br />
@@ -728,7 +735,7 @@ importer (some institutions provide a variety of download formats). In
 addition, a one-line description of the input file support should be
 provided, so that we can render at runtime a list of the supported file
 types.</p>
-<h2 id="references"><a id="references"></a>References<a class="headerlink" href="#references" title="Permanent link"></a></h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link"></a></h2>
 <p>Other projects with the same goal as importing account data into Ledger
 are listed here.</p>
 <ul>

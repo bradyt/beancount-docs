@@ -232,11 +232,22 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#beancount-precision-tolerances">Beancount Precision &amp; Tolerances</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#how-precision-is-determined">How Precision is Determined</a></li>
+            <li><a href="#balance-assertions-padding">Balance Assertions &amp; Padding</a></li>
+            <li><a href="#saving-rounding-error">Saving Rounding Error</a></li>
+            <li><a href="#precision-of-inferred-numbers">Precision of Inferred Numbers</a></li>
+            <li><a href="#porting-existing-input">Porting Existing Input</a></li>
+            <li><a href="#representational-issues">Representational Issues</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#historical-notes">Historical Notes</a></li>
+            <li><a href="#further-reading">Further Reading</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="beancount-precision-tolerances"><a id="title"></a>Beancount Precision &amp; Tolerances<a class="headerlink" href="#beancount-precision-tolerances" title="Permanent link"></a></h1>
+<h1 id="beancount-precision-tolerances">Beancount Precision &amp; Tolerances<a class="headerlink" href="#beancount-precision-tolerances" title="Permanent link"></a></h1>
 <p><a href="http://plus.google.com/+MartinBlais"><span class="underline">Martin
 Blais</span></a>, May 2015</p>
 <p><a href="http://furius.ca/beancount/doc/tolerances"><span
@@ -244,7 +255,7 @@ class="underline">http://furius.ca/beancount/doc/tolerances</span></a></p>
 <p><em>This document describes how Beancount handles the limited precision of
 numbers in transaction balance checks and balance assertions. It also
 documents rounding that may occur in inferring numbers automatically.</em></p>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>Beancount automatically enforces that the amounts on the Postings of
 Transactions entered in an input file sum up to zero. In order for
 Beancount to verify this in a realistic way, it must tolerate a small
@@ -282,7 +293,7 @@ amount of the contribution ($384.61 / $37.61 = <strong>10.2262696091</strong>).<
 transactions. Clearly, if we are to try to represent and reproduce the
 transactions of external accounts to our input file, there needs to be
 some tolerance in the balance verification algorithm.</p>
-<h2 id="how-precision-is-determined"><a id="how-precision-is-determined"></a>How Precision is Determined<a class="headerlink" href="#how-precision-is-determined" title="Permanent link"></a></h2>
+<h2 id="how-precision-is-determined">How Precision is Determined<a class="headerlink" href="#how-precision-is-determined" title="Permanent link"></a></h2>
 <p>Beancount attempts to derive the precision from each transaction
 <strong>automatically</strong>, from the input, for each Transaction <strong>in
 isolation</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Let us inspect our last example again:</p>
@@ -320,7 +331,7 @@ the “weight” of the first posting is in USD (10.22626 x 37.61 =
 of this transaction) which results in a <em>residual</em> value of -0.0003614
 USD. This value is compared to the tolerance for units of USD:
 |-0.0003614| &lt; 0.005, and this transaction balances.</p>
-<h3 id="prices-and-costs"><a id="prices-and-costs"></a>Prices and Costs<a class="headerlink" href="#prices-and-costs" title="Permanent link"></a></h3>
+<h3 id="prices-and-costs">Prices and Costs<a class="headerlink" href="#prices-and-costs" title="Permanent link"></a></h3>
 <p>For the purpose of inferring the tolerance to be used, the price and
 cost amounts declared on a transaction’s Postings <strong>are ignored</strong>. This
 makes sense if you consider that these are usually specified at a higher
@@ -338,7 +349,7 @@ yield anything in this case because it is integral; the next section
 explains this). There is no tolerance inferred for USD, neither from the
 cost from the first posting (21.8800 USD), nor from the prices of the
 remaining postings (0.6842 USD).</p>
-<h3 id="integer-amounts"><a id="integer-amounts"></a>Integer Amounts<a class="headerlink" href="#integer-amounts" title="Permanent link"></a></h3>
+<h3 id="integer-amounts">Integer Amounts<a class="headerlink" href="#integer-amounts" title="Permanent link"></a></h3>
 <p>For integer amounts in the input, the precision is <strong>not</strong> inferred to
 0.5, that is, this should fail to balance:</p>
 <pre><code>2013-04-03 * "Buy Mutual Fund - Price as of date based on closing price"
@@ -359,7 +370,7 @@ precision</strong> that one can specify just by inputting numbers is 0.05 units
 of the currency, for example, by providing a number such as 10.7 as
 input<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. On the other hand, the settings for the default tolerance to
 use allows specifying arbitrary numbers.</p>
-<h3 id="resolving-ambiguities"><a id="resolving-ambiguities"></a>Resolving Ambiguities<a class="headerlink" href="#resolving-ambiguities" title="Permanent link"></a></h3>
+<h3 id="resolving-ambiguities">Resolving Ambiguities<a class="headerlink" href="#resolving-ambiguities" title="Permanent link"></a></h3>
 <p>A case that presents itself rarely is one where multiple different
 precisions are being input for the same currency. In this case, the
 <strong>largest</strong> (coarsest) of the inferred input tolerances is used.</p>
@@ -374,7 +385,7 @@ write this:</p>
 <p>The amounts we have for USD in this case are 2141.36, 0.08 and -10.125,
 which infer tolerances of either 0.005 or 0.0005. We select the coarsest
 amount: this transaction tolerates an imprecision of 0.005 USD.</p>
-<h3 id="default-tolerances"><a id="default-tolerances"></a>Default Tolerances<a class="headerlink" href="#default-tolerances" title="Permanent link"></a></h3>
+<h3 id="default-tolerances">Default Tolerances<a class="headerlink" href="#default-tolerances" title="Permanent link"></a></h3>
 <p>When a transaction’s numbers do not provide enough information to infer
 a tolerance <em>locally</em>, we fall back to some default tolerance value. As
 seen in previous examples, this may occur either because (a) the numbers
@@ -403,7 +414,7 @@ will not work). If you need to loosen up the tolerance, see the
 the Commodity directive for this, but this would break from the
 invariant that meta-data is only there to be used by users and plugins,
 so I’ve refrained so far.)</em></p>
-<h3 id="tolerance-multiplier"><a id="tolerance-multiplier"></a>Tolerance Multiplier<a class="headerlink" href="#tolerance-multiplier" title="Permanent link"></a></h3>
+<h3 id="tolerance-multiplier">Tolerance Multiplier<a class="headerlink" href="#tolerance-multiplier" title="Permanent link"></a></h3>
 <p>We’re shown previously that when the tolerance value isn’t provided
 explicitly, that it is inferred from the numbers on the postings. By
 default, the smallest digit found on those numbers is divided by half to
@@ -418,7 +429,7 @@ for the inferred tolerance:</p>
 <p>This value overrides the default multiplier. In this example, for a
 transaction with postings only with values such as 24.45 CHF, the
 inferred tolerance for CHF would be +/- 0.012 CHF.</p>
-<h3 id="inferring-tolerances-from-cost"><a id="inferring-tolerances-from-cost"></a>Inferring Tolerances from Cost<a class="headerlink" href="#inferring-tolerances-from-cost" title="Permanent link"></a></h3>
+<h3 id="inferring-tolerances-from-cost">Inferring Tolerances from Cost<a class="headerlink" href="#inferring-tolerances-from-cost" title="Permanent link"></a></h3>
 <p>There is also a feature that expands the maximum tolerance inferred on
 transactions to include values on cost currencies inferred by postings
 held at-cost or converted at price. Those postings can imply a tolerance
@@ -436,7 +447,7 @@ value of all the inferred tolerances).</p>
 </code></pre>
 <p>Enabling this flag only makes the tolerances potentially wider, never
 smaller.</p>
-<h2 id="balance-assertions-padding"><a id="balance-assertions-padding"></a>Balance Assertions &amp; Padding<a class="headerlink" href="#balance-assertions-padding" title="Permanent link"></a></h2>
+<h2 id="balance-assertions-padding">Balance Assertions &amp; Padding<a class="headerlink" href="#balance-assertions-padding" title="Permanent link"></a></h2>
 <p>There are a few other places where approximate comparisons are needed.
 Balance assertions also compare two numbers:</p>
 <pre><code>2015-05-08 balance Assets:Investments:RGAGX       4.271 RGAGX
@@ -452,13 +463,13 @@ a looser assertion, you could have declared:</p>
 <p>This assertion would accept values from 4.26 RGAGX to 4.28 RGAGX.</p>
 <p>Note that the inferred tolerances are also expanded by the inferred
 tolerance multiplier discussed above.</p>
-<h3 id="tolerances-that-trigger-padding"><a id="tolerances-that-trigger-padding"></a>Tolerances that Trigger Padding<a class="headerlink" href="#tolerances-that-trigger-padding" title="Permanent link"></a></h3>
+<h3 id="tolerances-that-trigger-padding">Tolerances that Trigger Padding<a class="headerlink" href="#tolerances-that-trigger-padding" title="Permanent link"></a></h3>
 <p>Pad directives automatically insert transactions to bring account
 balances in-line with a subsequent balance assertion. The insertion only
 triggers if the balance differs from the expected value, and the
 tolerance for this to occur behaves exactly the same as for balance
 assertions.</p>
-<h3 id="explicit-tolerances-on-balance-assertions"><a id="explicit-tolerances-on-balance-assertions"></a>Explicit Tolerances on Balance Assertions<a class="headerlink" href="#explicit-tolerances-on-balance-assertions" title="Permanent link"></a></h3>
+<h3 id="explicit-tolerances-on-balance-assertions">Explicit Tolerances on Balance Assertions<a class="headerlink" href="#explicit-tolerances-on-balance-assertions" title="Permanent link"></a></h3>
 <p>Beancount supports the specification of an explicit tolerance amount,
 like this:</p>
 <pre><code>2015-05-08 balance Assets:Investments:RGAGX       4.271 ~ 0.01 RGAGX
@@ -466,7 +477,7 @@ like this:</p>
 <p>This feature was added because of some observed peculiarities in
 Vanguard investment accounts whereby rounding appears to follow odd
 rules and balances don’t match.</p>
-<h2 id="saving-rounding-error"><a id="saving-rounding-error"></a>Saving Rounding Error<a class="headerlink" href="#saving-rounding-error" title="Permanent link"></a></h2>
+<h2 id="saving-rounding-error">Saving Rounding Error<a class="headerlink" href="#saving-rounding-error" title="Permanent link"></a></h2>
 <p>As we saw previously, transactions don’t have to balance exactly, they
 allow for a small amount of imprecision. This bothers some people. If
 you would like to track and measure the residual amounts allowed by the
@@ -496,7 +507,7 @@ should remember to declare the rounding account in your file at an
 appropriate date, like this:</p>
 <pre><code>2000-01-01 open Equity:RoundingError
 </code></pre>
-<h2 id="precision-of-inferred-numbers"><a id="precision-of-inferred-numbers"></a>Precision of Inferred Numbers<a class="headerlink" href="#precision-of-inferred-numbers" title="Permanent link"></a></h2>
+<h2 id="precision-of-inferred-numbers">Precision of Inferred Numbers<a class="headerlink" href="#precision-of-inferred-numbers" title="Permanent link"></a></h2>
 <p>Beancount is able to infer some missing numbers in the input. For
 example, the second posting in this transaction is “interpolated”
 automatically by Beancount:</p>
@@ -548,7 +559,7 @@ option "account_rounding" "Equity:RoundingError"
   Assets:Investments:Cash     -227.207 USD
   Equity:RoundingError          0.0003 USD
 </code></pre>
-<h2 id="porting-existing-input"><a id="porting-existing-input"></a>Porting Existing Input<a class="headerlink" href="#porting-existing-input" title="Permanent link"></a></h2>
+<h2 id="porting-existing-input">Porting Existing Input<a class="headerlink" href="#porting-existing-input" title="Permanent link"></a></h2>
 <p>The inference of tolerance values from the transaction’s numbers is
 generally good enough to keep existing files working without changes.
 There may be new errors appearing in older files once we process them
@@ -577,7 +588,7 @@ transaction from the Integer Amounts section:</p>
   Assets:US:Vanguard:Cash      -384.00 USD
 </code></pre>
 <p>is sufficient to silence the balance check.</p>
-<h2 id="representational-issues"><a id="representational-issues"></a>Representational Issues<a class="headerlink" href="#representational-issues" title="Permanent link"></a></h2>
+<h2 id="representational-issues">Representational Issues<a class="headerlink" href="#representational-issues" title="Permanent link"></a></h2>
 <p>Internally, Beancount uses a decimal number representation (not a
 binary/float representation, neither rational numbers). Calculations
 that result in a large number of fractional digits are carried out to 28
@@ -588,7 +599,7 @@ system: the tolerances allows us to post the precise amounts declared by
 users, and only automatically derived prices and costs will possibly
 result in precisions calculated to an unrealistic number of digits that
 could creep into aggregations in the rest of the system.</p>
-<h2 id="references"><a id="references"></a>References<a class="headerlink" href="#references" title="Permanent link"></a></h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link"></a></h2>
 <p>The <a href="../31_rounding_precision_in_beancount/"><span class="underline">original
 proposal</span></a> that led to this
 implementation can be <a href="../31_rounding_precision_in_beancount/"><span class="underline">found
@@ -604,7 +615,7 @@ described in this document was implemented.</p>
 option that was set by default to 0.015 of any units. This option has
 been deprecated with the merging of the changes described in this
 document.</p>
-<h2 id="historical-notes"><a id="historical-notes"></a>Historical Notes<a class="headerlink" href="#historical-notes" title="Permanent link"></a></h2>
+<h2 id="historical-notes">Historical Notes<a class="headerlink" href="#historical-notes" title="Permanent link"></a></h2>
 <p>Here’s an overview of the status of numbers rendering in Beancount as of
 March 2016, <a href="https://groups.google.com/d/msg/beancount/frfN1zc6TEc/d5OjuDnREgAJ"><span class="underline">from the
 mailing-list</span></a>:</p>
@@ -706,7 +717,7 @@ naming of options, I think the tolerance options all have "tolerance"
 in their name, but there aren't options to override the rendering and
 when I add them they should all have a common name as well.</p>
 </blockquote>
-<h2 id="further-reading"><a id="further-reading"></a>Further Reading<a class="headerlink" href="#further-reading" title="Permanent link"></a></h2>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link"></a></h2>
 <p><a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#689"><span class="underline">What Every Computer Scientist Should Know About
 Floating-Point
 Arithmetic</span></a></p>

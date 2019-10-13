@@ -232,11 +232,18 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#beancount-scripting-plugins">Beancount Scripting &amp; Plugins</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#load-pipeline">Load Pipeline</a></li>
+            <li><a href="#writing-plug-ins">Writing Plug-ins</a></li>
+            <li><a href="#writing-scripts">Writing Scripts</a></li>
+            <li><a href="#executing-plugins">Executing Plugins</a></li>
+            <li><a href="#going-further">Going Further</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="beancount-scripting-plugins"><a id="title"></a>Beancount Scripting &amp; Plugins<a class="headerlink" href="#beancount-scripting-plugins" title="Permanent link"></a></h1>
+<h1 id="beancount-scripting-plugins">Beancount Scripting &amp; Plugins<a class="headerlink" href="#beancount-scripting-plugins" title="Permanent link"></a></h1>
 <p><a href="http://plus.google.com/+MartinBlais"><span class="underline">Martin
 Blais</span></a>, July 2014</p>
 <p><a href="http://furius.ca/beancount/doc/scripting"><span
@@ -254,7 +261,7 @@ String</span></a></p>
 Round-Tripping</span></a></p>
 <p><a href="#executing-plugins"><span class="underline">Going Further</span></a></p>
 </blockquote>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This document provides examples and guidelines on how to write scripts
 that use the contents of your ledger. It also provides information on
 how to write your own “plugins,” which are just Python functions that
@@ -262,7 +269,7 @@ you can configure to transform your transactions or synthesize ones
 programmatically. These are the main two methods for extending
 Beancount’s features and for writing your own custom reports. You simply
 use Python to do this.</p>
-<h2 id="load-pipeline"><a id="load-pipeline"></a>Load Pipeline<a class="headerlink" href="#load-pipeline" title="Permanent link"></a></h2>
+<h2 id="load-pipeline">Load Pipeline<a class="headerlink" href="#load-pipeline" title="Permanent link"></a></h2>
 <p>You need to know a little bit about how Beancount processes its input
 files. Internally, the single point of entry to load an input file is
 the beancount.loader.load_file() function, which accepts an input file
@@ -318,7 +325,7 @@ lists of entries that are assumed immutable<sup id="fnref:1"><a class="footnote-
 allows programs that monitor the file for changes to reload it and
 reapply the same list of plugins. It also allows the author of the input
 file to selectively enable various optional features that way.</p>
-<h2 id="writing-plug-ins"><a id="writing-plug-ins"></a>Writing Plug-ins<a class="headerlink" href="#writing-plug-ins" title="Permanent link"></a></h2>
+<h2 id="writing-plug-ins">Writing Plug-ins<a class="headerlink" href="#writing-plug-ins" title="Permanent link"></a></h2>
 <p>As you saw in the previous section, loading a Beancount file essentially
 produces a list of directives. Many syntax extensions can be carried out
 by transforming the list of directives into a new list in the plug-ins
@@ -372,7 +379,7 @@ file. The various filters and reports will then operate on the list of
 entries output by your plugin. Refer to the source code in <a href="https://bitbucket.org/blais/beancount/src/tip/beancount/core/"><span
 class="underline">beancount.core</span></a>
 for details and examples of how to manipulate entries.</p>
-<h3 id="plugin-configuration"><a id="plugin-configuration"></a>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permanent link"></a></h3>
+<h3 id="plugin-configuration">Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permanent link"></a></h3>
 <p>Some plugins will require configuration. In order to provide a plugin
 some data specific to your file, you can provide a configuration string:</p>
 <pre><code>plugin "accounting.wash_sales" "days=31"
@@ -380,13 +387,13 @@ some data specific to your file, you can provide a configuration string:</p>
 <p>The plugin function will then receive an extra parameter, the
 configuration string. It is up to the plugin itself to define how it
 gets interpreted.</p>
-<h2 id="writing-scripts"><a id="writing-scripts"></a>Writing Scripts<a class="headerlink" href="#writing-scripts" title="Permanent link"></a></h2>
+<h2 id="writing-scripts">Writing Scripts<a class="headerlink" href="#writing-scripts" title="Permanent link"></a></h2>
 <p>If you need to produce some custom analysis or visualization that cannot
 be achieved using the built-in filtering and reporting capabilities, you
 can just write a script that loads the directives explicitly. This gives
 you control over the flow of the program and you can do anything you
 want.</p>
-<h3 id="loading-from-file"><a id="loading-from-file"></a>Loading from File<a class="headerlink" href="#loading-from-file" title="Permanent link"></a></h3>
+<h3 id="loading-from-file">Loading from File<a class="headerlink" href="#loading-from-file" title="Permanent link"></a></h3>
 <p>You can simply call the beancount.loader.load_file() loader function
 yourself. Here is an example minimal script:</p>
 <pre><code>#!/usr/bin/env python3
@@ -403,7 +410,7 @@ main function; the script above is meant to be minimal). Once again,
 refer to the source code in <a href="https://bitbucket.org/blais/beancount/src/tip/beancount/core/"><span
 class="underline">beancount.core</span></a>
 for details and examples of how to manipulate entries.</p>
-<h3 id="loading-from-string"><a id="loading-from-string"></a>Loading from String<a class="headerlink" href="#loading-from-string" title="Permanent link"></a></h3>
+<h3 id="loading-from-string">Loading from String<a class="headerlink" href="#loading-from-string" title="Permanent link"></a></h3>
 <p>You can also parse a string directly. Use
 beancount.loader.load_string():</p>
 <pre><code>#!/usr/bin/env python3
@@ -421,7 +428,7 @@ class="underline">textwrap.dedent</span></a>
 function comes in handy if you want to indent the Beancount directives
 and have it automatically remove indentation. For a source of many
 examples, see the various tests in the Beancount source code.</p>
-<h3 id="printing-errors"><a id="printing-errors"></a>Printing Errors<a class="headerlink" href="#printing-errors" title="Permanent link"></a></h3>
+<h3 id="printing-errors">Printing Errors<a class="headerlink" href="#printing-errors" title="Permanent link"></a></h3>
 <p>By default, the loader will not print any errors upon loading; we prefer
 loading not to have any side-effect by default. You can provide an
 optional argument to print errors, which is the function to call to
@@ -446,7 +453,7 @@ entries, errors, options = loader.load_file(filename)
 printer.print_errors(errors)
 …
 </code></pre>
-<h3 id="printing-entries-round-tripping"><a id="printing-entries-round-tripping"></a>Printing Entries &amp; Round-Tripping<a class="headerlink" href="#printing-entries-round-tripping" title="Permanent link"></a></h3>
+<h3 id="printing-entries-round-tripping">Printing Entries &amp; Round-Tripping<a class="headerlink" href="#printing-entries-round-tripping" title="Permanent link"></a></h3>
 <p>Printing <a href="https://docs.python.org/3/library/collections.html#collections.namedtuple"><span
 class="underline">namedtuple</span></a>
 entries directly will output some readable though relatively poorly
@@ -468,7 +475,7 @@ structure when read back in. (It should be considered a bug if that is
 not the case.)</p>
 <p>See the beancount.parser.printer module source code for more utility
 functions.</p>
-<h2 id="executing-plugins"><a id="executing-plugins"></a>Executing Plugins<a class="headerlink" href="#executing-plugins" title="Permanent link"></a></h2>
+<h2 id="executing-plugins">Executing Plugins<a class="headerlink" href="#executing-plugins" title="Permanent link"></a></h2>
 <p>All that is required for the plug-in module to be found, is that it must
 be present in your PYTHONPATH environment variable (you need to make
 sure that the relevant __init__.py files exist for import). It can
@@ -487,7 +494,7 @@ plugin "wash_sales"
 </code></pre>
 <p>The Python file wash_sales.py would be stored in the same folder as the
 .beancount file.</p>
-<h2 id="going-further"><a id="going-further"></a>Going Further<a class="headerlink" href="#going-further" title="Permanent link"></a></h2>
+<h2 id="going-further">Going Further<a class="headerlink" href="#going-further" title="Permanent link"></a></h2>
 <p>To understand how to manipulate entries, you should refer to the source
 code, and probably learn more about the following modules:</p>
 <ul>

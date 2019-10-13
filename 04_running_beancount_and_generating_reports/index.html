@@ -232,11 +232,16 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#running-beancount-generating-reports">Running Beancount &amp; Generating Reports</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#filtering-transactions">Filtering Transactions</a></li>
+            <li><a href="#reports">Reports</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="running-beancount-generating-reports"><a id="title"></a>Running Beancount &amp; Generating Reports<a class="headerlink" href="#running-beancount-generating-reports" title="Permanent link"></a></h1>
+<h1 id="running-beancount-generating-reports">Running Beancount &amp; Generating Reports<a class="headerlink" href="#running-beancount-generating-reports" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 July-Sep 2014</p>
 <p><a href="http://furius.ca/beancount/doc/tools"><span
@@ -299,15 +304,15 @@ Types</span></a></p>
 <p><a href="#update-activity-activity"><span class="underline">Update Activity
 (activity)</span></a></p>
 </blockquote>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This document describes the tools you use to process Beancount input
 files, and many of the reports available from it. The syntax of the
 language is described in the <a href="../06_beancount_language_syntax/"><span class="underline">Beancount Language
 Syntax</span></a> document. This manual
 only covers the technical details for using Beancount from the
 command-line.</p>
-<h2 id="tools"><a id="tools"></a>Tools<a class="headerlink" href="#tools" title="Permanent link"></a></h2>
-<h3 id="bean-check"><a id="bean-check"></a>bean-check<a class="headerlink" href="#bean-check" title="Permanent link"></a></h3>
+<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link"></a></h2>
+<h3 id="bean-check">bean-check<a class="headerlink" href="#bean-check" title="Permanent link"></a></h3>
 <p><strong>bean-check</strong> is the program you use to verify that your input syntax
 and transactions work correctly. All it does is load your input file and
 run the various plugins you configured in it, plus some extra validation
@@ -327,7 +332,7 @@ to navigate to the file if you want):</p>
      Assets:Cash                            17.23 USD
 </code></pre>
 <p>You should always fix all the errors before producing reports.</p>
-<h3 id="bean-report"><a id="bean-report"></a>bean-report<a class="headerlink" href="#bean-report" title="Permanent link"></a></h3>
+<h3 id="bean-report">bean-report<a class="headerlink" href="#bean-report" title="Permanent link"></a></h3>
 <p>This is the main tool used to extract specialized reports to the console
 in text or one of the various other formats. You invoke it like this:</p>
 <pre><code>bean-report /path/to/my/file.beancount &lt;report-name&gt;
@@ -365,7 +370,7 @@ in a dedicated section below.</p>
 </tbody>
 </table>
 
-<h3 id="bean-query"><a id="bean-query"></a>bean-query<a class="headerlink" href="#bean-query" title="Permanent link"></a></h3>
+<h3 id="bean-query">bean-query<a class="headerlink" href="#bean-query" title="Permanent link"></a></h3>
 <p>Beancount’s parsed list of transactions and postings is like an
 in-memory database. <strong>bean-query</strong> is a command-line tool that acts like
 a client to that in-memory database in which you can type queries in a
@@ -377,7 +382,7 @@ beancount&gt; _
 </code></pre>
 <p>More details are available <a href="../09_beancount_query_language/"><span class="underline">in its own
 document</span></a>.</p>
-<h3 id="bean-web"><a id="bean-web"></a>bean-web<a class="headerlink" href="#bean-web" title="Permanent link"></a></h3>
+<h3 id="bean-web">bean-web<a class="headerlink" href="#bean-web" title="Permanent link"></a></h3>
 <p><strong>bean-web</strong> serves all the reports on a web server that runs on your
 computer. You run it like this:</p>
 <pre><code>bean-web /path/to/my/file.beancount
@@ -388,7 +393,7 @@ with a web browser. You should be able to click your way through all the
 reports easily.</p>
 <p>The web interface provides a set of global pages and a set of report
 pages for each “view.”</p>
-<h4 id="global-pages"><a id="global-pages"></a>Global Pages<a class="headerlink" href="#global-pages" title="Permanent link"></a></h4>
+<h4 id="global-pages">Global Pages<a class="headerlink" href="#global-pages" title="Permanent link"></a></h4>
 <p>The top-level table of contents page provides links to all the global
 pages at the top:</p>
 <ul>
@@ -418,7 +423,7 @@ common views, such as</p>
 </li>
 </ul>
 <p>There are a few more.</p>
-<h4 id="view-reports-pages"><a id="view-reports-pages"></a>View Reports Pages<a class="headerlink" href="#view-reports-pages" title="Permanent link"></a></h4>
+<h4 id="view-reports-pages">View Reports Pages<a class="headerlink" href="#view-reports-pages" title="Permanent link"></a></h4>
 <p>When you click on a view report page, you enter a set of pages for the
 subset of transactions for that view. Various reports about those
 transactions are available from here:</p>
@@ -447,7 +452,7 @@ transactions are available from here:</p>
 </ul>
 <p>… and much more. There should be an index of all the available view
 reports.</p>
-<h3 id="bean-bake"><a id="bean-bake"></a>bean-bake<a class="headerlink" href="#bean-bake" title="Permanent link"></a></h3>
+<h3 id="bean-bake">bean-bake<a class="headerlink" href="#bean-bake" title="Permanent link"></a></h3>
 <p><strong>bean-bake</strong> runs a <strong>bean-web</strong> instance and bakes all the pages to a
 directory:</p>
 <pre><code>bean-bake /path/to/my/file.beancount myfinances
@@ -461,7 +466,7 @@ people, who usually don’t have the ability to run Beancount. The page
 links have all been converted to relative links, and they should be able
 to extract the archive to a directory and browse all the reports the
 same way you do with <strong>bean-web</strong>.</p>
-<h3 id="bean-doctor"><a id="bean-doctor"></a>bean-doctor<a class="headerlink" href="#bean-doctor" title="Permanent link"></a></h3>
+<h3 id="bean-doctor">bean-doctor<a class="headerlink" href="#bean-doctor" title="Permanent link"></a></h3>
 <p>This is a debugging tool used to perform various diagnostics and run
 debugging commands, and to help provide information for reporting bugs.
 For example, it can do the following:</p>
@@ -489,7 +494,7 @@ For example, it can do the following:</p>
     needs to be adjusted accordingly.</p>
 </li>
 </ul>
-<h4 id="context"><a id="context"></a>Context<a class="headerlink" href="#context" title="Permanent link"></a></h4>
+<h4 id="context">Context<a class="headerlink" href="#context" title="Permanent link"></a></h4>
 <p>It can list the context upon which a transaction is applied, i.e., the
 inventory balances of each account the transaction postings modify,
 before and after it is applied. Use it like this:</p>
@@ -510,17 +515,17 @@ before and after it is applied. Use it like this:</p>
 </code></pre>
 <p>There is a corresponding Emacs binding (C-c x) to invoke this around the
 cursor.</p>
-<h3 id="bean-format"><a id="bean-format"></a>bean-format<a class="headerlink" href="#bean-format" title="Permanent link"></a></h3>
+<h3 id="bean-format">bean-format<a class="headerlink" href="#bean-format" title="Permanent link"></a></h3>
 <p>This pure text processing tool will reformat Beancount input to
 right-align all the numbers at the same, minimal column. It left-aligns
 all the currencies. It only modifies whitespace. This tool accepts a
 filename as arguments and outputs the aligned file on stdout (similar to
 UNIX cat).</p>
-<h3 id="bean-example"><a id="bean-example"></a>bean-example<a class="headerlink" href="#bean-example" title="Permanent link"></a></h3>
+<h3 id="bean-example">bean-example<a class="headerlink" href="#bean-example" title="Permanent link"></a></h3>
 <p>This program generates an example Beancount input file. See the <a href="../13_tutorial_example/"><span
 class="underline">Tutorial</span></a> for more
 details about the contents of this example file.</p>
-<h2 id="filtering-transactions"><a id="filtering-transactions"></a>Filtering Transactions<a class="headerlink" href="#filtering-transactions" title="Permanent link"></a></h2>
+<h2 id="filtering-transactions">Filtering Transactions<a class="headerlink" href="#filtering-transactions" title="Permanent link"></a></h2>
 <p>In order to produce different views of your financial transactions, we
 select a subset of full list of parsed transactions, for example, “all
 the transactions that occurred in year 2013”, and then use that to
@@ -549,7 +554,7 @@ from the web interface. These views include:</p>
 transactions, you need to use the <strong>bean-web</strong> web interface, and click
 on the related keyword in the root global page, which enters you into a
 set of reports for that view.</p>
-<h2 id="reports"><a id="reports"></a>Reports<a class="headerlink" href="#reports" title="Permanent link"></a></h2>
+<h2 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link"></a></h2>
 <p>The whole point of entering your transactions in a single input file in
 the first place is that it allows you to sum, filter, aggregate and
 arrange various subsets of your data into well-known reports. There are
@@ -577,7 +582,7 @@ installed version:</p>
 </tbody>
 </table>
 
-<h3 id="balance-reports"><a id="balance-reports"></a>Balance Reports<a class="headerlink" href="#balance-reports" title="Permanent link"></a></h3>
+<h3 id="balance-reports">Balance Reports<a class="headerlink" href="#balance-reports" title="Permanent link"></a></h3>
 <p>All the balance reports are similar in that they produce tables of some
 set of accounts and their associated balances: <a href="http://furius.ca/beancount/examples/tutorial/balances.output"><span
 class="underline">[output]</span></a></p>
@@ -622,7 +627,7 @@ thus more easily be imported into a spreadsheet.</p>
 <p>Finally, some accounts are deemed “active” if they have not been closed.
 A closed account with no transactions in the filtered set of
 transactions will not be rendered.</p>
-<h4 id="trial-balance-balances"><a id="trial-balance-balances"></a>Trial Balance (balances)<a class="headerlink" href="#trial-balance-balances" title="Permanent link"></a></h4>
+<h4 id="trial-balance-balances">Trial Balance (balances)<a class="headerlink" href="#trial-balance-balances" title="Permanent link"></a></h4>
 <p>A <a href="http://en.wikipedia.org/wiki/Trial_balance"><span class="underline">trial
 balance</span></a> report
 simply produces a table of final balances of all the active accounts,
@@ -635,7 +640,7 @@ conversions. (This is the equivalent of Ledger’s bal report.)</p>
 GROUP BY account 
 ORDER BY account;
 </code></pre>
-<h4 id="balance-sheet-balsheet"><a id="balance-sheet-balsheet"></a>Balance Sheet (balsheet)<a class="headerlink" href="#balance-sheet-balsheet" title="Permanent link"></a></h4>
+<h4 id="balance-sheet-balsheet">Balance Sheet (balsheet)<a class="headerlink" href="#balance-sheet-balsheet" title="Permanent link"></a></h4>
 <p>A <a href="http://en.wikipedia.org/wiki/Balance_sheet"><span class="underline">balance
 sheet</span></a> is a snapshot
 of the balances of the Assets, Liabilities and Equity accounts at a
@@ -680,7 +685,7 @@ all the details).</p>
 FROM CLOSE ON 2016-01-01 
 GROUP BY account ORDER BY account;
 </code></pre>
-<h4 id="opening-balances-openbal"><a id="opening-balances-openbal"></a>Opening Balances (openbal)<a class="headerlink" href="#opening-balances-openbal" title="Permanent link"></a></h4>
+<h4 id="opening-balances-openbal">Opening Balances (openbal)<a class="headerlink" href="#opening-balances-openbal" title="Permanent link"></a></h4>
 <p>The opening balances report is simply a balance sheet drawn at the
 beginning of the reporting period. This report only makes sense for a
 list of filtered entries that represents a period of time, such as “year
@@ -688,7 +693,7 @@ list of filtered entries that represents a period of time, such as “year
 entries that were synthesized when the transactions were filtered (see
 the <a href="../02_the_double_entry_counting_method/"><span class="underline">double-entry method
 document</span></a>).</p>
-<h4 id="income-statement-income"><a id="income-statement-income"></a>Income Statement (income)<a class="headerlink" href="#income-statement-income" title="Permanent link"></a></h4>
+<h4 id="income-statement-income">Income Statement (income)<a class="headerlink" href="#income-statement-income" title="Permanent link"></a></h4>
 <p>An <a href="http://en.wikipedia.org/wiki/Income_statement"><span class="underline">income
 statement</span></a> lists
 the final balances of the Income and Expenses accounts. It represents a
@@ -705,10 +710,10 @@ Net Income.</p>
 should have been zero’ed out by summarization transactions that occur at
 the beginning of the period, because we’re only interested in the
 changes in these accounts.</p>
-<h3 id="journal-reports"><a id="journal-reports"></a>Journal Reports<a class="headerlink" href="#journal-reports" title="Permanent link"></a></h3>
+<h3 id="journal-reports">Journal Reports<a class="headerlink" href="#journal-reports" title="Permanent link"></a></h3>
 <p>The reports in this section render lists of transactions and other
 directives in a linear fashion.</p>
-<h4 id="journal-journal"><a id="journal-journal"></a>Journal (journal)<a class="headerlink" href="#journal-journal" title="Permanent link"></a></h4>
+<h4 id="journal-journal">Journal (journal)<a class="headerlink" href="#journal-journal" title="Permanent link"></a></h4>
 <p>This report is the equivalent of an “account statement” from an
 institution, a list of transactions with at least one posting in that
 account. This is the equivalent of Ledger’s register report (reg).</p>
@@ -723,7 +728,7 @@ this:</p>
 <p>At the moment, the “-a” option accepts only a complete account name, or
 the name of one of the parent accounts. Eventually we will extend it to
 handle expressions.</p>
-<h5 id="rendering-at-cost"><a id="rendering-at-cost"></a>Rendering at Cost<a class="headerlink" href="#rendering-at-cost" title="Permanent link"></a></h5>
+<h5 id="rendering-at-cost">Rendering at Cost<a class="headerlink" href="#rendering-at-cost" title="Permanent link"></a></h5>
 <p>The numbers column on the right displays the changes from the postings
 of the selected account. Notice that only the balances for the postings
 affecting the given account are rendered.</p>
@@ -739,25 +744,25 @@ inserted at the end of the history by the “beancount.plugins.unrealized”
 plugin. See options for that plugin to insert its unrealized gains.</p>
 <p>Note that if the sum of the selected postings is zero, no amount is
 rendered in the change column.</p>
-<h5 id="adding-a-balance-column"><a id="adding-a-balance-column"></a>Adding a Balance Column<a class="headerlink" href="#adding-a-balance-column" title="Permanent link"></a></h5>
+<h5 id="adding-a-balance-column">Adding a Balance Column<a class="headerlink" href="#adding-a-balance-column" title="Permanent link"></a></h5>
 <p>If you want to add a column that sums up the running balance for the
 reported changes, use the “--render-balance” or “-b” option. This does
 not always make sense to report, so it is up to you to decide whether
 you want a running balance.</p>
-<h5 id="character-width"><a id="character-width"></a>Character Width<a class="headerlink" href="#character-width" title="Permanent link"></a></h5>
+<h5 id="character-width">Character Width<a class="headerlink" href="#character-width" title="Permanent link"></a></h5>
 <p>By default, the report will be as wide as your terminal allows. Restrict
 the width to a set number of characters with the “-w” option.</p>
-<h5 id="precision"><a id="precision"></a>Precision<a class="headerlink" href="#precision" title="Permanent link"></a></h5>
+<h5 id="precision">Precision<a class="headerlink" href="#precision" title="Permanent link"></a></h5>
 <p>The number of fractional digits for the number rendering can be
 specified via “--precision” or “-k”.</p>
-<h5 id="compact-normal-or-verbose"><a id="compact-normal-or-verbose"></a>Compact, Normal or Verbose<a class="headerlink" href="#compact-normal-or-verbose" title="Permanent link"></a></h5>
+<h5 id="compact-normal-or-verbose">Compact, Normal or Verbose<a class="headerlink" href="#compact-normal-or-verbose" title="Permanent link"></a></h5>
 <p>In its normal operation, Beancount renders an empty line between
 transactions. This helps delineate transactions where there are multiple
 currencies affected, as they render on separate lines. If you want a
 more compact rendering, use the “--compact” or “-x” option.</p>
 <p>On the other hand, if you want to render the affected postings under the
 transaction line, use the “--verbose” or “-X” option.</p>
-<h5 id="summary"><a id="summary"></a>Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h5>
+<h5 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h5>
 <p>Here is a summary of its arguments:</p>
 <pre><code>optional arguments:
   -h, --help            show this help message and exit
@@ -774,29 +779,29 @@ transaction line, use the “--verbose” or “-X” option.</p>
   -x, --compact         Rendering compactly
   -X, --verbose         Rendering verbosely
 </code></pre>
-<h5 id="equivalent-sql-query"><a id="equivalent-sql-query"></a>Equivalent SQL Query<a class="headerlink" href="#equivalent-sql-query" title="Permanent link"></a></h5>
+<h5 id="equivalent-sql-query">Equivalent SQL Query<a class="headerlink" href="#equivalent-sql-query" title="Permanent link"></a></h5>
 <p>The equivalent bean-query command is:</p>
 <pre><code>SELECT date, flag, description, account, cost(position), cost(balance);
 </code></pre>
-<h4 id="conversions-conversions"><a id="conversions-conversions"></a>Conversions (conversions)<a class="headerlink" href="#conversions-conversions" title="Permanent link"></a></h4>
+<h4 id="conversions-conversions">Conversions (conversions)<a class="headerlink" href="#conversions-conversions" title="Permanent link"></a></h4>
 <p>This report lists the total of currency conversions that result from the
 selected transactions. (Most people won’t need this.)</p>
-<h4 id="documents-documents"><a id="documents-documents"></a>Documents (documents)<a class="headerlink" href="#documents-documents" title="Permanent link"></a></h4>
+<h4 id="documents-documents">Documents (documents)<a class="headerlink" href="#documents-documents" title="Permanent link"></a></h4>
 <p>This report produces an HTML list of all the external documents found in
 the ledger, either from explicit directives or from plugins that
 automatically find the documents and add them to the stream of
 transactions.</p>
-<h3 id="holdings-reports"><a id="holdings-reports"></a>Holdings Reports<a class="headerlink" href="#holdings-reports" title="Permanent link"></a></h3>
+<h3 id="holdings-reports">Holdings Reports<a class="headerlink" href="#holdings-reports" title="Permanent link"></a></h3>
 <p>These reports produces aggregations for assets held at cost.</p>
-<h4 id="holdings-aggregations-holdings42"><a id="holdings-aggregations-holdings"></a>Holdings &amp; Aggregations (holdings*)<a class="headerlink" href="#holdings-aggregations-holdings42" title="Permanent link"></a></h4>
+<h4 id="holdings-aggregations-holdings42">Holdings &amp; Aggregations (holdings*)<a class="headerlink" href="#holdings-aggregations-holdings42" title="Permanent link"></a></h4>
 <p>This report produces a detailed list of all holdings found in the
 ledger. You can produce aggregates by commodity and accounts using the
 “-g” option.</p>
-<h4 id="net-worth-networth"><a id="net-worth-networth"></a>Net Worth (networth)<a class="headerlink" href="#net-worth-networth" title="Permanent link"></a></h4>
+<h4 id="net-worth-networth">Net Worth (networth)<a class="headerlink" href="#net-worth-networth" title="Permanent link"></a></h4>
 <p>This report produces a short summary of the net worth (equity) of the
 ledger, in each of the operating currencies.</p>
-<h3 id="other-report-types"><a id="other-report-types"></a>Other Report Types<a class="headerlink" href="#other-report-types" title="Permanent link"></a></h3>
-<h4 id="cash"><a id="cash"></a>Cash<a class="headerlink" href="#cash" title="Permanent link"></a></h4>
+<h3 id="other-report-types">Other Report Types<a class="headerlink" href="#other-report-types" title="Permanent link"></a></h3>
+<h4 id="cash">Cash<a class="headerlink" href="#cash" title="Permanent link"></a></h4>
 <p>This report renders balances in commodities not held at cost, in other
 words, cash:</p>
 <pre><code>bean-report example.beancount cash -c USD
@@ -821,15 +826,15 @@ Liabilities:US:Chase:Slate  -2,891.85       USD            USD                  
 the example above, "convert everything to USD"). There's also an option
 to report only on the operating currencies. I use this to get an
 overview of all uninvested cash.</p>
-<h4 id="prices-prices"><a id="prices-prices"></a>Prices (prices)<a class="headerlink" href="#prices-prices" title="Permanent link"></a></h4>
+<h4 id="prices-prices">Prices (prices)<a class="headerlink" href="#prices-prices" title="Permanent link"></a></h4>
 <p>This report renders a list of price points for a base currency in terms
 of a quote currency. The list is sorted by date. You can output this
 table in beancount format as well. This is convenient to save a price
 database to a file, that can then be combined and loaded into another
 input file.</p>
-<h4 id="statistics-stats"><a id="statistics-stats"></a>Statistics (stats)<a class="headerlink" href="#statistics-stats" title="Permanent link"></a></h4>
+<h4 id="statistics-stats">Statistics (stats)<a class="headerlink" href="#statistics-stats" title="Permanent link"></a></h4>
 <p>This report simply provides various statistics on the parsed entries.</p>
-<h4 id="update-activity-activity"><a id="update-activity-activity"></a>Update Activity (activity)<a class="headerlink" href="#update-activity-activity" title="Permanent link"></a></h4>
+<h4 id="update-activity-activity">Update Activity (activity)<a class="headerlink" href="#update-activity-activity" title="Permanent link"></a></h4>
 <p>This table renders for each account the date of the last entry.</p></div>
         </div>
 

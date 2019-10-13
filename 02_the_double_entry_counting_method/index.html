@@ -232,11 +232,27 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#the-double-entry-counting-method">The Double-Entry Counting Method</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#basics-of-double-entry-bookkeeping">Basics of Double-Entry Bookkeeping</a></li>
+            <li><a href="#types-of-accounts">Types of Accounts</a></li>
+            <li><a href="#trial-balance">Trial Balance</a></li>
+            <li><a href="#income-statement">Income Statement</a></li>
+            <li><a href="#clearing-income">Clearing Income</a></li>
+            <li><a href="#equity">Equity</a></li>
+            <li><a href="#balance-sheet">Balance Sheet</a></li>
+            <li><a href="#summarizing">Summarizing</a></li>
+            <li><a href="#period-reporting">Period Reporting</a></li>
+            <li><a href="#chart-of-accounts">Chart of Accounts</a></li>
+            <li><a href="#credits-debits">Credits &amp; Debits</a></li>
+            <li><a href="#accounting-equations">Accounting Equations</a></li>
+            <li><a href="#plain-text-accounting">Plain-Text Accounting</a></li>
+            <li><a href="#the-table-perspective">The Table Perspective</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="the-double-entry-counting-method"><a id="title"></a>The Double-Entry Counting Method<a class="headerlink" href="#the-double-entry-counting-method" title="Permanent link"></a></h1>
+<h1 id="the-double-entry-counting-method">The Double-Entry Counting Method<a class="headerlink" href="#the-double-entry-counting-method" title="Permanent link"></a></h1>
 <p>Martin Blais, December 2016</p>
 <p><a href="http://furius.ca/beancount/doc/double-entry"><span
 class="underline">http://furius.ca/beancount/doc/double-entry</span></a></p>
@@ -272,7 +288,7 @@ Equations</span></a></p>
 Accounting</span></a></p>
 <p><a href="#the-table-perspective"><span class="underline">The Table
 Perspective</span></a></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This document is a gentle introduction to the double-entry counting
 method, as written from the perspective of a computer scientist. It is
 an attempt to explain basic bookkeeping using as simple an approach as
@@ -292,7 +308,7 @@ possible to someone unfamiliar with them.</p>
 everyone at the high school level everywhere as it is a tremendously
 useful organizational skill, and I hope that this text can help spread
 its knowledge beyond professional circles.</p>
-<h2 id="basics-of-double-entry-bookkeeping"><a id="basics-of-double-entry-bookkeeping"></a>Basics of Double-Entry Bookkeeping<a class="headerlink" href="#basics-of-double-entry-bookkeeping" title="Permanent link"></a></h2>
+<h2 id="basics-of-double-entry-bookkeeping">Basics of Double-Entry Bookkeeping<a class="headerlink" href="#basics-of-double-entry-bookkeeping" title="Permanent link"></a></h2>
 <p>The double-entry system is just a simple <em>method of counting</em>, with some
 simple rules.</p>
 <p>Let’s begin by defining the notion of an <strong>account</strong>. An account is
@@ -330,7 +346,7 @@ account, the balance now becomes $-125:</p>
 Remember that all we’re doing is counting things. As we will see
 shortly, some accounts will remain with a negative balance for most of
 their timeline.</p>
-<h3 id="statements"><a id="statements"></a>Statements<a class="headerlink" href="#statements" title="Permanent link"></a></h3>
+<h3 id="statements">Statements<a class="headerlink" href="#statements" title="Permanent link"></a></h3>
 <p>Something worthy of notice is how the timeline notation I’ve written in
 the previous section is analogous to paper account statements
 institutions maintain for each client and which you typically receive
@@ -425,7 +441,7 @@ the occasional monthly payment so the single column format is used.</p>
 <p>In any case, the “balance” column always shows the resulting balance
 <em>after</em> the amount has been posted to the account. And sometimes the
 statements are rendered in decreasing order of time.</p>
-<h3 id="single-entry-bookkeeping"><a id="single-entry-bookkeeping"></a>Single-Entry Bookkeeping<a class="headerlink" href="#single-entry-bookkeeping" title="Permanent link"></a></h3>
+<h3 id="single-entry-bookkeeping">Single-Entry Bookkeeping<a class="headerlink" href="#single-entry-bookkeeping" title="Permanent link"></a></h3>
 <p>In this story, this account belongs to someone. We’ll call this person
 the <strong>owner</strong> of the account. The account can be used to represent a
 real world account, for example, imagine that we use it to represent the
@@ -447,7 +463,7 @@ total, for example. This is called the <strong>single-entry method</strong> of
 accounting.</p>
 <p>But we’re not going to do it this way; we have a better way. Bear with
 me for a few more sections.</p>
-<h3 id="double-entry-bookkeeping"><a id="double-entry-bookkeeping"></a>Double-Entry Bookkeeping<a class="headerlink" href="#double-entry-bookkeeping" title="Permanent link"></a></h3>
+<h3 id="double-entry-bookkeeping">Double-Entry Bookkeeping<a class="headerlink" href="#double-entry-bookkeeping" title="Permanent link"></a></h3>
 <p>An owner may have multiple accounts. I will represent this by drawing
 many similar account timelines on the same graphic. As before, these are
 labeled with unique names. Let’s assume that the owner has the same
@@ -484,7 +500,7 @@ to the “Restaurant” account. ($79) + ($-79) = $0. To emphasize this, I
 could draw a little summation line under the postings of the
 transaction, like this:</p>
 <p><img src="02_the_double_entry_counting_method/media/b4182b9f64113868123cbcec20d468ab18b2786f.png" style="width:2.18055in;height:2.5in" /></p>
-<h3 id="many-accounts"><a id="many-accounts"></a>Many Accounts<a class="headerlink" href="#many-accounts" title="Permanent link"></a></h3>
+<h3 id="many-accounts">Many Accounts<a class="headerlink" href="#many-accounts" title="Permanent link"></a></h3>
 <p>There may be many such transactions, over many different accounts. For
 example, if the owner of the accounts had a lunch the next day which she
 paid using a credit card, it could be represented by creating a “Credit
@@ -508,7 +524,7 @@ accounting system, we’re representing numbers from the owner’s
 point-of-view, and from her perspective, this is money she owes, not
 something she has. What we have is a meal sitting in our stomach (a
 positive number of $ of “Restaurant”).</p>
-<h3 id="multiple-postings"><a id="multiple-postings"></a>Multiple Postings<a class="headerlink" href="#multiple-postings" title="Permanent link"></a></h3>
+<h3 id="multiple-postings">Multiple Postings<a class="headerlink" href="#multiple-postings" title="Permanent link"></a></h3>
 <p>Finally, transactions may have more than two postings; in fact, they may
 have any number of postings. The only thing that matters is that the sum
 of their amounts is zero (from the rule of double-entry bookkeeping
@@ -542,7 +558,7 @@ accrued during the period. But it wouldn’t be much more complicated: the
 owner would simply translate all the amounts available from her pay stub
 into a single transaction with more postings. The structure remains
 similar.</p>
-<h2 id="types-of-accounts"><a id="types-of-accounts"></a>Types of Accounts<a class="headerlink" href="#types-of-accounts" title="Permanent link"></a></h2>
+<h2 id="types-of-accounts">Types of Accounts<a class="headerlink" href="#types-of-accounts" title="Permanent link"></a></h2>
 <p>Let’s now turn our attention to the different types of accounts an owner
 can have.</p>
 <p><strong>Balance or Delta.</strong> First, the most important distinction between
@@ -701,7 +717,7 @@ traditionally, the book which contains all those transactions. Some
 people call this “maintaining a journal.”</p>
 <p>We will now turn our attention to obtaining useful information from this
 data, summarizing information from the book.</p>
-<h2 id="trial-balance"><a id="trial-balance"></a>Trial Balance<a class="headerlink" href="#trial-balance" title="Permanent link"></a></h2>
+<h2 id="trial-balance">Trial Balance<a class="headerlink" href="#trial-balance" title="Permanent link"></a></h2>
 <p>Take our last example: we can easily reorder all the accounts such that
 all the Asset accounts appear together at the top, then all the
 Liabilities accounts, then Income, and finally Expenses accounts. We are
@@ -722,7 +738,7 @@ each transaction has itself a zero balance, we know that the sum of all
 those balances must equal zero.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> This is a consequence of our
 constraining that each of the postings be part of a transaction, and
 that each transaction have postings that balance each other out.</p>
-<h2 id="income-statement"><a id="income-statement"></a>Income Statement<a class="headerlink" href="#income-statement" title="Permanent link"></a></h2>
+<h2 id="income-statement">Income Statement<a class="headerlink" href="#income-statement" title="Permanent link"></a></h2>
 <p>One kind of common information that is useful to extract from the list
 of transactions is a summary of changes in income statement accounts
 during a particular period of time. This tells us how much money was
@@ -744,7 +760,7 @@ time. Companies typically report this information <strong>quarterly</strong> to
 investors and perhaps the public (if they are a publicly traded company)
 in order to share how much profit they were able to make. Individuals
 typically report this information on their <strong>annual</strong> tax returns.</p>
-<h2 id="clearing-income"><a id="clearing-income"></a>Clearing Income<a class="headerlink" href="#clearing-income" title="Permanent link"></a></h2>
+<h2 id="clearing-income">Clearing Income<a class="headerlink" href="#clearing-income" title="Permanent link"></a></h2>
 <p>Notice how in the income statement only the transactions within a
 particular interval of time are summed up. This allows one, for
 instance, to compute the sum of all income earned during a year. If we
@@ -783,7 +799,7 @@ accounts would be to segregate and count amounts only for the
 transactions after the clearing date; however, jointly reporting on
 income statement accounts and balance sheet accounts would have
 incorrect balances for the balance sheet accounts.)</p>
-<h2 id="equity"><a id="equity"></a>Equity<a class="headerlink" href="#equity" title="Permanent link"></a></h2>
+<h2 id="equity">Equity<a class="headerlink" href="#equity" title="Permanent link"></a></h2>
 <p>The account that receives those previously accumulated incomes is called
 “Previous Earnings”. It lives in a fifth and final type of accounts:
 <strong>Equity</strong>. We did not talk about this type of accounts earlier because
@@ -831,7 +847,7 @@ above, or filled in by Pad directives to “opening balances” equity
 accounts, to account for summarized balances from the past. They are
 created and filled in automatically by the software. We’ll see how these
 get used in the following sections.</p>
-<h2 id="balance-sheet"><a id="balance-sheet"></a>Balance Sheet<a class="headerlink" href="#balance-sheet" title="Permanent link"></a></h2>
+<h2 id="balance-sheet">Balance Sheet<a class="headerlink" href="#balance-sheet" title="Permanent link"></a></h2>
 <p>Another kind of summary is a listing of the owner’s assets and debts,
 for each of the accounts. This answers the question: “<em>Where’s the
 money?</em>” In theory, we could just restrict our focus to the Assets and
@@ -851,7 +867,7 @@ display the balances of the Equity accounts. The report looks like this:</p>
 by truncating the list of transactions following a particular date. A
 balance sheet displays a snapshot of balances at one date; an income
 statement displays the difference of those balances between two dates.</p>
-<h2 id="summarizing"><a id="summarizing"></a>Summarizing<a class="headerlink" href="#summarizing" title="Permanent link"></a></h2>
+<h2 id="summarizing">Summarizing<a class="headerlink" href="#summarizing" title="Permanent link"></a></h2>
 <p>It is useful to summarize a history of past transactions into a single
 equivalent deposit. For example, if we’re interested in transactions for
 year 2016 for an account which has a balance of $450 on Jan 1, 2016, we
@@ -879,7 +895,7 @@ the transactions from the past.</p>
 <p>From a program design perspective, this is appealing because the only
 state of the program is a stream of transactions, and it is never
 modified directly. It’s simple and robust.)</p>
-<h2 id="period-reporting"><a id="period-reporting"></a>Period Reporting<a class="headerlink" href="#period-reporting" title="Permanent link"></a></h2>
+<h2 id="period-reporting">Period Reporting<a class="headerlink" href="#period-reporting" title="Permanent link"></a></h2>
 <p>Now we know we can produce a statement of changes over a period of time,
 by “clearing” and looking at just the Income &amp; Expenses accounts (the
 Income Statement). We also know we can clear to produce a snapshot of
@@ -918,7 +934,7 @@ period.</p>
 <p>This sums up the operations involved in preparing the streams of
 transactions to produce reports with Beancount, as well as a basic
 introduction to those types of reports.</p>
-<h2 id="chart-of-accounts"><a id="chart-of-accounts"></a>Chart of Accounts<a class="headerlink" href="#chart-of-accounts" title="Permanent link"></a></h2>
+<h2 id="chart-of-accounts">Chart of Accounts<a class="headerlink" href="#chart-of-accounts" title="Permanent link"></a></h2>
 <p>New users are often wondering how much detail they should use in their
 account names. For example, should one include the payee in the account
 name itself, such as in these examples?</p>
@@ -942,7 +958,7 @@ define a hierarchy. The “:” separator is interpreted by some reporting
 code to create an in-memory tree and can allow you to collapse a node’s
 children subaccounts and compute aggregates on the parent. Think of this
 as an additional way to group postings.</p>
-<h3 id="country-institution-convention"><a id="country-institution-convention"></a>Country-Institution Convention<a class="headerlink" href="#country-institution-convention" title="Permanent link"></a></h3>
+<h3 id="country-institution-convention">Country-Institution Convention<a class="headerlink" href="#country-institution-convention" title="Permanent link"></a></h3>
 <p>One convention I’ve come up with that works well for my assets,
 liabilities and income accounts is to root the tree with a code for the
 country the account lives in, followed by a short string for the
@@ -966,7 +982,7 @@ can easily change all the names later by processing the text file. See
 the <a href="../18_command_line_accounting_cookbook/"><span
 class="underline">Cookbook</span></a>
 for more practical guidance.</p>
-<h2 id="credits-debits"><a id="credits-debits"></a>Credits &amp; Debits<a class="headerlink" href="#credits-debits" title="Permanent link"></a></h2>
+<h2 id="credits-debits">Credits &amp; Debits<a class="headerlink" href="#credits-debits" title="Permanent link"></a></h2>
 <p>At this point, we haven’t discussed the concepts of “credits” and
 “debits.” This is on purpose: Beancount largely does away with these
 concepts because it makes everything else simpler. I believe that it is
@@ -1023,7 +1039,7 @@ numbers only, we will be able to trigger that in reporting code<sup id="fnref:4"
 inverting the signs just to render them in the output.</p>
 <p>Save yourself some pain: Flush your brain from the "debit" and "credit"
 terminology.</p>
-<h2 id="accounting-equations"><a id="accounting-equations"></a>Accounting Equations<a class="headerlink" href="#accounting-equations" title="Permanent link"></a></h2>
+<h2 id="accounting-equations">Accounting Equations<a class="headerlink" href="#accounting-equations" title="Permanent link"></a></h2>
 <p>In light of the previous sections, we can easily express the accounting
 equations in signed terms. If,</p>
 <ul>
@@ -1071,7 +1087,7 @@ familiar accounting equation:</p>
 <pre><code>Assets - Liabilities = Equity
 </code></pre>
 <p>As you can see, it’s much easier to just always add up the numbers.</p>
-<h2 id="plain-text-accounting"><a id="plain-text-accounting"></a>Plain-Text Accounting<a class="headerlink" href="#plain-text-accounting" title="Permanent link"></a></h2>
+<h2 id="plain-text-accounting">Plain-Text Accounting<a class="headerlink" href="#plain-text-accounting" title="Permanent link"></a></h2>
 <p>Ok, so now we understand the method and what it can do for us, at least
 in theory. The purpose of a double-entry bookkeeping system is to allow
 you to replicate the transactions that occur in various real world
@@ -1107,7 +1123,7 @@ of transactions to produce the kinds of reports we discussed earlier in
 this document.</p>
 <p>There are a few more details, for example, Beancount allows you to track
 cost basis and make currency conversions, but that’s the essence of it.</p>
-<h2 id="the-table-perspective"><a id="the-table-perspective"></a>The Table Perspective<a class="headerlink" href="#the-table-perspective" title="Permanent link"></a></h2>
+<h2 id="the-table-perspective">The Table Perspective<a class="headerlink" href="#the-table-perspective" title="Permanent link"></a></h2>
 <p>Almost always, questions asked by users on the mailing-list about how to
 calculate or track some value or other can be resolved easily simply by
 thinking of the data as a long list of rows, some of which need to be

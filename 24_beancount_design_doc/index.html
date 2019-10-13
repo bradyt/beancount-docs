@@ -232,11 +232,26 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#beancount-design-doc">Beancount Design Doc</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#invariants">Invariants</a></li>
+            <li><a href="#overview-of-the-codebase">Overview of the Codebase</a></li>
+            <li><a href="#core-data-structures">Core Data Structures</a></li>
+            <li><a href="#directives">Directives</a></li>
+            <li><a href="#loader-processing-order">Loader &amp; Processing Order</a></li>
+            <li><a href="#parser-implementation">Parser Implementation</a></li>
+            <li><a href="#realization">Realization</a></li>
+            <li><a href="#the-web-interface">The Web Interface</a></li>
+            <li><a href="#the-query-interface">The Query Interface</a></li>
+            <li><a href="#design-principles">Design Principles</a></li>
+            <li><a href="#future-work">Future Work</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#references">References</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="beancount-design-doc"><a id="title"></a>Beancount Design Doc<a class="headerlink" href="#beancount-design-doc" title="Permanent link"></a></h1>
+<h1 id="beancount-design-doc">Beancount Design Doc<a class="headerlink" href="#beancount-design-doc" title="Permanent link"></a></h1>
 <p>Martin Blais (<a href="mailto:blais@furius.ca"><span
 class="underline">blais@furius.ca</span></a>)</p>
 <p><a href="http://furius.ca/beancount/doc/design-doc"><span
@@ -325,7 +340,7 @@ Generator</span></a></p>
 <p><a href="#types"><span class="underline">Types</span></a></p>
 <p><a href="#conclusion"><span class="underline">Conclusion</span></a></p>
 </blockquote>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This document describes the principles behind the design of Beancount
 and a high-level overview of its codebase, data structures, algorithms,
 implementation and methodology. This is not a user's manual; if you are
@@ -342,8 +357,8 @@ thoughts that aren’t important for users.</p>
 not do that. But I figured it would still be worthwhile to spell out
 some of the ideas that led to this design here. I hope someone finds
 this useful.</p>
-<h2 id="invariants"><a id="invariants"></a>Invariants<a class="headerlink" href="#invariants" title="Permanent link"></a></h2>
-<h3 id="isolation-of-inputs"><a id="isolation-of-inputs"></a>Isolation of Inputs<a class="headerlink" href="#isolation-of-inputs" title="Permanent link"></a></h3>
+<h2 id="invariants">Invariants<a class="headerlink" href="#invariants" title="Permanent link"></a></h2>
+<h3 id="isolation-of-inputs">Isolation of Inputs<a class="headerlink" href="#isolation-of-inputs" title="Permanent link"></a></h3>
 <p>Beancount should accept input <em>only</em> from the text file you provide to
 its tools. In particular, it should not contact any external networked
 service or open any “global” files, even just a cache of historical
@@ -361,7 +376,7 @@ transactional data and derive reports from it, and its syntax is the
 hinge that connects it to these external repositories of transactions or
 prices. It isolates itself from the ugly details of external sources of
 data in this way.</p>
-<h3 id="order-independence"><a id="order-independence"></a>Order-Independence<a class="headerlink" href="#order-independence" title="Permanent link"></a></h3>
+<h3 id="order-independence">Order-Independence<a class="headerlink" href="#order-independence" title="Permanent link"></a></h3>
 <p>Beancount offers a guarantee that the ordering of its <em>directives</em> in an
 input file is irrelevant to the outcome of its computations. You should
 be able to organize your input text and reorder any declaration as is
@@ -390,7 +405,7 @@ is limited to either setting values with global impact (“option”,
     should put all your options in the top-level ledger file.</p>
 </li>
 </ul>
-<h3 id="all-transactions-must-balance"><a id="all-transactions-must-balance"></a>All Transactions Must Balance<a class="headerlink" href="#all-transactions-must-balance" title="Permanent link"></a></h3>
+<h3 id="all-transactions-must-balance">All Transactions Must Balance<a class="headerlink" href="#all-transactions-must-balance" title="Permanent link"></a></h3>
 <p>All transactions must balance by “weight.” There is no exception.
 Beancount transactions are required to have balanced, period.</p>
 <p>In particular, there is no allowance for exceptions such as the “virtual
@@ -410,7 +425,7 @@ balance sheets at any point in time. Even when we eventually <a href="../28_sett
 class="underline">support settlement dates or per-posting
 dates</span></a>, we will split up
 transactions in a way that does not break this invariant.</p>
-<h3 id="accounts-have-types"><a id="accounts-have-types"></a>Accounts Have Types<a class="headerlink" href="#accounts-have-types" title="Permanent link"></a></h3>
+<h3 id="accounts-have-types">Accounts Have Types<a class="headerlink" href="#accounts-have-types" title="Permanent link"></a></h3>
 <p>Beancount accounts should be constrained to be of one of five types:
 Assets, Liabilities, Income, Expenses and Equity. The rationale behind
 this is to realize that all matters of counting can be characterized by
@@ -431,7 +446,7 @@ about how to handle calculating these types of reports. We simply
 require that you label your accounts into this model. I’ll admit that
 this requires a bit of practice and forethought, but the end result is a
 structure that easily allows us to build commonly expected outputs.</p>
-<h3 id="account-lifetimes-open-directives"><a id="account-lifetimes-open-directives"></a>Account Lifetimes &amp; Open Directives<a class="headerlink" href="#account-lifetimes-open-directives" title="Permanent link"></a></h3>
+<h3 id="account-lifetimes-open-directives">Account Lifetimes &amp; Open Directives<a class="headerlink" href="#account-lifetimes-open-directives" title="Permanent link"></a></h3>
 <p>Accounts have lifetimes; an account opens at a particular date and
 optionally closes at another. This is directed by the Open and Close
 directives.</p>
@@ -446,7 +461,7 @@ should be able to rely upon when writing scripts.</p>
 directives so that the stream always include one before it is used; and
 they should be auto-generated as well. This is not the case right now
 [June 2015].)</p>
-<h3 id="supports-dates-only-and-no-time"><a id="supports-dates-only-and-no-time"></a>Supports Dates Only (and No Time)<a class="headerlink" href="#supports-dates-only-and-no-time" title="Permanent link"></a></h3>
+<h3 id="supports-dates-only-and-no-time">Supports Dates Only (and No Time)<a class="headerlink" href="#supports-dates-only-and-no-time" title="Permanent link"></a></h3>
 <p>Beancount does not represent time, only dates. The minimal time interval
 is one day. This is for simplicity’s sake. The situations where time
 would be necessary to disambiguate account balances exist, but in
@@ -456,7 +471,7 @@ with it.</p>
 <p>If you have a use case whereby times are required, you may use metadata
 to add it in, or more likely, you should probably write custom software
 for it. This is outside the scope of Beancount by choice.</p>
-<h3 id="metadata-is-for-user-data"><a id="metadata-is-for-user-data"></a>Metadata is for User Data<a class="headerlink" href="#metadata-is-for-user-data" title="Permanent link"></a></h3>
+<h3 id="metadata-is-for-user-data">Metadata is for User Data<a class="headerlink" href="#metadata-is-for-user-data" title="Permanent link"></a></h3>
 <p>By default, Beancount will not make assumptions about metadata fields
 and values. Metadata is reserved for private usage by the user and for
 plugins. The Beancount core does not read metadata and change its
@@ -482,7 +497,7 @@ the Beancount processing:</p>
 should not read any metadata and affect its behavior as a consequence.
 (I should probably created a central registry or location where all the
 special values can be found in one place.)</p>
-<h2 id="overview-of-the-codebase"><a id="overview-of-the-codebase"></a>Overview of the Codebase<a class="headerlink" href="#overview-of-the-codebase" title="Permanent link"></a></h2>
+<h2 id="overview-of-the-codebase">Overview of the Codebase<a class="headerlink" href="#overview-of-the-codebase" title="Permanent link"></a></h2>
 <p>All source code lives under a “<a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/"><span
 class="underline">beancount</span></a>”
 Python package. It consists of several packages with well-defined roles,
@@ -587,7 +602,7 @@ maintain this documentation (code that connects to Google Drive).</p>
 <p>Enforcing the dependency relationships between those packages is done by
 a <a href="https://bitbucket.org/blais/beancount/src/tip/tools/dependency_constraints.py?at=default&amp;fileviewer=file-view-default"><span class="underline">custom
 script</span></a>.</p>
-<h2 id="core-data-structures"><a id="core-data-structures"></a>Core Data Structures<a class="headerlink" href="#core-data-structures" title="Permanent link"></a></h2>
+<h2 id="core-data-structures">Core Data Structures<a class="headerlink" href="#core-data-structures" title="Permanent link"></a></h2>
 <p>This section describes the basic data structures that are used as
 building blocks to represent directives. Where possible I will describe
 the data structure in conceptual terms.</p>
@@ -596,7 +611,7 @@ Beancount; look <a href="http://ledger-cli.org/3.0/doc/ledger3.html#Ledger-for-D
 class="underline">here</span></a>
 if you’re interested to contrast it with concepts and terminology found
 in Ledger.)</p>
-<h3 id="number"><a id="number"></a>Number<a class="headerlink" href="#number" title="Permanent link"></a></h3>
+<h3 id="number">Number<a class="headerlink" href="#number" title="Permanent link"></a></h3>
 <p><strong>Numbers</strong> are represented using <a href="https://en.wikipedia.org/wiki/Decimal_data_type"><span
 class="underline">decimal</span></a>
 objects, which are perfectly suited for this. The great majority of
@@ -628,7 +643,7 @@ class="underline">beancount.core.number</span></a>.</p>
 <p>Some number constants have been defined as well: ZERO, ONE, and HALF.
 Use those instead of explicitly constructed numbers (such as D("1")) as
 it makes it easier to grep for such initializations.</p>
-<h3 id="commodity"><a id="commodity"></a>Commodity<a class="headerlink" href="#commodity" title="Permanent link"></a></h3>
+<h3 id="commodity">Commodity<a class="headerlink" href="#commodity" title="Permanent link"></a></h3>
 <p>A <strong>commodity</strong>, or <strong>currency</strong> (I use both names interchangeably in
 the code and documentation) is a string that represents a kind of
 “thing” that can be stored in accounts. In the implementation, it is
@@ -655,7 +670,7 @@ tokens). However, you <em>may</em> declare some using a Commodity directive.
 This is only provided so that a per-commodity entity exists upon which
 the user can attach some metadata, and some report and plugins are able
 to find and use that metadata.</p>
-<h3 id="account"><a id="account"></a>Account<a class="headerlink" href="#account" title="Permanent link"></a></h3>
+<h3 id="account">Account<a class="headerlink" href="#account" title="Permanent link"></a></h3>
 <p>An account is basically just the name of a bucket associated with a
 posting and is represented as a simple string (a Python str object).
 Accounts are detected and tokenized by the lexer and have names with at
@@ -707,9 +722,9 @@ tree is never realized during processing, but there is a Python module
 that allows one to do this easily (see <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/realization.py"><span
 class="underline">beancount.core.realization</span></a>)
 and create linearized renderings of the tree.</p>
-<h3 id="flag"><a id="flag"></a>Flag<a class="headerlink" href="#flag" title="Permanent link"></a></h3>
-<h3 id="a-flag-is-a-single-character-string-that-may-be-associated-with-transactions-and-postings-to-indicate-whether-they-are-assumed-to-be-correct-reconciled-or-flagged-as-suspicious-the-typical-value-used-on-transaction-instances-is-the-character-42-on-postings-it-is-usually-left-absent-and-set-to-a-none"><a id="a-flag-is-a-single-character-string-that-may-be-associated-with-transactions-and-postings-to-indicate-whether-they-are-assumed-to-be-correct-reconciled-or-flagged-as-suspicious.-the-typical-value-used-on-transaction-instances-is-the-character-.-on-postings-it-is-usually-left-absent-and-set-to-a-none."></a>A “flag” is a single-character string that may be associated with Transactions and Postings to indicate whether they are assumed to be correct ("reconciled") or flagged as suspicious. The typical value used on transaction instances is the character “*”. On Postings, it is usually left absent (and set to a None).<a class="headerlink" href="#a-flag-is-a-single-character-string-that-may-be-associated-with-transactions-and-postings-to-indicate-whether-they-are-assumed-to-be-correct-reconciled-or-flagged-as-suspicious-the-typical-value-used-on-transaction-instances-is-the-character-42-on-postings-it-is-usually-left-absent-and-set-to-a-none" title="Permanent link"></a></h3>
-<h3 id="amount"><a id="amount"></a>Amount<a class="headerlink" href="#amount" title="Permanent link"></a></h3>
+<h3 id="flag">Flag<a class="headerlink" href="#flag" title="Permanent link"></a></h3>
+<h3 id="a-flag-is-a-single-character-string-that-may-be-associated-with-transactions-and-postings-to-indicate-whether-they-are-assumed-to-be-correct-reconciled-or-flagged-as-suspicious-the-typical-value-used-on-transaction-instances-is-the-character-42-on-postings-it-is-usually-left-absent-and-set-to-a-none">A “flag” is a single-character string that may be associated with Transactions and Postings to indicate whether they are assumed to be correct ("reconciled") or flagged as suspicious. The typical value used on transaction instances is the character “*”. On Postings, it is usually left absent (and set to a None).<a class="headerlink" href="#a-flag-is-a-single-character-string-that-may-be-associated-with-transactions-and-postings-to-indicate-whether-they-are-assumed-to-be-correct-reconciled-or-flagged-as-suspicious-the-typical-value-used-on-transaction-instances-is-the-character-42-on-postings-it-is-usually-left-absent-and-set-to-a-none" title="Permanent link"></a></h3>
+<h3 id="amount">Amount<a class="headerlink" href="#amount" title="Permanent link"></a></h3>
 <p>An <strong>Amount</strong> is the combination of a number and an associated currency,
 conceptually:</p>
 <pre><code>Amount = (Number, Currency)
@@ -723,7 +738,7 @@ operations directly on instances of Amount. You can also create Amount
 instance using amount.from_string(), for example:</p>
 <pre><code>value = amount.from_string("201.32 USD")
 </code></pre>
-<h3 id="cost"><a id="cost"></a>Cost<a class="headerlink" href="#cost" title="Permanent link"></a></h3>
+<h3 id="cost">Cost<a class="headerlink" href="#cost" title="Permanent link"></a></h3>
 <p>A Cost object represents the cost basis for a particular lot of a
 commodity. Conceptually, it is</p>
 <pre><code>Cost = (Number, Currency, Date, Label)
@@ -743,7 +758,7 @@ provides an explicit date override.</p>
 user to refer to a particular lot or disambiguate similar lots.</p>
 <p>On a Cost object, the number, currency and date attributes are always
 set. If the label is unset, it has a value of “None.”</p>
-<h4 id="costspec"><a id="costspec"></a>CostSpec<a class="headerlink" href="#costspec" title="Permanent link"></a></h4>
+<h4 id="costspec">CostSpec<a class="headerlink" href="#costspec" title="Permanent link"></a></h4>
 <p>In the input syntax, we allow users to provide as little information as
 necessary in order to disambiguate between the lots contained in the
 inventory prior to posting. The data provided filters the set of
@@ -761,7 +776,7 @@ be filled in, the special value “MISSING” will be set on it.</p>
 input lots before applying the transaction and to merge them after. This
 is the method used for all transactions posted to an account with the
 “AVERAGE” booking method.</p>
-<h3 id="position"><a id="position"></a>Position<a class="headerlink" href="#position" title="Permanent link"></a></h3>
+<h3 id="position">Position<a class="headerlink" href="#position" title="Permanent link"></a></h3>
 <p>A position represents some units of a particular commodity held at cost.
 It consists simply in</p>
 <pre><code>Position = (Units, Cost)
@@ -770,7 +785,7 @@ It consists simply in</p>
 or a null value if the commodity is not held at cost. Inventories
 contain lists of <em>Position</em> instances. See its definition in <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/position.py"><span
 class="underline">beancount.core.position</span></a><s>.</s></p>
-<h3 id="posting"><a id="posting"></a>Posting<a class="headerlink" href="#posting" title="Permanent link"></a></h3>
+<h3 id="posting">Posting<a class="headerlink" href="#posting" title="Permanent link"></a></h3>
 <p>Each Transaction directive is composed of multiple Postings (I often
 informally refer to these in the code and on the mailing-list as the
 “legs” of a transaction). Each of these postings is associated with an
@@ -791,8 +806,8 @@ next to a “@” in the input.</p>
 sufficient to flag an entire transaction instead of a specific posting.
 The flag is usually left to None; if set, it is a single-character
 string.</p>
-<h3 id="the-posting-type-is-defined-in-beancountcoredata-along-with-all-the-directive-types"><a id="the-posting-type-is-defined-in-beancount.core.data-along-with-all-the-directive-types."></a>The Posting type is defined in <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/data.py"><span class="underline">beancount.core.data</span></a>, along with all the directive types.<a class="headerlink" href="#the-posting-type-is-defined-in-beancountcoredata-along-with-all-the-directive-types" title="Permanent link"></a></h3>
-<h3 id="inventory"><a id="inventory"></a>Inventory<a class="headerlink" href="#inventory" title="Permanent link"></a></h3>
+<h3 id="the-posting-type-is-defined-in-beancountcoredata-along-with-all-the-directive-types">The Posting type is defined in <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/data.py"><span class="underline">beancount.core.data</span></a>, along with all the directive types.<a class="headerlink" href="#the-posting-type-is-defined-in-beancountcoredata-along-with-all-the-directive-types" title="Permanent link"></a></h3>
+<h3 id="inventory">Inventory<a class="headerlink" href="#inventory" title="Permanent link"></a></h3>
 <p>An Inventory is a container for an account’s balance in various lots of
 commodities. It is essentially a list of <em>Position</em> instances with
 suitable operations defined on it. Conceptually you may think of it as a
@@ -814,7 +829,7 @@ detail of that process.</p>
 <p>For testing, you can create initialized instances of Inventory using
 inventory.from_string(). All the inventory code is written in <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/inventory.py"><span
 class="underline">beancount.core.inventory</span></a>.</p>
-<h3 id="about-tuples-mutability"><a id="about-tuples-mutability"></a>About Tuples &amp; Mutability<a class="headerlink" href="#about-tuples-mutability" title="Permanent link"></a></h3>
+<h3 id="about-tuples-mutability">About Tuples &amp; Mutability<a class="headerlink" href="#about-tuples-mutability" title="Permanent link"></a></h3>
 <p>Despite the program being written in a language which does not make
 mutability “difficult by default”, I designed the software to avoid
 mutability in most places. Python provides a “collections.namedtuple”
@@ -875,7 +890,7 @@ codebase to the adoption of these principles. I would love to have
 errors, and I plan to experiment with <a href="https://www.python.org/dev/peps/pep-0484/"><span class="underline">Python
 3.5’s upcoming typing
 module</span></a>.</em></p>
-<h3 id="summary"><a id="summary"></a>Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h3>
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h3>
 <p>The following diagram explains how these objects relate to each other,
 starting from a Posting.</p>
 <p><img src="24_beancount_design_doc/media/93cd070d4d5efd741b33a3e91d6b3e8f86e58be6.png" style="width:4.36111in;height:6.11111in" /></p>
@@ -886,13 +901,13 @@ starting from a Posting.</p>
 <pre><code>posting.cost.currency
 </code></pre>
 <p>You can print out the tuples in Python to figure out their structure.</p>
-<h4 id="previous-design"><a id="previous-design"></a>Previous Design<a class="headerlink" href="#previous-design" title="Permanent link"></a></h4>
+<h4 id="previous-design">Previous Design<a class="headerlink" href="#previous-design" title="Permanent link"></a></h4>
 <p>For the sake of preservation, if you go back in time in the repository,
 the structure of postings was deeper and more complex. The new design
 reflects a flatter and simpler version of it. Here is what the old
 design used to look like:</p>
 <p><img src="24_beancount_design_doc/media/a36336143a27c30f063d6ef8edc147ff87d0beb2.png" style="width:6.69444in;height:4.19444in" /></p>
-<h2 id="directives"><a id="directives"></a>Directives<a class="headerlink" href="#directives" title="Permanent link"></a></h2>
+<h2 id="directives">Directives<a class="headerlink" href="#directives" title="Permanent link"></a></h2>
 <p>The main production from loading a Beancount input file is a list of
 <strong>directives</strong>. I also call these <strong>entries</strong> interchangeably in the
 codebase and in the documents. There are directives of various types:</p>
@@ -931,7 +946,7 @@ that will produce reports. The system is built around this idea of
 processing a stream of directives to extract all contents and produce
 reports, which are essentially different flavors of filtering and
 aggregations of values attached to this stream of directives.</p>
-<h3 id="common-properties"><a id="common-properties"></a>Common Properties<a class="headerlink" href="#common-properties" title="Permanent link"></a></h3>
+<h3 id="common-properties">Common Properties<a class="headerlink" href="#common-properties" title="Permanent link"></a></h3>
 <p>Some properties are in common to <em>all</em> the directives:</p>
 <ul>
 <li><strong>Date.</strong> A datetime.date object. This is useful and consistent. For
@@ -953,21 +968,21 @@ aggregations of values attached to this stream of directives.</p>
     kind of ancillary data they want and then use this in scripts or
     queries. Posting instances also have a metadata attribute.</li>
 </ul>
-<h3 id="transactions"><a id="transactions"></a>Transactions<a class="headerlink" href="#transactions" title="Permanent link"></a></h3>
+<h3 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link"></a></h3>
 <p>The Transaction directive is the subject of Beancount and is by far the
 most common directive found in input files and is worth of special
 attention. The function of a bookkeeping system is to organize the
 Postings attached to Transactions in various ways. All the other types
 of entries occupy supporting roles in our system.</p>
 <p>A Transaction has the following additional fields.</p>
-<h4 id="flag_1"><a id="flag-1"></a>Flag<a class="headerlink" href="#flag_1" title="Permanent link"></a></h4>
+<h4 id="flag_1">Flag<a class="headerlink" href="#flag_1" title="Permanent link"></a></h4>
 <p>The single-character flag is usually there to replace the “txn” keyword
 (Transaction is the only directive which allows being entered without
 entering its keyword). I’ve been considering changing the syntax
 definition somewhat to allow not entering the flag nor the keyword,
 because I’d like to eventually support that. Right now, either the flag
 or keyword is required. The flag attribute may be set to None.</p>
-<h4 id="payee-narration"><a id="payee-narration"></a>Payee &amp; Narration<a class="headerlink" href="#payee-narration" title="Permanent link"></a></h4>
+<h4 id="payee-narration">Payee &amp; Narration<a class="headerlink" href="#payee-narration" title="Permanent link"></a></h4>
 <p>The narration field is a user-provided description of the transaction,
 such as "Dinner with Mary-Ann." You can put any information in this
 string. It shows up in the journal report. Oftentimes it is used to
@@ -987,7 +1002,7 @@ can be useful to have just the payee. It’s just a matter of convenience.
 At the moment, if you want to enter just the payee string you need to
 append an empty narration string. This should be revisited at some
 point.</p>
-<h4 id="tags"><a id="tags"></a>Tags<a class="headerlink" href="#tags" title="Permanent link"></a></h4>
+<h4 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link"></a></h4>
 <p>Tags are sets of strings that can be used to group sets of transactions
 (or set to None if there are no tags). A view of this subset of
 transactions can then be generated, including all the usual reports
@@ -1026,7 +1041,7 @@ types, and so they would not belong to a single account.</p>
 subsumed by metadata—I have been considering converting tags into
 metadata keys with a boolean value of True, in order to remove
 unnecessary complexity.</p>
-<h4 id="links"><a id="links"></a>Links<a class="headerlink" href="#links" title="Permanent link"></a></h4>
+<h4 id="links">Links<a class="headerlink" href="#links" title="Permanent link"></a></h4>
 <p>Links are a unique sets of strings or None, and in practice will be
 usually empty for most transactions. They differ from tags only in
 purpose.</p>
@@ -1045,7 +1060,7 @@ produced by the importers. No views are produced for links; only a
 journal of a particular links transactions can be produced and a
 rendered transaction should be accompanied by an actual "link" icon you
 can click on to view all the other related transactions.</p>
-<h4 id="postings"><a id="postings"></a>Postings<a class="headerlink" href="#postings" title="Permanent link"></a></h4>
+<h4 id="postings">Postings<a class="headerlink" href="#postings" title="Permanent link"></a></h4>
 <p>A list of Postings are attached to the Transaction object. Technically
 this list object is mutable but in practice we try not to modify it. A
 Posting can ever only be part of a single Transaction.</p>
@@ -1060,7 +1075,7 @@ into multiple Transactions and using some sort of transfer account to
 hold the pending balance in-between dates. See the <a href="../28_settlement_dates_in_beancount/"><span
 class="underline">associated
 proposal</span></a> for details.</p>
-<h4 id="balancing-postings"><a id="balancing-postings"></a>Balancing Postings<a class="headerlink" href="#balancing-postings" title="Permanent link"></a></h4>
+<h4 id="balancing-postings">Balancing Postings<a class="headerlink" href="#balancing-postings" title="Permanent link"></a></h4>
 <p>The fundamental principle of double-entry book-keeping is enforced in
 each of the Transaction entries: the sum of all postings must be zero.
 This section describes the specific way in which we do this, and is the
@@ -1158,7 +1173,7 @@ data-point in the internal price database:</p>
 <p>VACHR: (4.62) + (-4.62) ~= 0 VACHR</p>
 </li>
 </ul>
-<h5 id="elision-of-amounts"><a id="elision-of-amounts"></a>Elision of Amounts<a class="headerlink" href="#elision-of-amounts" title="Permanent link"></a></h5>
+<h5 id="elision-of-amounts">Elision of Amounts<a class="headerlink" href="#elision-of-amounts" title="Permanent link"></a></h5>
 <p>Transactions allow for at most one posting to be elided and
 automatically set; if an amount was elided, the final balance of all the
 other postings is attributed to the balance.</p>
@@ -1178,7 +1193,7 @@ multiple postings, like this:</p>
        Assets:US:Company:Vacation                          4.62 VACHR
        Income:US:Company:Vacation                               VACHR
 </code></pre>
-<h3 id="stream-processing"><a id="stream-processing"></a>Stream Processing<a class="headerlink" href="#stream-processing" title="Permanent link"></a></h3>
+<h3 id="stream-processing">Stream Processing<a class="headerlink" href="#stream-processing" title="Permanent link"></a></h3>
 <p>An important by-product of representing all state using a single stream
 of directives is that most of the operations in Beancount can be
 implemented by simple functions that accept the list of directives as
@@ -1231,7 +1246,7 @@ stream of directives by providing a new “Error” directive that could be
 inserted by stream processing functions. I’m not sure whether this would
 make anything simpler yet, it’s just an idea at this point [July
 2015].</em></p>
-<h3 id="stream-invariants"><a id="stream-invariants"></a>Stream Invariants<a class="headerlink" href="#stream-invariants" title="Permanent link"></a></h3>
+<h3 id="stream-invariants">Stream Invariants<a class="headerlink" href="#stream-invariants" title="Permanent link"></a></h3>
 <p>The stream of directives comes with a few guarantees you can rest upon:</p>
 <ul>
 <li>
@@ -1251,7 +1266,7 @@ make anything simpler yet, it’s just an idea at this point [July
     to occur at the beginning of the day.</p>
 </li>
 </ul>
-<h2 id="loader-processing-order"><a id="loader-processing-order"></a>Loader &amp; Processing Order<a class="headerlink" href="#loader-processing-order" title="Permanent link"></a></h2>
+<h2 id="loader-processing-order">Loader &amp; Processing Order<a class="headerlink" href="#loader-processing-order" title="Permanent link"></a></h2>
 <p>The process of <strong>loading</strong> a list of entries from an input file is the
 heart of the project. It is important to understand it in order to
 understand how Beancount works. Refer to the diagram below.</p>
@@ -1287,7 +1302,7 @@ built-in plugins (you have to replace those with explicit “plugin”
 directives if you want to do that). I’m not sure if this is going to be
 useful yet, but it allows for tighter control over the loading process
 for experimentation.</p>
-<h3 id="loader-output"><a id="loader-output"></a>Loader Output<a class="headerlink" href="#loader-output" title="Permanent link"></a></h3>
+<h3 id="loader-output">Loader Output<a class="headerlink" href="#loader-output" title="Permanent link"></a></h3>
 <p>The parser and the loader produce three lists:</p>
 <ul>
 <li>
@@ -1300,7 +1315,7 @@ for experimentation.</p>
 <p>options_map: A dict of the options provided in the file and derived during parsing. Though this is a mutable object, we never modify it once produced by the parser.</p>
 </li>
 </ul>
-<h2 id="parser-implementation"><a id="parser-implementation"></a>Parser Implementation<a class="headerlink" href="#parser-implementation" title="Permanent link"></a></h2>
+<h2 id="parser-implementation">Parser Implementation<a class="headerlink" href="#parser-implementation" title="Permanent link"></a></h2>
 <p>The Beancount parser is a mix of C and Python 3 code. This is the reason
 you need to compile anything in the first place. The parser is
 implemented in C using a <a href="http://flex.sourceforge.net/"><span
@@ -1386,7 +1401,7 @@ line. Also, single-characters in the input should be parsed as flags and
 at the moment this is limited to a small subset of characters. I’d like
 to eventually write a custom lexer with some lookahead capabilities to
 better deal with these problems (this is easy to do).</p>
-<h3 id="two-stages-of-parsing-incomplete-entries"><a id="two-stages-of-parsing-incomplete-entries"></a>Two Stages of Parsing: Incomplete Entries<a class="headerlink" href="#two-stages-of-parsing-incomplete-entries" title="Permanent link"></a></h3>
+<h3 id="two-stages-of-parsing-incomplete-entries">Two Stages of Parsing: Incomplete Entries<a class="headerlink" href="#two-stages-of-parsing-incomplete-entries" title="Permanent link"></a></h3>
 <p>At the moment, the parser produces transactions which may or may not
 balance. The validation stage which runs after the plugins carries out
 the balance assertions. This degree of freedom is allowed to provide the
@@ -1427,7 +1442,7 @@ account up until April 3rd…</p>
 <p><img src="24_beancount_design_doc/media/8ba8202797ee7206951b5913c9b3c264c33c7df0.png" style="width:6.05556in;height:3.01389in" /></p>
 <p>See the diagram above for reference. Once implemented, everything else
 should be the same.</p>
-<h3 id="the-printer"><a id="the-printer"></a>The Printer<a class="headerlink" href="#the-printer" title="Permanent link"></a></h3>
+<h3 id="the-printer">The Printer<a class="headerlink" href="#the-printer" title="Permanent link"></a></h3>
 <p>In the same package as the parser lives a printer. This isolates all the
 functionality that deals with the Beancount “language” in the
 beancount.parser package: the parser converts from input syntax to data
@@ -1466,7 +1481,7 @@ changes break it partially:</p>
 </ul>
 <p>This probably needs to get refined a bit at some point with a more
 complete test (it’s not far as it is).</p>
-<h3 id="uniqueness-hashing"><a id="uniqueness-hashing"></a>Uniqueness &amp; Hashing<a class="headerlink" href="#uniqueness-hashing" title="Permanent link"></a></h3>
+<h3 id="uniqueness-hashing">Uniqueness &amp; Hashing<a class="headerlink" href="#uniqueness-hashing" title="Permanent link"></a></h3>
 <p>In order to make it possible to compare directives quickly, we support
 unique hashing of all directives, that is, from each directive we should
 be able to produce a short and unique id. We can then use these ids to
@@ -1481,7 +1496,7 @@ optional and enabled by the beancount.plugins.noduplicates plugin.</p>
 <p>Note that the hashing of directives currently <a href="https://bitbucket.org/blais/beancount/src/24acbceb37aef8ab6bc6f324599fe434b7bad31c/src/python/beancount/core/compare.py?at=default#cl-14"><span
 class="underline">does not include user
 meta-data</span></a>.</p>
-<h3 id="display-context"><a id="display-context"></a>Display Context<a class="headerlink" href="#display-context" title="Permanent link"></a></h3>
+<h3 id="display-context">Display Context<a class="headerlink" href="#display-context" title="Permanent link"></a></h3>
 <p>Number are input with different numbers of fractional digits:</p>
 <pre><code>500    -&gt; 0 fractional digits
 520.23 -&gt; 2 fractional digits
@@ -1533,11 +1548,11 @@ which can be used to render numbers in a particular way.</p>
 throughout the code. The parser automatically creates a DisplayContext
 object and feeds it all the numbers it sees during parsing. The object
 is available in the options_map produced by the loader.</p>
-<h2 id="realization"><a id="realization"></a>Realization<a class="headerlink" href="#realization" title="Permanent link"></a></h2>
+<h2 id="realization">Realization<a class="headerlink" href="#realization" title="Permanent link"></a></h2>
 <p>It occurs often that one needs to compute the final balances of a list
 of filtered transactions, and to report on them in a hierarchical
 account structure. See diagram below.</p>
-<h2 id="_1"><a id="section"></a><img src="24_beancount_design_doc/media/736b05ad5dbed8af111f3f9d01d38b8b99914e7b.png" style="width:8.66667in;height:3.06944in" /><a class="headerlink" href="#_1" title="Permanent link"></a></h2>
+<h2 id="_1"><img src="24_beancount_design_doc/media/736b05ad5dbed8af111f3f9d01d38b8b99914e7b.png" style="width:8.66667in;height:3.06944in" /><a class="headerlink" href="#_1" title="Permanent link"></a></h2>
 <p>For the purpose of creating hierarchical renderings, I provide a process
 called a “<a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/realization.py"><span
 class="underline">realization</span></a>.”
@@ -1572,12 +1587,12 @@ entries, errors, options_map = loader.load_file("filename.beancount")
 real_root = realization.realize(entries)
 realization.dump_balances(real_root, file=sys.stdout)
 </code></pre>
-<h2 id="the-web-interface"><a id="the-web-interface"></a>The Web Interface<a class="headerlink" href="#the-web-interface" title="Permanent link"></a></h2>
+<h2 id="the-web-interface">The Web Interface<a class="headerlink" href="#the-web-interface" title="Permanent link"></a></h2>
 <p>Before the appearance of the SQL syntax to filter and aggregate
 postings, the only report produced by Beancount was the web interface
 provide by bean-web. As such, bean-web evolved to be good enough for
 most usage and general reports.</p>
-<h3 id="reports-vs-web"><a id="reports-vs.-web"></a>Reports vs. Web<a class="headerlink" href="#reports-vs-web" title="Permanent link"></a></h3>
+<h3 id="reports-vs-web">Reports vs. Web<a class="headerlink" href="#reports-vs-web" title="Permanent link"></a></h3>
 <p>One of the important characteristics of bean-web is that it should just
 be a thin dispatching shell that serves reports generated from the
 <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/reports/"><span
@@ -1587,7 +1602,7 @@ point I began to factor out all the reporting code to a separate package
 in order to produce reports to other formats, such as text reports and
 output to CSV. This is mostly finished, but at this time [July 2015]
 some reports remain that only support HTML output. This is why.</p>
-<h3 id="client-side-javascript"><a id="client-side-javascript"></a>Client-Side JavaScript<a class="headerlink" href="#client-side-javascript" title="Permanent link"></a></h3>
+<h3 id="client-side-javascript">Client-Side JavaScript<a class="headerlink" href="#client-side-javascript" title="Permanent link"></a></h3>
 <p>I would like to eventually include a lot more client-side scripting in
 the web interface. However, I don’t think I’ll be able to work on this
 for a while, at least not until all the proposals for changes to the
@@ -1595,7 +1610,7 @@ core are complete (e.g., inventory booking improvements, settlement
 splitting and merging, etc.).</p>
 <p>If you’d like to contribute to Beancount, improving bean-web or creating
 your own visualizations would be a great venue.</p>
-<h2 id="the-query-interface"><a id="the-query-interface"></a>The Query Interface<a class="headerlink" href="#the-query-interface" title="Permanent link"></a></h2>
+<h2 id="the-query-interface">The Query Interface<a class="headerlink" href="#the-query-interface" title="Permanent link"></a></h2>
 <p>The current query interface is the result of a <em>prototype</em>. It has not
 yet been subjected to the amount of testing and refinement as the rest
 of the codebase. I’ve been experimenting with it and have a lot of ideas
@@ -1606,8 +1621,8 @@ to specify, it produces useful results.</p>
 <p>It will be the subject of a complete rewrite at some point and when I
 do, I will keep the current implementation for a little while so that
 existing scripts don’t just break; I’ll implement a v2 of the shell.</p>
-<h2 id="design-principles"><a id="design-principles"></a>Design Principles<a class="headerlink" href="#design-principles" title="Permanent link"></a></h2>
-<h3 id="minimize-configurability"><a id="minimize-configurability"></a>Minimize Configurability<a class="headerlink" href="#minimize-configurability" title="Permanent link"></a></h3>
+<h2 id="design-principles">Design Principles<a class="headerlink" href="#design-principles" title="Permanent link"></a></h2>
+<h3 id="minimize-configurability">Minimize Configurability<a class="headerlink" href="#minimize-configurability" title="Permanent link"></a></h3>
 <p>First, Beancount should have as few options as possible. Second,
 command-line programs should have no options that pertain to the
 processing and semantic of the input file (options that affect the
@@ -1636,7 +1651,7 @@ group it differently.</p>
 would not work for most users. On the other hand, large-scale changes
 that would generalize well and that require little configurability are
 more likely to see implementation.</p>
-<h3 id="favor-code-over-dsls"><a id="favor-code-over-dsls"></a>Favor Code over DSLs<a class="headerlink" href="#favor-code-over-dsls" title="Permanent link"></a></h3>
+<h3 id="favor-code-over-dsls">Favor Code over DSLs<a class="headerlink" href="#favor-code-over-dsls" title="Permanent link"></a></h3>
 <p>Beancount provides a simple syntax, a parser and printer for it, and a
 library of very simple data record types to allow a user to easily write
 their scripts to process their data, taking advantage of the multitude
@@ -1658,7 +1673,7 @@ language is yet another thing to learn, and it’s yet another thing that
 might involve limitations require expansion and work… I prefer to avoid
 DSLs if possible and use Python’s well understood semantics instead,
 though this is not always sensible.</p>
-<h3 id="file-format-or-input-language"><a id="file-format-or-input-language"></a>File Format or Input Language?<a class="headerlink" href="#file-format-or-input-language" title="Permanent link"></a></h3>
+<h3 id="file-format-or-input-language">File Format or Input Language?<a class="headerlink" href="#file-format-or-input-language" title="Permanent link"></a></h3>
 <p>One may wonder whether Beancount’s input syntax should be a computer
 language or just a data format. The problem we're trying to solve is
 essentially that of making it easy for a human being to create a
@@ -1680,7 +1695,7 @@ cannot define new “Beancount functions” in it. But it has data types. In
 this regard, it is more like a file format.</p>
 <p>Just something to think about, especially in the context of adding new
 semantics.</p>
-<h3 id="grammar-via-parser-generator"><a id="grammar-via-parser-generator"></a>Grammar via Parser Generator<a class="headerlink" href="#grammar-via-parser-generator" title="Permanent link"></a></h3>
+<h3 id="grammar-via-parser-generator">Grammar via Parser Generator<a class="headerlink" href="#grammar-via-parser-generator" title="Permanent link"></a></h3>
 <p>The grammar of its language should be compatible with the use of
 commonly used parser generator tools. It should be possible to parse the
 language with a simple lexer and some grammar input file.</p>
@@ -1710,30 +1725,30 @@ flex/bison parser generator.</p>
 <p>(Eventually I’d like to create a file format to generate parsers in
 multiple languages from a single input. That will be done later, once
 all the major features are implemented.)</p>
-<h2 id="future-work"><a id="future-work"></a>Future Work<a class="headerlink" href="#future-work" title="Permanent link"></a></h2>
-<h3 id="tagged-strings"><a id="tagged-strings"></a>Tagged Strings<a class="headerlink" href="#tagged-strings" title="Permanent link"></a></h3>
+<h2 id="future-work">Future Work<a class="headerlink" href="#future-work" title="Permanent link"></a></h2>
+<h3 id="tagged-strings">Tagged Strings<a class="headerlink" href="#tagged-strings" title="Permanent link"></a></h3>
 <p>At the moment, account names, tags, links and commodities are
 represented as simple Python strings. I’ve tried to keep things simple.
 At some point I’d like to refine this a bit and create a specialization
 of strings for each of these types. I’d need to assess the performance
 impact of doing that beforehand. I’m not entirely sure how it could
 benefit functionality yet.</p>
-<h3 id="errors-cleanup"><a id="errors-cleanup"></a>Errors Cleanup<a class="headerlink" href="#errors-cleanup" title="Permanent link"></a></h3>
+<h3 id="errors-cleanup">Errors Cleanup<a class="headerlink" href="#errors-cleanup" title="Permanent link"></a></h3>
 <p>I’ve been thinking about removing the separate “errors” list and
 integrating it into the stream of entries as automatically produced
 “Error” entries. This has the advantage that the errors could be
 rendered as part of the rest of the stream, but it means we have to
 process the whole list of entries any time we need to print and find
 errors (probably not a big deal, given how rarely we output errors).</p>
-<h3 id="types"><a id="types"></a>Types<a class="headerlink" href="#types" title="Permanent link"></a></h3>
+<h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link"></a></h3>
 <p>Python 3.5 introduces types. I plan to use that throughout Beancount
 sometime after 3.5 is released, and I hope for it to catch a different
 class of errors than I’m already handling by unit tests.</p>
-<h2 id="conclusion"><a id="conclusion"></a>Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>This document is bound to evolve. If you have questions about the
 internals, please post them to the <a href="http://furius.ca/beancount/doc/mailing-list"><span
 class="underline">mailing-list</span></a>.</p>
-<h2 id="references"><a id="references"></a>References<a class="headerlink" href="#references" title="Permanent link"></a></h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link"></a></h2>
 <p>Nothing in Beancount is inspired from the following docs, but you may
 find them interesting as well:</p>
 <ul>

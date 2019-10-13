@@ -232,11 +232,16 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#beancount-example-tutorial">Beancount Example &amp; Tutorial</a></li>
+            <li><a href="#example-file-generator">Example File Generator</a></li>
+            <li><a href="#profile-of-example-user">Profile of Example User</a></li>
+            <li><a href="#tutorial">Tutorial</a></li>
+            <li><a href="#the-future-of-beancount-reports">The Future of Beancount Reports</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="beancount-example-tutorial"><a id="title"></a>Beancount Example &amp; Tutorial<a class="headerlink" href="#beancount-example-tutorial" title="Permanent link"></a></h1>
+<h1 id="beancount-example-tutorial">Beancount Example &amp; Tutorial<a class="headerlink" href="#beancount-example-tutorial" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 October 2014</p>
 <p><a href="http://furius.ca/beancount/doc/example"><span
@@ -267,7 +272,7 @@ Interface</span></a></p>
 <p><a href="#the-future-of-beancount-reports"><span class="underline">The Future of Beancount
 Reports</span></a></p>
 </blockquote>
-<h2 id="example-file-generator"><a id="example-file-generator"></a>Example File Generator<a class="headerlink" href="#example-file-generator" title="Permanent link"></a></h2>
+<h2 id="example-file-generator">Example File Generator<a class="headerlink" href="#example-file-generator" title="Permanent link"></a></h2>
 <p>Beancount has a command to generate a few years of a realistic user’s
 historical entries:</p>
 <pre><code>bean-example &gt; example.beancount
@@ -298,7 +303,7 @@ available options with</p>
 <p>As input for stress testing Beancount.</p>
 </li>
 </ul>
-<h3 id="converting-to-ledger-input"><a id="converting-to-ledger-input"></a>Converting to Ledger Input<a class="headerlink" href="#converting-to-ledger-input" title="Permanent link"></a></h3>
+<h3 id="converting-to-ledger-input">Converting to Ledger Input<a class="headerlink" href="#converting-to-ledger-input" title="Permanent link"></a></h3>
 <p>It should be possible to convert example files generated from the script
 to Ledger syntax, like this:</p>
 <pre><code>bean-report example.beancount ledger &gt; example.lgr
@@ -308,7 +313,7 @@ While I have an automated test to check that the conversion succeeds,
 I’m focusing my efforts on Beancount itself and I’m not using Ledger
 much other than for the occasional comparison or for illustrating
 something on the mailing-list.</p>
-<h2 id="profile-of-example-user"><a id="profile-of-example-user"></a>Profile of Example User<a class="headerlink" href="#profile-of-example-user" title="Permanent link"></a></h2>
+<h2 id="profile-of-example-user">Profile of Example User<a class="headerlink" href="#profile-of-example-user" title="Permanent link"></a></h2>
 <p>Here’s a high-level profile of this user. In the text that follows, I’ll
 use the masculine “he” for simplicity’s sake.</p>
 <ul>
@@ -391,7 +396,7 @@ use the masculine “he” for simplicity’s sake.</p>
     travels somewhere fun.</p>
 </li>
 </ul>
-<h3 id="future-additions"><a id="future-additions"></a>Future Additions<a class="headerlink" href="#future-additions" title="Permanent link"></a></h3>
+<h3 id="future-additions">Future Additions<a class="headerlink" href="#future-additions" title="Permanent link"></a></h3>
 <p>Note that as I beef up the example generator script, this profile will
 increase in complexity. If there is a particular situation from the
 <a href="../18_command_line_accounting_cookbook/"><span
@@ -445,7 +450,7 @@ know (a patch is the best way to let me know).</p>
     transfers in that currency.</p>
 </li>
 </ul>
-<h2 id="tutorial"><a id="tutorial"></a>Tutorial<a class="headerlink" href="#tutorial" title="Permanent link"></a></h2>
+<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permanent link"></a></h2>
 <p>This section provides basic examples of generating reports with
 Beancount, on the typical example file that would be output by it. The
 list of reports here is not meant to be exhaustive.</p>
@@ -453,7 +458,7 @@ list of reports here is not meant to be exhaustive.</p>
 at the files from <a href="http://bitbucket.org/blais/beancount/src/tip/examples/tutorial/"><span
 class="underline">beancount/examples/tutorial</span></a>
 if you prefer.</p>
-<h3 id="generate-an-example-file"><a id="generate-an-example-file"></a>Generate an Example File<a class="headerlink" href="#generate-an-example-file" title="Permanent link"></a></h3>
+<h3 id="generate-an-example-file">Generate an Example File<a class="headerlink" href="#generate-an-example-file" title="Permanent link"></a></h3>
 <p>Begin by generating the example file:</p>
 <pre><code>bean-example &gt; example.beancount
 </code></pre>
@@ -462,8 +467,8 @@ if you prefer.</p>
 without any errors:</p>
 <pre><code>bean-check example.beancount
 </code></pre>
-<h3 id="it-should-return-quietly-without-outputting-anything-bean-check-only-writes-errors-when-there-are-some-otherwise-on-success-it-writes-nothing"><a id="it-should-return-quietly-without-outputting-anything-bean-check-only-writes-errors-when-there-are-some-otherwise-on-success-it-writes-nothing."></a>It should return quietly, without outputting anything (bean-check only writes errors when there are some, otherwise on success it writes nothing).<a class="headerlink" href="#it-should-return-quietly-without-outputting-anything-bean-check-only-writes-errors-when-there-are-some-otherwise-on-success-it-writes-nothing" title="Permanent link"></a></h3>
-<h3 id="generating-reports"><a id="generating-reports"></a>Generating Reports<a class="headerlink" href="#generating-reports" title="Permanent link"></a></h3>
+<h3 id="it-should-return-quietly-without-outputting-anything-bean-check-only-writes-errors-when-there-are-some-otherwise-on-success-it-writes-nothing">It should return quietly, without outputting anything (bean-check only writes errors when there are some, otherwise on success it writes nothing).<a class="headerlink" href="#it-should-return-quietly-without-outputting-anything-bean-check-only-writes-errors-when-there-are-some-otherwise-on-success-it-writes-nothing" title="Permanent link"></a></h3>
+<h3 id="generating-reports">Generating Reports<a class="headerlink" href="#generating-reports" title="Permanent link"></a></h3>
 <p>Let’s generate a report of the final balances of all accounts <a href="http://furius.ca/beancount/examples/tutorial/balances.output"><span
 class="underline">[output]</span></a>:</p>
 <pre><code>bean-report example.beancount balances
@@ -490,7 +495,7 @@ the reports. To see which formats are available for which report, use
 class="underline">[output]</span></a>:</p>
 <pre><code>bean-report --help-formats
 </code></pre>
-<h3 id="generating-balances"><a id="generating-balances"></a>Generating Balances<a class="headerlink" href="#generating-balances" title="Permanent link"></a></h3>
+<h3 id="generating-balances">Generating Balances<a class="headerlink" href="#generating-balances" title="Permanent link"></a></h3>
 <p>Good, so we know how to generate a report of balances for all accounts.
 This is a pretty detailed list of accounts though. Let’s just restrict
 the output to the accounts that we’re interested in <a href="http://furius.ca/beancount/examples/tutorial/balances-restrict.output"><span
@@ -502,7 +507,7 @@ subaccounts. To render the cost, use the --cost option <a href="http://furius.ca
 class="underline">[output]</span></a>:</p>
 <pre><code>bean-report example.beancount balances -e ETrade --cost
 </code></pre>
-<h3 id="formatting-tools"><a id="formatting-tools"></a>Formatting Tools<a class="headerlink" href="#formatting-tools" title="Permanent link"></a></h3>
+<h3 id="formatting-tools">Formatting Tools<a class="headerlink" href="#formatting-tools" title="Permanent link"></a></h3>
 <p>Sometimes it’s nice to render a hierarchical list of accounts as a tree.
 You can use the “treeify” tool provided by Beancount to do this:</p>
 <pre><code>bean-report example.beancount balances | treeify
@@ -510,7 +515,7 @@ You can use the “treeify” tool provided by Beancount to do this:</p>
 <p>This tool will work on any column of data that looks like a column of
 account names (you can also configure it work with filenames as well, or
 other patterns).</p>
-<h3 id="generating-a-balance-sheet-and-income-statement"><a id="generating-a-balance-sheet-and-income-statement"></a>Generating a Balance Sheet and Income Statement<a class="headerlink" href="#generating-a-balance-sheet-and-income-statement" title="Permanent link"></a></h3>
+<h3 id="generating-a-balance-sheet-and-income-statement">Generating a Balance Sheet and Income Statement<a class="headerlink" href="#generating-a-balance-sheet-and-income-statement" title="Permanent link"></a></h3>
 <p>Let us generate a balance sheet:</p>
 <pre><code>bean-report example.beancount balsheet
 </code></pre>
@@ -523,7 +528,7 @@ class="underline">[output]</span></a>:</p>
 <p>You can to the same for income statements:</p>
 <pre><code>bean-report example.beancount income &gt; /tmp/income.html
 </code></pre>
-<h3 id="journals"><a id="journals"></a>Journals<a class="headerlink" href="#journals" title="Permanent link"></a></h3>
+<h3 id="journals">Journals<a class="headerlink" href="#journals" title="Permanent link"></a></h3>
 <p>You can also generate journals (in Ledger parlance, these are
 “registers”). Let’s look at a checking account postings, for instance
 <a href="http://furius.ca/beancount/examples/tutorial/journal.output"><span
@@ -550,7 +555,7 @@ balance and the total would be zero. But try it, nonetheless <a href="http://fur
 class="underline">[output]</span></a>:</p>
 <pre><code>bean-report example.beancount journal --balance
 </code></pre>
-<h3 id="holdings"><a id="holdings"></a>Holdings<a class="headerlink" href="#holdings" title="Permanent link"></a></h3>
+<h3 id="holdings">Holdings<a class="headerlink" href="#holdings" title="Permanent link"></a></h3>
 <p>There are a variety of ways to obtain aggregations for the total list of
 holdings. List the detailed holdings <a href="http://furius.ca/beancount/examples/tutorial/holdings.output"><span
 class="underline">[output]</span></a>:</p>
@@ -582,7 +587,7 @@ class="underline">[output]</span></a>:</p>
 </code></pre>
 <p>There are a few more options for converting amounts to a common
 currency. See help for details.</p>
-<h3 id="other-reports"><a id="other-reports"></a>Other Reports<a class="headerlink" href="#other-reports" title="Permanent link"></a></h3>
+<h3 id="other-reports">Other Reports<a class="headerlink" href="#other-reports" title="Permanent link"></a></h3>
 <p>There are many other miscellaneous reports available. Try a few of
 those.</p>
 <p>Listing all accounts <a href="http://furius.ca/beancount/examples/tutorial/accounts.output"><span
@@ -601,7 +606,7 @@ class="underline">[output]</span></a>:</p>
 class="underline">[output]</span></a>:</p>
 <pre><code>bean-report example.beancount stats-postings
 </code></pre>
-<h3 id="other-formats"><a id="other-formats"></a>Other Formats<a class="headerlink" href="#other-formats" title="Permanent link"></a></h3>
+<h3 id="other-formats">Other Formats<a class="headerlink" href="#other-formats" title="Permanent link"></a></h3>
 <p>Reports may support various output formats. You can change the output
 format with the --format (-f) global option <a href="http://furius.ca/beancount/examples/tutorial/holdings-csv.output"><span
 class="underline">[output]</span></a>:</p>
@@ -609,7 +614,7 @@ class="underline">[output]</span></a>:</p>
 </code></pre>
 <p>Note that “beancount” and “ledger” are valid output formats: they refer
 to the Beancount and Ledger input syntaxes.</p>
-<h3 id="viewing-reports-through-the-web-interface"><a id="viewing-reports-through-the-web-interface"></a>Viewing Reports through the Web Interface<a class="headerlink" href="#viewing-reports-through-the-web-interface" title="Permanent link"></a></h3>
+<h3 id="viewing-reports-through-the-web-interface">Viewing Reports through the Web Interface<a class="headerlink" href="#viewing-reports-through-the-web-interface" title="Permanent link"></a></h3>
 <p>The original way to access reports in Beancount is via its web
 interface, that serves to a local web server on your machine. Serve the
 example file like this:</p>
@@ -629,7 +634,7 @@ connections from anywhere, use --public).</p>
 interface than the one which comes with Beancount: <a href="https://github.com/aumayr/fava"><span
 class="underline">Fava</span></a>. You
 might want to check it out.</em></p>
-<h2 id="the-future-of-beancount-reports"><a id="the-future-of-beancount-reports"></a>The Future of Beancount Reports<a class="headerlink" href="#the-future-of-beancount-reports" title="Permanent link"></a></h2>
+<h2 id="the-future-of-beancount-reports">The Future of Beancount Reports<a class="headerlink" href="#the-future-of-beancount-reports" title="Permanent link"></a></h2>
 <p>I find my command-line reports above to be rather unsatisfying, from the
 point-of-view of customizability. They bother me a lot. This is largely
 because I’ve been happy and satisfied with the capabilities of the web

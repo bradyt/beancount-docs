@@ -232,11 +232,15 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#a-comparison-of-beancount-and-ledger">A Comparison of Beancount and Ledger</a></li>
+            <li><a href="#philosophical-differences">Philosophical Differences</a></li>
+            <li><a href="#specific-differences">Specific Differences</a></li>
+            <li><a href="#missing-features">Missing Features</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="a-comparison-of-beancount-and-ledger"><a id="title"></a>A Comparison of Beancount and Ledger<a class="headerlink" href="#a-comparison-of-beancount-and-ledger" title="Permanent link"></a></h1>
+<h1 id="a-comparison-of-beancount-and-ledger">A Comparison of Beancount and Ledger<a class="headerlink" href="#a-comparison-of-beancount-and-ledger" title="Permanent link"></a></h1>
 <p><a href="http://plus.google.com/+MartinBlais"><span class="underline">Martin
 Blais</span></a>, September 2014</p>
 <p><a href="http://furius.ca/beancount/doc/comparison"><span
@@ -292,7 +296,7 @@ Unicode</span></a></p>
 <p><a href="#no-forecasting-or-periodic-transactions"><span class="underline">No Forecasting or Periodic
 Transactions</span></a></p>
 </blockquote>
-<h2 id="philosophical-differences"><a id="philosophical-differences"></a>Philosophical Differences<a class="headerlink" href="#philosophical-differences" title="Permanent link"></a></h2>
+<h2 id="philosophical-differences">Philosophical Differences<a class="headerlink" href="#philosophical-differences" title="Permanent link"></a></h2>
 <p>(See <a href="https://groups.google.com/d/msg/ledger-cli/B9qDXoSIJxQ/LVdzPkT6DAAJ"><span class="underline">this
 thread</span></a>.)</p>
 <p>First, Ledger is optimistic. It assumes it's easy to input correct data
@@ -356,8 +360,8 @@ perhaps even to the extent of allowing plugins to declare the directive
 types (with the exception of Transaction objects). It is evolving into a
 shallow driver that just puts together a processing pipeline to produce
 a stream of directives, with a handy library and functional operations.</p>
-<h2 id="specific-differences"><a id="specific-differences"></a>Specific Differences<a class="headerlink" href="#specific-differences" title="Permanent link"></a></h2>
-<h3 id="inventory-booking-cost-basis-treatment"><a id="inventory-booking-cost-basis-treatment"></a>Inventory Booking &amp; Cost Basis Treatment<a class="headerlink" href="#inventory-booking-cost-basis-treatment" title="Permanent link"></a></h3>
+<h2 id="specific-differences">Specific Differences<a class="headerlink" href="#specific-differences" title="Permanent link"></a></h2>
+<h3 id="inventory-booking-cost-basis-treatment">Inventory Booking &amp; Cost Basis Treatment<a class="headerlink" href="#inventory-booking-cost-basis-treatment" title="Permanent link"></a></h3>
 <p>Beancount applies strict rules regarding reductions in positions from
 inventories tracking the contents of its accounts. This means that you
 can only take out of an account something that you placed in it
@@ -433,7 +437,7 @@ new syntax for specifying cost per unit and total cost at the same time,
 a feature which will make it possible to correctly <a href="../19_trading_with_beancount/"><span
 class="underline">track capital gains without
 commissions</span></a>.</p>
-<h3 id="currency-conversions"><a id="currency-conversions"></a>Currency Conversions<a class="headerlink" href="#currency-conversions" title="Permanent link"></a></h3>
+<h3 id="currency-conversions">Currency Conversions<a class="headerlink" href="#currency-conversions" title="Permanent link"></a></h3>
 <p>Beancount makes an important semantic distinction between simple
 currency conversions and conversions of commodities to be held at cost,
 i.e., for which we want to track the cost basis. For example, converting
@@ -470,7 +474,7 @@ conversions would be best elided instead.</p>
 <p>HLedger <a href="https://groups.google.com/d/msg/hledger/ZB8pzWJGFy8/RziOVQ2XQ-QJ"><span class="underline">does not parse cost basis
 syntax</span></a>
 and as such does not recognize it.</p>
-<h3 id="isolation-of-inputs"><a id="isolation-of-inputs"></a>Isolation of Inputs<a class="headerlink" href="#isolation-of-inputs" title="Permanent link"></a></h3>
+<h3 id="isolation-of-inputs">Isolation of Inputs<a class="headerlink" href="#isolation-of-inputs" title="Permanent link"></a></h3>
 <p>Beancount reads its entire input <em>only</em> from the text file you provide
 for it. This isolation is by design. There is no linkage to external
 data formats nor online services, such as fetchers for historical price
@@ -528,7 +532,7 @@ input. In Beancount you are meant to integrate price updates on your
 own, perhaps with your own script, and maybe bring in the data via an
 include file. (But if you don't like this, you could also write your own
 plugin module that could fetch live prices.)</p>
-<h3 id="language-syntax"><a id="language-syntax"></a>Language Syntax<a class="headerlink" href="#language-syntax" title="Permanent link"></a></h3>
+<h3 id="language-syntax">Language Syntax<a class="headerlink" href="#language-syntax" title="Permanent link"></a></h3>
 <p>Beancount’s syntax is somewhat simpler and quite a bit more restrictive
 than Ledger’s. For its 2.0 version, the Beancount syntax was redesigned
 to be easily specifiable to a parser generator by a grammar. The tokens
@@ -577,7 +581,7 @@ use it to export the contents of a ledger to XML and then parse that
 (which works well). I suspect the parsing method might be reviewed in
 the next version of Ledger, because using a parser generator is
 liberating for experimentation.</p>
-<h3 id="order-independence"><a id="order-independence"></a>Order Independence<a class="headerlink" href="#order-independence" title="Permanent link"></a></h3>
+<h3 id="order-independence">Order Independence<a class="headerlink" href="#order-independence" title="Permanent link"></a></h3>
 <p>Beancount offers a guarantee that the ordering of directives in an input
 file is irrelevant to the outcome of its computations. You should be
 able to organize your input file and reorder any declaration as is most
@@ -617,7 +621,7 @@ up</span></a> to consider
 implementing file assertions in Beancount (in addition to its dated
 assertions). This will probably be carried out as a plugin. Ledger does
 not support dated assertions.</p>
-<h3 id="account-types"><a id="account-types"></a>Account Types<a class="headerlink" href="#account-types" title="Permanent link"></a></h3>
+<h3 id="account-types">Account Types<a class="headerlink" href="#account-types" title="Permanent link"></a></h3>
 <p>Beancount accounts must have a particular type from one of five
 categories: Assets, Liabilities, Income, Expenses and Equity. Ledger
 accounts are not constrained in this way, you can define any root
@@ -667,7 +671,7 @@ cause any difference in calculations between the two systems, you can
 still accumulate any kind of "beans" you may want in these accounts, it
 is no less general. The type is only extra information that Beancount’s
 reporting makes use of.</p>
-<h3 id="transactions-must-balance"><a id="transactions-must-balance"></a>Transactions Must Balance<a class="headerlink" href="#transactions-must-balance" title="Permanent link"></a></h3>
+<h3 id="transactions-must-balance">Transactions Must Balance<a class="headerlink" href="#transactions-must-balance" title="Permanent link"></a></h3>
 <p>Beancount transactions are required to balance, period. I make no
 compromise in this, there is no way out. The benefit of this is that the
 sum of the balance amounts of the postings of any subset of transactions
@@ -727,7 +731,7 @@ replicate, to fit in their own data.</p>
 <p>I respectfully beg to differ. Therefore Beancount takes a more radical
 stance and explicitly avoids supporting virtual postings. If you feel
 strongly that you should need them, you should use Ledger.</p>
-<h3 id="numbers-and-precision-of-operations"><a id="numbers-and-precision-of-operations"></a>Numbers and Precision of Operations<a class="headerlink" href="#numbers-and-precision-of-operations" title="Permanent link"></a></h3>
+<h3 id="numbers-and-precision-of-operations">Numbers and Precision of Operations<a class="headerlink" href="#numbers-and-precision-of-operations" title="Permanent link"></a></h3>
 <p>Beancount, Ledger and HLedger all differ in how they represent their
 numbers internally, and in how they handle the precision of balance
 checks for a transaction’s postings.</p>
@@ -840,7 +844,7 @@ monitor
 it</span></a>.</p>
 <p>As for automatically quantizing the numbers resulting from operations, I
 still need to figure out an automatic method for doing so.</p>
-<h3 id="filtering-at-the-transactional-level"><a id="filtering-at-the-transactional-level"></a>Filtering at the Transactional Level<a class="headerlink" href="#filtering-at-the-transactional-level" title="Permanent link"></a></h3>
+<h3 id="filtering-at-the-transactional-level">Filtering at the Transactional Level<a class="headerlink" href="#filtering-at-the-transactional-level" title="Permanent link"></a></h3>
 <p>Another area where the systems differ is in that Beancount will not
 support filtering at the postings level but only at the transaction
 level. That is, when applying filters to the input data, even filtering
@@ -863,7 +867,7 @@ to apply custom filters to the parsed transactions as in Ledger, as I
 think it’s a powerful feature. Until recently, most reports were only
 rendered through a web interface and it wasn’t as needed as it is now
 that Beancount implements console reports.)</p>
-<h3 id="extension-mechanisms"><a id="extension-mechanisms"></a>Extension Mechanisms<a class="headerlink" href="#extension-mechanisms" title="Permanent link"></a></h3>
+<h3 id="extension-mechanisms">Extension Mechanisms<a class="headerlink" href="#extension-mechanisms" title="Permanent link"></a></h3>
 <p>Both Beancount and Ledger provide mechanisms for writing scripts against
 their corpus of data. These mechanisms are all useful but different.</p>
 <p>Ledger provides</p>
@@ -924,7 +928,7 @@ install a recent version in order to work with it, such as Python-3.4,
 if you don’t have it. At this point, Python 3 is becoming pretty
 widespread, so I don’t see this as a problem, but you might be using an
 older OS.)</p>
-<h3 id="automated-transactions-via-plugins"><a id="automated-transactions-via-plugins"></a>Automated Transactions via Plugins<a class="headerlink" href="#automated-transactions-via-plugins" title="Permanent link"></a></h3>
+<h3 id="automated-transactions-via-plugins">Automated Transactions via Plugins<a class="headerlink" href="#automated-transactions-via-plugins" title="Permanent link"></a></h3>
 <p>Ledger provides a special syntax to <a href="http://ledger-cli.org/3.0/doc/ledger3.html#Automated-Transactions"><span
 class="underline">automatically insert postings on existing
 transactions</span></a>,
@@ -945,7 +949,7 @@ quick and easy method for specifying the most common case of just adding
 some postings. I’m not entirely convinced yet, but Beancount may acquire
 this eventually (you could easily prototype this now in a plugin file if
 you wanted).</p>
-<h3 id="no-support-for-time-or-effective-dates"><a id="no-support-for-time-or-effective-dates"></a>No Support for Time or Effective Dates<a class="headerlink" href="#no-support-for-time-or-effective-dates" title="Permanent link"></a></h3>
+<h3 id="no-support-for-time-or-effective-dates">No Support for Time or Effective Dates<a class="headerlink" href="#no-support-for-time-or-effective-dates" title="Permanent link"></a></h3>
 <p>Beancount does not represent the intra-day time of transactions, its
 granularity is a day. Ledger allows you to specify the time of
 transactions down to seconds precision. I choose to limit its scope in
@@ -977,7 +981,7 @@ This is not a big issue.</p>
 will be handled; a <a href="../28_settlement_dates_in_beancount/"><span
 class="underline">proposal</span></a>
 is underway.</p>
-<h3 id="documents"><a id="documents"></a>Documents<a class="headerlink" href="#documents" title="Permanent link"></a></h3>
+<h3 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link"></a></h3>
 <p>Beancount offers support for integrating a directory hierarchy of
 documents with the contents of a ledger’s chart of accounts. You can
 provide a directory path and Beancount will automatically find and
@@ -990,7 +994,7 @@ directory hierarchy.</p>
 meta-data. Users can attach arbitrary key-value pairs to their
 transactions, and those can be filenames. Beyond that, there is no
 particular support for document organization.</p>
-<h3 id="simpler-and-more-strict"><a id="simpler-and-more-strict"></a>Simpler and More Strict<a class="headerlink" href="#simpler-and-more-strict" title="Permanent link"></a></h3>
+<h3 id="simpler-and-more-strict">Simpler and More Strict<a class="headerlink" href="#simpler-and-more-strict" title="Permanent link"></a></h3>
 <p>Finally, Beancount has a generally simpler input syntax than Ledger.
 There are very few command-line options—and this is on purpose, I want
 to localize all the input within the file—and the directive syntax is
@@ -1013,13 +1017,13 @@ or detecting potential mistakes, Ledger will allow you to be more
 liberal. On the other hand if you care to produce a precise and flawless
 account of transactions, Beancount offers more support in its validation
 of your inputs.</p>
-<h3 id="web-interface"><a id="web-interface"></a>Web Interface<a class="headerlink" href="#web-interface" title="Permanent link"></a></h3>
+<h3 id="web-interface">Web Interface<a class="headerlink" href="#web-interface" title="Permanent link"></a></h3>
 <p>Beancount has a built-in web interface, and there is an external project
 called <a href="https://github.com/beancount/fava"><span
 class="underline">Fava</span></a> which
 significantly improves on the same theme. This is the default mode for
 browsing reports. I believe HLedger also has a web interface as well.</p>
-<h2 id="missing-features"><a id="missing-features"></a>Missing Features<a class="headerlink" href="#missing-features" title="Permanent link"></a></h2>
+<h2 id="missing-features">Missing Features<a class="headerlink" href="#missing-features" title="Permanent link"></a></h2>
 <p>Beancount generally attempts to <em>minimize</em> the number of features it
 provides. This is in contrast with Ledger’s implementation, which has
 received a substantial amount of feature addition in order to experiment
@@ -1034,7 +1038,7 @@ system to automate repetitive syntax.</p>
 <p>But here is a list of features that Beancount does not support that are
 supported in Ledger, and that I find would be useful, that I think would
 be nice to have eventually. The list below is unlikely to be exhaustive.</p>
-<h3 id="console-output"><a id="console-output"></a><s>Console Output</s><a class="headerlink" href="#console-output" title="Permanent link"></a></h3>
+<h3 id="console-output"><s>Console Output</s><a class="headerlink" href="#console-output" title="Permanent link"></a></h3>
 <p><s>Beancount’s original implementation focused on providing a web view
 for all of its contents. During the 2.0 rewrite I began implementing
 some console/text outputs, mainly because I want to be able for reports
@@ -1046,7 +1050,7 @@ implemented.</s></p>
 first thing after the initial release, as I’m increasingly enjoying text
 reports. Use bean-query --list-formats to view current status of
 this.</s></p>
-<h3 id="filtering-language"><a id="filtering-language"></a><s>Filtering Language</s><a class="headerlink" href="#filtering-language" title="Permanent link"></a></h3>
+<h3 id="filtering-language"><s>Filtering Language</s><a class="headerlink" href="#filtering-language" title="Permanent link"></a></h3>
 <p><s>Beancount does not yet have a filtering language. Until recently, its
 web interface was the main mode for rendering reports and exploring the
 contents of its ledger, and it provided limited subsets of transactions
@@ -1056,7 +1060,7 @@ want to simplify my chart of accounts so I need this.</s></p>
 <p><s>I’m working on adding a simple logical expression language to do
 arbitrary filters on the set of Beancount transactions. This is
 straightforward to implement and a high priority.</s></p>
-<h3 id="no-meta-data"><a id="no-meta-data"></a><s>No Meta-data</s><a class="headerlink" href="#no-meta-data" title="Permanent link"></a></h3>
+<h3 id="no-meta-data"><s>No Meta-data</s><a class="headerlink" href="#no-meta-data" title="Permanent link"></a></h3>
 <p><s>Beancount does not currently support meta-data. Ledger users
 routinely make liberal use of metadata. This has been identified as a
 powerful feature and a prototype has already been implemented. Meta-data
@@ -1068,7 +1072,7 @@ amounts.</s></p>
 specific use of meta-data, on purpose. The meta-data will be strictly
 made available for user-plugins and custom user scripts to make use
 of.</s></p>
-<h3 id="no-arithmetic-expressions"><a id="no-arithmetic-expressions"></a><s>No Arithmetic Expressions</s><a class="headerlink" href="#no-arithmetic-expressions" title="Permanent link"></a></h3>
+<h3 id="no-arithmetic-expressions"><s>No Arithmetic Expressions</s><a class="headerlink" href="#no-arithmetic-expressions" title="Permanent link"></a></h3>
 <p><s>Beancount does not support arbitrary expression evaluation in the
 syntax, in the places where numbers are allowed in the input. Ledger
 does. I have had no use for these yet, but I have no particular reason
@@ -1077,7 +1081,7 @@ myself.</s></p>
 <p><s>I think an implementation would be straightforward and very low risk,
 a simple change to the parser and there is already a callback for
 numbers. I think there are many legitimate uses for it.</s></p>
-<h3 id="limited-support-for-unicode"><a id="limited-support-for-unicode"></a>Limited Support for Unicode<a class="headerlink" href="#limited-support-for-unicode" title="Permanent link"></a></h3>
+<h3 id="limited-support-for-unicode">Limited Support for Unicode<a class="headerlink" href="#limited-support-for-unicode" title="Permanent link"></a></h3>
 <p>Beancount support UTF8 or and other encodings <strong><em>in strings only</em></strong>
 (that is, for input that is in quotes). For example, you can enter
 payees and narrations with non-ASCII characters, but not account names
@@ -1096,7 +1100,7 @@ manually—this has other advantages—and will write it to support Unicode
 (Python 3 has full support for this, so all that is required is to
 modify the lexer, which is one simple compilation unit). This is a
 relatively easy and isolated task to implement.</p>
-<h3 id="no-forecasting-or-periodic-transactions"><a id="no-forecasting-or-periodic-transactions"></a>No Forecasting or Periodic Transactions<a class="headerlink" href="#no-forecasting-or-periodic-transactions" title="Permanent link"></a></h3>
+<h3 id="no-forecasting-or-periodic-transactions">No Forecasting or Periodic Transactions<a class="headerlink" href="#no-forecasting-or-periodic-transactions" title="Permanent link"></a></h3>
 <p>Beancount has no support for generating periodic transactions for
 forecasting, though there is a plugin provided that implements a
 simplistic form of it to be used as an example for how plugins work (see

@@ -232,11 +232,19 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#command-line-accounting-cookbook">Command-line Accounting Cookbook</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#account-naming-conventions">Account Naming Conventions</a></li>
+            <li><a href="#how-to-deal-with-cash">How to Deal with Cash</a></li>
+            <li><a href="#salary-income">Salary Income</a></li>
+            <li><a href="#currency-transfers-conversions">Currency Transfers &amp; Conversions</a></li>
+            <li><a href="#investing-and-trading">Investing and Trading</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="command-line-accounting-cookbook"><a id="title"></a>Command-line Accounting Cookbook<a class="headerlink" href="#command-line-accounting-cookbook" title="Permanent link"></a></h1>
+<h1 id="command-line-accounting-cookbook">Command-line Accounting Cookbook<a class="headerlink" href="#command-line-accounting-cookbook" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 July 2014</p>
 <p><a href="http://furius.ca/beancount/doc/cookbook"><span
@@ -278,7 +286,7 @@ Trading</span></a></p>
 Dividends</span></a></p>
 <p><a href="#conclusion"><span class="underline">Conclusion</span></a></p>
 </blockquote>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>The best way to learn the double-entry method is to look at real-world
 examples. The method is elegant, but it can seem unintuitive to the
 newcomer how transactions have to be posted in order to perform the
@@ -323,7 +331,7 @@ problem to the <a href="https://groups.google.com/forum/#!forum/ledger-cli"><spa
 mailing-list</span></a>.
 I would like for this document to cover as many realistic scenarios as
 possible.</p>
-<h3 id="a-note-of-caution"><a id="a-note-of-caution"></a>A Note of Caution<a class="headerlink" href="#a-note-of-caution" title="Permanent link"></a></h3>
+<h3 id="a-note-of-caution">A Note of Caution<a class="headerlink" href="#a-note-of-caution" title="Permanent link"></a></h3>
 <p>While reading this, please take note that the author is a dilettante: I
 am a computer scientist, not an accountant. In fact, apart from a
 general course I took in college and having completed the first year of
@@ -336,7 +344,7 @@ double-entry system to communicate with my accountant for many years and
 he made suggestions. Nevertheless… I may be making fundamental mistakes
 here and there, and I would appreciate you leaving a comment in the
 margin if you find anything dubious.</p>
-<h2 id="account-naming-conventions"><a id="account-naming-conventions"></a>Account Naming Conventions<a class="headerlink" href="#account-naming-conventions" title="Permanent link"></a></h2>
+<h2 id="account-naming-conventions">Account Naming Conventions<a class="headerlink" href="#account-naming-conventions" title="Permanent link"></a></h2>
 <p>You can define any account name you like, as long as it begins with one
 of the five categories: Assets, Liabilities, Income, Expenses, or Equity
 (note that you can customize those names with options - see the <a href="../06_beancount_language_syntax/"><span
@@ -431,7 +439,7 @@ one, and it doesn’t matter much what you name it:</p>
 </code></pre>
 <p>You can customize the name of the other Equity accounts that get
 automatically created for the balance sheet.</p>
-<h3 id="choosing-an-account-type"><a id="choosing-an-account-type"></a>Choosing an Account Type<a class="headerlink" href="#choosing-an-account-type" title="Permanent link"></a></h3>
+<h3 id="choosing-an-account-type">Choosing an Account Type<a class="headerlink" href="#choosing-an-account-type" title="Permanent link"></a></h3>
 <p>Part of the art of learning what accounts to book transactions to is to
 come up with relevant account names and design a scheme for how money
 will flow between those accounts, by jotting down some example
@@ -482,7 +490,7 @@ case. Let’s work through some examples:</p>
     trading account. What is the other leg to be booked to?</p>
 </li>
 </ul>
-<h3 id="choosing-opening-dates"><a id="choosing-opening-dates"></a>Choosing Opening Dates<a class="headerlink" href="#choosing-opening-dates" title="Permanent link"></a></h3>
+<h3 id="choosing-opening-dates">Choosing Opening Dates<a class="headerlink" href="#choosing-opening-dates" title="Permanent link"></a></h3>
 <p>Some of the accounts you need to define don’t correspond to real world
 accounts. The Expenses:Groceries account represents the sum total of
 grocery expenses since you started counting. Personally, I like to use
@@ -492,7 +500,7 @@ came to this world.</p>
 <p>You can use this rationale on other accounts. For example, all the
 income accounts associated with an employer should probably be opened at
 the date you began the job, and end on the date you left. Makes sense.</p>
-<h2 id="how-to-deal-with-cash"><a id="how-to-deal-with-cash"></a>How to Deal with Cash<a class="headerlink" href="#how-to-deal-with-cash" title="Permanent link"></a></h2>
+<h2 id="how-to-deal-with-cash">How to Deal with Cash<a class="headerlink" href="#how-to-deal-with-cash" title="Permanent link"></a></h2>
 <p>Let’s start with cash. I typically define two accounts at my birth date:</p>
 <pre><code>1973-04-27 open Assets:Cash
 1973-04-27 open Assets:ForeignCash
@@ -507,7 +515,7 @@ way in some other account and I don’t see them in my cash balance. I
 transfer those to the main account when I do travel to such places,
 e.g., if I return to Japan, I’ll move my JPY from Assets:ForeignCash to
 Assets:Cash right before the trip and use them during that time.</p>
-<h3 id="cash-withdrawals"><a id="cash-withdrawals"></a>Cash Withdrawals<a class="headerlink" href="#cash-withdrawals" title="Permanent link"></a></h3>
+<h3 id="cash-withdrawals">Cash Withdrawals<a class="headerlink" href="#cash-withdrawals" title="Permanent link"></a></h3>
 <p>An ATM withdrawal from a checking account to cash will typically look
 like this:</p>
 <pre><code>2014-06-28 * "DDA WITHDRAW 0609C"
@@ -516,7 +524,7 @@ like this:</p>
 </code></pre>
 <p>You would see this transaction be imported in your checking account
 transactions download.</p>
-<h3 id="tracking-cash-expenses"><a id="tracking-cash-expenses"></a>Tracking Cash Expenses<a class="headerlink" href="#tracking-cash-expenses" title="Permanent link"></a></h3>
+<h3 id="tracking-cash-expenses">Tracking Cash Expenses<a class="headerlink" href="#tracking-cash-expenses" title="Permanent link"></a></h3>
 <p>One mistake people make when you tell them you’re tracking all of your
 financial accounts is to assume that you have to book every single
 little irrelevant cash transaction to a notebook. Not so! It is your
@@ -564,7 +572,7 @@ you do this, you may want to “spread out” your expenses by adding more
 than one cash distribution<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> manually, so that if you generate a
 monthly report, a large cash expense does not appear as a single lump in
 or outside that month.</p>
-<h2 id="salary-income"><a id="salary-income"></a>Salary Income<a class="headerlink" href="#salary-income" title="Permanent link"></a></h2>
+<h2 id="salary-income">Salary Income<a class="headerlink" href="#salary-income" title="Permanent link"></a></h2>
 <p>Accounting for your salary is rewarding: you will be able to obtain a
 summary of income earned during the year as well as the detail of where
 the various deductions are going, and you will enjoy the satisfaction of
@@ -586,7 +594,7 @@ empty string, if I don’t leave for another job:</p>
 the various ideas you can use to account for your income correctly. You
 will almost certainly end up having to adapt these ideas to your
 specific situation.</p>
-<h3 id="employment-income-accounts"><a id="employment-income-accounts"></a>Employment Income Accounts<a class="headerlink" href="#employment-income-accounts" title="Permanent link"></a></h3>
+<h3 id="employment-income-accounts">Employment Income Accounts<a class="headerlink" href="#employment-income-accounts" title="Permanent link"></a></h3>
 <p>Then you define accounts for your pay stubs. You need to make sure that
 you have an account corresponding to each line of your pay stub. For
 example, here are some of the income accounts I define for this
@@ -632,7 +640,7 @@ premiums for dental, medical and vision insurances, reimbursements for
 home internet usage, and pre-tax payments for public transit (the city
 of New York allows you to pay for your MetroCard with pre-tax money
 through your employer).</p>
-<h3 id="booking-salary-deposits"><a id="booking-salary-deposits"></a>Booking Salary Deposits<a class="headerlink" href="#booking-salary-deposits" title="Permanent link"></a></h3>
+<h3 id="booking-salary-deposits">Booking Salary Deposits<a class="headerlink" href="#booking-salary-deposits" title="Permanent link"></a></h3>
 <p>Then, when I import details for a payment via direct deposit to my
 checking account, it will look like this:</p>
 <pre><code>2014-02-28 * "HOOLI INC       PAYROLL"
@@ -683,7 +691,7 @@ This is because Hooli pays for the premium (it reads exactly like that
 on the stubs.) Hooli also reimburses some of home internet, because I
 use it to deal with production issues. This appears as a <em>negative</em>
 posting to reduce the amount of my expense Expenses:Internet account.</p>
-<h3 id="vacation-hours"><a id="vacation-hours"></a>Vacation Hours<a class="headerlink" href="#vacation-hours" title="Permanent link"></a></h3>
+<h3 id="vacation-hours">Vacation Hours<a class="headerlink" href="#vacation-hours" title="Permanent link"></a></h3>
 <p>Our pay stubs also include accrued vacation and the total vacation
 balance, in vacation hours. You can also track these amounts on the same
 transactions. You need to declare corresponding accounts:</p>
@@ -728,7 +736,7 @@ rate of $70/hour, which you enter like this:</p>
 much dollar-equivalent you’re forfeiting by working too much and giving
 up your vacation time. You would write off some of the VACHR from your
 <em>Assets</em> account into an income account (representing losses).</p>
-<h3 id="401k-contributions"><a id="k-contributions"></a>401k Contributions<a class="headerlink" href="#401k-contributions" title="Permanent link"></a></h3>
+<h3 id="401k-contributions">401k Contributions<a class="headerlink" href="#401k-contributions" title="Permanent link"></a></h3>
 <p>The 401k plan allows you to make contributions to a tax-deferred
 retirement account using pre-tax dollars. This is carried out via
 withholdings from your pay. To account for those, you simply include a
@@ -778,14 +786,14 @@ would declare sub-accounts for this and make the corresponding changes:</p>
 <p>It is common for them to do this in order to track each source of
 contribution separately, because there are several constraints on
 rollovers to other accounts that depend on it.</p>
-<h3 id="vesting-stock-grants"><a id="vesting-stock-grants"></a>Vesting Stock Grants<a class="headerlink" href="#vesting-stock-grants" title="Permanent link"></a></h3>
+<h3 id="vesting-stock-grants">Vesting Stock Grants<a class="headerlink" href="#vesting-stock-grants" title="Permanent link"></a></h3>
 <p>See the <a href="../20_stock_vesting_in_beancount/"><span class="underline">dedicated
 document</span></a> on this topic for
 more details.</p>
-<h3 id="other-benefits"><a id="other-benefits"></a>Other Benefits<a class="headerlink" href="#other-benefits" title="Permanent link"></a></h3>
+<h3 id="other-benefits">Other Benefits<a class="headerlink" href="#other-benefits" title="Permanent link"></a></h3>
 <p>You can go crazy with tracking benefits if you want. Here are a few wild
 ideas.</p>
-<h4 id="points"><a id="points"></a>Points<a class="headerlink" href="#points" title="Permanent link"></a></h4>
+<h4 id="points">Points<a class="headerlink" href="#points" title="Permanent link"></a></h4>
 <p>If your employer offers a sponsored massage therapy program on-site, you
 could presumably book a massage out of your paycheck or even from some
 internal website (if the company is modern), and you could pay for them
@@ -802,7 +810,7 @@ could be priced at 0.50 USD, the price at which you could purchase them:</p>
 </code></pre>
 <p>If you’re occasionally awarded some of these points, and you can track
 that in an Income account.</p>
-<h4 id="food-benefits"><a id="food-benefits"></a>Food Benefits<a class="headerlink" href="#food-benefits" title="Permanent link"></a></h4>
+<h4 id="food-benefits">Food Benefits<a class="headerlink" href="#food-benefits" title="Permanent link"></a></h4>
 <p>Like many of the larger technology companies, Hooli presumably provides
 free food for its employees. This saves time and encourages people to
 eat healthy. This is a bit of a trend in the tech world right now. This
@@ -817,7 +825,7 @@ some monthly allowance per month:</p>
   Income:US:Hooli:Food      -350 USD
   Expenses:Food:Restaurant
 </code></pre>
-<h2 id="currency-transfers-conversions"><a id="currency-transfers-conversions"></a>Currency Transfers &amp; Conversions<a class="headerlink" href="#currency-transfers-conversions" title="Permanent link"></a></h2>
+<h2 id="currency-transfers-conversions">Currency Transfers &amp; Conversions<a class="headerlink" href="#currency-transfers-conversions" title="Permanent link"></a></h2>
 <p>If you convert between currencies, such as when performing an
 international transfer between banks, you need to provide the exchange
 rate to Beancount. It looks like this:</p>
@@ -882,14 +890,14 @@ beyond the scope of this cookbook; please refer to <a href="http://furius.ca/bea
 class="underline">Solving the Conversions
 Problem</span></a> if you’d
 like to know more.)</p>
-<h2 id="investing-and-trading"><a id="investing-and-trading"></a>Investing and Trading<a class="headerlink" href="#investing-and-trading" title="Permanent link"></a></h2>
+<h2 id="investing-and-trading">Investing and Trading<a class="headerlink" href="#investing-and-trading" title="Permanent link"></a></h2>
 <p>Tracking trades and associated gains is a fairly involved topic. You
 will find a more complete introduction to profit and loss and a detailed
 discussion of various scenarios in the <a href="../19_trading_with_beancount/"><span class="underline">Trading
 with Beancount</span></a> document, which is
 dedicated to this topic. Here we will discuss how to setup your account
 and provide simple example transactions to get you started.</p>
-<h3 id="accounts-setup"><a id="accounts-setup"></a>Accounts Setup<a class="headerlink" href="#accounts-setup" title="Permanent link"></a></h3>
+<h3 id="accounts-setup">Accounts Setup<a class="headerlink" href="#accounts-setup" title="Permanent link"></a></h3>
 <p>You should create an account prefix to root various sub-accounts
 associated with your investment account. Say you have an account at
 ETrade, this could be “Assets:US:ETrade”. Choose an appropriate
@@ -930,14 +938,14 @@ some general accounts to receive these:</p>
 <pre><code>1973-04-27 open Expenses:Financial:Fees
 1973-04-27 open Expenses:Financial:Commissions
 </code></pre>
-<h3 id="funds-transfers"><a id="funds-transfers"></a>Funds Transfers<a class="headerlink" href="#funds-transfers" title="Permanent link"></a></h3>
+<h3 id="funds-transfers">Funds Transfers<a class="headerlink" href="#funds-transfers" title="Permanent link"></a></h3>
 <p>You will normally add some initial money in this account by making a
 transfer from an external account, say, a checking account:</p>
 <pre><code>2014-02-04 * "Transferring money for investing"
   Assets:US:BofA:Checking        -2000.00 USD
   Assets:US:ETrade:Cash           2000.00 USD
 </code></pre>
-<h3 id="making-a-trade"><a id="making-a-trade"></a>Making a Trade<a class="headerlink" href="#making-a-trade" title="Permanent link"></a></h3>
+<h3 id="making-a-trade">Making a Trade<a class="headerlink" href="#making-a-trade" title="Permanent link"></a></h3>
 <p>Buying stock should have a posting that deposits the new commodity in
 the commodity’s sub-account, and debits the cash account to the
 corresponding amounts plus commissions:</p>
@@ -970,7 +978,7 @@ signs are inverted for income accounts). Specifying the sale price of
 123.40 USD is optional, and it is <em>ignored</em> for the purpose of balancing
 the transaction, the cash deposit and commissions legs determine the
 profit.</p>
-<h3 id="receiving-dividends"><a id="receiving-dividends"></a>Receiving Dividends<a class="headerlink" href="#receiving-dividends" title="Permanent link"></a></h3>
+<h3 id="receiving-dividends">Receiving Dividends<a class="headerlink" href="#receiving-dividends" title="Permanent link"></a></h3>
 <p>Receiving dividends takes on two forms. First, you can receive dividends
 in cash, which will go into the cash account:</p>
 <pre><code>2014-02-16 * "Dividends from LQD"
@@ -990,7 +998,7 @@ happen in a non-taxable retirement account.</p>
 <p>Refer to the <a href="../19_trading_with_beancount/"><span class="underline">Trading with
 Beancount</span></a> document for a more
 thorough discussion and numerous and more complex examples.</p>
-<h3 id="choosing-a-date"><a id="choosing-a-date"></a>Choosing a Date<a class="headerlink" href="#choosing-a-date" title="Permanent link"></a></h3>
+<h3 id="choosing-a-date">Choosing a Date<a class="headerlink" href="#choosing-a-date" title="Permanent link"></a></h3>
 <p>Buying or selling a single lot of stock typically involves multiple
 events over time: the trade is placed, the trade is filled (usually on
 the same day), the trade is settled. Settlement usually occurs 2 or 3
@@ -1004,7 +1012,7 @@ settlement, it’s not very useful.</p>
 <p>More complex schemes can be envisioned, e.g. you could store the
 settlement date as a metadata field and then use it in scripts later on,
 but that’s beyond the scope of this document.</p>
-<h2 id="conclusion"><a id="conclusion"></a>Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>This document is incomplete. I have many more example use cases that I’m
 planning to add here as I complete them. I will be announcing those on
 the mailing-list as they materialize. In particular, the following

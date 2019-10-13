@@ -232,18 +232,31 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#motivation">Motivation</a></li>
+            <li><a href="#balancing-precision">Balancing Precision</a></li>
+            <li><a href="#automatic-rounding">Automatic Rounding</a></li>
+            <li><a href="#precision-of-balance-assertions">Precision of Balance Assertions</a></li>
+        <li class="main "><a href="#other-systems">Other Systems</a></li>
+        <li class="main "><a href="#proposal">Proposal</a></li>
+            <li><a href="#automatically-inferring-tolerance">Automatically Inferring Tolerance</a></li>
+            <li><a href="#inference-on-amounts-held-at-cost">Inference on Amounts Held at Cost</a></li>
+            <li><a href="#automated-rounding">Automated Rounding</a></li>
+            <li><a href="#fixing-balance-assertions">Fixing Balance Assertions</a></li>
+            <li><a href="#approximate-assertions">Approximate Assertions</a></li>
+        <li class="main "><a href="#accumulating-reporting-residuals">Accumulating &amp; Reporting Residuals</a></li>
+        <li class="main "><a href="#implementation">Implementation</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="proposal-rounding-precision-in-beancount"><a id="title"></a>Proposal: Rounding &amp; Precision in Beancount<a class="headerlink" href="#proposal-rounding-precision-in-beancount" title="Permanent link"></a></h1>
+<p>===========================================</p>
 <p><a href="http://plus.google.com/+MartinBlais"><span class="underline">Martin
 Blais</span></a>, October 2014</p>
 <p><em>This document describes the problem of rounding errors on<br />
 Beancount transactions and how they are handled. It also includes</em></p>
 <p><em>a proposal for better handling precision issues in Beancount.</em></p>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
-<h3 id="balancing-precision"><a id="balancing-precision"></a>Balancing Precision<a class="headerlink" href="#balancing-precision" title="Permanent link"></a></h3>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h3 id="balancing-precision">Balancing Precision<a class="headerlink" href="#balancing-precision" title="Permanent link"></a></h3>
 <p>Balancing transactions cannot be done precisely. This has been <a href="https://groups.google.com/d/msg/ledger-cli/m-TgILbfrwA/YjkmOM3LHXIJ"><span
 class="underline">discussed on the Ledger mailing-list
 before</span></a>.
@@ -279,7 +292,7 @@ should do the same that banks do. Therefore, I think that we should
 always post the rounded numbers to accounts. Using rational numbers is
 not a limitation in that sense, but we must be careful to store rounded
 numbers where it matters.</p>
-<h3 id="automatic-rounding"><a id="automatic-rounding"></a>Automatic Rounding<a class="headerlink" href="#automatic-rounding" title="Permanent link"></a></h3>
+<h3 id="automatic-rounding">Automatic Rounding<a class="headerlink" href="#automatic-rounding" title="Permanent link"></a></h3>
 <p>Another related issue is that of automatically rounding amounts for
 interpolated numbers. Let’s take our original problematic example again:</p>
 <pre><code>2014-05-06 * “Buy mutual fund”
@@ -302,7 +315,7 @@ mechanism to allow us to infer the desired precision.</p>
 different accounts may track currencies with different precisions. As a
 real-world example, I have a retail FOREX trading account that really
 uses 4 digits of precision for its prices and deposits.</p>
-<h3 id="precision-of-balance-assertions"><a id="precision-of-balance-assertions"></a>Precision of Balance Assertions<a class="headerlink" href="#precision-of-balance-assertions" title="Permanent link"></a></h3>
+<h3 id="precision-of-balance-assertions">Precision of Balance Assertions<a class="headerlink" href="#precision-of-balance-assertions" title="Permanent link"></a></h3>
 <p>The precision of a balance assertions is also subject to this problem,
 assertions like this one:</p>
 <pre><code>2014-04-01 balance Assets:Investments:Cash   4526.77 USD
@@ -321,7 +334,7 @@ tolerance</span></a>
 of 0.0150 (in any unit). We’d like to change this so that the tolerance
 used is able to depend on the commodity, the account, or even the
 particular directive in use.</p>
-<h2 id="other-systems"><a id="other-systems"></a>Other Systems<a class="headerlink" href="#other-systems" title="Permanent link"></a></h2>
+<h2 id="other-systems">Other Systems<a class="headerlink" href="#other-systems" title="Permanent link"></a></h2>
 <p>Other command-line accounting systems differ in how they choose that
 tolerance:</p>
 <ul>
@@ -352,8 +365,8 @@ tolerance:</p>
     in which the commodity is used.</p>
 </li>
 </ul>
-<h2 id="proposal"><a id="proposal"></a>Proposal<a class="headerlink" href="#proposal" title="Permanent link"></a></h2>
-<h3 id="automatically-inferring-tolerance"><a id="automatically-inferring-tolerance"></a>Automatically Inferring Tolerance<a class="headerlink" href="#automatically-inferring-tolerance" title="Permanent link"></a></h3>
+<h2 id="proposal">Proposal<a class="headerlink" href="#proposal" title="Permanent link"></a></h2>
+<h3 id="automatically-inferring-tolerance">Automatically Inferring Tolerance<a class="headerlink" href="#automatically-inferring-tolerance" title="Permanent link"></a></h3>
 <p>Beancount should derive its precision using a method entirely <em>local</em> to
 each transaction, perhaps with a global value for defaults. That is, for
 each transaction, it will inspect postings with simple amounts (no cost,
@@ -391,7 +404,7 @@ this is a big deal.</p>
 <p>Finally, no global effect implied by transactions will be applied. No
 transaction should ever affect any other transaction’s balancing
 context.</p>
-<h3 id="inference-on-amounts-held-at-cost"><a id="inference-on-amounts-held-at-cost"></a>Inference on Amounts Held at Cost<a class="headerlink" href="#inference-on-amounts-held-at-cost" title="Permanent link"></a></h3>
+<h3 id="inference-on-amounts-held-at-cost">Inference on Amounts Held at Cost<a class="headerlink" href="#inference-on-amounts-held-at-cost" title="Permanent link"></a></h3>
 <p>An idea from by Matthew Harris (<a href="https://groups.google.com/d/msg/beancount/5u-xgR-ttjg/sXfU32ItRscJ"><span
 class="underline">here</span></a>)
 is that we could also use the value of the to the smallest decimal of
@@ -414,12 +427,12 @@ cost:</p>
 <p>I’ve actually tried to implement this and the resulting tolerances are
 either unacceptably wide or unacceptably small. <strong>It does not work well
 in practice so I’ve abandoned the idea.</strong></p>
-<h3 id="automated-rounding"><a id="automated-rounding"></a>Automated Rounding<a class="headerlink" href="#automated-rounding" title="Permanent link"></a></h3>
+<h3 id="automated-rounding">Automated Rounding<a class="headerlink" href="#automated-rounding" title="Permanent link"></a></h3>
 <p>For values that are automatically calculated, for example, on
 auto-postings where the remaining value is derived automatically, we
 should consider rounding the values. No work has been done on this yet;
 these values are currently not rounded.</p>
-<h3 id="fixing-balance-assertions"><a id="fixing-balance-assertions"></a>Fixing Balance Assertions<a class="headerlink" href="#fixing-balance-assertions" title="Permanent link"></a></h3>
+<h3 id="fixing-balance-assertions">Fixing Balance Assertions<a class="headerlink" href="#fixing-balance-assertions" title="Permanent link"></a></h3>
 <p>To fix balance assertions, we will derive the required precision by the
 number of digits used in the balance amount itself, by looking at the
 most precision fractional digit and using half of that digit’s value to
@@ -435,14 +448,14 @@ precise number should match:</p>
 <pre><code>2014-04-01 balance Assets:Investments:Cash   4526. USD
 </code></pre>
 <p>This balance check implies a precision of 0.50 USD.</p>
-<h3 id="approximate-assertions"><a id="approximate-assertions"></a>Approximate Assertions<a class="headerlink" href="#approximate-assertions" title="Permanent link"></a></h3>
+<h3 id="approximate-assertions">Approximate Assertions<a class="headerlink" href="#approximate-assertions" title="Permanent link"></a></h3>
 <p>Another idea, proposed in <a href="https://github.com/ledger/ledger/pull/329"><span class="underline">this ticket on
 Ledger</span></a>, proposes an
 explicitly approximate assertion.</p>
 <p>We could implement it this way (just an idea):</p>
 <pre><code>2014-04-01 balance Assets:Investments:Cash   4526.00 +/- 0.05 USD
 </code></pre>
-<h2 id="accumulating-reporting-residuals"><a id="accumulating-reporting-residuals"></a>Accumulating &amp; Reporting Residuals<a class="headerlink" href="#accumulating-reporting-residuals" title="Permanent link"></a></h2>
+<h2 id="accumulating-reporting-residuals">Accumulating &amp; Reporting Residuals<a class="headerlink" href="#accumulating-reporting-residuals" title="Permanent link"></a></h2>
 <p>In order to explicitly render and monitor the amount of rounding errors
 that occur in a Ledger, we should <a href="https://groups.google.com/d/msg/ledger-cli/m-TgILbfrwA/YjkmOM3LHXIJ"><span class="underline">accumulate it
 to an Equity
@@ -455,7 +468,7 @@ transaction to the equity account.</p>
 <p>By default, this accumulation should be turned off. It’s not clear
 whether the extra postings will be disruptive yet (if they’re not, maybe
 this should be turned on by default; practice will inform us).</p>
-<h2 id="implementation"><a id="implementation"></a>Implementation<a class="headerlink" href="#implementation" title="Permanent link"></a></h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link"></a></h2>
 <p>The implementation of this proposal is <a href="../08_precision_tolerances/"><span
 class="underline">documented here</span></a>.</p></div>
         </div>

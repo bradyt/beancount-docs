@@ -232,11 +232,17 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#balance-assertions-in-beancount">Balance Assertions in Beancount</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#partial-vs-complete-assertions">Partial vs. Complete Assertions</a></li>
+            <li><a href="#file-vs-date-assertions">File vs. Date Assertions</a></li>
+            <li><a href="#status">Status</a></li>
+            <li><a href="#proposal">Proposal</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="balance-assertions-in-beancount"><a id="title"></a>Balance Assertions in Beancount<a class="headerlink" href="#balance-assertions-in-beancount" title="Permanent link"></a></h1>
+<h1 id="balance-assertions-in-beancount">Balance Assertions in Beancount<a class="headerlink" href="#balance-assertions-in-beancount" title="Permanent link"></a></h1>
 <p>Martin Blais, July 2014</p>
 <p><a href="http://furius.ca/beancount/doc/proposal-balance"><span
 class="underline">http://furius.ca/beancount/doc/proposal-balance</span></a></p>
@@ -261,7 +267,7 @@ Day</span></a></p>
 <p><a href="#complete-assertions"><span class="underline">Complete
 Assertions</span></a></p>
 </blockquote>
-<h2 id="motivation"><a id="motivation"></a>Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link"></a></h2>
 <p>Both Beancount and Ledger implement <em>balance assertions.</em> These provide
 the system with checkpoints it can use to verify the integrity of the
 data entry<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
@@ -283,7 +289,7 @@ thread</span></a>,
 we established that there were differing interpretations of balance
 assertions in the current versions of Ledger (3.0) and Beancount (2.0b).</p>
 <p><img src="29_balance_assertions_in_beancount/media/539ac8accaa66eeb45ed7865fcad381fa35af295.png" alt="balance-statement-1.png" style="width:6.5in;height:3.20833in" /></p>
-<h2 id="partial-vs-complete-assertions"><a id="partial-vs.-complete-assertions"></a>Partial vs. Complete Assertions<a class="headerlink" href="#partial-vs-complete-assertions" title="Permanent link"></a></h2>
+<h2 id="partial-vs-complete-assertions">Partial vs. Complete Assertions<a class="headerlink" href="#partial-vs-complete-assertions" title="Permanent link"></a></h2>
 <p>An assertion in Beancount currently looks like this:</p>
 <pre><code>2012-02-04 balance Assets:CA:Bank:Checking    417.61 CAD
 </code></pre>
@@ -303,7 +309,7 @@ would have to support the specification of the full contents of an
 inventory. This is currently not supported.</p>
 <p>Further note that we are not asserting the cost basis of an inventory,
 just the number of units.</p>
-<h2 id="file-vs-date-assertions"><a id="file-vs.-date-assertions"></a>File vs. Date Assertions<a class="headerlink" href="#file-vs-date-assertions" title="Permanent link"></a></h2>
+<h2 id="file-vs-date-assertions">File vs. Date Assertions<a class="headerlink" href="#file-vs-date-assertions" title="Permanent link"></a></h2>
 <p>There are two differing interpretations and implementations of the
 running balances for assertions:</p>
 <ul>
@@ -326,7 +332,7 @@ running balances for assertions:</p>
     location).</p>
 </li>
 </ul>
-<h3 id="ordering-ambiguity"><a id="ordering-ambiguity"></a>Ordering &amp; Ambiguity<a class="headerlink" href="#ordering-ambiguity" title="Permanent link"></a></h3>
+<h3 id="ordering-ambiguity">Ordering &amp; Ambiguity<a class="headerlink" href="#ordering-ambiguity" title="Permanent link"></a></h3>
 <p>An important difference between those two types of assertions is that
 file-based assertions are not order-independent. For example, take the
 following input file:</p>
@@ -375,7 +381,7 @@ indicative syntax of its semantics, something that would look like this:</p>
 </code></pre>
 <p>The absence of a date indicates that the check is not applied at a
 particular point in time.</p>
-<h3 id="intra-day-assertions"><a id="intra-day-assertions"></a>Intra-Day Assertions<a class="headerlink" href="#intra-day-assertions" title="Permanent link"></a></h3>
+<h3 id="intra-day-assertions">Intra-Day Assertions<a class="headerlink" href="#intra-day-assertions" title="Permanent link"></a></h3>
 <p>On the other hand, date-based assertions, because of their
 order-independence, preclude intra-day assertions, that is, a balance
 assertion that occurs <em>between</em> two postings on the same account during
@@ -410,7 +416,7 @@ different date.</p>
 <p>Another idea would be to always sort the balance assertions in
 file-order as the second sort key (after the date) and apply them as
 such. I’m not sure this would be easy to understand though.</p>
-<h3 id="beginning-vs-end-of-day"><a id="beginning-vs.-end-of-day"></a>Beginning vs. End of Day<a class="headerlink" href="#beginning-vs-end-of-day" title="Permanent link"></a></h3>
+<h3 id="beginning-vs-end-of-day">Beginning vs. End of Day<a class="headerlink" href="#beginning-vs-end-of-day" title="Permanent link"></a></h3>
 <p>Finally, just for completeness, it is worth mentioning that date
 assertions have to have well-defined semantics regarding <em>when</em> they
 apply during the day. In Beancount, they currently apply at the
@@ -420,15 +426,15 @@ assertions that applies at the end of the day, e.g. “balance_end”.
 Beancount v1 used to have this (“check_end”) but it was removed in the
 v2 rewrite, as it wasn’t clear it would be really needed. The simplicity
 of a single meaning for balance assertions is nice too.</p>
-<h2 id="status"><a id="status"></a>Status<a class="headerlink" href="#status" title="Permanent link"></a></h2>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link"></a></h2>
 <p><a href="http://ledger-cli.org"><span class="underline">Ledger</span></a> 3.0
 currently supports only partial file-order assertions, on transactions.</p>
 <p><a href="http://furius.ca/beancount/"><span class="underline">Beancount</span></a>
 2.0 currently supports only partial date-based assertions at the
 beginning of the day.</p>
-<h2 id="proposal"><a id="proposal"></a>Proposal<a class="headerlink" href="#proposal" title="Permanent link"></a></h2>
+<h2 id="proposal">Proposal<a class="headerlink" href="#proposal" title="Permanent link"></a></h2>
 <p>I propose the following improvements to Beancount’s balance assertions.</p>
-<h3 id="file-assertions"><a id="file-assertions"></a>File Assertions<a class="headerlink" href="#file-assertions" title="Permanent link"></a></h3>
+<h3 id="file-assertions">File Assertions<a class="headerlink" href="#file-assertions" title="Permanent link"></a></h3>
 <p>File assertions should be provided as a plugin. They would look like
 this:</p>
 <pre><code>2012-02-03 file_balance Assets:CA:Bank:Checking    417.61 CAD
@@ -457,7 +463,7 @@ any of the other processing.</p>
 <p>Moreover, another advantage of doing this in a plugin is that people who
 don’t use this directive won’t have to pay the cost of calculating these
 inventories.</p>
-<h3 id="complete-assertions"><a id="complete-assertions"></a>Complete Assertions<a class="headerlink" href="#complete-assertions" title="Permanent link"></a></h3>
+<h3 id="complete-assertions">Complete Assertions<a class="headerlink" href="#complete-assertions" title="Permanent link"></a></h3>
 <p>Complete assertions should be supported in Beancount by the current
 balance assertion directive. They aren’t very important but are
 potentially useful.</p>

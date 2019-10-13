@@ -232,16 +232,29 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#sharing-expenses-in-beancount">Sharing Expenses in Beancount</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#a-travel-example">A Travel Example</a></li>
+            <li><a href="#a-note-about-sharing">A Note About Sharing</a></li>
+            <li><a href="#overview-of-the-method">Overview of the Method</a></li>
+            <li><a href="#how-to-track-expenses">How to Track Expenses</a></li>
+            <li><a href="#how-to-take-notes">How to Take Notes</a></li>
+            <li><a href="#reconciling-expenses">Reconciling Expenses</a></li>
+            <li><a href="#final-transfer">Final Transfer</a></li>
+            <li><a href="#updating-your-personal-ledger">Updating your Personal Ledger</a></li>
+            <li><a href="#generating-reports">Generating Reports</a></li>
+            <li><a href="#other-examples">Other Examples</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="sharing-expenses-in-beancount"><a id="title"></a>Sharing Expenses in Beancount<a class="headerlink" href="#sharing-expenses-in-beancount" title="Permanent link"></a></h1>
+<h1 id="sharing-expenses-in-beancount">Sharing Expenses in Beancount<a class="headerlink" href="#sharing-expenses-in-beancount" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 May 2015</p>
 <p><a href="http://furius.ca/beancount/doc/shared"><span
 class="underline">http://furius.ca/beancount/doc/shared</span></a></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This document presents a method for precisely and easily accounting for
 shared expenses in complicated group situations. For example, traveling
 with a group of friends where people pay for different things. We show
@@ -257,7 +270,7 @@ automatically compute final correcting transfers for each.</p>
 equally by two people. However, the same method generalizes to any type
 of project with incomes and expenses to be shared among multiple
 participants, and splitting expenses evenly or not.</p>
-<h2 id="a-travel-example"><a id="a-travel-example"></a>A Travel Example<img src="21_sharing_expenses_with_beancount/media/72a67e4807826142ec5f6535a66dc7fca5f797a3.jpg" style="width:1.41146in;height:1.05859in" /><a class="headerlink" href="#a-travel-example" title="Permanent link"></a></h2>
+<h2 id="a-travel-example">A Travel Example<img src="21_sharing_expenses_with_beancount/media/72a67e4807826142ec5f6535a66dc7fca5f797a3.jpg" style="width:1.41146in;height:1.05859in" /><a class="headerlink" href="#a-travel-example" title="Permanent link"></a></h2>
 <p>Martin (the author) and Caroline (his girlfriend) visited Mexico in
 March 2015. We visited the island of Cozumel for a SCUBA diving trip for
 three days and then headed to Tulum for two days to relax and dive in
@@ -303,7 +316,7 @@ class="underline">cenotes</span></a>.</p>
     at the end of our stay.</p>
 </li>
 </ul>
-<h2 id="a-note-about-sharing"><a id="a-note-about-sharing"></a>A Note About Sharing<a class="headerlink" href="#a-note-about-sharing" title="Permanent link"></a></h2>
+<h2 id="a-note-about-sharing">A Note About Sharing<a class="headerlink" href="#a-note-about-sharing" title="Permanent link"></a></h2>
 <p>I feel that something should be said about the “sharing” aspect of our
 expenses, as this topic has come up on previous discussions on the
 mailing-lists involving sharing examples.</p>
@@ -329,7 +342,7 @@ aren’t tracked accurately, usually <em><span
 class="underline">everyone</span></em> is left with a feeling that they paid
 more than the others. The sum of the <em>perceived</em> fractions of expenses
 paid in a group is always greater than 100%...</p>
-<h2 id="overview-of-the-method"><a id="overview-of-the-method"></a>Overview of the Method<a class="headerlink" href="#overview-of-the-method" title="Permanent link"></a></h2>
+<h2 id="overview-of-the-method">Overview of the Method<a class="headerlink" href="#overview-of-the-method" title="Permanent link"></a></h2>
 <p>In this section we present a brief illustrated overview of the method. A
 set of common Assets accounts that belong to the project, and book all
 our individual expenses and transfer for the trip as coming from
@@ -353,7 +366,7 @@ square:</p>
 <p>Note that the final balance of expenses for each participant may differ,
 and these are due to particular expenses that were attributed
 separately, or if we decide to split the total unevenly.</p>
-<h2 id="how-to-track-expenses"><a id="how-to-track-expenses"></a>How to Track Expenses<a class="headerlink" href="#how-to-track-expenses" title="Permanent link"></a></h2>
+<h2 id="how-to-track-expenses">How to Track Expenses<a class="headerlink" href="#how-to-track-expenses" title="Permanent link"></a></h2>
 <p>In order to write down all expenses for this trip we will open a brand
 new Beancount input file. Despite the fact that the expenses will come
 from each person’s personal accounts, it is useful to think of the trip
@@ -362,7 +375,7 @@ that exists only for the duration of the trip. The example file we wrote
 for our trip <a href="http://bitbucket.org/blais/beancount/src/tip/examples/sharing/cozumel2015.beancount"><span class="underline">can be found
 here</span></a>
 and should help you follow along this text.</p>
-<h3 id="accounts"><a id="accounts"></a>Accounts<a class="headerlink" href="#accounts" title="Permanent link"></a></h3>
+<h3 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link"></a></h3>
 <p>The set of accounts in the input file should not have to match your
 personal Beancount file’s account names. The accounts we will use
 include accounts that correspond to Martin and Caroline’s personal
@@ -376,7 +389,7 @@ example, Caroline’s credit card will be named
 later on to split contributions and expenses.</p>
 <p>Let’s examine the different types of accounts we will need to carry this
 out.</p>
-<h4 id="external-income-accounts"><a id="external-income-accounts"></a>External Income Accounts<a class="headerlink" href="#external-income-accounts" title="Permanent link"></a></h4>
+<h4 id="external-income-accounts">External Income Accounts<a class="headerlink" href="#external-income-accounts" title="Permanent link"></a></h4>
 <p>The “project” will receive income in the form of transfers from personal
 accounts of either traveler. These are accounts we will consider
 external to the project and so will define them as Income accounts:</p>
@@ -396,7 +409,7 @@ external to the project and so will define them as Income accounts:</p>
 personal Beancount file. Obviously, you must be careful to include all
 the transactions pertaining to the trip. I used a tag to do this in my
 personal file.</p>
-<h4 id="assets-liabilities-accounts"><a id="assets-liabilities-accounts"></a>Assets &amp; Liabilities Accounts<a class="headerlink" href="#assets-liabilities-accounts" title="Permanent link"></a></h4>
+<h4 id="assets-liabilities-accounts">Assets &amp; Liabilities Accounts<a class="headerlink" href="#assets-liabilities-accounts" title="Permanent link"></a></h4>
 <p>There will have a few Asset accounts that will be active and exist for
 the duration of the trip. These temporary accounts will be zero’ed out
 at the end of it. One example is a pool of petty cash in local currency:</p>
@@ -411,8 +424,8 @@ created two separate accounts for that:</p>
 2015-02-01 open Assets:Cash:Caroline
   description: "Cash for the trip held by Caroline"
 </code></pre>
-<h4 id="note-however-that-despite-their-individual-names-those-accounts-are-considered-as-part-of-the-project-it-was-just-convenient-to-separately-track-balances-for-the-cash-we-each-held-during-the-trip"><a id="note-however-that-despite-their-individual-names-those-accounts-are-considered-as-part-of-the-project.-it-was-just-convenient-to-separately-track-balances-for-the-cash-we-each-held-during-the-trip."></a>Note however that despite their individual names, those accounts are considered as part of the project. It was just convenient to separately track balances for the cash we each held during the trip.<a class="headerlink" href="#note-however-that-despite-their-individual-names-those-accounts-are-considered-as-part-of-the-project-it-was-just-convenient-to-separately-track-balances-for-the-cash-we-each-held-during-the-trip" title="Permanent link"></a></h4>
-<h4 id="expenses-accounts"><a id="expenses-accounts"></a>Expenses Accounts<a class="headerlink" href="#expenses-accounts" title="Permanent link"></a></h4>
+<h4 id="note-however-that-despite-their-individual-names-those-accounts-are-considered-as-part-of-the-project-it-was-just-convenient-to-separately-track-balances-for-the-cash-we-each-held-during-the-trip">Note however that despite their individual names, those accounts are considered as part of the project. It was just convenient to separately track balances for the cash we each held during the trip.<a class="headerlink" href="#note-however-that-despite-their-individual-names-those-accounts-are-considered-as-part-of-the-project-it-was-just-convenient-to-separately-track-balances-for-the-cash-we-each-held-during-the-trip" title="Permanent link"></a></h4>
+<h4 id="expenses-accounts">Expenses Accounts<a class="headerlink" href="#expenses-accounts" title="Permanent link"></a></h4>
 <p>We will define various accounts to book our Expenses to. For example,
 “Expenses:Flights” will contains our costs associated with flight
 travel. For convenience, and because there are many types of expenses in
@@ -427,11 +440,11 @@ between us. For example, shared SCUBA diving expenses will be booked to
 we simply include the name of the traveler in the account name. For
 example, Martin’s extra costs for boat diving will be booked to the
 “Expenses:Scuba:Martin” account.</p>
-<h3 id="example-transactions"><a id="example-transactions"></a>Example Transactions<a class="headerlink" href="#example-transactions" title="Permanent link"></a></h3>
+<h3 id="example-transactions">Example Transactions<a class="headerlink" href="#example-transactions" title="Permanent link"></a></h3>
 <p>Let’s turn our attention to the different types of transactions present
 in the file. In this section I will walk you through some representative
 transactions (the names I give to these is arbitrary).</p>
-<h4 id="contributing-transactions"><a id="contributing-transactions"></a>Contributing Transactions<a class="headerlink" href="#contributing-transactions" title="Permanent link"></a></h4>
+<h4 id="contributing-transactions">Contributing Transactions<a class="headerlink" href="#contributing-transactions" title="Permanent link"></a></h4>
 <p>Contributions to the project’s costs are usually done in the form of
 expenses paid from external accounts. For example, Caroline paying for
 flights with her credit card looks like this:</p>
@@ -444,7 +457,7 @@ flights with her credit card looks like this:</p>
   Expenses:Transport:Taxi                   62.80 USD
   Income:Martin:CreditCard
 </code></pre>
-<h4 id="bringing-cash"><a id="bringing-cash"></a>Bringing Cash<a class="headerlink" href="#bringing-cash" title="Permanent link"></a></h4>
+<h4 id="bringing-cash">Bringing Cash<a class="headerlink" href="#bringing-cash" title="Permanent link"></a></h4>
 <p>We both brought some cash on us, as we were warned it might be difficult
 to use credit cards in Mexico. In my personal Beancount file, the cash
 account is “Assets:Cash” but here it must get booked as an external
@@ -463,7 +476,7 @@ contribution with my name on it:</p>
 accounts are considered a part of the project, in this case it just
 refers to who is carrying it. (These accounts are cleared at the end, so
 it does not matter that our names are in them.)</p>
-<h4 id="transfers"><a id="transfers"></a>Transfers<a class="headerlink" href="#transfers" title="Permanent link"></a></h4>
+<h4 id="transfers">Transfers<a class="headerlink" href="#transfers" title="Permanent link"></a></h4>
 <p>Before the trip, I was really busy. It looked like Caroline was going to
 make most of arrangements and upfront payments, so I made a transfer to
 her Google Wallet to help her cover for some expenses ahead of time:</p>
@@ -471,7 +484,7 @@ her Google Wallet to help her cover for some expenses ahead of time:</p>
   Income:Martin:Wallet                      -1000 USD
   Income:Caroline:Wallet                     1000 USD
 </code></pre>
-<h4 id="cash-conversions"><a id="cash-conversions"></a>Cash Conversions<a class="headerlink" href="#cash-conversions" title="Permanent link"></a></h4>
+<h4 id="cash-conversions">Cash Conversions<a class="headerlink" href="#cash-conversions" title="Permanent link"></a></h4>
 <p>Obtaining local currency was done by changing a small amount of cash at
 the airport (at a very bad rate):</p>
 <pre><code>2015-02-25 * "Exchanged cash at XIC at CUN airport"
@@ -480,14 +493,14 @@ the airport (at a very bad rate):</p>
 </code></pre>
 <p>The “Assets:Cash:Pesos” account tracks our common pool of local currency
 that we use for various small expenses.</p>
-<h4 id="cash-expenses-in-us-dollars"><a id="cash-expenses-in-us-dollars"></a>Cash Expenses in US Dollars<a class="headerlink" href="#cash-expenses-in-us-dollars" title="Permanent link"></a></h4>
+<h4 id="cash-expenses-in-us-dollars">Cash Expenses in US Dollars<a class="headerlink" href="#cash-expenses-in-us-dollars" title="Permanent link"></a></h4>
 <p>Some local expenses will call for US money, which in this example I paid
 from my cash pocket:</p>
 <pre><code>2015-03-01 * "Motmot Diving" | "Deposit for cenote diving"
   Expenses:Scuba                            50.00 USD
   Assets:Cash:Martin
 </code></pre>
-<h4 id="cash-expenses-in-local-currency"><a id="cash-expenses-in-local-currency"></a>Cash Expenses in Local Currency<img src="21_sharing_expenses_with_beancount/media/6c5e7a3ecdb57f82345ca38ad79cee393ec1fdba.jpg" style="width:1.55003in;height:1.63021in" /><a class="headerlink" href="#cash-expenses-in-local-currency" title="Permanent link"></a></h4>
+<h4 id="cash-expenses-in-local-currency">Cash Expenses in Local Currency<img src="21_sharing_expenses_with_beancount/media/6c5e7a3ecdb57f82345ca38ad79cee393ec1fdba.jpg" style="width:1.55003in;height:1.63021in" /><a class="headerlink" href="#cash-expenses-in-local-currency" title="Permanent link"></a></h4>
 <p>Paying cash using pesos from our shared stash of pesos looks like this:</p>
 <pre><code>2015-02-25 * "UltraMar Ferry across to Cozumel"
   Expenses:Transport:Bus                326 MXN
@@ -502,8 +515,8 @@ currency):</p>
   Assets:Cash:Pesos                   -1400 MXN
   Assets:Cash:Martin                 -40.00 USD @ 12.00 MXN
 </code></pre>
-<h4 id="i-used-the-unfavorable-rate-the-restaurant-was-offering-to-accept-dollars-at-the-market-rate-was-145-at-the-time"><a id="i-used-the-unfavorable-rate-the-restaurant-was-offering-to-accept-dollars-at-the-market-rate-was-14.5-at-the-time."></a>I used the unfavorable rate the restaurant was offering to accept dollars at (the market rate was 14.5 at the time).<a class="headerlink" href="#i-used-the-unfavorable-rate-the-restaurant-was-offering-to-accept-dollars-at-the-market-rate-was-145-at-the-time" title="Permanent link"></a></h4>
-<h4 id="individual-expenses"><a id="individual-expenses"></a>Individual Expenses<a class="headerlink" href="#individual-expenses" title="Permanent link"></a></h4>
+<h4 id="i-used-the-unfavorable-rate-the-restaurant-was-offering-to-accept-dollars-at-the-market-rate-was-145-at-the-time">I used the unfavorable rate the restaurant was offering to accept dollars at (the market rate was 14.5 at the time).<a class="headerlink" href="#i-used-the-unfavorable-rate-the-restaurant-was-offering-to-accept-dollars-at-the-market-rate-was-145-at-the-time" title="Permanent link"></a></h4>
+<h4 id="individual-expenses">Individual Expenses<a class="headerlink" href="#individual-expenses" title="Permanent link"></a></h4>
 <p>Here is an example of booking individual expenses using shared money. In
 order for us have access to the reef for diving, we had to pay a “marine
 park” fee of $2.50 per day to the island. This was a short trip where I
@@ -539,7 +552,7 @@ single transaction, booking to each other:</p>
   Expenses:Scuba:Martin                     28.64 USD ;; Taxes
   Expenses:Scuba:Caroline                   24.00 USD ;; Taxes
 </code></pre>
-<h4 id="final-balances"><a id="final-balances"></a>Final Balances<a class="headerlink" href="#final-balances" title="Permanent link"></a></h4>
+<h4 id="final-balances">Final Balances<a class="headerlink" href="#final-balances" title="Permanent link"></a></h4>
 <p>Of course you can use balance assertions at any time during the trip.
 For example, just before leaving at the Cancun airport we knew we
 wouldn’t spend any more Mexican pesos for a while, so I counted what we
@@ -552,7 +565,7 @@ end of every day or couple of days, which makes it easier to triangulate
 an expense you might have forgotten to enter (we are on vacation after
 all, in our relaxed state of mind we forget to write down stuff here and
 there).</p>
-<h4 id="clearing-asset-accounts"><a id="clearing-asset-accounts"></a>Clearing Asset Accounts<a class="headerlink" href="#clearing-asset-accounts" title="Permanent link"></a></h4>
+<h4 id="clearing-asset-accounts">Clearing Asset Accounts<a class="headerlink" href="#clearing-asset-accounts" title="Permanent link"></a></h4>
 <p>At the end of the trip, you should clear the final balances of all
 Assets and Liabilities accounts by transferring the remaining funds out
 to the participants, i.e., to the Income accounts. This should leave all
@@ -581,7 +594,7 @@ transfer it to anyone; the end result will be the same.</p>
 Caroline kept the 5 peso coin (forgot to hand it over as tip). We
 transferred out the respective cash amounts we had been carrying
 together during the trip.</p>
-<h2 id="how-to-take-notes"><a id="how-to-take-notes"></a>How to Take Notes<a class="headerlink" href="#how-to-take-notes" title="Permanent link"></a></h2>
+<h2 id="how-to-take-notes">How to Take Notes<a class="headerlink" href="#how-to-take-notes" title="Permanent link"></a></h2>
 <p>During this trip I did not carry a laptop—this was vacation after all. I
 like to disconnect. I did not carry a notebook either. Instead, I just
 took notes at the end of the day on a few sheets of paper at the hotel.
@@ -610,7 +623,7 @@ we went along. Of course, I had to do a few adjustments here and there
 because of mistakes.</p>
 <p>The bottom line is: if you’re organized well, the overhead of doing this
 is minimal.</p>
-<h2 id="reconciling-expenses"><a id="reconciling-expenses"></a>Reconciling Expenses<a class="headerlink" href="#reconciling-expenses" title="Permanent link"></a></h2>
+<h2 id="reconciling-expenses">Reconciling Expenses<a class="headerlink" href="#reconciling-expenses" title="Permanent link"></a></h2>
 <p>Running bean-web on the trip’s file:</p>
 <pre><code>bean-web beancount/examples/sharing/cozumel2015.beancount
 </code></pre>
@@ -622,7 +635,7 @@ Transactions”).</p>
 currency conversions made during the trip. You can verify this by
 calculating the amount-weight average rate like this: 7539.00 / 559.88
 ~= 13.465 USD/MXN (which is about right).</p>
-<h3 id="reviewing-contributions"><a id="reviewing-contributions"></a>Reviewing Contributions<a class="headerlink" href="#reviewing-contributions" title="Permanent link"></a></h3>
+<h3 id="reviewing-contributions">Reviewing Contributions<a class="headerlink" href="#reviewing-contributions" title="Permanent link"></a></h3>
 <p>The Income Statement should show a summary of all expenses and
 contributions to the project:</p>
 <p><img src="21_sharing_expenses_with_beancount/media/a8d4c5e20494c749682470c47ba891cc1e32d47f.png" alt="income.png" style="width:6.41468in;height:4.30729in" /></p>
@@ -659,7 +672,7 @@ sum_positio
 -415.00 USD
    5    MXN
 </code></pre>
-<h3 id="splitting-expenses"><a id="splitting-expenses"></a>Splitting Expenses<a class="headerlink" href="#splitting-expenses" title="Permanent link"></a></h3>
+<h3 id="splitting-expenses">Splitting Expenses<a class="headerlink" href="#splitting-expenses" title="Permanent link"></a></h3>
 <p>The expenses side of the Income Statement shows the breakdown of
 expenses. Note how some of the expense accounts are explicitly booked to
 each member separately by their account name, e.g.,
@@ -748,7 +761,7 @@ converting transactions.)</p>
 e.g.:</p>
 <pre><code>beancount&gt; SELECT sum(position) WHERE account ~ '^Income:.*Caroline'
 </code></pre>
-<h2 id="final-transfer"><a id="final-transfer"></a>Final Transfer<a class="headerlink" href="#final-transfer" title="Permanent link"></a></h2>
+<h2 id="final-transfer">Final Transfer<a class="headerlink" href="#final-transfer" title="Permanent link"></a></h2>
 <p>In order to figure out the total amount owed by each member, the process
 is similar: Simply sum up the balances of all the accounts attributed to
 that particular member:</p>
@@ -788,21 +801,21 @@ beancount&gt; SELECT convert(sum(position), 'USD') WHERE account ~ 'Caroline'
 --------------------------------
 38.7831868131868131868131868 USD
 </code></pre>
-<h2 id="updating-your-personal-ledger"><a id="updating-your-personal-ledger"></a>Updating your Personal Ledger<a class="headerlink" href="#updating-your-personal-ledger" title="Permanent link"></a></h2>
+<h2 id="updating-your-personal-ledger">Updating your Personal Ledger<a class="headerlink" href="#updating-your-personal-ledger" title="Permanent link"></a></h2>
 <p>So great! Now we’ve reconciled each other for the trip. But you still
 need to reflect these expenses in your personal ledger (if you have
 one). In this section, I will explain how you should reflect these
 transactions in that file.</p>
-<h3 id="account-names"><a id="account-names"></a>Account Names<a class="headerlink" href="#account-names" title="Permanent link"></a></h3>
+<h3 id="account-names">Account Names<a class="headerlink" href="#account-names" title="Permanent link"></a></h3>
 <p>First, let us take note that the accounts in your personal ledger do not
 have to match the account names used in the trip’s ledger file. I never
 process those files together. (A good argument for not attempting this
 is that each trip will include account names from other people and I
 prefer not to have those leak into my main ledger file.)</p>
-<h3 id="using-a-tag"><a id="using-a-tag"></a>Using a Tag<a class="headerlink" href="#using-a-tag" title="Permanent link"></a></h3>
+<h3 id="using-a-tag">Using a Tag<a class="headerlink" href="#using-a-tag" title="Permanent link"></a></h3>
 <p>I like to use a tag to report on the entire set of transactions related
 to the trip. In this example, I used the tag #trip-cozumel2015.</p>
-<h3 id="booking-contributions"><a id="booking-contributions"></a>Booking Contributions<a class="headerlink" href="#booking-contributions" title="Permanent link"></a></h3>
+<h3 id="booking-contributions">Booking Contributions<a class="headerlink" href="#booking-contributions" title="Permanent link"></a></h3>
 <p>Your contributions into the project should be booked to a temporary
 holding account. I call mine “Assets:Travel:Pending”. For example, this
 transaction from the trip’s file:</p>
@@ -830,7 +843,7 @@ transfers:</p>
   Assets:Google:Wallet                       1500 USD
   Assets:Travel:Pending                      -1500 USD
 </code></pre>
-<h3 id="booking-expenses"><a id="booking-expenses"></a>Booking Expenses<a class="headerlink" href="#booking-expenses" title="Permanent link"></a></h3>
+<h3 id="booking-expenses">Booking Expenses<a class="headerlink" href="#booking-expenses" title="Permanent link"></a></h3>
 <p>After the trip is concluded, we want to convert the balance in the
 pending account to a list of Expenses. To find the list of expenses for
 yourself, you can issue a query like this:</p>
@@ -939,7 +952,7 @@ poptag #trip-mexico-cozumel-2015
 </ol>
 <p>I found the missing amounts by running bean-check or using bean-doctor
 context on an incomplete transaction from Emacs.</p>
-<h2 id="generating-reports"><a id="generating-reports"></a>Generating Reports<a class="headerlink" href="#generating-reports" title="Permanent link"></a></h2>
+<h2 id="generating-reports">Generating Reports<a class="headerlink" href="#generating-reports" title="Permanent link"></a></h2>
 <p>If you want to automate the generation of reports for each of the
 participants in a trip, there is a script that generates text (and
 eventually CSV) reports for the queries mentioned in the previous
@@ -966,12 +979,12 @@ you can use to send final reconciling transfers to each other. Try it
 now on one of the <a href="https://bitbucket.org/blais/beancount/src/tip/examples/sharing/"><span class="underline">example
 files</span></a>
 provided with Beancount.</p>
-<h2 id="other-examples"><a id="other-examples"></a>Other Examples<a class="headerlink" href="#other-examples" title="Permanent link"></a></h2>
+<h2 id="other-examples">Other Examples<a class="headerlink" href="#other-examples" title="Permanent link"></a></h2>
 <p>There is another example file that shows how to share expenses between
 three participants in <a href="https://bitbucket.org/blais/beancount/src/66e85c8343d8704745ae16cb6ac622f4b6246c3c/examples/sharing/duxbury2015.beancount?at=default&amp;fileviewer=file-view-default"><span
 class="underline">duxbury2015.beancount</span></a>.
 Look to more example files to be introduced over time.</p>
-<h2 id="conclusion"><a id="conclusion"></a>Conclusion<img src="21_sharing_expenses_with_beancount/media/b2573bbadd485ef104e25a4b13b53f46c4b541ca.jpg" style="width:2.02604in;height:1.52427in" /><a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<h2 id="conclusion">Conclusion<img src="21_sharing_expenses_with_beancount/media/b2573bbadd485ef104e25a4b13b53f46c4b541ca.jpg" style="width:2.02604in;height:1.52427in" /><a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>There is more than just one way to carry out the task we describe here.
 However, the method we present extends nicely to a larger group of
 participants, allows us to account for situations where particular

@@ -232,11 +232,20 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#beancount-language-syntax">Beancount Language Syntax</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#syntax-overview">Syntax Overview</a></li>
+            <li><a href="#directives_1">Directives</a></li>
+            <li><a href="#metadata_1">Metadata</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#plugins">Plugins</a></li>
+            <li><a href="#includes">Includes</a></li>
+            <li><a href="#whats-next">What’s Next?</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="beancount-language-syntax"><a id="title"></a>Beancount Language Syntax<a class="headerlink" href="#beancount-language-syntax" title="Permanent link"></a></h1>
+<h1 id="beancount-language-syntax">Beancount Language Syntax<a class="headerlink" href="#beancount-language-syntax" title="Permanent link"></a></h1>
 <p><a href="mailto:blais@furius.ca"><span class="underline">Martin Blais</span></a>,
 Updated: April 2016</p>
 <p><a href="http://furius.ca/beancount/doc/syntax"><span
@@ -308,7 +317,7 @@ Currencies</span></a></p>
 <p><a href="#plugins"><span class="underline">Plugins</span></a></p>
 <p><a href="#includes"><span class="underline">Includes</span></a></p>
 <p><a href="#whats-next"><span class="underline">What’s Next?</span></a></p>
-<h2 id="introduction"><a id="introduction"></a>Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h2>
 <p>This is a user's manual to the language of Beancount, the command-line
 double-entry bookkeeping system. Beancount defines a computer language
 that allows you to enter financial transactions in a text file and
@@ -331,8 +340,8 @@ subjects have their <a href=".."><span class="underline">own dedicated
 documents</span></a>, and it is recommended that you have had a
 look at those before diving into this user’s manual. This manual covers
 the technical details for using Beancount.</p>
-<h2 id="syntax-overview"><a id="syntax-overview"></a>Syntax Overview<a class="headerlink" href="#syntax-overview" title="Permanent link"></a></h2>
-<h3 id="directives"><a id="directives"></a>Directives<a class="headerlink" href="#directives" title="Permanent link"></a></h3>
+<h2 id="syntax-overview">Syntax Overview<a class="headerlink" href="#syntax-overview" title="Permanent link"></a></h2>
+<h3 id="directives">Directives<a class="headerlink" href="#directives" title="Permanent link"></a></h3>
 <p>Beancount is a declarative language. The input consists of a text file
 containing mainly a list of <strong>directives</strong>, or <strong>entries</strong> (we use these
 terms interchangeably in the code and documentation); there is also
@@ -360,7 +369,7 @@ aesthetics:</p>
 entries, in a data structure. All operations in Beancount are performed
 on these entries.</p>
 <p>Each particular directive type is documented in a section below.</p>
-<h4 id="ordering-of-directives"><a id="ordering-of-directives"></a>Ordering of Directives<a class="headerlink" href="#ordering-of-directives" title="Permanent link"></a></h4>
+<h4 id="ordering-of-directives">Ordering of Directives<a class="headerlink" href="#ordering-of-directives" title="Permanent link"></a></h4>
 <p>The order of declaration of the directives is not important. In fact,
 the entries are re-sorted chronologically after parsing and before being
 processed. This is an important feature of the language, because it
@@ -382,7 +391,7 @@ date forward by declaring the close on 2/4:</p>
 </code></pre>
 <p>This also explains why balance assertions are verified before any
 transactions that occur on the same date. This is for consistency.</p>
-<h3 id="accounts"><a id="accounts"></a>Accounts<a class="headerlink" href="#accounts" title="Permanent link"></a></h3>
+<h3 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link"></a></h3>
 <p>Beancount accumulates commodities in accounts. The names of these
 accounts do not have to be declared before being used in the file, they
 are recognized as “accounts” by virtue of their syntax alone<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. An
@@ -424,7 +433,7 @@ Assets:Receivables
 <p>We would say that “Assets:US:BofA” is the parent account of
 “Assets:US:BofA:Checking”, and that the latter is a child account of the
 former.</p>
-<h3 id="commodities-currencies"><a id="commodities-currencies"></a>Commodities / Currencies<a class="headerlink" href="#commodities-currencies" title="Permanent link"></a></h3>
+<h3 id="commodities-currencies">Commodities / Currencies<a class="headerlink" href="#commodities-currencies" title="Permanent link"></a></h3>
 <p>Accounts contain <strong>currencies</strong>, which we sometimes also call
 <strong>commodities</strong> (we use both terms interchangeably). Like account names,
 currency names are recognized by their syntax, though, unlike account
@@ -473,7 +482,7 @@ but no spaces.</p>
 can be used to declare currencies. It is entirely optional: currencies
 come into being as you use them. The purpose of the directive is simply
 to attach metadata to it.</p>
-<h3 id="strings"><a id="strings"></a>Strings<a class="headerlink" href="#strings" title="Permanent link"></a></h3>
+<h3 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link"></a></h3>
 <p>Whenever we need to insert some free text as part of an entry, it should
 be surrounded by double-quotes. This applies to the payee and narration
 fields, mainly; basically anything that’s not a date, a number, a
@@ -481,7 +490,7 @@ currency, an account name.</p>
 <p>Strings may be split over multiple lines. (Strings with multiple lines
 will include their newline characters and those need to be handled
 accordingly when rendering.)</p>
-<h3 id="comments"><a id="comments"></a>Comments<a class="headerlink" href="#comments" title="Permanent link"></a></h3>
+<h3 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link"></a></h3>
 <p>The Beancount input file isn’t intended to contain only your directives:
 you can be liberal in placing comments and headers in it to organize
 your file. Any text on a line after the character “;” is ignored, text
@@ -520,11 +529,11 @@ fold &amp; unfold each of the sections independently,:</p>
 comments and for attaching “Ledger tags” (Beancount metadata) to
 postings. This is not the case in Beancount. In Beancount comments are
 always just comments. Metadata has its own separate syntax.</p>
-<h2 id="directives_1"><a id="directives-1"></a>Directives<a class="headerlink" href="#directives_1" title="Permanent link"></a></h2>
+<h2 id="directives_1">Directives<a class="headerlink" href="#directives_1" title="Permanent link"></a></h2>
 <p>For a quick reference &amp; overview of directive syntax, please consult the
 <a href="../10_beancount_cheat_sheet/"><span class="underline">Syntax Cheat
 Sheet</span></a>.</p>
-<h3 id="open"><a id="open"></a>Open<a class="headerlink" href="#open" title="Permanent link"></a></h3>
+<h3 id="open">Open<a class="headerlink" href="#open" title="Permanent link"></a></h3>
 <p>All accounts need to be declared “open” in order to accept amounts
 posted to them. You do this by writing a directive that looks like this:</p>
 <pre><code>2014-05-01 open Liabilities:CreditCard:CapitalOne     USD
@@ -569,7 +578,7 @@ or more lots match). Currently, the possible values it can take are:</p>
     matching… it ignores it.)</p>
 </li>
 </ul>
-<h3 id="close"><a id="close"></a>Close<a class="headerlink" href="#close" title="Permanent link"></a></h3>
+<h3 id="close">Close<a class="headerlink" href="#close" title="Permanent link"></a></h3>
 <p>Similarly to the Open directive, there is a Close directive that can be
 used to tell Beancount that an account has become inactive, for example:</p>
 <pre><code>; Closing credit card after fraud was detected.
@@ -603,7 +612,7 @@ directive that closed it.) Finally, there are utility functions in the
 code that allow you to establish which accounts are open on a particular
 date. I strongly recommend that you close accounts when they actually
 close in reality, it will keep your ledger more tidy.</p>
-<h3 id="commodity"><a id="commodity"></a>Commodity<a class="headerlink" href="#commodity" title="Permanent link"></a></h3>
+<h3 id="commodity">Commodity<a class="headerlink" href="#commodity" title="Permanent link"></a></h3>
 <p>There is a “Commodity” directive that can be used to declare currencies,
 financial instruments, commodities (different names for the same thing
 in Beancount):</p>
@@ -637,7 +646,7 @@ shares created could be a good date. Since the main purpose of this
 directive is to collect per-commodity information, the particular date
 you choose doesn’t matter all that much.</p>
 <p>It is an error to declare the same commodity twice.</p>
-<h3 id="transactions"><a id="transactions"></a>Transactions<a class="headerlink" href="#transactions" title="Permanent link"></a></h3>
+<h3 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link"></a></h3>
 <p>Transactions are the most common type of directives that occur in a
 ledger. They are slightly different than the other ones, because they
 can be followed by a list of postings. Here is an example:</p>
@@ -699,13 +708,13 @@ entry might look like this:</p>
 </code></pre>
 <p>The crucial and only constraint on postings is that the sum of their
 balance amounts must be zero. This is explained in full detail below.</p>
-<h4 id="metadata"><a id="metadata"></a>Metadata<a class="headerlink" href="#metadata" title="Permanent link"></a></h4>
+<h4 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link"></a></h4>
 <p>It’s also possible to attach metadata to the transaction and/or any of
 its postings, so the fully general format is:</p>
 <pre><code>YYYY-MM-DD [txn|Flag] [[Payee] Narration] [Key: Value] ... [Flag] Account Amount [{Cost}] [@ Price] [Key: Value] ... [Flag] Account Amount [{Cost}] [@ Price] [Key: Value] ... ...
 </code></pre>
 <p>See the dedicated section on metadata below.</p>
-<h4 id="payee-narration"><a id="payee-narration"></a>Payee &amp; Narration<a class="headerlink" href="#payee-narration" title="Permanent link"></a></h4>
+<h4 id="payee-narration">Payee &amp; Narration<a class="headerlink" href="#payee-narration" title="Permanent link"></a></h4>
 <p>A transaction may have an optional “payee” and/or a “narration.” In the
 first example above, the payee is “Cafe Mogador” and the narration is
 “Lamb tagine with wine”.</p>
@@ -749,7 +758,7 @@ value a lot of the time.</p>
 <p>For a deeper discussion of how and when to use payees or not, see <a href="http://furius.ca/beancount/doc/payees"><span
 class="underline">Payees, Subaccounts, and
 Assets</span></a>.</p>
-<h4 id="costs-and-prices"><a id="costs-and-prices"></a>Costs and Prices<a class="headerlink" href="#costs-and-prices" title="Permanent link"></a></h4>
+<h4 id="costs-and-prices">Costs and Prices<a class="headerlink" href="#costs-and-prices" title="Permanent link"></a></h4>
 <p>Postings represent a single amount being deposited to or withdrawn from
 an account. The simplest type of posting includes only its amount:</p>
 <pre><code>2012-11-03 * "Transfer to pay credit card"
@@ -812,7 +821,7 @@ the Balancing Postings section of this document.</p>
 prices or costs are <em>always unsigned</em>. It is an error to use a negative
 sign or a negative cost and Beancount will raise an error if you attempt
 to do so.</p>
-<h4 id="balancing-rule-the-weight-of-postings"><a id="balancing-rule---the-weight-of-postings"></a>Balancing Rule - The “weight” of postings<a class="headerlink" href="#balancing-rule-the-weight-of-postings" title="Permanent link"></a></h4>
+<h4 id="balancing-rule-the-weight-of-postings">Balancing Rule - The “weight” of postings<a class="headerlink" href="#balancing-rule-the-weight-of-postings" title="Permanent link"></a></h4>
 <p>A crucial aspect of the double-entry method is ensuring that the sum of
 all the amounts on its postings equals ZERO, in all currencies. This is
 the central, non-negotiable condition that engenders the accounting
@@ -865,7 +874,7 @@ transactions. Moreover, this rule makes it possible to let Beancount
 automatically calculate capital gains for you (see <a href="../19_trading_with_beancount/"><span
 class="underline">Trading with
 Beancount</span></a> for details).</p>
-<h4 id="reducing-positions"><a id="reducing-positions"></a>Reducing Positions<a class="headerlink" href="#reducing-positions" title="Permanent link"></a></h4>
+<h4 id="reducing-positions">Reducing Positions<a class="headerlink" href="#reducing-positions" title="Permanent link"></a></h4>
 <p>When you post a <em>reduction</em> to a position in an account, the reduction
 must always match an existing lot. For example, if an account holds 3200
 USD and a transaction posts a -1200 USD change to that account, the 1200
@@ -991,7 +1000,7 @@ aren’t 10 or more units of MSFT at 43.40 USD to remove from.</p>
 <p>For more details of the inventory booking algorithm, see the <a href="../11_how_inventories_work/"><span
 class="underline">How Inventories
 Work</span></a> document.</p>
-<h4 id="amount-interpolation"><a id="amount-interpolation"></a>Amount Interpolation<a class="headerlink" href="#amount-interpolation" title="Permanent link"></a></h4>
+<h4 id="amount-interpolation">Amount Interpolation<a class="headerlink" href="#amount-interpolation" title="Permanent link"></a></h4>
 <p>Beancount is able to fill in some of the details of a transaction
 automatically. You can currently elide the amount of <em>at most</em> one
 posting within a transaction:</p>
@@ -1040,7 +1049,7 @@ oversight by triggering an error.</p>
 </code></pre>
 <p>Multiple postings (one for each commodity required to balance) will be
 inserted to replace the elided one.</p>
-<h4 id="tags"><a id="tags"></a>Tags<a class="headerlink" href="#tags" title="Permanent link"></a></h4>
+<h4 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link"></a></h4>
 <p>Transactions can be tagged with arbitrary strings:</p>
 <pre><code>2014-04-23 * "Flight to Berlin" #berlin-trip-2014
   Expenses:Flights              -1230.27 USD
@@ -1058,7 +1067,7 @@ mark all my trips.</p>
 </code></pre>
 <p>(If you want to store key-value pairs on directives, see the section on
 metadata below.)</p>
-<h5 id="the-tag-stack"><a id="the-tag-stack"></a>The Tag Stack<a class="headerlink" href="#the-tag-stack" title="Permanent link"></a></h5>
+<h5 id="the-tag-stack">The Tag Stack<a class="headerlink" href="#the-tag-stack" title="Permanent link"></a></h5>
 <p>Oftentimes multiple transactions related to a single tag will be entered
 consecutively in a file. As a convenience, the parser can automatically
 tag transactions within a block of text. How this works is simple: the
@@ -1075,7 +1084,7 @@ poptag #berlin-trip-2014
 </code></pre>
 <p>This way, you can also push multiple tags onto a long, consecutive set
 of transactions without having to type them all in.</p>
-<h4 id="links"><a id="links"></a>Links<a class="headerlink" href="#links" title="Permanent link"></a></h4>
+<h4 id="links">Links<a class="headerlink" href="#links" title="Permanent link"></a></h4>
 <p>Transactions can also be linked together. You may think of the link as a
 special kind of tag that can be used to group together a set of
 financially related transactions over time. For example you may use
@@ -1112,7 +1121,7 @@ associated with the invoice:</p>
 <p>Linked transactions can be rendered by the web interface in their own
 dedicated journal, regardless of the current view/filtered set of
 transactions (the list of links is a global page).</p>
-<h3 id="balance-assertions"><a id="balance-assertions"></a>Balance Assertions<a class="headerlink" href="#balance-assertions" title="Permanent link"></a></h3>
+<h3 id="balance-assertions">Balance Assertions<a class="headerlink" href="#balance-assertions" title="Permanent link"></a></h3>
 <p>A balance assertion is a way for you to input your statement balance
 into the flow of transactions. It tells Beancount to verify that the
 number of units of a particular commodity in some account should equal
@@ -1150,7 +1159,7 @@ income statement accounts.</p>
 assertion that the account is empty after it is opened at the date of
 its Open directive. You do not need to explicitly assert a zero balance
 when opening accounts.</p>
-<h4 id="multiple-commodities"><a id="multiple-commodities"></a>Multiple Commodities<a class="headerlink" href="#multiple-commodities" title="Permanent link"></a></h4>
+<h4 id="multiple-commodities">Multiple Commodities<a class="headerlink" href="#multiple-commodities" title="Permanent link"></a></h4>
 <p>A Beancount account may contain more than one commodity (although in
 practice, you will find that this does not occur often, it is sensible
 to create dedicated sub-accounts to hold each commodity, for example,
@@ -1170,7 +1179,7 @@ underway</span></a>).</p>
 you could circumvent by defining a subaccount of the cash account to
 segregate each commodity separately, like this Assets:Cash:USD,
 Assets:Cash:CAD.</p>
-<h4 id="lots-are-aggregated"><a id="lots-are-aggregated"></a>Lots Are Aggregated<a class="headerlink" href="#lots-are-aggregated" title="Permanent link"></a></h4>
+<h4 id="lots-are-aggregated">Lots Are Aggregated<a class="headerlink" href="#lots-are-aggregated" title="Permanent link"></a></h4>
 <p>The balance assertion applies to the sum of units of a particular
 commodities, irrespective of their cost. For example, if you hold three
 lots of the same commodity in an account, for example, 5 HOOL {500 USD}
@@ -1179,7 +1188,7 @@ and 6 HOOL {510 USD}, the following balance check should succeed:</p>
 </code></pre>
 <p>All the lots are aggregated together and you can verify their number of
 units.</p>
-<h4 id="checks-on-parent-accounts"><a id="checks-on-parent-accounts"></a>Checks on Parent Accounts<a class="headerlink" href="#checks-on-parent-accounts" title="Permanent link"></a></h4>
+<h4 id="checks-on-parent-accounts">Checks on Parent Accounts<a class="headerlink" href="#checks-on-parent-accounts" title="Permanent link"></a></h4>
 <p>Balance assertions may be performed on parent accounts, and will include
 the balances of theirs and their sub-accounts:</p>
 <pre><code>2014-01-01 open Assets:Investing
@@ -1201,12 +1210,12 @@ the balances of theirs and their sub-accounts:</p>
 <p>Note that this does require that a parent account have been declared as
 Open, in order to be legitimately used in the balance assertions
 directive.</p>
-<h4 id="before-close"><a id="before-close"></a>Before Close<a class="headerlink" href="#before-close" title="Permanent link"></a></h4>
+<h4 id="before-close">Before Close<a class="headerlink" href="#before-close" title="Permanent link"></a></h4>
 <p>It is useful to insert a balance assertion for 0 units just before
 closing an account, just to make sure its contents are empty as you
 close it. The Close directive does not insert that for you automatically
 (we may eventually build a plug-in for it).</p>
-<h3 id="pad"><a id="pad"></a>Pad<a class="headerlink" href="#pad" title="Permanent link"></a></h3>
+<h3 id="pad">Pad<a class="headerlink" href="#pad" title="Permanent link"></a></h3>
 <p>A padding directive automatically inserts a transaction that will make
 the subsequent balance assertion succeed, if it is needed. It inserts
 the difference needed to fulfill that balance assertion. (What “rubber
@@ -1269,7 +1278,7 @@ padding transaction:</p>
 USD and 987.34 USD. If there were more intervening transactions posting
 amounts to the checking account, the amount would automatically have
 been adjusted to make the second assertion pass.</p>
-<h4 id="unused-pad-directives"><a id="unused-pad-directives"></a>Unused Pad Directives<a class="headerlink" href="#unused-pad-directives" title="Permanent link"></a></h4>
+<h4 id="unused-pad-directives">Unused Pad Directives<a class="headerlink" href="#unused-pad-directives" title="Permanent link"></a></h4>
 <p>You may not currently leave unused Pad directives in your input file.
 They will trigger an error:</p>
 <pre><code>2014-01-01 open Assets:US:BofA:Checking
@@ -1284,7 +1293,7 @@ They will trigger an error:</p>
 </code></pre>
 <p>(Being this strict is a matter for debate, I suppose, and it could
 eventually be moved to an optional plugin.)</p>
-<h4 id="commodities"><a id="commodities"></a>Commodities<a class="headerlink" href="#commodities" title="Permanent link"></a></h4>
+<h4 id="commodities">Commodities<a class="headerlink" href="#commodities" title="Permanent link"></a></h4>
 <p>Note that the Pad directive does not specify any commodities at all. All
 commodities with corresponding balance assertions in the account are
 affected. For instance, the following code would have a padding
@@ -1298,14 +1307,14 @@ directive insert a transaction with separate postings for USD and CAD:</p>
 </code></pre>
 <p>If the account contained other commodities that aren’t balance asserted,
 no posting would be inserted for those.</p>
-<h4 id="cost-basis"><a id="cost-basis"></a>Cost Basis<a class="headerlink" href="#cost-basis" title="Permanent link"></a></h4>
+<h4 id="cost-basis">Cost Basis<a class="headerlink" href="#cost-basis" title="Permanent link"></a></h4>
 <p>At the moment, Pad directives do not work with accounts holding
 positions held at cost. The directive is really only useful for cash
 accounts. (This is mainly because balance assertions do not yet allow
 specifying a cost basis to assert. It is possible that in the future we
 decide to support asserting the total cost basis, and that point we
 could consider supporting padding with cost basis.)</p>
-<h4 id="multiple-paddings"><a id="multiple-paddings"></a>Multiple Paddings<a class="headerlink" href="#multiple-paddings" title="Permanent link"></a></h4>
+<h4 id="multiple-paddings">Multiple Paddings<a class="headerlink" href="#multiple-paddings" title="Permanent link"></a></h4>
 <p>You cannot currently insert multiple padding entries for the same
 account and commodity:</p>
 <pre><code>2002-01-17 open Assets:Cash
@@ -1320,7 +1329,7 @@ account and commodity:</p>
 class="underline">proposal</span></a>
 pending to allowing this and spread the padding amount evenly among all
 the intervening Pad directives, but it is as of yet unimplemented.)</p>
-<h3 id="notes"><a id="notes"></a>Notes<a class="headerlink" href="#notes" title="Permanent link"></a></h3>
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link"></a></h3>
 <p>A Note directive is simply used to attach a dated comment to the journal
 of a particular account, like this:</p>
 <pre><code>2013-11-03 note Liabilities:CreditCard "Called about fraudulent card."
@@ -1333,7 +1342,7 @@ would otherwise not make their way to a transaction.</p>
 <pre><code>YYYY-MM-DD note Account Description
 </code></pre>
 <p>The description string may be split among multiple lines.</p>
-<h3 id="documents"><a id="documents"></a>Documents<a class="headerlink" href="#documents" title="Permanent link"></a></h3>
+<h3 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link"></a></h3>
 <p>A Document directive can be used to attach an external file to the
 journal of an account:</p>
 <pre><code>2013-11-03 document Liabilities:CreditCard "/home/joe/stmts/apr-2014.pdf"
@@ -1348,7 +1357,7 @@ name and do something with them.</p>
 <p>The general format of the Document directive is:</p>
 <pre><code>YYYY-MM-DD document Account PathToDocument
 </code></pre>
-<h4 id="documents-from-a-directory"><a id="documents-from-a-directory"></a>Documents from a Directory<a class="headerlink" href="#documents-from-a-directory" title="Permanent link"></a></h4>
+<h4 id="documents-from-a-directory">Documents from a Directory<a class="headerlink" href="#documents-from-a-directory" title="Permanent link"></a></h4>
 <p>A more convenient way to create these entries is to use a special option
 to specify directories that contain a hierarchy of sub-directories that
 mirrors that of the chart of accounts. For example, the Document
@@ -1373,7 +1382,7 @@ files).</p>
 hierarchy of your ledger’s accounts is a fantastic way to organize them
 and establish a clear, unambiguous place to find these documents later
 on, when they’re needed.</p>
-<h3 id="prices"><a id="prices"></a>Prices<a class="headerlink" href="#prices" title="Permanent link"></a></h3>
+<h3 id="prices">Prices<a class="headerlink" href="#prices" title="Permanent link"></a></h3>
 <p>Beancount sometimes creates an in-memory data store of prices for each
 commodity, that is used for various reasons. In particular, it is used
 to report unrealized gains on account holdings. Price directives can be
@@ -1396,7 +1405,7 @@ per hour for your vacation hours is perfectly valid and useful too, if
 you account for your unused vacations on such terms:</p>
 <pre><code>2014-07-09 price VACHR  38.46 USD  ; Equiv. $80,000 year
 </code></pre>
-<h4 id="prices-from-postings"><a id="prices-from-postings"></a>Prices from Postings<a class="headerlink" href="#prices-from-postings" title="Permanent link"></a></h4>
+<h4 id="prices-from-postings">Prices from Postings<a class="headerlink" href="#prices-from-postings" title="Permanent link"></a></h4>
 <p>If you use the beancount.plugins.implicit_prices plugin, every time a
 Posting appears that has a cost or an optional price declared, it will
 use that cost or price to automatically synthesize a Price directive.
@@ -1416,7 +1425,7 @@ For example, this transaction:</p>
 the price points in your ledger’s price database will come from. You can
 print a table of the parsed prices from a ledger (it is just another
 type of report).</p>
-<h4 id="prices-on-the-same-day"><a id="prices-on-the-same-day"></a>Prices on the Same Day<a class="headerlink" href="#prices-on-the-same-day" title="Permanent link"></a></h4>
+<h4 id="prices-on-the-same-day">Prices on the Same Day<a class="headerlink" href="#prices-on-the-same-day" title="Permanent link"></a></h4>
 <p>Notice that there is no notion of time; Beancount is not designed to
 solve problems for intra-day traders, though of course, it certainly is
 able to handle multiple trades per day. It just stores its prices per
@@ -1426,7 +1435,7 @@ scope of a bookkeeping system.)</p>
 <p>When multiple Price directives do exist for the same day, the last one
 to appear in the file will be selected for inclusion in the Price
 database.</p>
-<h3 id="events"><a id="events"></a>Events<a class="headerlink" href="#events" title="Permanent link"></a></h3>
+<h3 id="events">Events<a class="headerlink" href="#events" title="Permanent link"></a></h3>
 <p>Event directives<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> are used to track the value of <em>some variable of
 your choice</em> over time. For example, your location:</p>
 <pre><code>2014-07-09 event "location" "Paris, France"
@@ -1504,7 +1513,7 @@ payees for restaurant transactions when I’m in Montreal.”</p>
 
 <p>It is worth noticing that the Price and Event directives are the only
 ones not associated to an account.</p>
-<h3 id="query"><a id="query"></a>Query<a class="headerlink" href="#query" title="Permanent link"></a></h3>
+<h3 id="query">Query<a class="headerlink" href="#query" title="Permanent link"></a></h3>
 <p>It can be convenient to be able to associate SQL queries in a Beancount
 file to be able to run these as a report automatically. This is still an
 early development / experimental directive. In any case, you can insert
@@ -1520,7 +1529,7 @@ as a report type. Also, the date of the query is intended to be the date
 at which the query is intended to be run for, that is, transactions
 following it should be ignored. If you’re familiar with the SQL syntax,
 it’s an implicit CLOSE.</p>
-<h3 id="custom"><a id="custom"></a>Custom<a class="headerlink" href="#custom" title="Permanent link"></a></h3>
+<h3 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link"></a></h3>
 <p>The long-term plan for Beancount is to allow plugins and external
 clients to define their own directive types, to be declared and
 validated by the Beancount input language parser. In the meantime, a
@@ -1540,7 +1549,7 @@ particular type.</p>
 <p>(See <a href="https://groups.google.com/d/msg/beancount/R9wWrdP6mVU/yfCaD3XaDgAJ"><span class="underline">this
 thread</span></a>
 for the origin story around this feature.)</p>
-<h2 id="metadata_1"><a id="metadata-1"></a>Metadata<a class="headerlink" href="#metadata_1" title="Permanent link"></a></h2>
+<h2 id="metadata_1">Metadata<a class="headerlink" href="#metadata_1" title="Permanent link"></a></h2>
 <p>You may attach arbitrary data to each of your entries and postings. The
 syntax for it looks like this:</p>
 <pre><code>2013-03-14 open Assets:BTrade:HOOLI
@@ -1606,7 +1615,7 @@ which reflect the location they were created from.</p>
 'None'. If an attribute is repeated multiple times, only the first value
 for this attribute will be parsed and retained and the following values
 ignored.</p>
-<h2 id="options"><a id="options"></a>Options<a class="headerlink" href="#options" title="Permanent link"></a></h2>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link"></a></h2>
 <p>The great majority of a Beancount input file consists in directives, as
 seen in the previous section. However, there are a few global options
 that can be set in the input file as well, by using a special undated
@@ -1637,7 +1646,7 @@ lists.</p>
     as well.</p>
 </li>
 </ul>
-<h3 id="operating-currencies"><a id="operating-currencies"></a>Operating Currencies<a class="headerlink" href="#operating-currencies" title="Permanent link"></a></h3>
+<h3 id="operating-currencies">Operating Currencies<a class="headerlink" href="#operating-currencies" title="Permanent link"></a></h3>
 <p>One notable option is “operating_currency”. By default Beancount does
 not treat any of the commodities any different from each other. In
 particular, it doesn’t know that there’s anything special about the most
@@ -1656,7 +1665,7 @@ use in an option:</p>
 <p>You may declare more than one.</p>
 <p>In any case, this option is only ever used by reporting code, it never
 changes the behavior of Beancount’s processing or semantics.</p>
-<h2 id="plugins"><a id="plugins"></a>Plugins<a class="headerlink" href="#plugins" title="Permanent link"></a></h2>
+<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link"></a></h2>
 <p>In order to load plugin Python modules, use the dedicated “plugin”
 directive:</p>
 <pre><code>plugin "beancount.plugins.module_name"
@@ -1680,7 +1689,7 @@ an arbitrary string is passed provided to the plugin. See the plugins’
 documentation for specific detail on what it can accept.</p>
 <p>Also see the “plugin processing mode” option which affects the list of
 built-in plugins that get run.</p>
-<h2 id="includes"><a id="includes"></a>Includes<a class="headerlink" href="#includes" title="Permanent link"></a></h2>
+<h2 id="includes">Includes<a class="headerlink" href="#includes" title="Permanent link"></a></h2>
 <p>Include directives are supported. This allows you to split up large
 input files into multiple files. The syntax looks like this:</p>
 <pre><code>include "path/to/include/file.beancount"
@@ -1700,7 +1709,7 @@ of declarations of a Beancount input file is not relevant.</p>
 <p>However, for the moment, options are parsed per-file. The options-map
 that is kept for post-parse processing is the options-map returned for
 the top-level file. This is probably subject to review in the future.</p>
-<h2 id="whats-next"><a id="whats-next"></a>What’s Next?<a class="headerlink" href="#whats-next" title="Permanent link"></a></h2>
+<h2 id="whats-next">What’s Next?<a class="headerlink" href="#whats-next" title="Permanent link"></a></h2>
 <p>This document described all the possible syntax of the Beancount
 language. If you haven’t written any Beancount input yet, you can head
 to the <a href="../05_getting_started_with_beancount/"><span class="underline">Getting
