@@ -1,3 +1,10 @@
+# Fork information
+
+This is a fork of xuhcc's project, to experiment with MkDocs, text
+wrapping, etc.
+
+The MkDocs prototype is at https://bradyt.github.io/beancount-docs/.
+
 # Beancount Documentation
 
 https://xuhcc.github.io/beancount-docs/
