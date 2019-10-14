@@ -501,7 +501,7 @@ special values can be found in one place.)</p>
 class="underline">beancount</span></a>”
 Python package. It consists of several packages with well-defined roles,
 the dependencies between which are enforced strictly.</p>
-<p><img src="media/8a94847808878214d3557076d587ecc648809812.png" style="width:5.80556in;height:4.94444in" /></p>
+<p><img src="./media/8a94847808878214d3557076d587ecc648809812.png" style="width:5.80556in;height:4.94444in" /></p>
 <p><em>Beancount source code packages and approximate dependencies between
 them.</em></p>
 <p>At the bottom, we have a <a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core"><span
@@ -892,7 +892,7 @@ module</span></a>.</em></p>
 <h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link"></a></h3>
 <p>The following diagram explains how these objects relate to each other,
 starting from a Posting.</p>
-<p><img src="media/93cd070d4d5efd741b33a3e91d6b3e8f86e58be6.png" style="width:4.36111in;height:6.11111in" /></p>
+<p><img src="./media/93cd070d4d5efd741b33a3e91d6b3e8f86e58be6.png" style="width:4.36111in;height:6.11111in" /></p>
 <p>For example, to access the number of units of a postings you could use</p>
 <pre><code>posting.units.number
 </code></pre>
@@ -905,7 +905,7 @@ starting from a Posting.</p>
 the structure of postings was deeper and more complex. The new design
 reflects a flatter and simpler version of it. Here is what the old
 design used to look like:</p>
-<p><img src="media/a36336143a27c30f063d6ef8edc147ff87d0beb2.png" style="width:6.69444in;height:4.19444in" /></p>
+<p><img src="./media/a36336143a27c30f063d6ef8edc147ff87d0beb2.png" style="width:6.69444in;height:4.19444in" /></p>
 <h2 id="directives">Directives<a class="headerlink" href="#directives" title="Permanent link"></a></h2>
 <p>The main production from loading a Beancount input file is a list of
 <strong>directives</strong>. I also call these <strong>entries</strong> interchangeably in the
@@ -1269,7 +1269,7 @@ make anything simpler yet, it’s just an idea at this point [July
 <p>The process of <strong>loading</strong> a list of entries from an input file is the
 heart of the project. It is important to understand it in order to
 understand how Beancount works. Refer to the diagram below.</p>
-<p><img src="media/d9525818c27bd84d2bd50e0e03d42a27eb597e2d.png" style="width:8.66667in;height:3.23611in" /></p>
+<p><img src="./media/d9525818c27bd84d2bd50e0e03d42a27eb597e2d.png" style="width:8.66667in;height:3.23611in" /></p>
 <p>It consists of</p>
 <ol>
 <li>
@@ -1346,7 +1346,7 @@ C code that defines some interface functions for the module
 setup.py to invoke flex and Bison automatically but at the moment, in
 order to minimize the installation burden, I check the generated source
 code in the repository (lexer.h/c and grammar.h/c).</p>
-<p><img src="media/65eccfffba7aaf2e25a7f536d974f846d096ddcf.png" style="width:7.70833in;height:4.01389in" /></p>
+<p><img src="./media/65eccfffba7aaf2e25a7f536d974f846d096ddcf.png" style="width:7.70833in;height:4.01389in" /></p>
 <p>The interaction between the Python and C code works like this:</p>
 <ul>
 <li>
@@ -1438,7 +1438,7 @@ account up until April 3rd…</p>
     where the booking algorithms (e.g., FIFO) will be invoked from.</p>
 </li>
 </ol>
-<p><img src="media/8ba8202797ee7206951b5913c9b3c264c33c7df0.png" style="width:6.05556in;height:3.01389in" /></p>
+<p><img src="./media/8ba8202797ee7206951b5913c9b3c264c33c7df0.png" style="width:6.05556in;height:3.01389in" /></p>
 <p>See the diagram above for reference. Once implemented, everything else
 should be the same.</p>
 <h3 id="the-printer">The Printer<a class="headerlink" href="#the-printer" title="Permanent link"></a></h3>
@@ -1453,7 +1453,7 @@ produced by the loader, you should be able to convert those to text
 input and parse them back in and the resulting set of entries should be
 the same (outputting the re-read input back to text should produce the
 same text), e.g.,</p>
-<p><img src="media/22acb27dd9fa94cc4e32fa5ed449c155cf85c225.png" style="width:7.56944in;height:0.83333in" /></p>
+<p><img src="./media/22acb27dd9fa94cc4e32fa5ed449c155cf85c225.png" style="width:7.56944in;height:0.83333in" /></p>
 <p>Note that the reverse isn’t necessarily true: reading an input file and
 processing it through the loader potentially synthesizes a lot of
 entries (thanks to the plugins), so printing it back may not produce the
@@ -1551,7 +1551,7 @@ is available in the options_map produced by the loader.</p>
 <p>It occurs often that one needs to compute the final balances of a list
 of filtered transactions, and to report on them in a hierarchical
 account structure. See diagram below.</p>
-<h2 id="_1"><img src="media/736b05ad5dbed8af111f3f9d01d38b8b99914e7b.png" style="width:8.66667in;height:3.06944in" /><a class="headerlink" href="#_1" title="Permanent link"></a></h2>
+<h2 id="_1"><img src="./media/736b05ad5dbed8af111f3f9d01d38b8b99914e7b.png" style="width:8.66667in;height:3.06944in" /><a class="headerlink" href="#_1" title="Permanent link"></a></h2>
 <p>For the purpose of creating hierarchical renderings, I provide a process
 called a “<a href="https://bitbucket.org/blais/beancount/src/tip/src/python/beancount/core/realization.py"><span
 class="underline">realization</span></a>.”

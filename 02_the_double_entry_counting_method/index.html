@@ -314,7 +314,7 @@ simple rules.</p>
 something that can contain things, like a bag. It is used to count
 things, to accumulate things. Let’s draw a horizontal arrow to visually
 represent the evolving contents of an account over time:</p>
-<p><img src="media/5b1da6643866c557b2a5ce687e70ee1db16b14de.png" style="width:6.23611in;height:0.11111in" /></p>
+<p><img src="./media/5b1da6643866c557b2a5ce687e70ee1db16b14de.png" style="width:6.23611in;height:0.11111in" /></p>
 <p>On the left, we have the past, and to the right, increasing time: the
 present, the future, etc.</p>
 <p>For now, let’s assume that accounts can contain only one kind of thing,
@@ -323,24 +323,24 @@ dollars. We will call the number of units in the account the <strong>balance</st
 of an account. Note that it represents its contents at a particular
 point in time. I will draw the balance using a number above the
 account’s timeline:</p>
-<p><img src="media/842dcb36da9e0e70c35d1023d65d8a571062baf0.png" style="width:6.23611in;height:0.56944in" /></p>
+<p><img src="./media/842dcb36da9e0e70c35d1023d65d8a571062baf0.png" style="width:6.23611in;height:0.56944in" /></p>
 <p>The contents of accounts can change over time. In order to change the
 content of an account, we have to add something to it. We will call this
 addition a <strong>posting</strong> to an account, and I will draw this change as a
 circled number on the account’s timeline, for example, adding $100 to
 the account:</p>
-<p><img src="media/5e5e7897a346355eccd4d21ec9485c3464a2d996.png" style="width:6.23611in;height:0.77778in" /></p>
+<p><img src="./media/5e5e7897a346355eccd4d21ec9485c3464a2d996.png" style="width:6.23611in;height:0.77778in" /></p>
 <p>Now, we can draw the updated balance of the account after the posting
 with another little number right after it:</p>
-<p><img src="media/0c8a78dac61ae7fddde25761f036e7f379cad247.png" style="width:6.23611in;height:0.77778in" /></p>
+<p><img src="./media/0c8a78dac61ae7fddde25761f036e7f379cad247.png" style="width:6.23611in;height:0.77778in" /></p>
 <p>The account’s balance, after adding $100, is now $100.</p>
 <p>We can also remove from the contents of an account. For example, we
 could remove $25, and the resulting account balance is now $75:</p>
-<p><img src="media/98e314125325ecc72262a73a21b74db3200414fd.png" style="width:6.23611in;height:0.77778in" /></p>
+<p><img src="./media/98e314125325ecc72262a73a21b74db3200414fd.png" style="width:6.23611in;height:0.77778in" /></p>
 <p>Account balances can also become <em>negative</em>, if we remove more dollars
 than there are in the account. For example, if we remove $200 from this
 account, the balance now becomes $-125:</p>
-<p><img src="media/bdc8a23347040de123e3359a7c8f0cc253c6d7d2.png" style="width:6.23611in;height:0.77778in" /></p>
+<p><img src="./media/bdc8a23347040de123e3359a7c8f0cc253c6d7d2.png" style="width:6.23611in;height:0.77778in" /></p>
 <p>It’s perfectly fine for accounts to contain a negative balance number.
 Remember that all we’re doing is counting things. As we will see
 shortly, some accounts will remain with a negative balance for most of
@@ -446,15 +446,15 @@ the <strong>owner</strong> of the account. The account can be used to represent 
 real world account, for example, imagine that we use it to represent the
 content of the owner’s checking account at a bank. So we’re going to
 label the account by giving it a name, in this case “Checking”:</p>
-<p><img src="media/380ec8fea9ee9069411a61ccabcc838de44042ef.png" style="width:6.23611in;height:0.98611in" /></p>
+<p><img src="./media/380ec8fea9ee9069411a61ccabcc838de44042ef.png" style="width:6.23611in;height:0.98611in" /></p>
 <p>Imagine that at some point, this account has a balance of $1000, like
 I’ve drawn on the picture. Now, if the owner spends $79 of this account,
 we would represent it like this:</p>
-<p><img src="media/b24d8c1e40edf6fd7e9d768ba8f0df279cd41f0e.png" style="width:6.23611in;height:0.98611in" /></p>
+<p><img src="./media/b24d8c1e40edf6fd7e9d768ba8f0df279cd41f0e.png" style="width:6.23611in;height:0.98611in" /></p>
 <p>Furthermore, if the expense was for a meal at a restaurant, we could
 flag the posting with a <strong>category</strong> to indicate what the change was
 used for. Let’s say, “Restaurant”, like this:</p>
-<p><img src="media/7ee843cd9b997a9447bb022d7d35121a820e296d.png" style="width:6.23611in;height:1.81944in" /></p>
+<p><img src="./media/7ee843cd9b997a9447bb022d7d35121a820e296d.png" style="width:6.23611in;height:1.81944in" /></p>
 <p>Now, if we have a lot of these, we could write a computer program to
 accumulate all the changes for each category and calculate the sums for
 each of them. That would tell us how much we spent in restaurants in
@@ -469,12 +469,12 @@ labeled with unique names. Let’s assume that the owner has the same
 “Checking” account as previously, but now also a <strong>“</strong>Restaurant<strong>”</strong>
 account as well, which can be used to accumulate all food expenses at
 restaurants. It looks like this:</p>
-<p><img src="media/3c380375442a643877c59660832bd7df6192e9cb.png" style="width:6.23611in;height:2.01389in" /></p>
+<p><img src="./media/3c380375442a643877c59660832bd7df6192e9cb.png" style="width:6.23611in;height:2.01389in" /></p>
 <p>Now, instead of <em>categorizing</em> the posting to a “restaurant category” as
 we did previously, we could create a matching posting on the
 “Restaurant” account to record how much we spent for food, with the
 amount spent ($79):</p>
-<p><img src="media/b86a7242b92effc613f88bc0cc70381d72e774f0.png" style="width:6.23611in;height:2.01389in" /></p>
+<p><img src="./media/b86a7242b92effc613f88bc0cc70381d72e774f0.png" style="width:6.23611in;height:2.01389in" /></p>
 <p>The “Restaurant” account, like all other accounts, also has an
 accumulated balance, so we can find out how much we spent in
 “Restaurant” in total. This is entirely symmetrical to counting changes
@@ -482,7 +482,7 @@ in a checking account.</p>
 <p>Now, we can associate the two postings together, by creating a kind of
 “parent” box that refers to both of them. We will call this object a
 <strong>transaction</strong>:</p>
-<p><img src="media/b77efafcf2d6a6f1afbfb13da70be2f892b339b4.png" style="width:6.23611in;height:2.69444in" /></p>
+<p><img src="./media/b77efafcf2d6a6f1afbfb13da70be2f892b339b4.png" style="width:6.23611in;height:2.69444in" /></p>
 <p>Notice here that we’ve also associated a description to this
 transaction: “Dinner at Uncle Boons”. A transaction also has a <strong>date</strong>,
 and all of its postings are recorded to occur on that date. We call this
@@ -498,14 +498,14 @@ will discuss later in this document.</p>
 to the “Restaurant” account. ($79) + ($-79) = $0. To emphasize this, I
 could draw a little summation line under the postings of the
 transaction, like this:</p>
-<p><img src="media/b4182b9f64113868123cbcec20d468ab18b2786f.png" style="width:2.18055in;height:2.5in" /></p>
+<p><img src="./media/b4182b9f64113868123cbcec20d468ab18b2786f.png" style="width:2.18055in;height:2.5in" /></p>
 <h3 id="many-accounts">Many Accounts<a class="headerlink" href="#many-accounts" title="Permanent link"></a></h3>
 <p>There may be many such transactions, over many different accounts. For
 example, if the owner of the accounts had a lunch the next day which she
 paid using a credit card, it could be represented by creating a “Credit
 Card” account dedicated to tracking the real world credit card balance,
 and with a corresponding transaction:</p>
-<p><img src="media/f85a66510ce2e3bb614edca76463a9c4752a7d26.png" style="width:7.45833in;height:3.47222in" /></p>
+<p><img src="./media/f85a66510ce2e3bb614edca76463a9c4752a7d26.png" style="width:7.45833in;height:3.47222in" /></p>
 <p>In this example, the owner spent $35 at a restaurant called “Eataly.”
 The previous balance of the owner’s credit card was $-450; after the
 expense, the new balance is $-485.</p>
@@ -530,7 +530,7 @@ of their amounts is zero (from the rule of double-entry bookkeeping
 above).</p>
 <p>For example, let’s look at what would happen if the owner gets her
 salary paid for December:</p>
-<p><img src="media/18980f41275676c5c7cf3b39dd256512bb45b78b.png" style="width:8.22222in;height:5.05556in" /></p>
+<p><img src="./media/18980f41275676c5c7cf3b39dd256512bb45b78b.png" style="width:8.22222in;height:5.05556in" /></p>
 <p>Her gross salary received in this example is recorded as $-2,905 (I’ll
 explain the sign in a moment). $905 is set aside for taxes. Her “net”
 salary of $2,000, the remainder, is deposited in her “Checking” account
@@ -695,14 +695,14 @@ can create as many accounts as you like, and as we will see later, you
 can organize them in a hierarchy. As of the writing of this document,
 I’m using more than 700 accounts to track my personal affairs.</p>
 <p>Let us now revisit our example and add some more accounts:</p>
-<p><img src="media/281c7a6ed22a8168fc1094a1faa61f2b0fdd7ca3.png" style="width:5.5in;height:2.03125in" /></p>
+<p><img src="./media/281c7a6ed22a8168fc1094a1faa61f2b0fdd7ca3.png" style="width:5.5in;height:2.03125in" /></p>
 <p>And let’s imagine there are more transactions:</p>
-<p><img src="media/e3008a34f9ce7a224e33d4cbb79bcebbb08d418e.png" style="width:6.5in;height:2.76389in" /></p>
+<p><img src="./media/e3008a34f9ce7a224e33d4cbb79bcebbb08d418e.png" style="width:6.5in;height:2.76389in" /></p>
 <p>… and even more of them:</p>
-<p><img src="media/18b769f7a3cdf7fd67a983d3a39325b563d8d346.png" style="width:6.5in;height:2.98611in" /></p>
+<p><img src="./media/18b769f7a3cdf7fd67a983d3a39325b563d8d346.png" style="width:6.5in;height:2.98611in" /></p>
 <p>Finally, we can label each of those accounts with one of the four types
 of accounts by prepending the type to their account names:</p>
-<p><img src="media/1f84bcb0ad4787659c157280f6f4ae5ea720482d.png" style="width:6.5in;height:2.98611in" /></p>
+<p><img src="./media/1f84bcb0ad4787659c157280f6f4ae5ea720482d.png" style="width:6.5in;height:2.98611in" /></p>
 <p>A realistic book from someone tracking all of their personal affairs
 might easily contain thousands of transactions per year. But the
 principles remain simple and they remain the same: postings are applied
@@ -722,7 +722,7 @@ all the Asset accounts appear together at the top, then all the
 Liabilities accounts, then Income, and finally Expenses accounts. We are
 simply changing the order without modifying the structure of
 transactions, in order to group each type of accounts together:</p>
-<p><img src="media/175f3223735d9d04b2a7e3f421bc6280f3cda5eb.png" style="width:6.5in;height:3in" /></p>
+<p><img src="./media/175f3223735d9d04b2a7e3f421bc6280f3cda5eb.png" style="width:6.5in;height:3in" /></p>
 <p>We’ve reordered the accounts with Assets accounts grouped at the top,
 then Liabilities, then some Equity accounts (which we have just
 introduced, more about them is discussed later), then Income and finally
@@ -730,7 +730,7 @@ Expenses at the bottom.</p>
 <p>If we sum up the postings on all of the accounts and render just the
 account name and its final balance on the right, we obtain a report we
 call the “trial balance.”</p>
-<p><img src="media/71edc0da7e156b4e07cd6f4f0addded7f15cb33e.png" style="width:2.83154in;height:4.47917in" /></p>
+<p><img src="./media/71edc0da7e156b4e07cd6f4f0addded7f15cb33e.png" style="width:2.83154in;height:4.47917in" /></p>
 <p>This simply reflects the balance of each account at a particular point
 in time. And because each of the accounts began with a zero balance, and
 each transaction has itself a zero balance, we know that the sum of all
@@ -747,7 +747,7 @@ much profit (or loss) was incurred. We call this the “net income.”</p>
 balances of the accounts of types Income and Expenses, summing up just
 the transactions for a particular period, and we draw the Income
 balances on the left, and Expenses balances on the right:</p>
-<p><img src="media/ab46fde5b92d9bbb69758aaa203ddafd3640990b.png" alt="out.png" style="width:6.5in;height:2.29167in" /></p>
+<p><img src="./media/ab46fde5b92d9bbb69758aaa203ddafd3640990b.png" alt="out.png" style="width:6.5in;height:2.29167in" /></p>
 <p>It is important to take note of the signs here: Income numbers are
 negative, and Expenses numbers are positive. So if you earned more than
 you spent (a good outcome), the final sum of Income + Expenses balances
@@ -791,7 +791,7 @@ transformation “clearing<sup id="fnref:2"><a class="footnote-ref" href="#fn:2"
 pictured in green below. Now summing the entire set of transactions
 through the end of the ledger would yield only the changes during year
 2016 because the balances were zero on that date:</p>
-<p><img src="media/7f10adb5a661d0aa0b66f5f66aafb3ff5eefa212.png" style="width:6.5in;height:2.91667in" /></p>
+<p><img src="./media/7f10adb5a661d0aa0b66f5f66aafb3ff5eefa212.png" style="width:6.5in;height:2.91667in" /></p>
 <p>This is the semantics of the “CLEAR” operation of the bean-query shell.</p>
 <p>(Note that another way to achieve the same thing for income statement
 accounts would be to segregate and count amounts only for the
@@ -851,7 +851,7 @@ get used in the following sections.</p>
 for each of the accounts. This answers the question: “<em>Where’s the
 money?</em>” In theory, we could just restrict our focus to the Assets and
 Liabilities accounts and draw those up in a report:</p>
-<p><img src="media/093cd8751f07c38e909b7621675daa80db8fb634.png" alt="out.png" style="width:4.14583in;height:1.70833in" /></p>
+<p><img src="./media/093cd8751f07c38e909b7621675daa80db8fb634.png" alt="out.png" style="width:4.14583in;height:1.70833in" /></p>
 <p>However, in practice, there is another closely related question that
 comes up and which is usually answered at the same time: “<em>Once all
 debts are paid off, how much are we left with?</em>” This is called the
@@ -861,7 +861,7 @@ their balances have been transferred to Equity accounts, the net worth
 should be equal to the sum of all the Equity accounts. So in building up
 the Balance Sheet, it it customary to clear the net income and then
 display the balances of the Equity accounts. The report looks like this:</p>
-<p><img src="media/172b7b33c25ca91255603688deaa93feb4fe8875.png" alt="out.png" style="width:6.5in;height:1.25in" /></p>
+<p><img src="./media/172b7b33c25ca91255603688deaa93feb4fe8875.png" alt="out.png" style="width:6.5in;height:1.25in" /></p>
 <p>Note that the balance sheet can be drawn for <em>any point in time</em>, simply
 by truncating the list of transactions following a particular date. A
 balance sheet displays a snapshot of balances at one date; an income
@@ -876,10 +876,10 @@ else.</p>
 <p>That somewhere else will be the Equity account <strong>Opening Balances</strong>.
 First, we can do this for all Assets and Liabilities accounts (see
 transactions in blue):</p>
-<p><img src="media/035eb15afa1439450886d6ce20c60013227283b7.png" style="width:6.5in;height:3.04167in" /></p>
+<p><img src="./media/035eb15afa1439450886d6ce20c60013227283b7.png" style="width:6.5in;height:3.04167in" /></p>
 <p>Then we delete all the transactions that precede the opening date, to
 obtain a truncated list of transactions:</p>
-<p><img src="media/2596047a5cbd9da8a925c7a7ee10fef9681ce472.png" style="width:6.5in;height:3.01389in" /></p>
+<p><img src="./media/2596047a5cbd9da8a925c7a7ee10fef9681ce472.png" style="width:6.5in;height:3.01389in" /></p>
 <p>This is a useful operation when we’re focused on the transactions for a
 particular interval of time.</p>
 <p>(This is a bit of an implementation detail: these operations are related
@@ -922,12 +922,12 @@ bean-query shell<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></su
 this.</p>
 <p>“Closing” involves two steps. First, we remove all transactions
 following the closing date:</p>
-<p><img src="media/e9bbbbdf2a94fe681fd547cf470c4d19ae1e6c0e.png" style="width:6.5in;height:3.01389in" /></p>
+<p><img src="./media/e9bbbbdf2a94fe681fd547cf470c4d19ae1e6c0e.png" style="width:6.5in;height:3.01389in" /></p>
 <p>We can process this stream of transactions to produce an Income
 Statement for the period.</p>
 <p>Then we clear again at the <em>end</em> date of the desired report, but this
 time we clear the net income to “Equity:Earnings:Current”:</p>
-<p><img src="media/1dc844e93000faa184bd3e1ec3e0cd4e1a9fb5fb.png" style="width:6.5in;height:3.09722in" /></p>
+<p><img src="./media/1dc844e93000faa184bd3e1ec3e0cd4e1a9fb5fb.png" style="width:6.5in;height:3.09722in" /></p>
 <p>From these transactions, we produce the Balance Sheet at the end of the
 period.</p>
 <p>This sums up the operations involved in preparing the streams of
