@@ -115,7 +115,6 @@ def convert(
         output_fmt,
         format=input_fmt,
         extra_args=[
-            '--wrap=none',  # Don't wrap lines
             '--standalone',  # Don't strip headers
             '--extract-media', image_dir_rel,
         ],
